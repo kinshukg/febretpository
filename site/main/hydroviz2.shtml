@@ -1,0 +1,17 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>TUTORIAL STEP 2</h2>
+    
+    <p><h1 align="center"><img src="qbviz/slides/qs3.png"/></h1></p>
+    <p><b>Use the Map Panel (on the top-right corner) to select the visualized region,
+    and to specify some parameters of the model. Just try and play with them to see what
+    their function is!</b></p>
+    
+    <ul>
+        <li><a href="./hydroviz1.shtml"><b><em>PREVIOUS</em></b></a></li>
+        <li><a href="./hydroviz3.shtml"><b><em>NEXT</em></b></a></li>
+    </ul>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

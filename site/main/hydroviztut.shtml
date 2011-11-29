@@ -1,0 +1,16 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h1>.</h1>
+    <h1 align="center"><img src="qbviz/Splash.png" class="rawImg"/></h1>
+    
+    <p>
+        This tutorial will introduce you to Hydroviz and its main functionalities. At the
+        end of the tutorial you will be redirected to the Hydroviz Preview application.
+        Press next to begin!
+    <p>
+        <a href="./hydroviz1.shtml">NEXT</a></br>
+    </p>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

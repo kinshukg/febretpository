@@ -1,0 +1,173 @@
+<html>
+<head>
+<title> Alessandro Febretti - CS527 Final Project</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE>
+a:link  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:visited  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:active  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:hover  {
+	color :#7777FF;
+	text-decoration : none;
+}
+
+h3 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+h4 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+</STYLE>
+<STYLE type="text/css">
+<!--
+BODY {
+font-size: 2;
+font-family: Tahoma, Verdana;
+color: white;
+}
+-->
+</STYLE>
+</head>
+
+<body bgcolor="#000000" text="#000000">
+<table width="100" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><img src="images/header.jpg" width="777" height="150"></td>
+  </tr>
+  <tr>
+    <td>
+      <table width=777 border=0 cellpadding=0 cellspacing=0>
+        <tr> 
+          <td colspan=3> <img src="images/ca_01.jpg" width=777 height=16 alt=""></td>
+        </tr>
+        <tr> 
+          <td background=images/ca_02.jpg width=15>&nbsp; </td>
+          <td background=images/cabg.gif width=748 height=445 valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="6">
+                <tr> 
+                  <td style="height: 28px">
+<!----------------------------------------------------------------------------->
+<!-- USER HTML START ---------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<a href="../mike/index.html">Project 1 </a>|<a href="../boids/index.html"> Project 2 </a>|<a href="../matcheez/index.html">Project 3 (Team Project) </a>|
+<a href="../paper/index.html"> Paper Presentation </a>|<a href="../final/index.html"> Final Project </a><br /><br />
+
+
+<a href="index.html">Introduction </a>|<a href="index2.html"> [9.18 - 9.30]: Run </a>|<a href="index3.html"> [9.34 - 9.37]: Hittin' the rock </a>|
+<a href="index4.html"> [9.38 - 9.41]: Off the car! </a>|<a href="index5.html"> [9.44 - 9.48]: Round and round </a><br /><br />
+
+<!----------------------------------------------------------------------------->
+<!-- USER HTML END ------------------------------------------------------------>
+<!----------------------------------------------------------------------------->
+              <br />
+              <h2>
+              </h2>
+              <h2>
+                  [9.18 - 9.30]: RUN!</h2>
+              The first noticeable imperfection is right at the beginning of the sequence. Observing
+              the car we can notice that shadows casted by the car on itself (A) are way darker and
+              defined than the shadow casted by the car 
+              <br />
+              <img src="snap00002.jpg" style="float: right" width="500" />on the road (B). This may not
+              be an acutal error, and may depend only on the choice of light positions. The effect
+              still is quite weird, since the car gives the effect of being superimposed over
+              the background. Also, the shading of wheels (C) seems to be inconsistent with respect
+              to the shading of the rest of the car: wheel are shaded as light comes from a really
+              low angle, while other parts of the car suggest the presence of a light source above
+              the car itself.<br />
+              <br />
+              <br />
+              <br />
+              Another minor error can be noticed a little bit later in the animation (9.20).<img
+                  src="snap00003.jpg" style="float: left" width="500" />
+              In the following snapshot the bike front glass appears to be quite low-poly (A)
+              if compared
+              to the rest of the model. Also, the glass shows no refraction at all, and even no
+              specular reflections as one would expect on this kind of material. Again this may
+              be only due to the choice of light placing: still, one can't help but notice that
+              the resulting effect fells unrealistic.<br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+                      The next series of frames is taken from a sequence that quite does the trick. A
+                      rocket explodes right behind the bad guy,making him lose control of the car. You
+                      can notice the quite good and curved smoke trail of the rocket before it hits the
+                      terrain. The round movement of the rocket has just been underlined in a previous
+                      sequence, with a nice camera movement following the rocket itself, so here the shape
+                      of the trail gives a sense of consistency with the previous shot. Another good thing
+                      about this sequence is the explosion itself. We'll see how in other points of the
+                      animation particle systems will look quite weak. Here instead the generated effect
+                      looks quite realistic. The explosion also emits light, as you can notice from the
+                      brighter side of the car in (A). This also helps achieving a more credible effect
+                      overall. The only flaw here, is in the car movement. The car is not going offroad
+                      directly because of the explosion, but because of the bad guy abruptly steering
+                      to the left (at least this is the effect the animation suggests). The problem is
+                      that there is no time separation between the beginning of the explosion and of the
+                      car steering. It looks like the driver is reacting <strong>immediately</strong>
+                      to the explosion itself, which is quite unrealistic. One may argue that the bad
+                      guy may have seen the rocket before the explosion, but in this case his action (steering)
+                      would have been <strong>anticipated</strong> with respect to the explosion. Having
+                      both the boom and the steering begin at the same time makes this particular sequence
+                      a little bit mechanic.<h2>
+                          <img src="seq6.jpg" style="font-weight: bold" width="700" />&nbsp;</h2>
+              <p>
+                  &nbsp;</p>
+                      <p>
+                  Now, look at this sequence:</p>
+              <p>
+                  <img src="seq2.jpg" width="700" />&nbsp;</p>
+              <p>
+                  As you can see, it shows a close-up of the bad
+              guy after his car has almost
+                  been hit by a rocket. We can notice three flaws here:</p>
+              <ul>
+                  <li>The character expression is expected to communicate a mix of surprise and fear,
+                      but the actual result is pretty bad. The overall effect is of an extremely 'syntetic'
+                      result. Some exaggeration on the skin deformation, at least for some of the control
+                      points, may have helped here.</li>
+                  <li>The expression tends to be quite static along
+              the entire closeup sequence. There
+                      are some minor modifications over the skin deformation but they are quite subtle,
+                      and they do not help avoiding the overall feeling of a freezed expression. &nbsp;</li><li>The skin material looks more like plastic than actual skin. It lacks detail, has
+                      too much highlight and is definitely too smooth (i.e. there are no wrinkles on the
+                      forehead). Creating realistic (and physically correct) skin models is a challenging
+                      (and time consuming) task, but we can still notice that other characters
+              present in this animation have more correct skin models. Probably less work has been adressed
+                      to the character we are analyzing, since it is has been likely used only in this
+                      sequence.</li>
+              </ul>
+                  </td>
+                </tr>
+            </table>
+          </td>
+          <td background=images/ca_04.jpg width=14 height=445>&nbsp; </td>
+        </tr>
+        <tr> 
+          <td colspan=3> <img src="images/ca_05.jpg" width=777 height=17 alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table><div align="center"><br>
+  <font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">&copy; 
+  copyright 2003+ Template designed by <a href="http://www.zymic.com" target="_blank">www.zymic.com</a></font></div>
+</body>
+</html>

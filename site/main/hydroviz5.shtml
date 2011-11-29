@@ -1,0 +1,20 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>TUTORIAL STEP 5</h2>
+    
+    <p><h1 align="center"><img src="qbviz/slides/qs6.png"/></h1></p>
+    <p><b>Now that you have a view with some data, you can play with the timeline to
+    see how data changes over different time points. To better see how a view
+    changes <em>press ctrl, shift, left mouse button and drag the mouse horizontally.</em>
+    This feature allows you to easily compare the current view with its latest version and
+    can be used whenever an update of the view or of the viewpoint is performed. Just try
+    ctrl-shift-click and drag the view from time to time, to see its effect.</b></p>
+    
+    <ul>
+        <li><a href="./hydroviz4.shtml"><b><em>PREVIOUS</em></b></a></li>
+        <li><a href="./hydroviz6.shtml"><b><em>NEXT</em></b></a></li>
+    </ul>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

@@ -1,0 +1,40 @@
+#define section <div class="section"><h2>{$#1}</h2>
+#define end-section </div>
+
+#( '<?NewLine>'
+	#define item 
+		<div class="item" style="text-align: justify">
+		#if '{$title=""}' <> ''
+			#if '{$url=""}' <> ''
+				<h3><a href="{$url}">{$title}</a></h3>
+			#else
+				<h3>{$title}</h3>
+			#endif
+		#endif
+		#if '{$img=""}' <> ''
+			#if '{$url=""}' <> ''
+				<a href="{$url}"><img class="clickable" src="{$img}" width="{$imgwidth=''}" style="float: left"/></a>
+			#else
+				<img src="{$img}" width="{$imgwidth=''}" style="float: left"/>
+			#endif
+		#endif
+		<div class="subitem">
+#)
+
+#define end-item  </div></div>
+
+#( '<?NewLine>'
+	#define img
+	<h4 align="center"><img src="{$#1}" width="{$width=''}"/><br/><font align="center">{$caption=''}</font></h4>
+#)
+
+#( '<?NewLine>'
+	#define video
+	<h4 align="center"><object width="{$width='640'}" height="{$height='385'}">
+		<param name="movie" value="{$#1}"></param>
+		<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+		<embed src="{$#1}" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="{$width='640'}" height="{$height='385'}"></embed>
+	</object>
+	<br/><font align="center">{$caption=''}</font></h4>
+#)
+

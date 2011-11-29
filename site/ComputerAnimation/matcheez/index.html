@@ -1,0 +1,205 @@
+﻿<html>
+<head>
+<title> Bernasconi Febretti Iparraguirre - CS527 Project 3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE>
+a:link  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:visited  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:active  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:hover  {
+	color :#7777FF;
+	text-decoration : none;
+}
+
+h3 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+h4 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+</STYLE>
+<STYLE type="text/css">
+<!--
+BODY {
+font-size: 2;
+font-family: Tahoma, Verdana;
+color: white;
+}
+-->
+</STYLE>
+</head>
+
+<body bgcolor="#000000" text="#000000">
+<table width="100" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><img src="images/header.jpg" width="777" height="150"></td>
+  </tr>
+  <tr>
+    <td>
+      <table width=777 border=0 cellpadding=0 cellspacing=0>
+        <tr> 
+          <td colspan=3> <img src="images/ca_01.jpg" width=777 height=16 alt=""></td>
+        </tr>
+        <tr> 
+          <td background=images/ca_02.jpg width=15>&nbsp; </td>
+          <td background=images/cabg.gif width=748 height=445 valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="6">
+                <tr> 
+                  <td style="height: 28px">
+<!----------------------------------------------------------------------------->
+<!-- USER HTML START ---------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<a href="../mike/index.html">Project 1 </a>|<a href="../boids/index.html"> Project 2 </a>|<a href="../matcheez/index.html">Project 3 (Team Project) </a>|
+<a href="../paper/index.html"> Paper Presentation </a>|<a href="../final/index.html"> Final Project </a><br /><br />
+
+<table><tr><td><img src="sign.jpg"/></td><td><h3>MAIN IDEA</h3></td></tr></table>
+In this project we got four matches dancing. They are turned on in the middle of the scene and they produce fire simulated as a particle system. As the scene evolves all the dancers play a solo and at the end they synchronize. The selected music was Calypso interpreted by Harry Belafonte.  <br /><br />
+
+
+<br />
+<br />
+<br />
+
+<table><tr><td><img src="sign.jpg"/><img src="sign.jpg"/></td><td><h3>HOW IT WAS DONE</h3></td></tr></table>
+
+<table>
+<tr>
+<td><h4>Motion Capture</h4>
+One of the member of our group played the match role. We use four motion sensors to record the movements. We placed one sensor in the head, one sensor in the chest, one sensor in the knee, and the last in the foot.
+</td>
+<td><img src="actor.jpg" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Filtering</h4>
+After we capture the data we realized that there was noise. To filter the noise we developed a Java application that implements a low-pass FIR filter. You can download the code of the filtering application <a href="CS527_FILTER.zip" target="_blank">here</a>.
+<br />
+<br />
+We had a big challenge in the filtering task. Since the “head” of the match moves slowly at the beginning of the animation we did not want filter that information. However we observed a lot of noise in the sensor located at the foot of the actor. After experimenting with our code, we decided to apply different kinds filters to our captured motion. As a result, we have three different levels of filtering to get the final result.
+
+</td>
+<td><img src="noise_in_data.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Building The Match</h4>
+The match model is built up using a number of small cylinders for the match body. The number of these cylinders can be configured inside
+the main animation script and allows to create more or less 'bendy' matches. The match head is just a stretched sphere.
+</td>
+<td><img src="match.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="spline.png" /></td>
+<td><h4>Animating The Match</h4>
+To achieve a smoother effect for match movements, we did not use directly our motion capture data to move the match body. Instead, we
+used our four markers as control points of a quadratic spline, and we then sampled this spline in several points to obtain positions
+for each cylinder in our match body. Some simple math is then used to rotate cylinders in order to make them line up with the actual
+spline direction and generate a final continuous shape.
+</td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Fire!</h4>
+The fire effect was generated through a particle system implemented directly in lua. Each flame is made up of three different particle
+emitters that use both different parameters and prites to generate respectively the blue part of the flame, the main flame and a sort of
+light glow around it. When all the four matches are turned on, the particle system has to do a lot of work: in this case a major bottlenck
+was due to the fact that a lot of particles has to be created and destroyed in each frame, and the consequent creation / destruction of
+scene entities was extremely limiting the maximum number of particles we could have on screen at the same time. An important optimization
+here was to 'recycle' old particles: instead of destroyiyng dead particles we just hide them, and show them again with the right
+parameters when a particle of the same kind is created.
+</td>
+<td><img src="flame.png" /></td>
+</tr>
+</table>
+<br />
+
+
+<table>
+<tr>
+<td><img src="lights.png" /></td>
+<td><h4>Shadows & Lights</h4>
+The scene has four dynamic light sources associated to each one of the match flames. These lights get turned on / off smoothly in sync
+with the flame particle emitters. Some additional fixed lighting is used as base light when all the matches are turned off. The 
+'fake' shadows are created using semitransparent black sprites placed on the table surface. These sprites get animated depending on the
+movements of the corresponding match to achieve a somewhat realistic effect.
+</td>
+</tr>
+</table>
+<br />
+
+<br />
+
+
+<table>
+<tr>
+<td><h4>The End Of All Things</h4>
+<a href="../downloads/index.shtml#companim">Download Matcheez!</a>
+<ul>
+    <li>Run matcheez.bat to start the program</li>
+    <li>Press enter to play the animation. Pressing enter again at any time will restart the animation from the beginning</li>
+    <li>Press 'S' To pause the animation</li>
+    <li>Use the left / right arrow keys to move backward / forward in the animation</li>
+    <li>Use the LEFT mouse button + mouse movement to rotate the view.</li>
+    <li>Use the RIGHT mouse button + mouse movement to zoom the view.</li>
+</ul>
+</td>
+<td><img src="download.png" /></td>
+</tr>
+</table>
+<br />
+<br />
+
+<table><tr><td><img src="sign.jpg"/><img src="sign.jpg"/><img src="sign.jpg"/></td><td><h3>Q&A</h3></td></tr></table>
+<b>Coming soon...</b><br />
+
+
+<!----------------------------------------------------------------------------->
+<!-- USER HTML END ------------------------------------------------------------>
+<!----------------------------------------------------------------------------->
+                  </td>
+                </tr>
+            </table>
+          </td>
+          <td background=images/ca_04.jpg width=14 height=445>&nbsp; </td>
+        </tr>
+        <tr> 
+          <td colspan=3> <img src="images/ca_05.jpg" width=777 height=17 alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div align="center"><br>
+  <font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">&copy; 
+  copyright 2003+ Template designed by <a href="http://www.zymic.com" target="_blank">www.zymic.com</a></font></div>
+</body>
+</html>
