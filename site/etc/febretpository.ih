@@ -13,7 +13,7 @@
 		#endif
 		#if '{$img=""}' <> ''
 			#if '{$url=""}' <> ''
-				<a href="{$url}"><img class="clickable" src="{$img}" width="{$imgwidth=''}" style="float: left"/></a>
+				<a href="{$url}"><img class="clickable" src="{$img}" width="{$imgwidth=''}" style="float: left; border: 1px solid #D63D26; background: #f6dDc6;"/></a>
 			#else
 				<img src="{$img}" width="{$imgwidth=''}" style="float: left"/>
 			#endif

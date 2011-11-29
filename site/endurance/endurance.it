@@ -1,0 +1,47 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<$section "The NASA ENDURANCE Project">
+	<$item img="./lake_bonney.jpg">
+        <p>NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting <b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. ENDURANCE is designed to swim untethered under ice, in order to create three-dimensional maps of the underwater environment, and to collect data and samples of microbial life.</p>
+        
+		<p>In preparation for a future mission to Europa, a series of field tests in Lake Mendota on the campus of the University of Wisconsin at Madison, and Lake Bonney, Antarctica have been conducted to prove that ENDURANCE is suited to operating in a cold environment. One successful mission to Antarctica was conducted in last fall 2008 with another scheduled fall 2009. Additional missions are anticipated with significant planning before a Europa mission will take place likely a couple of decades from now.</p>
+        
+		<p>As part of the first field test in Antarctica, collected data was relayed back to EVL to generate 
+        three-dimensional images, maps and data renderings of the lake for analysis.</p>
+        <ul>
+			<li><a href="http://www.evl.uic.edu/endurance/endurance.html">Go to the ENDURANCE project EVL webpage</a></li>
+        </ul>
+	<$end-item>
+<$end-section>
+
+<$section "Subprojects">
+	<$item title="Looking Glass" img="../LookingGlass/endurance.png">
+		Looking Glass is a hydrographic visualization application, developed to analyze data coming from the ENDURANCE project exploration of ice-covered Lake Bonney, Antarctica.
+		<ul>		
+			<li><a href="http://code.google.com/p/looking-glass/downloads/list">Download Looking Glass</a></li>
+			<li><a href="http://code.google.com/p/looking-glass/">Looking Glass on Google Code</a></li>
+			<li><a href="http://code.google.com/p/looking-glass/wiki/History">Looking Glass 2.x history page</a></li>
+			<li><a href="../LookingGlass2/index.shtml">Looking Glass 2.x tutorial page</a></li>
+			<li><a href="../LookingGlass/index.shtml">Looking Glass 1.x tutorial page</a></li>
+		</ul>
+	<$end-item>
+	
+	<$item title="Sediment Visualization on LambdaWall" img="./lambda.jpg">
+        This visualization application allows researchers to visualize and compare geo-referenced images of the ice sheet covering lake Bonney. At present, the total dataset consists of more than 100,000 images, well suited for display on EVL’s high-resolution tiled display - LambdaVision. The tiled display allows scientists to simultaneously display hundreds of images from the acquired dataset in full resolution.    
+		<p><b>Links:</b>
+			<a href="http://www.evl.uic.edu/core.php?mod=4&type=9&indi=401">EVL Project Page</a>
+		</p>
+	<$end-item>
+	
+	<$item title="Sonar-based bathymetry reconstruction of Lake Bonney">
+		<p>The sonar data gathered by the ENDURANCE AUV has been used to recontruct a 3d model of West Lake Bonney. A customized set of tools has been developed for this purpose. The tools are able to decimate and clean up the source sonar range, perform raytracing using water sound velocity profiles, and extract a surface from the filtered points using Poisson Surface Reconstruction. The resulting bathymetry has been rendered and animated inside Paraview.</p>
+		<p><b>Links:</b>
+			<a href="http://febretpository.hopto.org/svn/BigWhoop/ENDURANCE/dttools/">ENDURANCE DeltaT processing tools (dttools)</a>
+		</p>
+		<$video "http://www.youtube.com/v/SF1DSzVzQ-g?fs=1&amp;hl=en_US">
+		<$video "http://www.youtube.com/v/5rbcfe9d3HU?fs=1&amp;hl=en_US">
+	<$end-item>
+<$end-section>
+
+#include "../etc/footer.html"

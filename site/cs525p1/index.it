@@ -1,0 +1,183 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>CS525 Project 1 - Kodachrome</h2>
+    <p>
+    The objective for this project was to process a stream of images captured from the webcam, and apply a set of vertex, fragment and geometry shaders to
+    achieve different visual effects. The shaders had to be written using the OpenGL Shading Language (GLSL). My application made use of the OpenCV library
+    for the webcam capture part. OpenCV has also been used to integrate face recognition support into one of the shaders.
+    </p>
+</div>
+<div class="section">
+    <h2>How To Use The Application</h2>
+    <p>
+    The application presenta a total of 12 shader programs, organized into 3 pages of 4 programs each. Most of the shaders expose a configurable
+    parameter that can be modified using the keyboard as the following section explains.
+    </p>
+    <p>
+    Here is a quick reference of the keys used by the application:
+    <ul>
+    <li><b>[1] [2] [3]</b> - select the currently displayed program page</li>
+    <li><b>[i] [o] [k] [l]</b> - Maximize one of the four views of the current page</li>
+    <li><b>[j]</b> - Go back to the 4-view page mode</li>
+    <li><b>[q] [z] [a]</b> - Increase, decrease and reset to default the configurable parameter for the <b>Top Left View</b></li>
+    <li><b>[w] [x] [s]</b> - Increase, decrease and reset to default the configurable parameter for the <b>Top Right View</b></li>
+    <li><b>[e] [c] [d]</b> - Increase, decrease and reset to default the configurable parameter for the <b>Bottom Left View</b></li>
+    <li><b>[r] [v] [f]</b> - Increase, decrease and reset to default the configurable parameter for the <b>Bottom Right View</b></li>
+    <li><b>[n]</b> - Capture the current webcam image as background. Used in some of the views.</li>
+    <li><b>[m]</b> - Toggle face detection. Used in the funny mirror view.</li>
+    <li><b>[b]</b> - Enable / Disable the live webcam stream.</li>
+    </ul>
+    </p>
+</p>
+</div>    
+<div class="section">
+    <h2>Shaders</h2>
+    
+    <div><img style="float:left" src="./s1.png" width="300"/>
+    <h3>Saturation</h3>
+    <p><b>Main techniques:</b> fragment shader saturation adjustment (saturation.frag)</p>
+    <p>
+    This shader simply displays the current webcam feed, allowing the user to control the saturation level of
+    the image. The fragment shader computes a black - and white value for each fragment, and mixes that value
+    with the original color for each color channel, depending on an external, user customizable parameter.
+    </p>
+    </div>    
+    <br style="clear: left" />
+    
+    <div><img style="float:left" src="./s2.png" width="300"/>
+    <h3>Posterize</h3>
+    <p><b>Main techniques:</b> fragment shader color quantization (posterize1.frag)</p>
+    <p>
+    The fragment shader used in this view limits the number of color shades for each color channel
+    depending on the external shader parameter. The quantization is done by multiplying, rounding and then
+    dividing each fragment color by the user parameter:
+    </p>
+    <code>color.r = round(color.r * param) / param;</code>
+    </div>    
+    <br style="clear: left" />
+
+    <div><img style="float:left" src="./s3.png" width="300"/>
+    <h3>Color Threshold</h3>
+    <p><b>Main techniques:</b> fragment shader single channel threshold (colorThreshold.frag)</p>
+    <p>
+    This view uses a fragment shader that computes the difference between one of the fragment colors (red in this case) and
+    the average of the other two channels. If the difference is bigger than a user specified threshold, the fragment passes through
+    the shader as it is. Otherwise, it is rendered black and white.
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s4.png" width="300"/>
+    <h3>Hologram</h3>
+    <p><b>Main techniques:</b> background subtraction, scanline simulation (hologram.frag)</p>
+    <p>
+    This view simulates a 'hologram' effect by subtracting the current webcam feed from a fixed background
+    (press <b>[n]</b> to capture a background image from the webcam). The subtraction result is colored using a bluish
+    palette and modulated by a low and high frequency sine function, to simulate scanlines and flicker.
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s5.png" width="300"/>
+    <h3>Emboss</h3>
+    <p><b>Main techniques:</b> Embossing (emboss.frag)</p>
+    <p>
+    This view simply applies an emboss convolution filter to a black and white version of the camera image. Image embossing is
+    explained in more detail <a href="http://en.wikipedia.org/wiki/Image_embossing">Here.</a>
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s6.png" width="300"/>
+    <h3>Funny Mirror</h3>
+    <p><b>Main techniques:</b> Polar coordinate distortion, face detection (funmirror.frag)</p>
+    <p>
+    This view uses a fragment shader that smulates a funny mirror effect by distorting the image texture
+    coordinates after converting them into <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar form.</a>
+    A brief explanation of some of the effects implemented by this shader can be found <a href="http://dem.ocracy.org/libero/photobooth/">here.</a>
+    When face detection is turned on, the shader gets the face rectangle identified by OpenCV as a <code>uniform vec4</code>. 
+    The shader then re-centers the effect using some simple math on te texture coordinate conversion. 
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s7.png" width="300"/>
+    <h3>Live Environment Mapping</h3>
+    <p><b>Main techniques:</b> Vertex-based spherical environment mapping (envMap.vert, EnvMap.frag)</p>
+    <p>
+    This view implements a basic environment mapping shader, using the webcam feed as a sphere map. Since the 
+    webcam image does not map very well on a sphere, a simple technique has been used to avoid mapping artifacts at the texture boundaries.
+    When the reflection vector gets close to the boundaries, the texture result is increasily mixed with a constant color.
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s8.png" width="300"/>
+    <p><b>Main techniques:</b> Image difference, Gaussian blur, accumulation texture (smoke2.frag)</p>
+    <h3>Motion Accumulator</h3>
+    <p>
+    The fragment shader used in this view makes use of three separate inputs to generate its result: the current webcam frame,
+    the previous frame and <b>The previous rendering result by the shader itself.</b> The shader computes the black and white
+    difference between the current and previous frame, adds is to the previous rendering result and finally blurs it. After being written
+    to the frame buffer, the output is copied to a texture so it can be passed back to this shader during the next rendering.
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s9.png" width="300"/>
+    <h3>Bump Mapped Coin</h3>
+    <p><b>Main techniques:</b> Environment-mapped bump mapping (envMap.vert coin.frag)</p>
+    <p>
+    This view uses the embossed image generated for one of the previous views to build a bump map and apply it to the surface of a short
+    cylinder in order to make it look like a coin. For each fragment of the emboss image we compute the x and y gradients and normalize their
+    cross product to get the surface normal at that point. The normal is the used to compute a reflection vector to lookup into a sperical environment
+    map, generated again from the webcam feed (as it was for the Live Environment Mapping view).
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s10.png" width="300"/>
+    <h3>Comic book</h3>
+    <p><b>Main techniques:</b> Fixed palette posterize, embossing (envMap.vert coin.frag)</p>
+    <p>
+    This view implements a fixed-palette posterization technique: Instead of simply quantizing the color channels,
+    we decide <b>a priori</b> which colors we want to use (in this case light shades of blue, red and white). For
+    each fragment we then compute the distance to each one of the colors, and we choose the one closest to the original.
+    The 'comic book' effect is enhanced by adding contours to the result using an embossing filter.
+    </p>
+    </div>    
+    <br style="clear: left" />
+
+   <div><img style="float:left" src="./s12.png" width="300"/>
+    <h3>Ghost</h3>
+    <p><b>Main techniques:</b> Texture deformation (ghost.frag)</p>
+    <p>
+    This fragment shader uses the output of the <b>Motion Accumulator</b> view to deform a fixed image
+    (i.e. a background image captured from the webcam using <b>[n]</b>). The motion accumulator output
+    itself is slightly blended with the result inside the fragment shader to give a subtle, ghosthy 
+    presence effect on the image.
+    </p>
+    </div>    
+    <br style="clear: left" />
+    
+   <div><img style="float:left" src="./s11.png" width="300"/>
+    <h3>Geometry Shader Tessellation</h3>
+    <p><b>Main techniques:</b> Polygon tessellation, environment mapping, vertex shader displacement mapping (heightmap.vert envMap.frag)</p>
+    <p>
+    This view uses a geometry shader to tessellate a quad in order to form a grid with any desired level of detail. The grid vertices are fed
+    to a vertex shader that used the <b>Motion Accumulator</b> result as a lookup texture to modify the vertex y coordinate. Its worth noting how the
+    vertex normals are not valid anymore at this point so we need to recompute them inside the shader through the same technique used for the <b>Bump Mapped Coin</b>.
+    The resulting deformed surface is then shaded using an environment mapping fragment shader.
+    </p>
+    </div>    
+
+ </div>
+
+<div class="section">
+    <h2>Downloads</h2>
+    <h3 align="center"><a href="../downloads/index.shtml#cs525">>>> DOWNLOAD SOURCE AND WIN32 BINARIES <<<</a></h3>
+</div>
+
+#include "../etc/footer.html"

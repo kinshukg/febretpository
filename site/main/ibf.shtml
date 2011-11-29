@@ -1,55 +1,94 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
-<div class="section">
-    <h2>INNER BATTLEFIELD</h2>
-    
-    
-    <p>Inner Battlefield is a serious game that will educate the player regarding the working of the human immune system, the different kinds of disease causing pathogens, and the effects of antibiotics on the human body.</p>
-    <p>It will be a real time strategy (RTS) game. The goal of the player will be to protect a tissue against a series of attacks by various kinds of viruses and bacteria. The player completes a mission by keeping a certain percentage of cells in the tissue alive for a fixed amount of time. Different missions will deal with different kinds of tissues, immune cells and pathogens. </p>
-    <p>People generally think of antibiotics as a magic bullet against many deadly bacterial diseases. But because of persistent overuse, they are actually encouraging the growth of difficult-to-treat bacteria that are resistant to antibiotics. We will try to bring this to light through our game by educating the player about the real role of antibiotics and how they can harm the human system if not used carefully.</p>
-    <p>Also, since the game is basically a strategy game, the player will have limited resources and will have to make a smart choice when it comes to selecting a resource to combat a particular type of virus or bacteria.</p>
-    
-	<del>DOWNLOAD GAME SOURCES AND EXECUTABLE</del>
-    <p><font color="#FF5555"><b>NOTE:</b> The download section will be down for some time. I have to re-upload
-    the files and the backup is on a disconnected machine on the other side of the world right now.</font></p>
-	<!-- <a href="http://shriram.one09.net/Inner%20Battlefield.zip">DOWNLOAD GAME SOURCES AND EXECUTABLE</a> -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
 </div>
-
-<div class="section">
-    <h2>VIDEOS</h2>
-	<div align="center">
-	<embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" 
-		src="http://video.google.com/googleplayer.swf?docid=2144138401522142558&hl=en" type="application/x-shockwave-flash"> </embed>	
-	<embed id="VideoPlayback" style="width:400px;height:326px" flashvars="" 
-		src="http://video.google.com/googleplayer.swf?docid=4679653730276707367&hl=en" type="application/x-shockwave-flash"> </embed>
-	</div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
 </div>
-
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
 <div class="section">
-    <h2>SCREENSHOTS</h2>
-
-    <p>
-    <a href="innerBattlefield/0.JPG"><img src="innerBattlefield/0_thumb.JPG"/></a>
-    <a href="innerBattlefield/1.JPG"><img src="innerBattlefield/1_thumb.JPG"/></a>
-    <a href="innerBattlefield/2.JPG"><img src="innerBattlefield/2_thumb.JPG"/></a>
-    <a href="innerBattlefield/3.JPG"><img src="innerBattlefield/3_thumb.JPG"/></a>
-    <a href="innerBattlefield/4.JPG"><img src="innerBattlefield/4_thumb.JPG"/></a>
-    <a href="innerBattlefield/5.JPG"><img src="innerBattlefield/5_thumb.JPG"/></a>
-    <a href="innerBattlefield/6.JPG"><img src="innerBattlefield/6_thumb.JPG"/></a>
-    <a href="innerBattlefield/7.JPG"><img src="innerBattlefield/7_thumb.JPG"/></a>
-    <a href="innerBattlefield/8.JPG"><img src="innerBattlefield/8_thumb.JPG"/></a>
-    <a href="innerBattlefield/9.JPG"><img src="innerBattlefield/9_thumb.JPG"/></a>
-    <a href="innerBattlefield/10.JPG"><img src="innerBattlefield/10_thumb.JPG"/></a>
-    <a href="innerBattlefield/11.JPG"><img src="innerBattlefield/11_thumb.JPG"/></a>
-    <a href="innerBattlefield/12.JPG"><img src="innerBattlefield/12_thumb.JPG"/></a>
-    <a href="innerBattlefield/13.JPG"><img src="innerBattlefield/13_thumb.JPG"/></a>
-    <a href="innerBattlefield/14.JPG"><img src="innerBattlefield/14_thumb.JPG"/></a>
-    <a href="innerBattlefield/15.JPG"><img src="innerBattlefield/15_thumb.JPG"/></a>
-    <a href="innerBattlefield/16.JPG"><img src="innerBattlefield/16_thumb.JPG"/></a>
-    <a href="innerBattlefield/17.JPG"><img src="innerBattlefield/17_thumb.JPG"/></a>
-    <a href="innerBattlefield/18.JPG"><img src="innerBattlefield/18_thumb.JPG"/></a>
-    </p>
-    
+<h2>INNER BATTLEFIELD</h2>
+<p>Inner Battlefield is a serious game that will educate the player regarding the working of the human immune system, the different kinds of disease causing pathogens, and the effects of antibiotics on the human body.</p>
+<p>It will be a real time strategy (RTS) game. The goal of the player will be to protect a tissue against a series of attacks by various kinds of viruses and bacteria. The player completes a mission by keeping a certain percentage of cells in the tissue alive for a fixed amount of time. Different missions will deal with different kinds of tissues, immune cells and pathogens. </p>
+<p>People generally think of antibiotics as a magic bullet against many deadly bacterial diseases. But because of persistent overuse, they are actually encouraging the growth of difficult-to-treat bacteria that are resistant to antibiotics. We will try to bring this to light through our game by educating the player about the real role of antibiotics and how they can harm the human system if not used carefully.</p>
+<p>Also, since the game is basically a strategy game, the player will have limited resources and will have to make a smart choice when it comes to selecting a resource to combat a particular type of virus or bacteria.</p>
+<del>DOWNLOAD GAME SOURCES AND EXECUTABLE</del>
+<p><font color="#FF5555"><b>NOTE:</b> The download section will be down for some time. I have to re-upload
+the files and the backup is on a disconnected machine on the other side of the world right now.</font></p>
+<!-- <a href="http://shriram.one09.net/Inner%20Battlefield.zip">DOWNLOAD GAME SOURCES AND EXECUTABLE</a> -->
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<div class="section">
+<h2>VIDEOS</h2>
+<div align="center">
+<embed id="VideoPlayback" style="width:400px;height:326px" flashvars=""
+src="http://video.google.com/googleplayer.swf?docid=2144138401522142558&hl=en" type="application/x-shockwave-flash"> </embed>
+<embed id="VideoPlayback" style="width:400px;height:326px" flashvars=""
+src="http://video.google.com/googleplayer.swf?docid=4679653730276707367&hl=en" type="application/x-shockwave-flash"> </embed>
+</div>
+</div>
+<div class="section">
+<h2>SCREENSHOTS</h2>
+<p>
+<a href="innerBattlefield/0.JPG"><img src="innerBattlefield/0_thumb.JPG"/></a>
+<a href="innerBattlefield/1.JPG"><img src="innerBattlefield/1_thumb.JPG"/></a>
+<a href="innerBattlefield/2.JPG"><img src="innerBattlefield/2_thumb.JPG"/></a>
+<a href="innerBattlefield/3.JPG"><img src="innerBattlefield/3_thumb.JPG"/></a>
+<a href="innerBattlefield/4.JPG"><img src="innerBattlefield/4_thumb.JPG"/></a>
+<a href="innerBattlefield/5.JPG"><img src="innerBattlefield/5_thumb.JPG"/></a>
+<a href="innerBattlefield/6.JPG"><img src="innerBattlefield/6_thumb.JPG"/></a>
+<a href="innerBattlefield/7.JPG"><img src="innerBattlefield/7_thumb.JPG"/></a>
+<a href="innerBattlefield/8.JPG"><img src="innerBattlefield/8_thumb.JPG"/></a>
+<a href="innerBattlefield/9.JPG"><img src="innerBattlefield/9_thumb.JPG"/></a>
+<a href="innerBattlefield/10.JPG"><img src="innerBattlefield/10_thumb.JPG"/></a>
+<a href="innerBattlefield/11.JPG"><img src="innerBattlefield/11_thumb.JPG"/></a>
+<a href="innerBattlefield/12.JPG"><img src="innerBattlefield/12_thumb.JPG"/></a>
+<a href="innerBattlefield/13.JPG"><img src="innerBattlefield/13_thumb.JPG"/></a>
+<a href="innerBattlefield/14.JPG"><img src="innerBattlefield/14_thumb.JPG"/></a>
+<a href="innerBattlefield/15.JPG"><img src="innerBattlefield/15_thumb.JPG"/></a>
+<a href="innerBattlefield/16.JPG"><img src="innerBattlefield/16_thumb.JPG"/></a>
+<a href="innerBattlefield/17.JPG"><img src="innerBattlefield/17_thumb.JPG"/></a>
+<a href="innerBattlefield/18.JPG"><img src="innerBattlefield/18_thumb.JPG"/></a>
+</p>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>Computer Graphics 2 - Scientific Visualization</h2>
+    <div class="item" style="text-align: justify">
+        <p>
+        This section contains projects and presentations for CS526 - Spring 2009.
+        </p>
+        <b>Subsections:</b>
+        <ul>
+        <li><a href="./proj1.shtml">Project 1 - Chindogu Viz</a></li>
+        <li>Short Presentation - Visualizing Underwater Behavior of Humpback Whales
+            <ul>    
+                <li><a href="./ArticleShort.pdf">Original Article</a></li>
+                <li><a href="./FebrettiShort.pdf">Presentation</a></li>
+            </ul>
+        </li>
+        <li><a href="./proj2.shtml">Project 2 - Endurance</a></li>
+        <li>Paper Presentation - Style Transfer Functions for Illustrative Volume Rendering
+            <ul>    
+                <li><a href="http://www.cg.tuwien.ac.at/research/publications/2007/bruckner-2007-STF/bruckner-2007-STF-Paper.pdf">Original Article</a></li>
+                <li><a href="./StyleTransferFunctions.pdf">Presentation</a></li>
+            </ul>
+        </li>
+        <li><a href="./final.shtml">Final Project - It's All About Me</a></li>
+        </ul>
+    </div>
+</div>
+
+#include "../etc/footer.html"

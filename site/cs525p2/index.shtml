@@ -1,264 +1,294 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
+</div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
 <div class="section">
-    <h2>CS525 Project 2 - Taste of Chicago</h2>
-    <p>
-    This project involved the use of a GPU for general purpose computation. the focus was on using NVidia CUDA to simulate a rapidly spreading 
-    epidemic in the Chicago loop: To keep the simulation as close to reality as possible, the project objective was to recreate a zombie attack during 
-    the Taste of Chicago fair. 
-    </p>
-    <object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/kGBOf86EnN4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/kGBOf86EnN4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object></br>
-<div class="section">
-    <h2>Using the application</h2>
-    <div align="center"><a href="./S5.png"><img src="./S5.png" width="600"/></a></div>
-    <p>
-    The application can be launched from the command line, specifying the name of a <b>simulation configuration file</b> as a parameter. The format
-    of this file will be explained in one of the following sections.
-    </p>
-    <p>
-    Once launched, the application displays a view of a geographic area, filled with an initial set of agents.
-    </p>
-    <p>
-    <ul>
-    <li><b>Clicking with the mouse left button and dragging</b> - pans the view</li>
-    <li><b>Scrolling with the mouse wheel</b> - changes the zoom level</li>
-    <li><b>[f]</b> - moves the view to the next <b>fighter</b> agent. Fighters are explained further on.</li>
-    <li><b>[o]</b> - resets the view to the initial state.</li>
-    <li><b>[m]</b> - switches between a normal map view and occlusion map view.</li>
-    <li><b>[+,-]</b> - Increases or decreases the simulation time multiplier.</li>
-    <li><b>[i]</b> - switches between map panning mode and predator / fighter creation modes.</li>
-    </ul>
-    </p>
-    
-    <div align="center"><img src="./S3.png" width="500"/></div>
-    <p>
-    The screenshot above shows how the info panel looks like: the info panel contains some basic info about the visualization 
-    (the framerate and current view position), and lists the number of agents per class currently present in the simulation. At the bottom,
-    a graph shows how the number of entities changes over time.
-    </p>
+<h2>CS525 Project 2 - Taste of Chicago</h2>
+<p>
+This project involved the use of a GPU for general purpose computation. the focus was on using NVidia CUDA to simulate a rapidly spreading
+epidemic in the Chicago loop: To keep the simulation as close to reality as possible, the project objective was to recreate a zombie attack during
+the Taste of Chicago fair.
 </p>
-</div>    
+<object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/kGBOf86EnN4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/kGBOf86EnN4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object></br>
 <div class="section">
-    <h2>Simulation mechanics</h2>
-    The simulation is mainly based on a behavior-driven flocking algorithm, similar to what I implemented in one
-    of my <a href="../ComputerAnimation/boids/index.html">older projects</a>. 
-    
-    <div>
-    <h3>Agent Data</h3>
-    <p>
-    Each active agent maintains its position, direction and speed: the agent position is updated depending on
-    speed and direction, and taking into account possible collisions against non-walkable areas. The direction 
-    taken by an agent depends on its <b>behavior</b>, i.e. wheter it is a civilian, zombie or policeman, plus
-    its current status. The complete set of rules is the following.
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-    <div>
-    <h3>Coordination Rule</h3>
-    <p>
-    When agents are near each other, they tend to move in the same direction. In the current implementation, this
-    rule is enforced only on civilians, and depends also on their current amount of 'stress' (currently represented
-    by the <b>steer friction parameter</b>. When a civilian is panicking or got stuck somewhere, they will be more 
-    likely to behave as similars around them.
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-    <div>
-    <h3>Avoidance Rule</h3>
-    When agents get too near to each other, they will tend to move away. This rule avoids multiple agents sharing
-    a space that is physically too small for them, and also simulates the natural <i>safe distance</i> that people
-    tend to maintain from each other in less crowded situations. All types of agents have to follow the avoidance rule.
-    <p>
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-    <div>
-    <h3>Collision Rule</h3>
-    <p>
-    This rule gets applied whenever an agent's movement would bring them in an unwalkable area (i.e. against a wall). The
-    collision rule, as it it now, makes agents behave in a pretty stupid way: Whenever they hit a wall, their stress parameter increases
-    and they will try to move in the first free direction they find, rotating clockwise. Since tre agent stress parameter
-    increased, they will likely follow nearby agents, increasing the possibility of finding a meaningful path away from the obstacle.
-    When lots of agents are present, their collective bahavior will be acceptably correct, despite this rule being an oversimplification
-    of human behavior.
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-    <div>
-    <h3>Predator Rule</h3>
-    <p>
-    This rule is the core of the predator (ok, zombie ^_^) behavior: when a civilian in in a predator's awareness range, they will run at them.
-    When a predator is close enough to a civilian (the <b>kill range</b>), the civilian will become infected, while the predator hunger will go
-    down for some time: the predator won't attack other civilians for a while. An infected civilian will look dead for a while, then turn into
-    a zombie.
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-    <div>
-    <h3>Fighter Rule</h3>
-    <p>
-    This rule is used to represent agents that try to actively fight zombies (for instance, armed policemend). The rule is overall pretty simple to
-    the predator rule explained above: fighters will try to attack zombies in their awareness range, and if a zombie gets into the kill range of a fighter,
-    it will die. After killing a zombie, fighters cannot immediately kill another one: this is used to simulate 'fighting time': different values for
-    this parameter can be used to implement different scenarios (i.e. killing a zombie barehanded would require more time than using a machinegun)
-    </p>
-    </div>    
-    <br style="clear: left" />
-    
-</div>
-
-<div class="section">
-    <h2>Configuring the simulation</h2>
-    <p>
-    As mentioned before, the application accepts a configuration file as input: this file is used to configure almost every aspect of the simulation. This
-    allows the user to use the program to run simulations on different maps, or configure different agent behaviors on the same map and see how the scenario evolves.
-    The two following screenshots show the application running simulations on the chicago downtown area, and on a smaller, hand drawn map. The two simulation regions are
-    extremely different in terms of size (2 by 3 kilometers for chicago downtown versus 100 x 100 meters for the small map), and allow the user to observe agent interactions
-    at different scales.
-    </p>
-    <div align="center"><a href="./S4.png"><img src="./S4.png" width="350"/></a><a href="./S6.png"><img src="./S6.png" width="350"/></a></div>
-    
-    <p>
-    What follows is an example configuration file, with comments explaining all of the currently supported setup parameters.
-    </p>
-    <font color="#55FF55">
-    -- The main window width and height, in pixels.<br/>
-    </font>
-    windowWidth 805<br/>
-    windowHeight 805<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Image paths: specify the path to the occlusion map image and the main texture used as an overlay. <br/>
-    -- Both images must have the same size. Also, the occlusion map needs to be a 32bpp black and white image.<br/>
-    -- The 32bpp occlusion map requirement will probably be dropped in the future.<br/>
-    </font>
-    mapOcclusionImg ../../data/tinyMap.png<br/>
-    mapImg ../../data/tinyMap.png<br/>
-    <br/>
-    <font color="#55FF55">
-    -- The size of the region contained in the map, in meters.<br/>
-    </font>
-    mapWidth 100<br/>
-    mapHeight 100<br/>
-    <br/>
-    <font color="#55FF55">
-    -- The total number of agents contained in the simulation.<br/>
-    </font>
-    numAgents 200<br/>
-    <br/>
-    <font color="#55FF55">
-    -- The number of fighters, as a percentage of the total number of agents.<br/>
-    </font>
-    fighterRatio 0.05<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Avoid distance in meters: agents closer than this distance will try to put some more space between each other.<br/>
-    </font>
-    simCfg.avoidDistance 4<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Coordination distance in meters: this rule is applied to civilians only. Civilians closer than this distance will tend to move in group.<br/>
-    </font>
-    simCfg.coordDistance 5<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Awareness levels in meters: they determine how much civilians, fighters and predators are aware of enemies or targets around them.<br/>
-    </font>
-    simCfg.civilianAwareness 20<br/>
-    simCfg.predatorAwareness 20<br/>
-    simCfg.fighterAwareness 100<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Kill distance in meters: the maximum distance a predator or a fighter can kill.<br/>
-    </font>
-    simCfg.fighterKillDistance 5<br/>
-    simCfg.predatorKillDistance 2<br/>
-    <br/>
-    <font color="#55FF55">
-    -- predator and fighter grace time in seconds: this is the time fighters and predators will wait before trying to attack someone else.<br/>
-    </font>
-    simCfg.predatorGraceTime 5<br/>
-    simCfg.fighterGraceTime 2<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Base agent speed in meters per second. This is the speed agents will normally move at.<br/>
-    </font>
-    simCfg.baseSpeed 1<br/>
-    <br/>
-    <font color="#55FF55">
-    -- Maximum civilian, predator and fighter speeds in meters per second. These are the maximum speeds agents can move <br/>
-    -- while 'excited' (running away from or towards something).<br/>
-    </font>
-    simCfg.civilianSpeed 5<br/>
-    simCfg.predatorSpeed 5<br/>
-    simCfg.fighterSpeed 5<br/>
-    </code>
-    <font color="#55FF55">
-    -- Infection time: the time (seconds) required for an infected agent to become a predator. <br/>
-    -- Specify a big value (i.e. 65000) to simulate predators killing other agents directly.<br/>
-    -- This works because infected and dead agents work pretty much the same.<br/>
-    </font>
-    simCfg.infectionTime 5<br/>
-    </code>
-</div>
-
-<div class="section">
-    <h2>CUDA Implementation</h2>
-    The CUDA implementation of the simulation is based mainly on two kernels which run sequentially: a bin update kernel that takes care of placing agent ids in the
-    correct bins. Bins are used to optimize the main kernel execution: Inside the main kernel, each agent does not need to do a complete loop over each other agent
-    to update its behavior: the loop is done only on agents in the same bin and in the 8 neighboring bins, speeding up execution by about 25%.
-</div>
-
-<div class="section">
-    <h2>Comments</h2>
-    <p>
-    Implementing the agent based simulation in CUDA proved to be challenging. Direct debugging of kernel code is not possible: running kernels in emulation mode proved
-    to be an exremely useful tool, since it was possible to use standard debugging tools (breakpoints, variable inspection, etc.) to analyze kernel code. This helped
-    in solving major issues, but due to the high parallel nature of native kernel execution and other significant differences, it was impossible to predict the behavior
-    of kernels just by running them in emulation mode.
-    <br style="clear: left" />
-    </p>    
-    
-    <div align="center"><img style="clear:left" src="./S2.png" width="600"/></div>
-    <div>
-    <h3>Memory alignment</h3>
-    <p>
-    One of the most challenging things encountered while implementing this application was understanding how memory alignment works with CUDA. In my code, I pass an array of
-    a custom struct data (my agent data) back and forth from the kernels. While compiling code for device execution, CUDA performs 8 byte alignment on the data. This can be seen in the
-    previous debugger screenshot: a dummy variable has been added to the agent structure. The problem is that alignment is not performed on the <b>host version of the structure</b>, but 
-    the structure is still seen at the same type in host and device code: and memcopy operations are legal but they do not take the alignment into accout. Result: memcopies from and to the
-    device will turn most of your data to garbage.
-    </p>
-    <br style="clear: left" />
-    </div>    
-    
-    <div>
-    <h3>Inconsistent execution</h3>
-    <p>
-    Another quite serious problem arises when executing less-than-perfect code on a CUDA device: if a kernel does not end execution correctly, and resources are not consistently cleaned up,
-    the CUDA device is apparently left in an unstable state: the same application may fail or run unpredicably, apparently depending on the current status of the device. Other than specifying
-    crash-safe cleanup code into your application, I found no other solution. There apparently is no way to reset the CUDA runtime active on a device, in order to force it to perform some
-    sort of clean up.
-    </p>
-    </div>    
-    <br style="clear: left" />
-</div>
-
-<div class="section">
-    <h2>Additional Videos</h2>
-    
-    <object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/aT1kV8n5qnE&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/aT1kV8n5qnE&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
-    <object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/-RhzdQgM8YA&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/-RhzdQgM8YA&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
-    <object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/RTqrvevlLy4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/RTqrvevlLy4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
+<h2>Using the application</h2>
+<div align="center"><a href="./S5.png"><img src="./S5.png" width="600"/></a></div>
+<p>
+The application can be launched from the command line, specifying the name of a <b>simulation configuration file</b> as a parameter. The format
+of this file will be explained in one of the following sections.
+</p>
+<p>
+Once launched, the application displays a view of a geographic area, filled with an initial set of agents.
+</p>
+<p>
+<ul>
+<li><b>Clicking with the mouse left button and dragging</b> - pans the view</li>
+<li><b>Scrolling with the mouse wheel</b> - changes the zoom level</li>
+<li><b>[f]</b> - moves the view to the next <b>fighter</b> agent. Fighters are explained further on.</li>
+<li><b>[o]</b> - resets the view to the initial state.</li>
+<li><b>[m]</b> - switches between a normal map view and occlusion map view.</li>
+<li><b>[+,-]</b> - Increases or decreases the simulation time multiplier.</li>
+<li><b>[i]</b> - switches between map panning mode and predator / fighter creation modes.</li>
+</ul>
+</p>
+<div align="center"><img src="./S3.png" width="500"/></div>
+<p>
+The screenshot above shows how the info panel looks like: the info panel contains some basic info about the visualization
+(the framerate and current view position), and lists the number of agents per class currently present in the simulation. At the bottom,
+a graph shows how the number of entities changes over time.
+</p>
+</p>
 </div>
 <div class="section">
-    <h2>Downloads</h2>
-    <h3 align="center"><a href="../downloads/index.shtml#cs525">>>> DOWNLOAD SOURCE AND WIN32 BINARIES <<<</a></h3>
+<h2>Simulation mechanics</h2>
+The simulation is mainly based on a behavior-driven flocking algorithm, similar to what I implemented in one
+of my <a href="../ComputerAnimation/boids/index.html">older projects</a>.
+<div>
+<h3>Agent Data</h3>
+<p>
+Each active agent maintains its position, direction and speed: the agent position is updated depending on
+speed and direction, and taking into account possible collisions against non-walkable areas. The direction
+taken by an agent depends on its <b>behavior</b>, i.e. wheter it is a civilian, zombie or policeman, plus
+its current status. The complete set of rules is the following.
+</p>
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<br style="clear: left" />
+<div>
+<h3>Coordination Rule</h3>
+<p>
+When agents are near each other, they tend to move in the same direction. In the current implementation, this
+rule is enforced only on civilians, and depends also on their current amount of 'stress' (currently represented
+by the <b>steer friction parameter</b>. When a civilian is panicking or got stuck somewhere, they will be more
+likely to behave as similars around them.
+</p>
+</div>
+<br style="clear: left" />
+<div>
+<h3>Avoidance Rule</h3>
+When agents get too near to each other, they will tend to move away. This rule avoids multiple agents sharing
+a space that is physically too small for them, and also simulates the natural <i>safe distance</i> that people
+tend to maintain from each other in less crowded situations. All types of agents have to follow the avoidance rule.
+<p>
+</p>
+</div>
+<br style="clear: left" />
+<div>
+<h3>Collision Rule</h3>
+<p>
+This rule gets applied whenever an agent's movement would bring them in an unwalkable area (i.e. against a wall). The
+collision rule, as it it now, makes agents behave in a pretty stupid way: Whenever they hit a wall, their stress parameter increases
+and they will try to move in the first free direction they find, rotating clockwise. Since tre agent stress parameter
+increased, they will likely follow nearby agents, increasing the possibility of finding a meaningful path away from the obstacle.
+When lots of agents are present, their collective bahavior will be acceptably correct, despite this rule being an oversimplification
+of human behavior.
+</p>
+</div>
+<br style="clear: left" />
+<div>
+<h3>Predator Rule</h3>
+<p>
+This rule is the core of the predator (ok, zombie ^_^) behavior: when a civilian in in a predator's awareness range, they will run at them.
+When a predator is close enough to a civilian (the <b>kill range</b>), the civilian will become infected, while the predator hunger will go
+down for some time: the predator won't attack other civilians for a while. An infected civilian will look dead for a while, then turn into
+a zombie.
+</p>
+</div>
+<br style="clear: left" />
+<div>
+<h3>Fighter Rule</h3>
+<p>
+This rule is used to represent agents that try to actively fight zombies (for instance, armed policemend). The rule is overall pretty simple to
+the predator rule explained above: fighters will try to attack zombies in their awareness range, and if a zombie gets into the kill range of a fighter,
+it will die. After killing a zombie, fighters cannot immediately kill another one: this is used to simulate 'fighting time': different values for
+this parameter can be used to implement different scenarios (i.e. killing a zombie barehanded would require more time than using a machinegun)
+</p>
+</div>
+<br style="clear: left" />
+</div>
+<div class="section">
+<h2>Configuring the simulation</h2>
+<p>
+As mentioned before, the application accepts a configuration file as input: this file is used to configure almost every aspect of the simulation. This
+allows the user to use the program to run simulations on different maps, or configure different agent behaviors on the same map and see how the scenario evolves.
+The two following screenshots show the application running simulations on the chicago downtown area, and on a smaller, hand drawn map. The two simulation regions are
+extremely different in terms of size (2 by 3 kilometers for chicago downtown versus 100 x 100 meters for the small map), and allow the user to observe agent interactions
+at different scales.
+</p>
+<div align="center"><a href="./S4.png"><img src="./S4.png" width="350"/></a><a href="./S6.png"><img src="./S6.png" width="350"/></a></div>
+<p>
+What follows is an example configuration file, with comments explaining all of the currently supported setup parameters.
+</p>
+<font color="#55FF55">
+-- The main window width and height, in pixels.<br/>
+</font>
+windowWidth 805<br/>
+windowHeight 805<br/>
+<br/>
+<font color="#55FF55">
+-- Image paths: specify the path to the occlusion map image and the main texture used as an overlay. <br/>
+-- Both images must have the same size. Also, the occlusion map needs to be a 32bpp black and white image.<br/>
+-- The 32bpp occlusion map requirement will probably be dropped in the future.<br/>
+</font>
+mapOcclusionImg ../../data/tinyMap.png<br/>
+mapImg ../../data/tinyMap.png<br/>
+<br/>
+<font color="#55FF55">
+-- The size of the region contained in the map, in meters.<br/>
+</font>
+mapWidth 100<br/>
+mapHeight 100<br/>
+<br/>
+<font color="#55FF55">
+-- The total number of agents contained in the simulation.<br/>
+</font>
+numAgents 200<br/>
+<br/>
+<font color="#55FF55">
+-- The number of fighters, as a percentage of the total number of agents.<br/>
+</font>
+fighterRatio 0.05<br/>
+<br/>
+<font color="#55FF55">
+-- Avoid distance in meters: agents closer than this distance will try to put some more space between each other.<br/>
+</font>
+simCfg.avoidDistance 4<br/>
+<br/>
+<font color="#55FF55">
+-- Coordination distance in meters: this rule is applied to civilians only. Civilians closer than this distance will tend to move in group.<br/>
+</font>
+simCfg.coordDistance 5<br/>
+<br/>
+<font color="#55FF55">
+-- Awareness levels in meters: they determine how much civilians, fighters and predators are aware of enemies or targets around them.<br/>
+</font>
+simCfg.civilianAwareness 20<br/>
+simCfg.predatorAwareness 20<br/>
+simCfg.fighterAwareness 100<br/>
+<br/>
+<font color="#55FF55">
+-- Kill distance in meters: the maximum distance a predator or a fighter can kill.<br/>
+</font>
+simCfg.fighterKillDistance 5<br/>
+simCfg.predatorKillDistance 2<br/>
+<br/>
+<font color="#55FF55">
+-- predator and fighter grace time in seconds: this is the time fighters and predators will wait before trying to attack someone else.<br/>
+</font>
+simCfg.predatorGraceTime 5<br/>
+simCfg.fighterGraceTime 2<br/>
+<br/>
+<font color="#55FF55">
+-- Base agent speed in meters per second. This is the speed agents will normally move at.<br/>
+</font>
+simCfg.baseSpeed 1<br/>
+<br/>
+<font color="#55FF55">
+-- Maximum civilian, predator and fighter speeds in meters per second. These are the maximum speeds agents can move <br/>
+-- while 'excited' (running away from or towards something).<br/>
+</font>
+simCfg.civilianSpeed 5<br/>
+simCfg.predatorSpeed 5<br/>
+simCfg.fighterSpeed 5<br/>
+</code>
+<font color="#55FF55">
+-- Infection time: the time (seconds) required for an infected agent to become a predator. <br/>
+-- Specify a big value (i.e. 65000) to simulate predators killing other agents directly.<br/>
+-- This works because infected and dead agents work pretty much the same.<br/>
+</font>
+simCfg.infectionTime 5<br/>
+</code>
+</div>
+<div class="section">
+<h2>CUDA Implementation</h2>
+The CUDA implementation of the simulation is based mainly on two kernels which run sequentially: a bin update kernel that takes care of placing agent ids in the
+correct bins. Bins are used to optimize the main kernel execution: Inside the main kernel, each agent does not need to do a complete loop over each other agent
+to update its behavior: the loop is done only on agents in the same bin and in the 8 neighboring bins, speeding up execution by about 25%.
+</div>
+<div class="section">
+<h2>Comments</h2>
+<p>
+Implementing the agent based simulation in CUDA proved to be challenging. Direct debugging of kernel code is not possible: running kernels in emulation mode proved
+to be an exremely useful tool, since it was possible to use standard debugging tools (breakpoints, variable inspection, etc.) to analyze kernel code. This helped
+in solving major issues, but due to the high parallel nature of native kernel execution and other significant differences, it was impossible to predict the behavior
+of kernels just by running them in emulation mode.
+<br style="clear: left" />
+</p>
+<div align="center"><img style="clear:left" src="./S2.png" width="600"/></div>
+<div>
+<h3>Memory alignment</h3>
+<p>
+One of the most challenging things encountered while implementing this application was understanding how memory alignment works with CUDA. In my code, I pass an array of
+a custom struct data (my agent data) back and forth from the kernels. While compiling code for device execution, CUDA performs 8 byte alignment on the data. This can be seen in the
+previous debugger screenshot: a dummy variable has been added to the agent structure. The problem is that alignment is not performed on the <b>host version of the structure</b>, but
+the structure is still seen at the same type in host and device code: and memcopy operations are legal but they do not take the alignment into accout. Result: memcopies from and to the
+device will turn most of your data to garbage.
+</p>
+<br style="clear: left" />
+</div>
+<div>
+<h3>Inconsistent execution</h3>
+<p>
+Another quite serious problem arises when executing less-than-perfect code on a CUDA device: if a kernel does not end execution correctly, and resources are not consistently cleaned up,
+the CUDA device is apparently left in an unstable state: the same application may fail or run unpredicably, apparently depending on the current status of the device. Other than specifying
+crash-safe cleanup code into your application, I found no other solution. There apparently is no way to reset the CUDA runtime active on a device, in order to force it to perform some
+sort of clean up.
+</p>
+</div>
+<br style="clear: left" />
+</div>
+<div class="section">
+<h2>Additional Videos</h2>
+<object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/aT1kV8n5qnE&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/aT1kV8n5qnE&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
+<object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/-RhzdQgM8YA&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/-RhzdQgM8YA&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
+<object width="640" height="505"><param name="movie" value="http://www.youtube.com/v/RTqrvevlLy4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/RTqrvevlLy4&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
+</div>
+<div class="section">
+<h2>Downloads</h2>
+<h3 align="center"><a href="../downloads/index.shtml#cs525">>>> DOWNLOAD SOURCE AND WIN32 BINARIES <<<</a></h3>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>
