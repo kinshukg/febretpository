@@ -1,0 +1,152 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>CS525 Final Project - Testing Matrix Transpose Performance in OpenCL</h2>
+    <p>
+    As a final project, we had to analyze the performance of the <a href="http://developer.download.nvidia.com/compute/cuda/3_0/sdk/website/CUDA/website/C/src/transposeNew/doc/MatrixTranspose.pdf">CUDA matrix transpose sample</a>. I decided to work on this project using <a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a> as the reference framework.
+    </p>
+</div>
+<div class="section">
+    <h2>Introduction to OpenCL</h2>
+    <p>
+    OpenCL (Open Computing Language) is an open royalty-free standard for general purpose
+    parallel programming across CPUs, GPUs and other processors, giving software developers
+    portable and efficient access to the power of these heterogeneous processing platforms.</p>
+    <p>OpenCL supports a wide range of applications, ranging from embedded and consumer software
+    to HPC solutions, through a low-level, high-performance, portable abstraction. By creating an
+    efficient, close-to-the-metal programming interface, OpenCL will form the foundation layer of a
+    parallel computing ecosystem of platform-independent tools, middleware and applications.
+    OpenCL is particularly suited to play an increasingly significant role in emerging interactive
+    graphics applications that combine general parallel compute algorithms with graphics rendering
+    pipelines.</p>
+    <p>OpenCL consists of an API for coordinating parallel computation across
+    heterogeneous processors; and a cross-platform programming language with a well specified
+    computation environment. The OpenCL standard:</p>
+    <ul>
+    <li>Supports both data- and task-based parallel programming models</li>
+    <li>Utilizes a subset of ISO C99 with extensions for parallelism</li>
+    <li>Defines a configuration profile for handheld and embedded devices</li>
+    <li>Efficiently inter-operates with OpenGL, OpenGL ES and other graphics APIs</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>From CUDA to OpenCL</h2>
+    Given a CUDA program, converting it to its corresponding OpenCL implementation consists of two separate steps:
+    <ul>
+    <li>Converting the host C/C++ code from CUDA to the OpenCL API</li>
+    <li>Converting the CUDA kernel code to OpenCL kernels</li>
+    </ul>
+    The CUDA and OpenCL host APIs are radically different. There is no easy mapping from CUDA functionalities to OpenCL ones. For instance, while CUDA kernel calls are similar to normal
+    function calls, OpenCL is based on a queuing mechanism. While queuing is (in my opinion) a more intuitive and consistent way to represent host / device interactions, its implementation
+    has very little in common with CUDA. For this and other reasons, it is easier to write OpenCL code from scratch, instead of modifying an existing CUDA program.
+    
+    <h3>Converting CUDA kernels</h3>
+    Luckily, CUDA and OpenCL kernels share a good amount of similarities, and it is possible to convert a CUDA program to OpenCL with relative ease. Here are some of the basic steps needed to perform
+    such conversion:
+    <ol>
+    <li>Convert CUDA group and thread indexes into global and workgroup ids</li>
+    <li>Substitute <code>__syncthread()</code> calls into <code>barrier(CLK_LOCAL_MEM_FENCE)</code></li>
+    <li>Move shared memory declarations to local memory kernel argument pointers</li>
+    <li>Convert multidimensional shared memory indexes into unidimensional array indexes for local memory</li>
+    </ol>
+    <p>
+    Points 1 and 2 are straightforward substitutions, while the last two steps require some additional work on the code:
+    </p>
+    <p>
+    Local memory (the equivalent of CUDA shared memory) cannot be declared directly inside OpenCL kernels: it has to be passed as a kernel function argument using the <code>__local</code> specifier.
+    Additionally, since they are function arguments, local memory pointers need to be declared inside the host code using a <code>clSetKernelArg</code> call. An example of this usage can be found in
+    the code linked at the end of this page, and in many of the OpenCL sample programs.
+    </p>
+    <p>
+    Since it is passed as a simple pointer, local memory cannot be indexed as a multidimensional array, as in CUDA. This means that multidimensional indexes have to be converted to unidimensional indexes.
+    Given the following CUDA shared memory declaration:
+    </p>
+    <code>
+    __shared__ float tile[TILE_DIM][TILE_DIM];<br/>
+    </code>
+    <p>
+    A CUDA expression like <code>tile[x][y]</code> in OpenCL becomes <code>tile[x * TILE_DIM + y]</code>
+    </p>
+</div>
+
+<div class="section">
+    <h2>OpenCL matrix transpose</h2>
+    For my project I decided to modify one of the standard OpenCL samples: MatrixTranspose. This example implements a single transpose kernel, implementing a simple optimization (coalesced memory access).
+    I ported three additional CUDA kernels to OpenCL:
+    <ul>
+    <li>The simple copy kernel - for reference.</li>
+    <li>The naive transpose kernel - to have an example of non-optimized transpose performance</li>
+    <li>The diagonal transpose kernel - as a reference of the 'best' CUDA kernel implementation</li>
+    </ul>
+    <p>
+    I also heavily modified the host code to quickly test different kernel configurations in terms of matrix size, kernel loops and block sizes. The host code has also been modified to
+    simplify it as much as possible: most of the SDK library dependencies have been removed, along with some of the consistency checks present in the original code: The idea was to create
+    a small, simple program that was easier to follow than the original OpenCL sample.
+    </p>
+    <p>    
+    The program outputs its results as a comma-separated values file. This file can then be opened in excel or other similar tools to generate plots of the collected data.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Experiment setup</h2>
+    My initial idea was to tested the kernel performance modifying thee parameters of the original CUDA sample:
+    <ul>
+    <li>The matrix size: I wanted to test different matrix sizes in both power-of-two size increases and constant size increases - to see how this influences partition camping</li>
+    <li>The thread block / local memory size - to test how much bigger thread blocks influence performance</li>
+    <li>The number of inside-kernel loop repetitions - to understand how repetitions amortize other computations inside the kernel</li>
+    </ul>
+    Sadly all of the tests were severely limited by one OpenCL issue: <b>local workgroup sizes</b>.
+    
+    <h3>Local Workgroup Size Limitations</h3>
+    <p>
+    As CUDA, OpenCL has a limit on the local workgroup size (i.e. the number of threads in a thread block). This limit is normally set to 128 work-items (that is, threads). The major issue here
+    is that this number appears to be limited by the actual selected kernel, and the available video card. On my machine, all of the matrix transpose were limited to a maximum of 32 threads
+    in a local workgroup. This means that the maximum power-of-two tile size I could use was of 4 by 4 (or 5 by 5 for a non-power-of-two tile). This severely limits the amount of performance
+    gain I could get out of shared memory usage, since all of the workgroup were handling just 4 by 4 tiles.
+    </p>
+    <p>
+    In turn, this severely limited the amount of testing I could perform on local memory sizes, since I could not test anything bigger than a 4 by 4 block.
+    </p>
+    <p>
+    I did some test with increasing local workgroup sizes (up to the 4 by 4 limit), but the only result I got was a steadily increasing performance as the local workgroup size increased. So I
+    decided to perform all of my subsequent tests with the maximum allowed block size.
+    </p>
+    
+    <h3>In-Kernel Loop repetitions</h3>
+    For this test, I changed the number of in-kernel loop repetitions for different input matrix sizes:
+    <div align="center"><img src="./nreps512.png" width="800"/></div>
+    <div align="center"><img src="./nreps256.png" width="800"/></div>
+    The plots for 512x512 and 256x256 matrix sizes are fairly regular: for more that 100 in-kernel repetitions the bandwidth is quite stable.
+    
+    <div align="center"><img src="./nreps128.png" width="800"/></div>
+    <div align="center"><img src="./nreps64.png" width="800"/></div>
+    The results are different for smaller matrix sizes, as in kernel loop repetitions increase, the behavior of different kernel implementations display significant variations.
+    
+    <h3>Bandwidth vs Input Matrix Size</h3>
+    For my final test, I verified how bandwidth varied as the input matrix size changed:
+    <div align="center"><img src="./bw200reps.png" width="800"/></div>
+    <p>
+    This first plot shows bandwidth change for kernels with 200 in-kernel loop repetitions (to amortize calculations for increased complexity kernels and isolate memory performance).
+    The behavior corresponds fairly well to what is expected (copy bandwidth > diagonal transpose bandwidth > coalesced transpose bandwidth > naive transpose bandwidth), even if the
+    bandwidth differences are different to the ones presented in the original CUDA paper. This may be due to the limited local workgroup size (as explained in the previous section)
+    or it can be due to the different hardware present on my machine
+    </p>
+    
+    <p>
+    It is pretty interesting to observe the bandwidth behavior for kernels with no in-kernel loop repetitions:
+    </p>
+    <div align="center"><img src="./bw1rep.png" width="800"/></div>
+    For these kernels, performance follows a similar curve independently of kernel implementation: As a first look it appears that, on my specific hardware, the increased cost of index computation
+    for more complex kernels balances the better memory performance of those kernels. But looking closer, it is possible to notice how the naive kernel and copy kernels appear to perform very
+    similarly, which cannot be explained with index computation complexity (the two kernels are almost identical). Sadly, I was not able to pinpoint the reason of this particular result.
+</div>
+
+<div class="section">
+    <h2>Downloads</h2>
+    <h3 align="center"><a href="../downloads/index.shtml#cs525">>>> DOWNLOAD SOURCE CODE <<<</a></h3>
+</div>
+
+#include "../etc/footer.html"

@@ -1,0 +1,17 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+<div class="section">
+    <h2>TUTORIAL STEP 3</h2>
+
+    <p><h1 align="center"><img src="qbviz/slides/qs4.png"/></h1></p>
+    <p><b>Bring the mouse to the right of the screen to show the layers panel. Here you
+    can add one or more data layers to the bay model. Add a layer, then select it
+    to change its parameters.</b></p>
+    
+    <ul>
+        <li><a href="./hydroviz2.shtml"><b><em>PREVIOUS</em></b></a></li>
+        <li><a href="./hydroviz4.shtml"><b><em>NEXT</em></b></a></li>
+    </ul>
+</div>
+
+#include "../etc/footer.html"

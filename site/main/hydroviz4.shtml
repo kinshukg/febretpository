@@ -1,18 +1,61 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
-<div class="section">
-    <h2>TUTORIAL STEP 4</h2>
-
-    <p><h1 align="center"><img src="qbviz/slides/qs5.png"/></h1></p>
-    <p><b>When a layer is selected, a yellowish region will show up in the map panel.
-    This is the region of interest for the selected layer. Shift-click and drag the
-    mouse on the map panel to change it.</b></p>
-    
-    <ul>
-        <li><a href="./hydroviz3.shtml"><b><em>PREVIOUS</em></b></a></li>
-        <li><a href="./hydroviz5.shtml"><b><em>NEXT</em></b></a></li>
-    </ul>
-    
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
+<div class="section">
+<h2>TUTORIAL STEP 4</h2>
+<p><h1 align="center"><img src="qbviz/slides/qs5.png"/></h1></p>
+<p><b>When a layer is selected, a yellowish region will show up in the map panel.
+This is the region of interest for the selected layer. Shift-click and drag the
+mouse on the map panel to change it.</b></p>
+<ul>
+<li><a href="./hydroviz3.shtml"><b><em>PREVIOUS</em></b></a></li>
+<li><a href="./hydroviz5.shtml"><b><em>NEXT</em></b></a></li>
+</ul>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

@@ -1,135 +1,173 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
-<div class="section">
-    <h2>CS491 Project 4 - I Heard it through the Grapevine</h2>
-    <p>
-    For this project, we had to build an application to visualize movie suggestions 
-    suing data coming from the NetFlix database. Data has to be shown as a <b>force directed graph</b>.
-    Data also had to be cross linked to the <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a> data,
-    To get additional information about movies.
-    </p>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
 </div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
 <div class="section">
-    <h2>Data Preprocessing</h2>
-    <p>
-    The initial data parsing involved filtering all the movies with less than 2500 rentals and accumulating all the relevant 
-    data into a large file. This filtered the number of movies to 4625. The data required to calculate the averages, and other 
-    general information was grabbed during this step. The next step involved loading this data into a database for further filtering. 
-    Using the database, customers with less than 50 rentals were filtered. We also discarded all records with ratings of 3 and 4 to 
-    reduce the dataset to a manageable size. This reduced the initial 100 millions records to about 37 million records.
-    Using the database, a text file was generated, with all the records ordered by customers to help generate the suggestions for 
-    each movie.
-    </p>
-    <p>
-    The suggestions for each movie was generated in a matrix form i.e a 4625 X 4625 matrix with an entry Matrix[i][j] indicating the number of renters who rented both movie "i" and movie "j" and gave both movies a rating of 5. This data was used to calculate the list of suggestions. This data was generated in about 15 min for the reduced dataset.
-    For the bad movie version, Matrix[i][j] indicates the number of renters who rated both movie "i" and movie "j" high i.e gave it a rating of 5 minus the number of people who rated movie "i" high but ended up giving movie "j" a bad rating i.e less than 3. For a movie "i" We actually ended up considering all the customers, which took a processin time of about 40 min.
-    </p>
-    <p>
-    The genre matching was a little tricky. We loaded data from the imdb dataset into a MySQL table and data from the Netflix dataset 
-    into another table and trying a natural join on the movie name and the release date. Matching on the release date was necessary 
-    to prevent inconsistent results.  This resulted in about 3100 movies. After normalizing the names by wiping out any leading 'The', 
-    replacing the '&' character with 'and', wiping out punctuation such as commas, colons, and hyphens, the number of matches increased 
-    to about 3300. Most of the remaining mis-matches were due to inconsistencies among the 2 databases on release date. For example, 
-    Screamers was released in 1995 according to IMDB but 1996 according to Netflix.    
-    </p>
+<h2>CS491 Project 4 - I Heard it through the Grapevine</h2>
+<p>
+For this project, we had to build an application to visualize movie suggestions
+suing data coming from the NetFlix database. Data has to be shown as a <b>force directed graph</b>.
+Data also had to be cross linked to the <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a> data,
+To get additional information about movies.
 </p>
-</div>    
-<div class="section">
-    <h2> Application Features</h2>
-    
-    <div align"center"><img src="./s1.png" width="600"/></div>
-    <h3>Application layout</h3>
-    <p>
-    The application is divided into four main sections, the toolbar, the movie panel, the graph and the plot area.
-    <ul>
-        <li><b>The Toolbar</b>, on the top of the application window, exposes buttons to show or hide the movie panel, and
-        displays a legend of the movie genre categories used in the visualization. The genre legend items are actually clickable in order to
-        enable genre filtering, as explained in the following sections.</li>
-        <li><b>The Movie Panel</b>, located on the left of the application window, is the central location used for datab navigation, searching and
-        movie selection.</li>
-        <li><b>The Graph Area</b> is the central area of the application: here is where the movie suggestion graph is visualized and manipulated.</li>
-        <li><b>The Plot Area</b> is an additional side panel to the right of the graph area, dedicated to visualizing the rental charts of
-        selected movies. The usage of this panel will be explained further in another section of this page.</li>
-    </ul>
-    </p>
-    
-    <div align"center"><img src="./s2.png"/></div>
-    <h3>Selecting Movies</h3>
-    <p>
-    To add an movie plot to the graph area, it is enough to select it from the movie panel listings. The movie panel offers a number of different views to
-    the source data, called <b>filters</b>:
-    <ul>
-    <li><b>The Random Suggestions</b> give, guess what, a random set of movies from the database.</li>
-    <li><b>The High Rated Suggestions</b> give a list of movies with a high average rating.</li>
-    <li><b>The Low Rated Suggestions</b> give a list of movies with a low average rating.</li>
-    <li><b>The Popular Suggestions</b> give the list of movies with most rentals.</li>
-    <li><b>The Genre Suggestions</b> (displayed only when a genre button is selected) display the list of movies of that specific genre.</li>
-    </ul>
-    </p>
-    <div align"center"><img src="./s3.png" width="600"/></div>
-    <p>
-    Navigating through the filters is extremely easy. The user can expand / collapse every single filter to display its contents, and then click on the individual entries
-    to add the specified movie to the graph area. All of the filters also support <b>real time searching</b>: the user can start typing text at any time to have the contents of filters 
-    automatically searched for the specified string.
-    </p>
-    
-    <h3>Manipulating the Graph</h3>
-    <p>
-    Once one or more movies have been added to the graph area, the user can start interacting with them, and with the overall graph, in
-    the following ways:
-    <ul>
-        <li><b>Left-clicking a movie</b> expands the movie.</li>
-        <li><b>Right-clicking a movie</b> deletes the movie from the graph.</li>
-        <li><b>Left-clicking and dragging</b> everywhere, pans the graph.</li>
-        <li><b>Mouse wheel scrolling</b> changes the graph zoom level.</li>
-        <li><b>Middle clicking on a node</b> adds the movie <b>rental chart</b> to the plot panel.</li>
-        <li><b>Hovering on a movie</b> enables neighbor outlining: All of the movies not linked to the current one will fade away.
-        A hovered movie box also displays additional information about that movie, similarly to what happens for an expanded movie.
-        This additional info consists of the movie average rating, the total number of rentals and a rating distribution chart.</li>
-    </ul>
-    <p align="center">
-    <img src="./s4.png" width="200"/>
-    </p>
-    The <b>graph can also be configured using the set of controls at the bottom of the screen:</b>
-    <ul>
-        <li><b>The maximum results and popularity sliders </b> allow to control the amount of results displayed when expanding movies.</li>
-        <li><b>The suggestions mode button </b> switches between good-suggestion and bad-suggestion expansion when expanding movies.</li>
-        <li><b>The graph mode button</b> enables or disables the <b>simplified graph mode.</b> This mode will be briefly explained in the following section.</li>
-        <li><b>The clear graph button</b> simply deletes every movie currently displayed in the graph area.</li>
-    </ul>
-    </p>
-    
-    <h3>Normal vs Simplified Graph Modes</h3>
-    <p align="center">
-    <img src="./s11.png" width="600"/>
-    </p>
-    <p>
-    <p>
-    Normal graph exploration, works as one would expect. The user expands movies, and suggestions displayed for different
-    movies get linked together as the graph grows bigger. This allows the user to see ALL of the possible links between the
-    movies currently present in the graph.
-    The simplified graph mode allows the user to explore the movie suggestion graph in a more streamlined way: when expanding a movie,
-    the previously expanded movie gets shrinked back again, with the expection of movie suggestions that <b>are common between the previous
-    and the new selection.<b>
-    </p>
-    
 </div>
-
 <div class="section">
-    <h2>Additional Screenshots and Download</h2>
-    <p align="center">
-    <a href="./shot1.jpg"><img src="./shot1.jpg" width="230"/></a>
-    <a href="./shot2.jpg"><img src="./shot2.jpg" width="230"/></a>
-    <a href="./shot3.jpg"><img src="./shot3.jpg" width="230"/></a>
-    </p>
-    
-    <p align="center">
-    <a href="./shot4.jpg"><img src="./shot4.jpg" width="230"/></a>
-    <a href="./shot5.jpg"><img src="./shot5.jpg" width="230"/></a>
-    <a href="./shot6.jpg"><img src="./shot6.jpg" width="230"/></a>
-    </p>
-    
-    <h3 align="center"><a href="../downloads/index.shtml">>>> DOWNLOAD STANDALONE VERSION (WIN AND MAC) <<<</a></h3>
+<h2>Data Preprocessing</h2>
+<p>
+The initial data parsing involved filtering all the movies with less than 2500 rentals and accumulating all the relevant
+data into a large file. This filtered the number of movies to 4625. The data required to calculate the averages, and other
+general information was grabbed during this step. The next step involved loading this data into a database for further filtering.
+Using the database, customers with less than 50 rentals were filtered. We also discarded all records with ratings of 3 and 4 to
+reduce the dataset to a manageable size. This reduced the initial 100 millions records to about 37 million records.
+Using the database, a text file was generated, with all the records ordered by customers to help generate the suggestions for
+each movie.
+</p>
+<p>
+The suggestions for each movie was generated in a matrix form i.e a 4625 X 4625 matrix with an entry Matrix[i][j] indicating the number of renters who rented both movie "i" and movie "j" and gave both movies a rating of 5. This data was used to calculate the list of suggestions. This data was generated in about 15 min for the reduced dataset.
+For the bad movie version, Matrix[i][j] indicates the number of renters who rated both movie "i" and movie "j" high i.e gave it a rating of 5 minus the number of people who rated movie "i" high but ended up giving movie "j" a bad rating i.e less than 3. For a movie "i" We actually ended up considering all the customers, which took a processin time of about 40 min.
+</p>
+<p>
+The genre matching was a little tricky. We loaded data from the imdb dataset into a MySQL table and data from the Netflix dataset
+into another table and trying a natural join on the movie name and the release date. Matching on the release date was necessary
+to prevent inconsistent results.  This resulted in about 3100 movies. After normalizing the names by wiping out any leading 'The',
+replacing the '&' character with 'and', wiping out punctuation such as commas, colons, and hyphens, the number of matches increased
+to about 3300. Most of the remaining mis-matches were due to inconsistencies among the 2 databases on release date. For example,
+Screamers was released in 1995 according to IMDB but 1996 according to Netflix.
+</p>
+</p>
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<div class="section">
+<h2> Application Features</h2>
+<div align"center"><img src="./s1.png" width="600"/></div>
+<h3>Application layout</h3>
+<p>
+The application is divided into four main sections, the toolbar, the movie panel, the graph and the plot area.
+<ul>
+<li><b>The Toolbar</b>, on the top of the application window, exposes buttons to show or hide the movie panel, and
+displays a legend of the movie genre categories used in the visualization. The genre legend items are actually clickable in order to
+enable genre filtering, as explained in the following sections.</li>
+<li><b>The Movie Panel</b>, located on the left of the application window, is the central location used for datab navigation, searching and
+movie selection.</li>
+<li><b>The Graph Area</b> is the central area of the application: here is where the movie suggestion graph is visualized and manipulated.</li>
+<li><b>The Plot Area</b> is an additional side panel to the right of the graph area, dedicated to visualizing the rental charts of
+selected movies. The usage of this panel will be explained further in another section of this page.</li>
+</ul>
+</p>
+<div align"center"><img src="./s2.png"/></div>
+<h3>Selecting Movies</h3>
+<p>
+To add an movie plot to the graph area, it is enough to select it from the movie panel listings. The movie panel offers a number of different views to
+the source data, called <b>filters</b>:
+<ul>
+<li><b>The Random Suggestions</b> give, guess what, a random set of movies from the database.</li>
+<li><b>The High Rated Suggestions</b> give a list of movies with a high average rating.</li>
+<li><b>The Low Rated Suggestions</b> give a list of movies with a low average rating.</li>
+<li><b>The Popular Suggestions</b> give the list of movies with most rentals.</li>
+<li><b>The Genre Suggestions</b> (displayed only when a genre button is selected) display the list of movies of that specific genre.</li>
+</ul>
+</p>
+<div align"center"><img src="./s3.png" width="600"/></div>
+<p>
+Navigating through the filters is extremely easy. The user can expand / collapse every single filter to display its contents, and then click on the individual entries
+to add the specified movie to the graph area. All of the filters also support <b>real time searching</b>: the user can start typing text at any time to have the contents of filters
+automatically searched for the specified string.
+</p>
+<h3>Manipulating the Graph</h3>
+<p>
+Once one or more movies have been added to the graph area, the user can start interacting with them, and with the overall graph, in
+the following ways:
+<ul>
+<li><b>Left-clicking a movie</b> expands the movie.</li>
+<li><b>Right-clicking a movie</b> deletes the movie from the graph.</li>
+<li><b>Left-clicking and dragging</b> everywhere, pans the graph.</li>
+<li><b>Mouse wheel scrolling</b> changes the graph zoom level.</li>
+<li><b>Middle clicking on a node</b> adds the movie <b>rental chart</b> to the plot panel.</li>
+<li><b>Hovering on a movie</b> enables neighbor outlining: All of the movies not linked to the current one will fade away.
+A hovered movie box also displays additional information about that movie, similarly to what happens for an expanded movie.
+This additional info consists of the movie average rating, the total number of rentals and a rating distribution chart.</li>
+</ul>
+<p align="center">
+<img src="./s4.png" width="200"/>
+</p>
+The <b>graph can also be configured using the set of controls at the bottom of the screen:</b>
+<ul>
+<li><b>The maximum results and popularity sliders </b> allow to control the amount of results displayed when expanding movies.</li>
+<li><b>The suggestions mode button </b> switches between good-suggestion and bad-suggestion expansion when expanding movies.</li>
+<li><b>The graph mode button</b> enables or disables the <b>simplified graph mode.</b> This mode will be briefly explained in the following section.</li>
+<li><b>The clear graph button</b> simply deletes every movie currently displayed in the graph area.</li>
+</ul>
+</p>
+<h3>Normal vs Simplified Graph Modes</h3>
+<p align="center">
+<img src="./s11.png" width="600"/>
+</p>
+<p>
+<p>
+Normal graph exploration, works as one would expect. The user expands movies, and suggestions displayed for different
+movies get linked together as the graph grows bigger. This allows the user to see ALL of the possible links between the
+movies currently present in the graph.
+The simplified graph mode allows the user to explore the movie suggestion graph in a more streamlined way: when expanding a movie,
+the previously expanded movie gets shrinked back again, with the expection of movie suggestions that <b>are common between the previous
+and the new selection.<b>
+</p>
+</div>
+<div class="section">
+<h2>Additional Screenshots and Download</h2>
+<p align="center">
+<a href="./shot1.jpg"><img src="./shot1.jpg" width="230"/></a>
+<a href="./shot2.jpg"><img src="./shot2.jpg" width="230"/></a>
+<a href="./shot3.jpg"><img src="./shot3.jpg" width="230"/></a>
+</p>
+<p align="center">
+<a href="./shot4.jpg"><img src="./shot4.jpg" width="230"/></a>
+<a href="./shot5.jpg"><img src="./shot5.jpg" width="230"/></a>
+<a href="./shot6.jpg"><img src="./shot6.jpg" width="230"/></a>
+</p>
+<h3 align="center"><a href="../downloads/index.shtml">>>> DOWNLOAD STANDALONE VERSION (WIN AND MAC) <<<</a></h3>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

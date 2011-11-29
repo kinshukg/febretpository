@@ -1,0 +1,19 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>TUTORIAL STEP 6</h2>
+    
+    <p><h1 align="center"><img src="qbviz/slides/qs7.png"/></h1></p>
+    <p><b>On the left side of the screen you find the workspace panel. Here you can
+    publish your view and see at views published by other users. To send your current
+    view to the workspace just click on the <em>Add to Workspace</em> button. Other users
+    can now connect to your view by clicking on it and selecting the <em>Get</em> option.</b></p>
+    
+    <ul>
+        <li><a href="./hydroviz5.shtml"><b><em>PREVIOUS</em></b></a></li>
+        <li><a href="./hydroviz7.shtml"><b><em>NEXT</em></b></a></li>
+    </ul>
+</div>
+
+#include "../etc/footer.html"

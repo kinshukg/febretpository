@@ -1,0 +1,112 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section"><h2>Developement Log</h2>
+    <div class="item"><h3>Hours 1 - 6</h3>
+        <div align="center" style="clear:both">
+            <img src="./hour3_1.png"/>    
+            <img src="./hour4_1.png"/>    
+            <img src="./hour5_1.png"/>    
+        </div>
+        <ul>
+            <li>Project code layout</li>
+            <li>Prepared placeholder assets for atoms.</li>
+            <li>Base code structure for atom in place</li>
+            <li>Added basic dragging support for atoms.</li>
+            <li>Added a simple random level initialization code</li>
+            <li>Begun work on atom linking.</li>
+            <li>Got the linking rules and basic graphics working.</li>
+            <li>Added a new rule to design, links work only on main structure</li>
+            <li>Game appeared to be too easy, design revised to add particle movement & penalties for particles that go off screen unlinked.</li>
+            <li>Added atom movement and goal mechanics. Game now appears to be much more challenging.</li>
+            <li>The goal code is not working correctly right now, atoms and links are not always removed correctly.</li>
+            <li>Goal mechanics fixed.</li>
+            <li>Started creating classes to handle some basic graphics effects for the game.</li>
+            <li>Working on game effects (dropping point text), and points system.</li>
+        </ul>    
+    </div>
+    <div class="item"><h3>Hours 7 - 12</h3>
+        <div align="center" style="clear:both">
+            <img src="./hour7_2.png"/>    
+            <img src="./hour10_1.png"/>    
+        </div>
+        <ul>
+            <li>Points and combo system now working. First extensive tests of the game: Picking 32x32 spheres may be difficult 
+            when palying fast: spheres should be bigger. Possibly less spheres around but faster game.</li>
+            <li>Tried less, bigger spheres, seems to be working.</li>
+            <li>Discovered that Picking is not working really well, probably needs revision.</li>
+            <li>Found a dirty solution to picking problems, but there is some nasty error hidden somewhere. I'll ignore it for now unless it shows up again.</li>
+            <li>Added support for streaks.</li>
+            <li>Begun working on atom collision physics.</li>
+            <li>Atom physics pretty much working</li>
+            <li>Basic level support</li>
+            <li>Tried having atoms spawn on a specified position (side of screen) game is much much better this way (less confusion).</li>
+            <li>Game now stops when life is over.</li>
+            <li>Atom physics are a little rough, movement is not really nice. need to smooth it out later on in developement if I have time.</li>
+            <li>Done a little bit of parameter tweaking. The game still has the nasty bug with picking. I need to solve this or at least 
+            find a workaround. It manifests more often when a lot of atoms are on screen.</li>
+            <li>Gameplay modified, allow for linking outside of main structure, returned to random spawning of atoms. Seems to be more funny.</li>
+            <li>Revised physics code, some hacks added but now it seems to be working much better.</li>
+            <li>Prepared placeholders graphics for main, guide and game over screens.</li>
+        </ul>    
+    </div>
+    <div class="item"><h3>Hours 13 - 18</h3>
+        <div align="center" style="clear:both">
+            <img src="./hour13_1.png"/>    
+            <img src="./hour18_1.png"/>    
+        </div>
+        <ul>
+            <li>Added support code for main, guide and game over screens, and prepared the main state machine to handle game state transitions.</li>
+            <li>Revised combo cont, now works with links.</li>
+            <li>First try with webserver and facebook integration. Discovered that canvas page max width is 760px so Ineed to resize application screens.</li>
+            <li>Started work on php DB pages.</li>
+            <li>First try with facebook code in flash application. App seems to be locking up when fb code is active.</li>
+            <li>Login to facebook and friends list get now working. (Cite tutorial & facebook-flash-api)</li>
+            <li>Basic score uploading working. Quickly explored facebook feed publishing. Not able to get it working. 
+            Since I don't have a lot of time left, I have to drop this feature.</li>
+            <li>Decided also to freeze top-ten feature for now. Game will just report player high score and all-time, worldwide high score. 
+            PHP pages have been fixed to work this way.</li>
+            <li>Facebook login now works in desktop and web mode, to simplify debugging.</li>
+            <li>Highscore downloading now working.</li>
+            <li>Page in facebook does seems to overlap, check height.</li>
+            <li>Upload score only when score > player highscore.</li>
+        </ul>    
+    </div>
+    <div class="item"><h3>Hours 19 - 24</h3>
+        <div align="center" style="clear:both">
+            <img src="./hour20_1.png"/>    
+            <img src="./hour22_1.png"/>    
+            <img src="./hour23_1.png"/>    
+        </div>
+        <ul>
+            <li>Game window now has rounded borders, looks better insite the facebook canvas.</li>
+            <li>Added glow effect to atoms and links</li>
+            <li>Fixed points formatting.</li>
+            <li>Revised points and combos</li>
+            <li>Added text overlays for game over, level up and game start.</li>
+            <li>Atom placeholders substituted with final versions.</li>
+            <li>Added glow to color locked atoms and removed link wiggly movement, looks better.</li>
+            <li>Points now updated and shown immediately upon link creation.</li>
+            <li>Added sounds.</li>
+            <li>Removed the only partially working leaderboard and facebook integration code to swith to MochiAdds. Outstanding service, leaderboards were integrated
+            using just a couple lines of code, plus MochiAds offers game hosting for free. I whish I has discovered this service before spending so much time working
+            with the Facebook API and implementing my own Leaderboard DB and php code.</li>
+            <li>Finalized main screen.</li>
+            <li>Finalized the guide and game over screen</li>
+            <li>Corrected some final graphics and gameplay glitches.</li>
+        </ul>    
+    </div>
+</div>
+
+<div class="section"><h2>Final Thoughts</h2>
+    <div class="item">
+    Game not as polished ad I whished but pretty close to what I had in mind. Lots of time spent on implementing my own leaderboard solution. Documenting better
+    at the beginning would have made me gain at least 2-3 developement hours. Having gameplay working since the very beginning was very important because
+    Allowed me to try the game since the beginning and tweak a lot of gameplay aspects during developement. Gameplay is the only thing that cannot be 
+    dropped from the game. Everything else, gfx quality, additional features like leaderboards etc. can be negotiated. Giving priority to gameplay
+    mechanics is foundamental.
+    </div>
+<h3 align="center"><a href="./game.shtml#game">>>> PLAY ATOMZ! <<<</a></h3>
+</div>
+
+#include "../etc/footer.html"

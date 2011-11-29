@@ -1,0 +1,133 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>Endurance</h2>
+    <div class="item" style="text-align: justify">
+    <p>
+        For this project, we had to build a program to visualize data gathered during the ENDURANCE project
+        exploration of Lake Bonney, Antarctica, in winter 2008.
+    </p>
+        <h3>Source Data</h3>
+        <p>
+        <h1 align="center"><img src="grid.jpg" class="rawImg"/></h1>
+        The source data consisted in a comma-separated values file containing information about water temperature,
+        conductivity, turbidity and other 8 parameters. The data was measured throughout a section of 
+        west Lake Bonney, on 65 different sites and at different depths. The sites were approximately placed on
+        a regular 100m x 100m grid. A lot of invalid datapoints were present in the original dataset, so It was
+        important to deal with this invalid data explicitly in order to come out with a consistent visualization.
+        </p>
+        
+        <h3>Converting Data</h3>
+        <img src="data.png" style="float: left"/> 
+        <img src="paraview1.png" style="float: left"/> 
+        The source data has been initially converted to an unstructured grid in the vtk legacy format, to simplify
+        its loading inside the application, and to be able to preview the data using ParaView. Through paraview, it was
+        possible to transform the different sets of data (the bathymetry, overlay and sonde dataset) to match their
+        position. The transformations could then be easily reapplied inside the application. ParaView has also been
+        used to generate a volumetric representation of data. This representation has been exported into a separate
+        unstructured grid.<br/><br/><br/><br/><br/><br/>
+
+        <div class="section">
+        <h2>The Visualization Pipeline</h2>
+        <h1 align="center"><img src="pipeline.png" class="rawImg"/></h1>
+        <p>
+        The visualization pipeline built for the application loads three basic data sources:
+        <ul>
+            <li>The sonde data unstructured grid</li>
+            <li>The sonde data volume unstructured grid</li>
+            <li>The lake bathymetry datapoints</li>
+        </ul>
+        The sonde data and volumes are passed through a set of threshold filters, to eliminate invalid
+        datapoints (when present) and to allow the user to visualize only a specific mission or set of missions.
+        The filtered sonde data is also used to generate a color bar that explains the currently applied color mapping,
+        and a 2D plot agains depth of all the currently selected datapoints.
+        </p>
+        </div>        
+        
+        <div class="section">
+        <h2>The Application</h2>
+        <h1 align="center"><img src="screen1.jpg" class="rawImg"/></h1>
+        The visualization application has been written in C++ and makes use of Qt to implement the graphical user
+        interface. Most of the application space is initially reserved for the main data view. The application 
+        offers two sidebar docks, one offering options to setup and modify the main view. A second sidebar dock
+        contains the 2D plot of the currently visualized datapoints. Interaction with the main window 
+        visualization is based on the standard vtk terrain interactor:
+        <ul>
+            <li><b>Left mouse click:</b></li> Rotates the view.
+            <li><b>middle mouse click:</b></li> Translates the view.
+            <li><b>right mouse click:</b></li> Pans the view.
+        </ul>
+        A terrain interactor has been used instead of the standard one, since this dataset has a clear 'up vector'
+        represented by the depth coordinate. Using a terrain interactor instead of the standard one in scenarios like
+        this one extremely simplifies the manipulation of the model.
+        </div>
+
+        <div class="section">
+       <h2>View Options</h2>
+        <img src="screen3.jpg" style="float: left"/> 
+        The View Options Sidebar is divided into three main areas:
+        <ul>
+            <li><b>Bathymetry Options</b>: this section allows to configure the overall depth scale of the
+            visualization, the opacity of the bathymetric model, and the opacity of the sonde data volumetric
+            model.</li>
+            <li><b>Component Options</b>: in this section it is possible to select which component of the
+            source dataset is currently visualized, and to select the color map used to represent the sonde data.
+            both the sonde points and the volumetric representation get updated using the color transfer function
+            defined here.</li>
+            <li><b>Mission Options</b>: this section allows the user to choose which mission or subset of missions
+            should be currently visualized.</li>
+        </ul>
+        <img src="screen4.jpg" style="float: right"/> 
+        When modifying the set of currently visualized missions, or changing the currently visualized data component,
+        the data plot gets automatically updated to show the corresponding selected information.
+        </div>
+
+        <div class="section">
+        <h2>Volume Rendering</h2>
+        <img src="lg2.png" style="float: left"/><img src="lg3.png" style="float: left"/> 
+        Through a separate dock it is possible to access volume rendering options. Volume rendering is performed 
+        using software raycasting. It is possible to specify up to 10 transfer function ranges for volume
+        surface extraction, each one with its own color and opacity.
+        </div>
+        
+        <div class="section">
+        <h2>Slicing</h2>
+        <img src="lg4.png" style="float: left"/><img src="lg5.png" style="float: left"/> 
+        The application aslo supports the visualization of a custom slice of data. Is is possible to manipulate
+        the slicing plane directly inside the render window, or the user can choose to slice along one of the three
+        main axes.
+        </div>
+        
+        <div class="section">
+        <h2>Docking</h2>
+        Using docking, it is also possible to customize the interface to allocate all of the available application
+        space to the visualization. The view options are still avaliable, selecting the corresponding tab on the
+        bottom of the application window.
+        <h1 align="center"><img src="screen5.jpg" class="rawImg"/></h1>
+        <br/>
+        </div>
+
+        <div class="section">
+        <h2>Conclusion</h2>
+        Download the application source code, datafiled and Win32 executable <a href="LookingGlass.zip">HERE.</a>
+        <h3>Things to do</h3>
+        <ul>
+            <li>Revise the interaction style used for the main visualization 
+            (perhaps using a terrain-like interaction scheme).</li>
+            <li>Add support for custom slice visualization. (Possibly using a best interaction style than
+            the default vtk one. ParaView offers much a much better interaction system to handle data slicing.
+            <ul>
+                <li>Export sonde volume data as a structured grid. Delaunay3D generates tethraedral data.
+                This does not seem to be ok if we want to manipulate real volumetric data.</li>
+            </ul>
+            </li>
+            <li>Support the selection of single grid points to plot specific data.</li>
+            <li>Support multiple plots, and plots against components other than depth.</li>
+            <li>Support view snapshots and annotations.</li>
+        </ul>
+        </div>
+   </div>
+</div>
+
+#include "../etc/footer.html"

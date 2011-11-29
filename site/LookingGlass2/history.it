@@ -1,0 +1,133 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>Looking Glass 2.6</h2>
+    
+    <h3>Changes</h3>
+    <ul>
+    <li>Added plot label options.</li>
+    <li>Fixed plot labels and plot curve generation in general is working much better.</li>
+    <li>Mission / dive selector is more intuitive.</li>
+    <li>Table view allows selection of columns.</li>
+    <li>Table view shows only selected data if something is selected. Filtered data otherwise.</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.5</h2>
+    
+    <h3>Changes</h3>
+    <ul>
+    <li>Added plot preference support</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    <li>Sonde drop picking is still acting weird on some drops (picking the wrong drop)</li>
+    <li>Plot legend and curve coloring is not working for some drops. Clicking two times on a drop appears to solve this issue sometmes</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.4</h2>
+    
+    <h3>Changes</h3>
+    <ul>
+    <li>Dataset supports a new additional Tag field (Tag3)</li>
+    <li>Added support multiple drop picking (ctrl-click)</li>
+    <li>Optimized initial data loading</li>
+    <li>Mission range tool now updates plots in real time</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>DataField manager add field button is not working. Right now derived fields have to be added by hand in the application configuration file.</li>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    <li>Sonde drop picking is still acting weird on some drops (picking the wrong drop)</li>
+    <li>Plot legend and curve coloring is not working for some drops. Clicking two times on a drop appears to solve this issue sometmes</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.3</h2>
+    
+    <h3>Fixes</h3>
+    <ul>
+    <li>Fixed plot lines for multiple sonde drops on the same station.</li>
+    </ul>
+    <h3>Changes</h3>
+    <ul>
+    <li>Dataset supports an additional Tag field (Tag2)</li>
+    <li>Added support for data grouping by tag (used mainly for plot generation as for now)</li>
+    <li>Removed expression filter from table view</li>
+    <li>Removed the depth cutoff filter and other stuff not used anymore</li>
+    <li>Added legend to plots</li>
+    <li>(ENDURANCE HACK) Plot shows different colors for data of different years.</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>DataField manager add field button is not working. Right now derived fields have to be added by hand in the application configuration file.</li>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.2</h2>
+    
+    <h3>Fixes</h3>
+    <ul>
+    </ul>
+    <h3>Changes</h3>
+    <ul>
+    <li>Application now supports automatic updates.</li>
+    <li>Plot window supports zooming</li>
+    <li>Plot window supports exporting the plot as a PNG image</li>
+    <li>Selection now selects filtered data instead of the entire dataset.</li>
+    <li>(ENDURANCE HACK) Mission selector allows selection of 2008 or 2009 mission data.</li>
+    <li>(ENDURANCE HACK) Added a tool to specify sonde data depth cutoff.</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>Evaluation of filter expressions in table view and derived field calculations are pretty slow, and need to be optimized.</li>
+    <li>DataField manager add field button is now working. Right now derived fields have to be added by hand in the application configuration file.</li>
+    <li>Sonde drop picking is working incorrectly sometimes.</li>
+    <li>When selection a station where multiple drops have been performed, the plot line draws are incorrect.</li>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.1</h2>
+    
+    <h3>Fixes</h3>
+    <ul>
+    <li>DLL problem solved for win32 release.</li>
+    </ul>
+    <h3>Changes</h3>
+    <ul>
+    <li>Added calculation of sound speed models (Chen/Millero and DelGrosso)</li>
+    <li>Added a new configuration profile for the application (Bonney2009Preproc). This profile loads a preprocessed dataset instead of recalculating derived fields (i.e. sound speed models) at startup, making the
+    application quicker to start. If new fields are added or the calculations are modified, it is still possible to load the original dataset using the Bonney2009 profile.</li>
+    <li>The table view tool supports custom filter expressions.</li>
+    <li>The table view tool supports saving the current dataset as a csv file.</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>Evaluation of filter expressions in table view and derived field calculations are pretty slow, and need to be optimized.</li>
+    <li>DataField manager add field button is now working. Right now derived fields have to be added by hand in the application configuration file.</li>
+    <li>Sonde drop picking is working incorrectly sometimes.</li>
+    <li>When selection a station where multiple drops have been performed, the plot line draws are incorrect.</li>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    </ul>
+</div>
+<div class="section">
+    <h2>Looking Glass 2.0</h2>
+    
+    <h3>Changes</h3>
+    <ul>
+    <li>First 2.x version released.</li>
+    </ul>
+    <h3>Known Issues</h3>
+    <ul>
+    <li>Sonde drop picking is working incorrectly sometimes.</li>
+    <li>When selection a station where multiple drops have been performed, the plot line draws are incorrect.</li>
+    <li>The sonde-based bathymetry model is not being generated in this version.</li>
+    </ul>
+</div>
+
+#include "../etc/footer.html"

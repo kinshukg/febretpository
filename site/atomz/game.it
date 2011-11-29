@@ -1,0 +1,8 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<a name="game">
+<embed src="http://games.mochiads.com/c/g/atomz_v2/Atomz.swf" width="760" height="600">
+</a>
+
+#include "../etc/footer.html"

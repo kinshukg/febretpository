@@ -1,140 +1,186 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
+</div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
 <div class="section">
-    <h2>Looking Glass Tutorial</h2>
-    <h1 align="center"><img src="Splash.png" class="rawImg"/></h1>
-    This page offers a brief overview of the main functionalities supported by Looking Glass 2.x.
-    <b>This guide is updated as of Looking Glass version 2.0. Depending on the version you download some functionalities
-    may be different or missing, while new features may have been added. Check the <a href="history.shtml">release history page</a> for the updated info.</b>
+<h2>Looking Glass Tutorial</h2>
+<h1 align="center"><img src="Splash.png" class="rawImg"/></h1>
+This page offers a brief overview of the main functionalities supported by Looking Glass 2.x.
+<b>This guide is updated as of Looking Glass version 2.0. Depending on the version you download some functionalities
+may be different or missing, while new features may have been added. Check the <a href="history.shtml">release history page</a> for the updated info.</b>
 </div>
 <div class="section">
-    <h2>A Quick introduction</h2>
-    <h1 align="center"><img src="lg11s1.png"/></h1>
-    <p>
-    The following annotated video quickly shows how to use some of looking glass functionalities. You can use it as a quick tutorial on how to
-    use the program. Keep on reading the sections following if you need additional information about program features.
-    </p>
-	<object width="853" height="505"><param name="movie" value="http://www.youtube.com/v/U28hbBldHVQ&amp;hl=en_US&amp;fs=1?color1=0x3a3a3a&amp;color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/U28hbBldHVQ&amp;hl=en_US&amp;fs=1?color1=0x3a3a3a&amp;color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="853" height="505"></embed></object></div>
+<h2>A Quick introduction</h2>
+<h1 align="center"><img src="lg11s1.png"/></h1>
+<p>
+The following annotated video quickly shows how to use some of looking glass functionalities. You can use it as a quick tutorial on how to
+use the program. Keep on reading the sections following if you need additional information about program features.
+</p>
+<object width="853" height="505"><param name="movie" value="http://www.youtube.com/v/U28hbBldHVQ&amp;hl=en_US&amp;fs=1?color1=0x3a3a3a&amp;color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/U28hbBldHVQ&amp;hl=en_US&amp;fs=1?color1=0x3a3a3a&amp;color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="853" height="505"></embed></object></div>
 <div class="section">
-    <h2>View Interaction</h2>
-    <h1 align="center"><img src="fig1.png"/><img src="fig2.png"/></h1>
-    <p>
-        The <b>Main View</b> area displays the default representation of the dataset. Each sonde drop is represented by a column, colored depending
-        on the currently visualized component. The displayed bathymetric model is derived from the available
-        pre-ENDURANCE lake data.
-        <ul>
-        <li><b>NOTE:</b> The occasional inconsistencies between sonde drop columns and the bathymetric model
-        (i.e. columns going beyond the bathymetry max depth) are probably hints about errors in the original 
-        bathymetry. A new bathymetry generated from sonde information will be included in the next version of
-        the application, to allow comparisons between the two models.</li>
-        </ul>
-        It is possible to interact with the main view in the following way:
-        <ul>
-            <li><b>Left mouse button press + movement</b>: rotates the view</li>
-            <li><b>Middle mouse button press + movement</b>: translates the view</li>
-            <li><b>Right mouse button press + movement</b>: zooms the view</li>
-            <li><b>Click on a data point</b>: Selects the specific sonde drop. This function is used
-            in conjunction with <b>Plot Views</b>, explained in step 6. To disable the selection, click on an clear
-            area of the main view.</li>
-        </ul>
-    </p>
+<h2>View Interaction</h2>
+<h1 align="center"><img src="fig1.png"/><img src="fig2.png"/></h1>
+<p>
+The <b>Main View</b> area displays the default representation of the dataset. Each sonde drop is represented by a column, colored depending
+on the currently visualized component. The displayed bathymetric model is derived from the available
+pre-ENDURANCE lake data.
+<ul>
+<li><b>NOTE:</b> The occasional inconsistencies between sonde drop columns and the bathymetric model
+(i.e. columns going beyond the bathymetry max depth) are probably hints about errors in the original
+bathymetry. A new bathymetry generated from sonde information will be included in the next version of
+the application, to allow comparisons between the two models.</li>
+</ul>
+It is possible to interact with the main view in the following way:
+<ul>
+<li><b>Left mouse button press + movement</b>: rotates the view</li>
+<li><b>Middle mouse button press + movement</b>: translates the view</li>
+<li><b>Right mouse button press + movement</b>: zooms the view</li>
+<li><b>Click on a data point</b>: Selects the specific sonde drop. This function is used
+in conjunction with <b>Plot Views</b>, explained in step 6. To disable the selection, click on an clear
+area of the main view.</li>
+</ul>
+</p>
 </div>
 <div class="section">
-    <h2>View Options</h2>
-    <h1 align="center"><img src="fig3.png"/><img src="fig4.png"/></h1>
-    <p>
-        The view options panel allows to configure some basic parameters of the main view visualization:
-        <ul>
-            <li><b>The component box</b>: allows to select the currently displayed data component. When sonde
-            drops are missing information for a specific component, they are displayed in black, as shown
-            in the second figure (Chl-a)</li>
-            <li><b>The depth scale slider</b>: can be used to change the depth exaggeration factor.</li>
-            <li><b>The mission filter</b>: allows to display data for all the missions, a single day, or
-            a day interval. The sliders can be used to control filtering.</li>
-        </ul>
-        <li><b>NOTE:</b> when showing a single mission, some days may appear as not having any associated sonde drop.
-        This may be because there was no mission that day (possible?) or the mission was mapping points at the glacier face 
-        (not currently visualized; I can't use grid coordinates to place them correctly, I need their exact UTM coords)</li>
-        </ul>
-    </p>
+<h2>View Options</h2>
+<h1 align="center"><img src="fig3.png"/><img src="fig4.png"/></h1>
+<p>
+The view options panel allows to configure some basic parameters of the main view visualization:
+<ul>
+<li><b>The component box</b>: allows to select the currently displayed data component. When sonde
+drops are missing information for a specific component, they are displayed in black, as shown
+in the second figure (Chl-a)</li>
+<li><b>The depth scale slider</b>: can be used to change the depth exaggeration factor.</li>
+<li><b>The mission filter</b>: allows to display data for all the missions, a single day, or
+a day interval. The sliders can be used to control filtering.</li>
+</ul>
+<li><b>NOTE:</b> when showing a single mission, some days may appear as not having any associated sonde drop.
+This may be because there was no mission that day (possible?) or the mission was mapping points at the glacier face
+(not currently visualized; I can't use grid coordinates to place them correctly, I need their exact UTM coords)</li>
+</ul>
+</p>
 </div>
 <div class="section">
-    <h2>Geographic Data</h2>
-    <h1 align="center"><img src="lg11s2.png"/><img src="fig6.png"/></h1>
-    <p>
-    Through the Geo Data panel it is possible to set the batymetric model opacity, and display an annotated
-    aerial image of the lake on top of the datapoints. It is possible to observe how the sonde drop positions
-    map pretty well with the grid points.
-    </p>
-    <p>
-        The geo data panel also allows to control the rendering of the sonde-based bathymetry
-        model. Buth the old bathymetric model and the sonde-based model support the rendering
-        of a user specified number of contours. Through the geo data panel it is also possible
-        to enable the rendering of sonar data and to visualize <b>Error Markers</b>. The error
-        markers give a qualitative idea of the difference between two of the visualized bathymetric models:
-        <ul>
-            <li>Old vs. Sonde-Based</li>
-            <li>Old vs. Sonar-Based</li>
-            <li>Sonde-Based vs. Sonar-Based</li>
-        </ul>
-        The error markers section aslo gives quantitative information about error measures. It 
-        reports the overall mean and standard deviation of the displayed markers.
-    </p>
+<h2>Geographic Data</h2>
+<h1 align="center"><img src="lg11s2.png"/><img src="fig6.png"/></h1>
+<p>
+Through the Geo Data panel it is possible to set the batymetric model opacity, and display an annotated
+aerial image of the lake on top of the datapoints. It is possible to observe how the sonde drop positions
+map pretty well with the grid points.
+</p>
+<p>
+The geo data panel also allows to control the rendering of the sonde-based bathymetry
+model. Buth the old bathymetric model and the sonde-based model support the rendering
+of a user specified number of contours. Through the geo data panel it is also possible
+to enable the rendering of sonar data and to visualize <b>Error Markers</b>. The error
+markers give a qualitative idea of the difference between two of the visualized bathymetric models:
+<ul>
+<li>Old vs. Sonde-Based</li>
+<li>Old vs. Sonar-Based</li>
+<li>Sonde-Based vs. Sonar-Based</li>
+</ul>
+The error markers section aslo gives quantitative information about error measures. It
+reports the overall mean and standard deviation of the displayed markers.
+</p>
 </div>
 <div class="section">
-    <h2>The Color Transfer Function Manager</h2>
-    <h1 align="center"><img src="fig8.png"/></h1>
-    <p>
-        To change the color used to display a data component in the main view, open the <b>Color Function Manager</b>
-        selecting the specific option in the <b>Windows</b> menu. A dock will open in the right side of the 
-        application, showing the default color maps for all the displayable components. It is possible to
-        interact with a color map in the following way:
-        <ul>
-            <li><b>Click on a point of the color bar</b> to add a new interpolation point there.</li>
-            <li><b>Double click on an interpolation point</b> to change its color.</li>
-            <li><b>Click on an interpolation point and drag</b> to change its position. The start and end points
-            cannot be dragged</li>
-            <li><b>Click on an interpolation point and press delete</b> to remove it. The start and end points
-            cannot be removed</li>
-        </ul>
-        When modifying the color function of the currently visualized component, changes will be applied in
-        real time to the visualization.
-    </p>
+<h2>The Color Transfer Function Manager</h2>
+<h1 align="center"><img src="fig8.png"/></h1>
+<p>
+To change the color used to display a data component in the main view, open the <b>Color Function Manager</b>
+selecting the specific option in the <b>Windows</b> menu. A dock will open in the right side of the
+application, showing the default color maps for all the displayable components. It is possible to
+interact with a color map in the following way:
+<ul>
+<li><b>Click on a point of the color bar</b> to add a new interpolation point there.</li>
+<li><b>Double click on an interpolation point</b> to change its color.</li>
+<li><b>Click on an interpolation point and drag</b> to change its position. The start and end points
+cannot be dragged</li>
+<li><b>Click on an interpolation point and press delete</b> to remove it. The start and end points
+cannot be removed</li>
+</ul>
+When modifying the color function of the currently visualized component, changes will be applied in
+real time to the visualization.
+</p>
 </p>
 <div class="section">
-    <h2>2D Plots</h2>
-    <h1 align="center"><img src="fig11.png"/></h1>
-    <p>
-        To display a 2D plot of data, select a <b>plot view</b> from the Windows menu. Up to 4 plot views can be
-        opened at the same time. Use the two boxes at the bottom of the plot view to choose what component to
-        use for the X or Y axis.
-        <ul>
-            <li>Select a sonde drop from the main view to have it outlined in the plot views.</li>
-            <li>Select an area on the plot window by left-clicking and dragging the mouse, to select
-            a subset of datapoints. (see following figures) Only those datapoints will be shown in the main view and in every other
-            plot view currently opened.</li>
-            <li>To clear datapoint selection just click on a plot view without dragging.</li>
-            <li>When using the mission filter, all plot views get updated accordingly to show just
-            the selected mission sonde drops.</li>
-        </ul>
-    </p>
-    <h1 align="center"><img src="fig12.png"/><img src="fig13.png"/></h1>
+<h2>2D Plots</h2>
+<h1 align="center"><img src="fig11.png"/></h1>
+<p>
+To display a 2D plot of data, select a <b>plot view</b> from the Windows menu. Up to 4 plot views can be
+opened at the same time. Use the two boxes at the bottom of the plot view to choose what component to
+use for the X or Y axis.
+<ul>
+<li>Select a sonde drop from the main view to have it outlined in the plot views.</li>
+<li>Select an area on the plot window by left-clicking and dragging the mouse, to select
+a subset of datapoints. (see following figures) Only those datapoints will be shown in the main view and in every other
+plot view currently opened.</li>
+<li>To clear datapoint selection just click on a plot view without dragging.</li>
+<li>When using the mission filter, all plot views get updated accordingly to show just
+the selected mission sonde drops.</li>
+</ul>
+</p>
+<h1 align="center"><img src="fig12.png"/><img src="fig13.png"/></h1>
 </div>
 <div class="section">
-    <h2>Customizing the Application Layout</h2>
-    All the application panels (Geo View, Plot Views, Slice View, etc.) can be moved around and docked
-    to the application borders to customize the application layout depending on visualization needs. 
-    The following images show some examples of possible customized layouts.
-    <h1 align="center"><img src="fig14.png"/><img src="fig15.png"/></h1>
-    <h1 align="center"><img src="fig16.png"/><img src="fig17.png"/></h1>
-    
+<h2>Customizing the Application Layout</h2>
+All the application panels (Geo View, Plot Views, Slice View, etc.) can be moved around and docked
+to the application borders to customize the application layout depending on visualization needs.
+The following images show some examples of possible customized layouts.
+<h1 align="center"><img src="fig14.png"/><img src="fig15.png"/></h1>
+<h1 align="center"><img src="fig16.png"/><img src="fig17.png"/></h1>
 </div>
 <div class="section">
-    <h2>Preferences</h2>
-    <h1 align="center"><img src="lg11s4.png"/></h1>
-    Through <b>Menu > Preferences</b> it is possible to configure a set of aspects of the
-    visualization. The visualized sonde points can be reduced to speed up the visualization
-    (<b>NOTE:</b> plot views and other calculations depending on sonde data won't be affected),
-    And colors for bathymetry surfaces and contours can be customized.
+<h2>Preferences</h2>
+<h1 align="center"><img src="lg11s4.png"/></h1>
+Through <b>Menu > Preferences</b> it is possible to configure a set of aspects of the
+visualization. The visualized sonde points can be reduced to speed up the visualization
+(<b>NOTE:</b> plot views and other calculations depending on sonde data won't be affected),
+And colors for bathymetry surfaces and contours can be customized.
 </div>
-<!--#include virtual="/etc/footer.html" -->
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

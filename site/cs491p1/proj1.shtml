@@ -1,46 +1,90 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
-<div class="section">
-    <h2>CS491 Project 1 - Bridge Over Troubled Water</h2>
-    <p>
-    For This project we had to create an interactive version of the John Snow cholera map, using
-    additional related dynamic data. The tool used for developing the visualization is <b>Processing</b>. 
-    </p>
-    
-    <p>
-    The application displays a simple map of the area of interest on the left side of the screen. The user
-    can <b>right click and move the mouse</b> to pan around, and <b>click with the middlew button and move the mouse</b> to
-    increase or decrease the level of zoom. Some street names dynamically appear depending on the zoom level.
-    </p>
-    <p>
-    The bottom part of the application shows the <b>Timeline</b>. It is possible to click on one of the three active
-    areas of the selection slider (identified with small circles) to change the selection size or move it around the timeline.
-    </p>
-    <p>
-    <img src="./scr1.png"/>
-    <div class="item">
-    <img src="./scr3.png" style="float: left"/></a> 
-    The left application panel displays some graph representation of the source data. The two top plots display
-    the deaths categorized by sex and age range. Two pie charts on the bottom offer an aggregated qualitative view
-    of the data displayed in the plots. All of the graph time ranges are linked with the range selected in the timeline.
-    The plot y scales also change dynamically depending on the current data.
-    </p>
-    <p>
-    Clicking on any of the legend boxes allows to <b>filter</b> data by the selected legend category. For instance, 
-    clicking on the <i>female</i> box, only data related to female deaths will be displayed in the graphs. Also the main
-    view dots change from the standard color to display deaths categorized by sex. A similar feature is active for the
-    age plot.    
-    </p>
-    <p>
-    Three buttons on the bottom left corner of the application control the <b>data clustering</b> feature.
-    Cluster size can be customized using the two <b>+</b> and <b>-</b> buttons. The cluster color is also influenced
-    by the filtering functionality explained in the previous paragraph.
-    </p>
-    </div>
-    <img src="./scr2.png"/>
-    
-    <h3 align="center"><a href="./proj1app.shtml">>>> RUN BROWSER VERSION  <<<</a></h3>
-    <h3 align="center"><a href="./cholera.zip">>>> DOWNLOAD STANDALONE VERSION (WIN AND MAC) <<<</a></h3>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
+<div class="section">
+<h2>CS491 Project 1 - Bridge Over Troubled Water</h2>
+<p>
+For This project we had to create an interactive version of the John Snow cholera map, using
+additional related dynamic data. The tool used for developing the visualization is <b>Processing</b>.
+</p>
+<p>
+The application displays a simple map of the area of interest on the left side of the screen. The user
+can <b>right click and move the mouse</b> to pan around, and <b>click with the middlew button and move the mouse</b> to
+increase or decrease the level of zoom. Some street names dynamically appear depending on the zoom level.
+</p>
+<p>
+The bottom part of the application shows the <b>Timeline</b>. It is possible to click on one of the three active
+areas of the selection slider (identified with small circles) to change the selection size or move it around the timeline.
+</p>
+<p>
+<img src="./scr1.png"/>
+<div class="item">
+<img src="./scr3.png" style="float: left"/></a>
+The left application panel displays some graph representation of the source data. The two top plots display
+the deaths categorized by sex and age range. Two pie charts on the bottom offer an aggregated qualitative view
+of the data displayed in the plots. All of the graph time ranges are linked with the range selected in the timeline.
+The plot y scales also change dynamically depending on the current data.
+</p>
+<p>
+Clicking on any of the legend boxes allows to <b>filter</b> data by the selected legend category. For instance,
+clicking on the <i>female</i> box, only data related to female deaths will be displayed in the graphs. Also the main
+view dots change from the standard color to display deaths categorized by sex. A similar feature is active for the
+age plot.
+</p>
+<p>
+Three buttons on the bottom left corner of the application control the <b>data clustering</b> feature.
+Cluster size can be customized using the two <b>+</b> and <b>-</b> buttons. The cluster color is also influenced
+by the filtering functionality explained in the previous paragraph.
+</p>
+</div>
+<img src="./scr2.png"/>
+<h3 align="center"><a href="./proj1app.shtml">>>> RUN BROWSER VERSION  <<<</a></h3>
+<h3 align="center"><a href="./cholera.zip">>>> DOWNLOAD STANDALONE VERSION (WIN AND MAC) <<<</a></h3>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

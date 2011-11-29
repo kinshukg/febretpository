@@ -1,51 +1,96 @@
-<!--#include virtual="/etc/header.html" -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
 
-<div class="section">
-    <h2>CS491 - Visualization and Visual Analytics</h2>
-    <p>
-    This section contains the projects I worked on for the Visualization and Visual Analytics class, Fall 2009.
-    </p>
-    
-    <div class="item">
-        <h3><a href="../cs491p1/proj1.shtml">Project 1 - Bridge Over Troubled Water</a></h3>
-        <a href="../cs491p1/proj1.shtml"><img src="./proj1t.png" style="float: left"/></a> 
-        For This project we had to create an interactive version of the John Snow cholera map, using
-        additional related dynamic data. The tool used for developing the visualization is <b>Processing</b>. 
-    </div>
-    <div class="item">
-        <h3><a href="../cs491p2/proj2.shtml">Project 2 - Leaving on a Jet Plane</a></h3>
-        <a href="../cs491p2/proj2.shtml"><img src="./proj2t.png" style="float: left"/></a> 
-        This project focuses on building a mini application for 
-        visualizing data of flights collected from O'Hare Airport Chicago. 
-        The data collected was over a period of one week and had numerous 
-        files which had be converted to some usable format.   
-    </div>
-    <div class="item">
-        <h3><a href="../cs491p3/proj3.shtml">Project 3 - Saturday Night at the Movies</a></h3>
-        <a href="../cs491p3/proj3.shtml"><img src="./proj3t.png" style="float: left"/></a> 
-    For this project, we had to build an application to visualize data coming from
-    <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a>. The application had to offer the user the possibility
-    of visualizing and comparing the careers of multiple actors and directors, in a way similar to
-    <a href="http://www.nytimes.com/interactive/2009/06/25/arts/0625-jackson-graphic.html">the NY Times Billboards Rankings</a>. Data preprocessing was of extreme importance for this project, since
-    the original IMDB text listings data had to be filtered and reorganized in order to bring it down
-    to an acceptable size and easy-to-load format.
-    </div>
-    <div class="item">
-        <h3><a href="../cs491p4/proj4.shtml">Project 4 - I Heard it Through The Grapevine</a></h3>
-        <a href="../cs491p4/proj4.shtml"><img src="./proj4t.png" style="float: left"/></a>
-    For this project, we had to build an application to visualize movie suggestions 
-    suing data coming from the NetFlix database. Data has to be shown as a <b>force directed graph</b>.
-    Data also had to be cross linked to the <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a> data,
-    To get additional information about movies.
-    </div>
-    <div class="item">
-        <h3><a href="../flowviz/index.shtml">Final Project - Flow Visualization on Omega Desk</a></h3>
-        <a href="../flowviz/index.shtml"><img src="../flowviz/thumb.png" style="float: left"/></a>
-        FlowViz is a generic 3D flow visualization for Omega Desk, a multitouch + stereo
-        3D display system developed at EVL. The application has been built using Processing, and has been designed
-        to be easily portable to other devices offering a subset of the capabilities of Omega Desk, a stereo, multi touch
-        display system prototype.
-    </div>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
 </div>
-
-<!--#include virtual="/etc/footer.html" -->
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="../main/bio.shtml">Bio</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">Research</a></li>
+<li><a href="mailto:febret@gmail.com">Contact</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
+<div class="section">
+<h2>CS491 - Visualization and Visual Analytics</h2>
+<p>
+This section contains the projects I worked on for the Visualization and Visual Analytics class, Fall 2009.
+</p>
+<div class="item">
+<h3><a href="../cs491p1/proj1.shtml">Project 1 - Bridge Over Troubled Water</a></h3>
+<a href="../cs491p1/proj1.shtml"><img src="./proj1t.png" style="float: left"/></a>
+For This project we had to create an interactive version of the John Snow cholera map, using
+additional related dynamic data. The tool used for developing the visualization is <b>Processing</b>.
+</div>
+<div class="item">
+<h3><a href="../cs491p2/proj2.shtml">Project 2 - Leaving on a Jet Plane</a></h3>
+<a href="../cs491p2/proj2.shtml"><img src="./proj2t.png" style="float: left"/></a>
+This project focuses on building a mini application for
+visualizing data of flights collected from O'Hare Airport Chicago.
+The data collected was over a period of one week and had numerous
+files which had be converted to some usable format.
+</div>
+<div class="item">
+<h3><a href="../cs491p3/proj3.shtml">Project 3 - Saturday Night at the Movies</a></h3>
+<a href="../cs491p3/proj3.shtml"><img src="./proj3t.png" style="float: left"/></a>
+For this project, we had to build an application to visualize data coming from
+<a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a>. The application had to offer the user the possibility
+of visualizing and comparing the careers of multiple actors and directors, in a way similar to
+<a href="http://www.nytimes.com/interactive/2009/06/25/arts/0625-jackson-graphic.html">the NY Times Billboards Rankings</a>. Data preprocessing was of extreme importance for this project, since
+the original IMDB text listings data had to be filtered and reorganized in order to bring it down
+to an acceptable size and easy-to-load format.
+</div>
+<div class="item">
+<h3><a href="../cs491p4/proj4.shtml">Project 4 - I Heard it Through The Grapevine</a></h3>
+<a href="../cs491p4/proj4.shtml"><img src="./proj4t.png" style="float: left"/></a>
+For this project, we had to build an application to visualize movie suggestions
+suing data coming from the NetFlix database. Data has to be shown as a <b>force directed graph</b>.
+Data also had to be cross linked to the <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a> data,
+To get additional information about movies.
+</div>
+<div class="item">
+<h3><a href="../flowviz/index.shtml">Final Project - Flow Visualization on Omega Desk</a></h3>
+<a href="../flowviz/index.shtml"><img src="../flowviz/thumb.png" style="float: left"/></a>
+FlowViz is a generic 3D flow visualization for Omega Desk, a multitouch + stereo
+3D display system developed at EVL. The application has been built using Processing, and has been designed
+to be easily portable to other devices offering a subset of the capabilities of Omega Desk, a stereo, multi touch
+display system prototype.
+</div>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<div class="section">
+    <h2>TUTORIAL STEP 4</h2>
+
+    <p><h1 align="center"><img src="qbviz/slides/qs5.png"/></h1></p>
+    <p><b>When a layer is selected, a yellowish region will show up in the map panel.
+    This is the region of interest for the selected layer. Shift-click and drag the
+    mouse on the map panel to change it.</b></p>
+    
+    <ul>
+        <li><a href="./hydroviz3.shtml"><b><em>PREVIOUS</em></b></a></li>
+        <li><a href="./hydroviz5.shtml"><b><em>NEXT</em></b></a></li>
+    </ul>
+    
+</div>
+
+#include "../etc/footer.html"
