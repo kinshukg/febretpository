@@ -1,0 +1,51 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>CS525 - GPU Programming</h2>
+    <p>
+    This section contains the projects I worked on for the GPU Programming class, Spring 2010.
+    </p>
+    
+    <div class="item">
+        <h3><a href="../cs525p1/index.shtml">Project 1 - Kodachrome</a></h3>
+        <a href="../cs525p1/index.shtml"><img src="./p1.febretti.jpg" width="200" style="float: left"/></a> 
+    The objective for this project was to process a stream of images captured from the webcam, and apply a set of vertex, fragment and geometry shaders to
+    achieve different visual effects. The shaders had to be written using the OpenGL Shading Language (GLSL). My application made use of the OpenCV library
+    for the webcam capture part. OpenCV has also been used to integrate face recognition support into one of the shaders.
+    </div>
+    <div class="item">
+        <h3><a href="../cs525p2/index.shtml">Project 2 - Taste of Chicago</a></h3>
+        <a href="../cs525p2/index.shtml"><img src="./p2.febretti.png" width="200" style="float: left"/></a> 
+    This project involved the use of a GPU for general purpose computation: the project objective was to recreate a zombie attack in downtown
+    chicago, implementing an agent-based simulation using the CUDA toolkit.
+    </div>
+    <div class="item">
+        <h3><a href="./FCUDA.pdf">Paper presentation - FCUDA Enabling Efficient Compilation of CUDA Kernels onto FPGAs</a></h3>
+        <a href="./FCUDA.pdf"><img src="./Paper.png" width="200" style="float: left"/></a> 
+        <b>Abstract:</b> As growing power dissipation and thermal effects disrupted the rising clock frequency trend and threatened to annul Moore’s law, the computing industry has switched its route
+        to higher performance through parallel processing. The rise of multi-core systems in all domains of computing has opened the
+        door to heterogeneous multi-processors, where processors of different compute characteristics can be combined to effectively boost the performance per watt of different application kernels.
+        GPUs and FPGAs are becoming very popular in PC-based heterogeneous systems for speeding up compute intensive kernels of scientific, imaging and simulation applications. GPUs can
+        execute hundreds of concurrent threads, while FPGAs provide customized concurrency for highly parallel kernels. However, exploiting the parallelism available in these applications is often
+        not a push-button task. Often the programmer has to expose the application’s fine and coarse grained parallelism by using special APIs. CUDA is such a parallel-computing API that is driven by
+        the GPGPU industry and is gaining significant popularity. In this work, we adapt the CUDA programming model into a new FPGA design flow called FCUDA, which efficiently maps the coarse and
+        fine grained parallelism exposed in CUDA onto the reconfigurable fabric. Our CUDA-to-FPGA flow employs AutoPilot, an advanced high-level synthesis tool which enables
+        high-abstraction FPGA programming. FCUDA is based on a source-to-source compilation that transforms the SPMD CUDA
+        thread blocks into parallel C code for AutoPilot. We describe the details of our CUDA-to-FPGA flow and demonstrate the highly
+        competitive performance of the resulting customized FPGA multi-core accelerators. To the best of our knowledge, this is the
+        first CUDA-to-FPGA flow to demonstrate the applicability and potential advantage of using the CUDA programming model for
+        high-performance computing in FPGAs.
+    </div>
+    <div class="item">
+        <h3><a href="../cs525p3/index.shtml">Project 3 - CS525 Project 3 - Sonar data raytracing using OpenCL</a></h3>
+        <a href="../cs525p3/index.shtml"><img src="./p3.febretti.png" width="200" style="float: left"/></a> 
+    For this project I decided to work on one of the tasks we are currently udertaking as part of the <a href="../endurance/endurance.shtml">ENDURANCE project.</a>: sonar data raytracing using a sound speed model.
+    This process is by nature extremely parallel (each sonar ping represents an independent beam to be raytraced), and can greatly benefit from the acceleration that GPU computation can offer.
+    </div>
+    <div class="item">
+        <h3><a href="../cs525f/index.shtml">Final Project - Testing Matrix Transpose Performance in OpenCL</a></h3>
+    As a final project, we had to analyze the performance of the <a href="http://developer.download.nvidia.com/compute/cuda/3_0/sdk/website/CUDA/website/C/src/transposeNew/doc/MatrixTranspose.pdf">CUDA matrix transpose sample</a>. I decided to work on this project using <a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a> as the reference framework.
+    </div>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

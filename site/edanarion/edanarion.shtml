@@ -1,0 +1,81 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>EDANARION</h2>
+    
+    <p>Edanarion is a multiplayer RPG game written in ActionScript 3 and C#. It can be played
+    directly from a browser window. One of the main objectives of this project is to create a browser game in which users can
+    actually build parts of the playable world.</p>
+
+    <p>The game server and clients are working right now, and a couple areas are included in the game data. The gameplay code is not complete, 
+    but the code can be used as a good starting point for anyone wanting to build a multiplayer, flash based game for the browser.</p>
+    <p>Here are some of the features currently supported by Edanarion:</p>
+
+    <ul>
+      <li>Multiple area support. </li>
+      <li>In-client area builder. </li>
+      <li>HTTP-based communication protocol (game works through firewalls) </li>
+      <li>Completely data-driven design. </li>
+      <li>Scriptable AI and dialog support for non-playing characters. </li>
+      <li>Inventory support </li>
+      <li>Customizable characters (both appearance on character creation, and dynamic customization with dresses / weapons) </li>
+      <li>Basic fighting </li>
+      <li>Pathfinding support. </li>
+      <li>Extensible server control console. </li>
+      <li>Unified, command-based communication and management system: player actions, as well as server administration, is managed through <strong>command messages: </strong>command availability is filtered through privilege levels given to user accounts. </li>
+    </ul>
+    
+    The server code runs on Windows, Linux and MacOS (using <a href="http://www.mono-project.com/Main_Page">Mono</a>).
+
+   </br>
+   <ul>
+   <li><a href="http://febretpository.freesitespace.net/wiki/index.php/Edanarion">Edanarion project wiki</a></li>
+   <li><a href="http://cs.uic.edu/~afebrett/edanarion/Edanarion.zip">Edanarion Source Code and Data</a></li>
+   </ul>
+</div>
+
+<div class="section">
+    <h2>SCREENSHOTS</h2>
+
+    <h3>Milestone 7 (Pandora)</h3>
+    <p>
+    <a href="./screens7/Screen1.png"><img src="./screens7/Screen1_thumb.png"/></a>
+    <a href="./screens7/Screen2.png"><img src="./screens7/Screen2_thumb.png"/></a>
+    <a href="./screens7/Screen3.png"><img src="./screens7/Screen3_thumb.png"/></a>
+    <a href="./screens7/Screen4.png"><img src="./screens7/Screen4_thumb.png"/></a>
+    <a href="./screens7/Screen5.png"><img src="./screens7/Screen5_thumb.png"/></a>
+    </p>
+    
+    <h3>Milestone 2 (Deucalion)</h3>
+    <p>
+    <a href="./screens2.4/s1.png"><img src="./screens2.4/s1_thumb.png"/></a>
+    <a href="./screens2.4/s2.png"><img src="./screens2.4/s2_thumb.png"/></a>
+    <a href="./screens2.4/s3.png"><img src="./screens2.4/s3_thumb.png"/></a>
+    <a href="./screens2.4/s4.png"><img src="./screens2.4/s4_thumb.png"/></a>
+    <a href="./screens2.4/s5.png"><img src="./screens2.4/s5_thumb.png"/></a>
+    </p>
+    
+    <h3>Milestone 1 (Prometheus)</h3>
+    <p>
+    <a href="./m10s1.jpg"><img src="./m10s1_thumb.jpg"/></a>
+    <a href="./m10s2.jpg"><img src="./m10s2_thumb.jpg"/></a>
+    <a href="./m10s3.jpg"><img src="./m10s3_thumb.jpg"/></a>
+    </p>
+
+    <h3>Milestone 0.1</h3>
+    <p>
+    <a href="./m9s1.png"><img src="./m9s1_thumb.png"/></a>
+    <a href="./m9s2.png"><img src="./m9s2_thumb.png"/></a>
+    <a href="./m9s3.png"><img src="./m9s3_thumb.png"/></a>
+    <a href="./m9s4.png"><img src="./m9s4_thumb.png"/></a>
+    </p>
+    
+    <h3>Older Versions</h3>
+    <p>
+    <a href="./screen.png"><img src="./screen_thumb.png"/></a>
+    <a href="./screen2.png"><img src="./screen2_thumb.png"/></a>
+    </p>
+    
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

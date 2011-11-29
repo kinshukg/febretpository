@@ -1,0 +1,135 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>QBVIZ</h2>
+    
+    <p>
+        QbViz is a lightweight actionscript library aimed at collaborative data visualization. Its main
+        purpose is to simplify the creation of web applications capable of accessing fairly complex data sources, 
+        render them as interactive 3d visualizations, and share the created views among a set of remote users
+        connected to the same virtual workspace. QbViz makes use of Flash Remoting as its communication platform.
+        A simple set of QbViz server components (Data and Workspace services) are currently implemented as .Net
+        Framework objects, even if other technologies can be considered for server-side developement. The
+        communication between client and server components flows through a flash remoting gateway (WebOrb) installed
+        as a normal ASP.Net application on a ASP.Net-capable web server.</br>
+
+        <ul>
+        <li><a href="./qbviz/software/QbViz 0.3.zip">Download the QbViz and Hydroviz software package</a></li>
+        <li><a href="http://febretpository.blogspot.com/search/label/News">Read Project News</a></li>
+        <li><a href="./qbviz_screenshots.shtml">Look at QbViz screenshots</a></li>
+        <li><a href="./hydroviz.shtml">Go to Hydroviz</a></li>
+        </ul>
+    </p>
+</div>
+
+<div class="section">
+    <h2>THE VISUALIZATION PIPELINE</h2>
+    <h1 align="center"><img src="qbviz/slides/slide1.png" class="rawImg"/></h1>
+    <p>
+    The central element of a QbViz application is the <b>View</b>. A View is simply
+    a visual representation of one or more sources of data. In QbViz, three main elements 
+    are involved in the process of creating of a View: 
+    <b>DataCubes</b>, <b>Visualizers</b>, and the <b>Canvas</b>.</p>
+
+    <p>
+    <b>DataCubes</b> locally store the actual data that will be used to generate the 
+    visualization. DataCubes are obtained trough queries to <b>Data Services</b>. 
+    Data Services allow the access to remote data sources, and fill the local DataCubes 
+    with the requested data. Queries are essentially composed by a set of filters that 
+    determine the properties of desired data (ie space boundaries, time reference, 
+    detail levels and so on).</p>
+    
+    <p>
+    <b>Visualizers</b> perform the mapping process between numberic data and its visual 
+    reprensentation. Different visualizer implementations generate different 
+    visualization of the same DataCube. Visualizers can implement generic visualization
+    metaphors (ie the mapping of a scalar field to a 3d heightmap), or define
+    application-specific visualization techniques. In its current version, QbViz does not
+    expose any generic visualizer library, and visualizer implementations should be part
+    of the application codebase. A set of generic visualizers may be available in future 
+    versions. A visualizer requires three input elements:
+    <ul>
+        <li>A <b>DataCube</b> containing data to be visualized.</li>
+        <li>A set of <b>Visualizer-specific options</b> that control the way the
+        visualization is generated (ie color gradients, opacities, tessellation levels, ...)</li>
+        <li>A set of <b>Metrics</b> used to convert numeric units (meters, seconds, ...) used
+        in source data to nondimensional 3d units used by the visualization. 
+        Unlike visualizer-specific options, metrics are <em>shared by all the visualizers</em> which
+        are part of the same view. This greatly helps in the creation of consistent views, and 
+        simplifies dimension scaling operations.</li>
+    </ul>
+    </p>
+    
+    <p>
+    <b>The Canvas</b> represents the viewport in which the View will actually be rendered. Viewpoint options
+    determine the position from which data is looked at.</p>
+    
+    <p>
+    Filters, Visualizer Options, Metrics and the Viewpoint all together form a <b>View Definition</b>. A
+    View Definition is a simple data structure that completely defines how a View should be created. 
+    Given a view definition, a QbViz application should be able to:
+    <ul>
+        <li>connect to the requested Data Services (if available);</li>
+        <li>obtain correctly filtered data cubes;</li>
+        <li>istantiate needed visualizers, attach them to related data cubes and set up their parameters;</li>
+        <li>setup the canvas viewpoint.</li>
+    </ul>    
+    At the end of this process a visualization that exactly corresponds to the view definition can be rendered.
+    </p>
+</div>
+    
+<div class="section">
+    <h2>COLLABORATIVE FEATURES</h2>
+    <p>
+    View definition objects are relatively lightweight data structures. They can be easily exchanged between
+    remote users, carrying around informations on how to build visualizations from client to client. The
+    controlled exchange of view definitions is actually the basis of cooperative services offered by QbViz.
+    </p>
+    <h1 align="center"><img src="qbviz/slides/slide2.png" class="rawImg"/></h1>
+    
+    <p>
+    The core of QbViz cooperative functionality is the <b>Workspace Service</b>. A workspace service acts mainly
+    as a repository of views. Users can publish their views on a workspace or connect to views published 
+    by others to participate in a cooperative session. It is worth noticing that users connected to the 
+    same workspace may be participating to different cooperative sessions. As an example in the picture above
+    clients 1 and 3 are cooperating on view A while clients 2 and 4 are working on view B. Being connected to
+    the same workspace though, all the clients will be able to see newly published views by other users, connect 
+    to any of the published views and send chat messages to a common workspace room.
+    
+    As underlined above, cooperation is achieved mainly by sending around view definition updates.
+    The cooperation metaphor (ie the <em>way</em> in wich users will actually collaborate in a
+    cooperative session) can be described by two main factors:
+    <ul>
+        <li>Which components of a view definition are part of update messages
+        (a subset of filters, visualizer options, metrics, viewpoint definition);</li>
+        <li>What is the filter policy used by single client in sending and receiving those updates.</li>
+    </ul>
+    QbViz currently offers two kinds of update messages:
+    <ul>
+        <li><b>Camera updates</b> carry only the viewpoint component of a view definition;</li>
+        <li><b>View updates</b> carry a complete view definition.</li>
+    </ul>
+    Filter policies may be:
+    <ul>
+        <li><b>Input (I):</b> a client will accept updates from other clients;</li>
+        <li><b>Output (O):</b> a client will broadcast local updates to other clients;</li>
+        <li><b>Input-Output (IO):</b> all of the above.</li>
+    </ul>
+    The definition of a filter policy for each class of update, possibly in different ways for
+    each participating client, determines the applied cooperation metaphor.
+    <h1 align="center"><img src="qbviz/slides/slide3.png" class="rawImg"/></h1>
+    The figure above illustrates three of the possible collaborative configurations supported
+    by QbViz:
+    <ul>
+        <li>in <b>Diagram A</b> three clients cooperate in defining the contents of the
+        view, but each client has his own independent viewpoint;</li>
+        <li>in <b>Diagram B</b> a single client determines both view content and the
+        viewpoint, and sends updates to two clients wich act as passive viewers;</li>
+        <li><b>Diagram C</b> shows an exotic, yet possible, cooperative configuration:
+        a client chooses the viewpoint while the other one determines view contents.</li>
+        
+    </ul>
+    </p>
+</div>
+    
+<!--#include virtual="/etc/footer.html" -->

@@ -1,0 +1,303 @@
+<html>
+<head>
+<title> Alessandro Febretti - CS527 Project 0</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE>
+a:link  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:visited  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:active  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:hover  {
+	color :#7777FF;
+	text-decoration : none;
+}
+
+h3 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+h4 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+</STYLE>
+<STYLE type="text/css">
+<!--
+BODY {
+font-size: 2;
+font-family: Tahoma, Verdana;
+color: white;
+}
+-->
+</STYLE>
+</head>
+
+<body bgcolor="#000000" text="#000000">
+<table width="100" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><img src="images/header.jpg" width="777" height="150"></td>
+  </tr>
+  <tr>
+    <td>
+      <table width=777 border=0 cellpadding=0 cellspacing=0>
+        <tr> 
+          <td colspan=3> <img src="images/ca_01.jpg" width=777 height=16 alt=""></td>
+        </tr>
+        <tr> 
+          <td background=images/ca_02.jpg width=15>&nbsp; </td>
+          <td background=images/cabg.gif width=748 height=445 valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="6">
+                <tr> 
+                  <td style="height: 28px">
+<!----------------------------------------------------------------------------->
+<!-- USER HTML START ---------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<a href="../mike/index.html">Project 1 </a>|<a href="../boids/index.html"> Project 2 </a>|<a href="../matcheez/index.html">Project 3 (Team Project) </a>|
+<a href="../paper/index.html"> Paper Presentation </a>|<a href="../final/index.html"> Final Project </a><br /><br />
+
+<table><tr><td><img src="Sign.jpg"/></td><td><h3>PROJECT DEMO</h3></td></tr></table>
+Download it from <b><a href="Boids.zip">HERE</a></b> <br /><br />
+Run Boids.bat to start the demo. Boids.lua contains the actual lua source code of the project.
+<ul>
+<li>Use the 'Z' key and move mouse up and down to change zoom level.</li>
+<li>Use the 'X' key and move mouse left and right to rotate the view.</li>
+<li>Use the 'C' key and move mouse to scroll the view.</li>
+<li>Press the 'S' key to start the demo.</li>
+<li>Press the Space key to show / hide the flock behavior parameters.</li>
+<li>Use the numeric keys to change the flock behavior parameters.</li>
+<li>Use the 'N' key to cycle through the predefined flock behaviors.</li>
+<li>To move around objects just click on them and drag.</li>
+</ul>
+<br />
+<br />
+<br />
+
+<table><tr><td><img src="Sign.jpg"/><img src="Sign.jpg"/></td><td><h3>HOW IT WORKS</h3></td></tr></table>
+
+<table>
+<tr>
+<td><h4>The Engine</h4>
+I chose to use Electro as the 3D engine for my demo. The reason is simply that I was using Electro also for my
+Videogame Design class, so I already had a pretty good knowledge about it. Plus, I was able to reuse several routines
+I wrote for my game (like camera movement, object picking...). Code for the Electro engine is currently written as
+a bunch of lua scripts. Lua is quite fast compared to other scripting engines and it's also pretty intuitive. The problem
+with it is that it's
+    EXTREMELY easy to do mistakes that will be really hard to discover: For instance, Lua does not require 
+variable declarations, so a misspelled variable name somewhere in your program won't raise a compile time error... which in
+turn means having to go through a debug phase for almost every possible kind of trivial mistake you do in your code. 
+</td>
+<td><img src="electro.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>The Scene</h4>
+My scene is made up by a limited number of objects: A table, two pieces of paper (one is just eye candy...) and
+several other objects you can actually move around:
+<ul>
+<li>A <font color="blue">BLUE MARKER</font>, representing the AlphaBoids "target point"</li>
+<li>A <font color="red">RED MARKER</font>, representing a scary predator for AlphaBoids</li>
+<li>A <font color=Wheat>CUP</font>, representing... well...a cup :)</li>
+</ul>
+</td>
+<td><img src="objs.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Boid behavior parameters</h4>
+My boids are influenced by five parameters: <font color=lime>Speed, Steer friction, Avoidance Distance, Coordination and Coordination Distance</font>.
+These parameters can be manually set through the numeric or alternatively several predefined sets of
+parameters (cooresponding to 'interesting' behaviors) can be loaded and cycled through the 'N' key. These parameters will
+influence three of the four roules I implemented in my demo: The target rule, the avoidance rule and the coordination rule.
+The fourth rule (predator) is not directly dependent on these parameters.
+</td>
+<td><img src="params.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Rule 1: Target Rule</h4>
+This rule simply tells the boids to get as close as possible to the <font color=blue>blue marker</font>.
+Since the boids have a constant speed they won't be able to just stop on the target but they will have to
+keep moving, eventually stabilizing in a sort of circular movement around the marker.
+The only important parameters for the Target Rule are <font color=lime>Speed</font> and <font color=lime>Steer Friction</font>. 
+The meaning of the Speed parameter is pretty straightforward, while Steer Friction determines how a 
+newly computed steering vector is blended with the previous direction vector of a boid to 
+generate a new direction. I do this because if I just substitute the old direction 
+vector with the steering vector, I can have boids rotating at any speed
+they want which is quite unnatural. Also, when there is a lot of collision
+avoidance going on, the direction vector would tend to be quite noisy.
+</td>
+<td><img src="target.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="avoidance.png" /></td>
+<td><h4>Rule 2: Avoidance Rule</h4>
+The Avoidance Rule tells boids that colliding with their flockmates is bad, so they will try to avoid it. This is implemented
+by calculating the average direction towards near flockmates, and telling the boid to go the other way around.
+It's worth noticing that boids are just trying to avoid collisions, but some collision can still take place. 
+Collision avoidance is just affected by the <font color=lime>Avoidance Distance</font> parameter, that 
+determines how far away each boid will look for potentially colliding flockmates.
+</td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="coordination.png" /></td>
+<td><h4>Rule 3: Coordination Rule</h4>
+When the coordination rule is active, boids will start trying to stay aligned with their near flockmates. The implementation
+of this rule is basically the same as the Avoidance Rule: each boid will calculate the average direction of his near fellows
+and keep this direction into account when calculating his own steering vector. The weight of the coordination rule on the
+generation of the final steering vector is affected by the <font color=lime>Coordination</font> parameter. When coordination
+is 0, boids won't even try to align with flockmates. When it is 1, boids will be so concentated on aligning with flockmates that
+they will completely forget about the <font color=blue>blue marker</font>.
+</td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Rule 4: Predator Rule</h4>
+Intuitively one may think of a possible predator rule as something that is very similar to the collision avoidance rule.
+In my program I tried to differentiate them as much as possible: the result is that while boids are just trying to avoid 
+collisions with flockmates, they will actually EXCAPE from a predator. The visual effect is quite different, so is the implementation:
+technically, while the avoidance rule just affects boid directions, the predator rule affects also their speed. The way in which
+this rule affects boid speeds is actually determined by a function that maps the distance between the boid and the predator to the
+speed that boid will have while going away from the predator itself.
+</td>
+<td><img src="predator.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Predator Function Shapes</h4>
+The interesting thing about the predator rule is that, depending on the shape of the distance-to-speed (DtS) function one can
+achieve pretty different effects. The same rule can be used to create 'standard' predators, or to simulate an effect that
+is more similar to a collision. In my demo, the boids seem to 'hit' the cup, but they are actually seeing the cup as another predator... just with a different DtS function shape. On the right you can see a qualitative image of the DtS used for the 
+predator marker (in <font color=red>red</font>) and for the cup (in <font color=blue>blue</font>). Notice that <strong>R</strong> corresponds
+to the cup body radius.
+</td>
+<td><img src="functions.png" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="vectors.png" /></td>
+<td><h4>Putting all Together</h4>
+Now that we have the four vectors generated by the four separate rules we have to put them together in some way to generate
+the final steering vector. This is pretty simple. Since we want the first three rules to affect just the boid direction we will
+sum them togheter (that's not an exact sum, we consider the <font color=lime>Coordination</font> parameter to do a weighted average
+between the target and the coordination vectors) and then <b>Normalize</b> the result so that it will always have length 1. Now, we
+add the predator vector to the result, to obtain the final steering vector. Adding the predator vector after normalization means letting
+the predator rule influence also the boid speed. The last thing we have to do is to blend the steering vector with the current boid
+direction vector according to the <font color=lime>Steering Friction</font> parameter, in order to obtain a brand new direction vector
+for the boid.
+</td>
+</tr>
+</table>
+<br />
+
+<table><tr><td><img src="Sign.jpg"/><img src="Sign.jpg"/><img src="Sign.jpg"/></td><td><h3>Q&A</h3></td></tr></table>
+<b>Saiprasad Santhanakrishnan</b><br />
+Your boids tend to go out of the paper and turn back at different distances from the blue goal. How do you determine this.
+Also, the speed is constant so, I doubt this determines it.<br />
+<b>Answer</b><br />
+It may seem a pretty complex behavior, but this is just a result of the interaction of all the tree rules in the 
+creation of the final steering vector. I don't have an analytical explanation of why the boids do things this way,
+they just do :)
+
+<br /><br /><b>Vijay Krishnamoorthy</b><br />
+Whenever your boids avoid an obstacle as predator, they scatter away from the group. Despite the different
+directions in which they scatter, they not only try to reach the goal again, but also try to join with the
+other boids on their way to the goal. How did you implement this? Is there any special rule for the boids
+to join other boids?<br />
+<b>Answer</b><br />
+I didn't need any special rule. When two boids are close, they tend to have the same direction (coordination rule).
+As a consequence, they will turn in a similar way from that point on and so, excluding other influences, they
+will keep moving together.
+
+<br /><br /><b>Joshua Buss</b><br />
+1 - How did you do the click-and-drag on the objects?  Sounds like most people had a hard time with this, but yours worked pretty nicely.  
+Reverse projections?<br />
+2 - Also, how did you implement the concept of a constant speed?  All vectors getting added together will produce vectors with both 
+greater and lesser values than this constant, right?  So how do you scale this resulting vector to a single direction with your 
+constant speed? <br />
+<b>Answer</b><br />
+1 - No need for inverse projections, Electro somewhat does this for you. You can pass the mouse pointer coordinates to a function and
+you will obtain a vector in world coordinates that 'represents' the point on which you are clicking as a ray that goes towards your
+scene. You can then use the physics engine to detect collisions between this ray and your scene geometry.<br />
+2 - Good question. Basically, after I sum up vectors that represent the target, avoidance and coordination rules, 
+I take care of normalizing the result. In this way I will always have a vector of length 1, so it will affect only 
+boid directions and not speeds. My predator rule instead will infulence also boid speeds, so I add in to the steering vector
+AFTER normalization.
+
+<br /><br /><b>Brian Uphoff</b><br />
+The boid code that you created is great.  Your boids look like schooling fish when all three rules are implemented.  
+I believe this is primarily due to your steering friction variable.  This variable adds a lot of realism to the simulation.  
+How did you come up with the steering friction variable?  Was there any documentation that you went through that described it?<br />
+<b>Answer</b><br />
+Even though this solution is not new for sure and must be documented somewhere, I came up with the idea of introducing 
+steering friction by my own. I didn't like the effect I got when I was just using my steering vector as the new direction for my
+boids, so the most natural (and simple) solution that came into my mind was to do a weighted average between the steering vector
+and the old boid direction. What I call steering friction is just the weight parameter I'm using in that calculation.
+
+<br /><br /><b>Michele Santoro</b><br />
+Your boids are very nice, how did you do their movements? because, if the goal is always the center of the blue big spot, 
+they should try to reach it, not stay at its side.<br />                 
+<b>Answer</b><br />
+The boids actually try to reach the goal, but the fact is they can't just stop there, because they have a constant speed.
+This, in addition to the steering friction parameter, makes them eventually run in circles around the blue marker, when the
+target rule is the only one activated.
+
+<!----------------------------------------------------------------------------->
+<!-- USER HTML END ------------------------------------------------------------>
+<!----------------------------------------------------------------------------->
+                  </td>
+                </tr>
+            </table>
+          </td>
+          <td background=images/ca_04.jpg width=14 height=445>&nbsp; </td>
+        </tr>
+        <tr> 
+          <td colspan=3> <img src="images/ca_05.jpg" width=777 height=17 alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div align="center"><br>
+  <font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">&copy; 
+  copyright 2003+ Template designed by <a href="http://www.zymic.com" target="_blank">www.zymic.com</a></font></div>
+</body>
+</html>

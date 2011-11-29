@@ -1,0 +1,145 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>CS491 Project 3 - Saturday Night at the Movies</h2>
+    <p>
+    For this project, we had to build an application to visualize data coming from
+    <a href="http://www.imdb.com/">the Internet Movie Database (IMDB)</a>. The application had to offer the user the possibility
+    of visualizing and comparing the careers of multiple actors and directors, in a way similar to
+    <a href="http://www.nytimes.com/interactive/2009/06/25/arts/0625-jackson-graphic.html">the NY Times Billboards Rankings</a>. Data preprocessing was of extreme importance for this project, since
+    the original IMDB text listings data had to be filtered and reorganized in order to bring it down
+    to an acceptable size and easy-to-load format.
+    </p>
+</div>
+<div class="section">
+    <h2>Data Preprocessing</h2>
+    <p>
+    The initial data parsing process extracted just the raw actor, actress, director, movie, rating, and genre information from the data files. TV shows, video games, 
+    and direct to video entires were removed. This reduced the initial 400 MB actor file to just 100 MB. The second parsing step involved reading in the parsed data files.
+    Movie data is stored in a hashtable of Movie objects. Next the movie ratings and genres are appended to the Movie objects. For all actors, actresses, and directors movie 
+    entires are listed by a unique ID number instead of the original movie name. This reduced the actor file size from 100 MB to just 12 MB. The next step was to take the 
+    28 genres from the dataset and combine them down to six. To accomplish this, we generated a list of the total genres that were appended to each move. Then for 
+    each genre we calculated how many other genres also appeared in the same movie. Using these list we combined genres together that had a high percentage of films
+    with other genres. The remaining smaller genres that had fewer than a few thousand total tags or movies that had no genre listed were combined into the Other category.
+    </p>
+    <p>
+    The top/bottom actor, actress, and director lists were generated using the average of the movies they were in up to the decade selected. The rank is slighty adjusted 
+    based on the billing rank of the actor. If the actor has a billing rank of 1-9 their rating for that movie was increased based on how high they were ranked.
+    Rank 10 just uses the movie rating, and a rank of 11+ would lower the rating for that movie. We would have ideally made use of the number of votes, distribution, 
+    and comparisons with the total number of voters in a particular decade. The structure to do this exists, but was not fully implemented due to time constraints.    
+    </p>
+</p>
+</div>    
+<div class="section">
+    <h2> Application Features</h2>
+    
+    <div align"center"><img src="./s1.png"/></div>
+    <h3>Application layout</h3>
+    <p>
+    The application is divided into three main sections, the toolbar, the side panel and the plot area.
+    <ul>
+        <li><b>The Toolbar</b>, on the top of the application window, exposes buttons to show or hide different side panels, and
+        displays a legend of the movie genre categories used in the visualization. The genre legend items are actually clickable in order to
+        enable genre filtering, as explained in the following sections.</li>
+        <li><b>The Side Panel</b>, located on the left of the application window, is the central location used for database navigation, searching and
+        actor selection.</li>
+        <li><b>The Plot Area</b> is the area of the application dedicated to the actual visualization of actor careers. Closing the side panel will maximize the size
+        of the plot area.</li>
+    </ul>
+    </p>
+    
+    <div align"center"><img src="./s2.png"/></div>
+    <h3>Selecting Actors</h3>
+    <p>
+    To add an actor plot to the plot area, it is enough to select him or her from the side panel listings. The side panel offers a number of different ways of performing this
+    selection. All of the people contained in the database (actors, actresses and directors) are categorized using a number of <b>filters</b>, that the user can access from
+    the side panel. The three main filter categories are best people, worst people and suggestions:
+    <ul>
+        <li><b>The Best People</b> category offers filters to the top actors, actresses and directors for each decade. The algorithm used to compute this listings
+        has been explained in a previous section</li>
+        <li><b>The Worst People</b> category works as the best people one, except it offers filtrs to access the worst people for each decade</li>
+        <li><b>The Suggestions</b> category offers additional useful filters: a random suggestions filter, dynamic filters depending on the selected year or genre, and
+        a filter to access the entire database listings.</li>
+    </ul>
+    </p>
+    <p>
+    Navigating through the filters is extremely easy. The user can expand / collapse every single filter to display its contents, and then click on the individual entries
+    to add the specified person to the plot area. All of the filters also support <b>real time searching</b>: the user can start typing text at any time to have the contents of filters 
+    automatically searched for the specified string.
+    </p>
+    
+    <h3>Configuring plots</h3>
+    <p>
+    Once one or more plots have been added to the plot area, they can be configured using the two buttons on the bottom left part of the plot area. These buttons can be
+    used to configure the bar charts and to enable or disable the visualization of additional data on the plot.
+    <p>
+    <p>
+    <p align="center">
+    <img src="./s4.png" width="200"/>
+    <img src="./s5.png" width="200"/>
+    <img src="./s6.png" width="200"/>
+    </p>
+    The <b>bar chart config button offers the following choices:</b>
+    <ul>
+        <li><b>Average ratings</b> displays the average rating of movies for each year</li>
+        <li><b>Min Max Average ratings</b> displays the average rating of movies for each year plus the maximum and minimum movie rating for that year</li>
+        <li><b>Movies</b> displays the amount of movies done for each year</li>
+        <li><b>Movies by Genre</b> displays the amount of movies done for each year, color coded depending on the movie genre</li>
+        <li><b>Movies by Actor / Director</b> displays the amount of movies done for each year, color coded depending on the fact that the current person was an
+        acotr or a director in thet movie.</li>
+    </ul>
+    </p>
+    <p>
+    <p align="center">
+    <img src="./s7.png" width="200"/>
+    <img src="./s8.png" width="200"/>
+    </p>
+    The <b>eextra data config button offers the following choices:</b>
+    <ul>
+        <li><b>Average Ratings plot</b> displays a line plot showing the aggregate average ratings for the actor / director over time</li>
+        <li><b>Aggregate Genres</b> displays the distribution of genres for movies involving the specified person over time</li>
+    </ul>
+    </p>
+    
+    <p align="center">
+    <img src="./s9.png" width="200"/>
+    <img src="./s10.png" width="200"/>
+    </p>
+    <p>
+    Bar charts and extra data visualizations can be overlapped to display correlated information in different formats. Additionally, at the right end of each plot, a pie chart and
+    a smaller bar chart display aggregated information about genre and ratings distribution for the current actor / director.
+    </p>
+    
+    <h3>Navigating time</h3>
+    <p align="center">
+    <img src="./s11.png"/>
+    <img src="./s12.png"/>
+    </p>
+    <p>
+    <p>
+    By clicking on any plot, it is possible to select a specific year. The side panel upper section will display a listing of movies done by the currently visualized
+    people on that year. Next to each movie is a colored icon indication the movie genre, plus an icon indicating if the person was an actor or
+    director in that movie. Hovering with the mouse on a movie will display a small tooltip panel offering some additional information for that movie, like the
+    average rating, the number of votes on IMDB and the rating distribution plot.
+    </p>
+    
+</div>
+
+<div class="section">
+    <h2>Additional Screenshots and Download</h2>
+    <p align="center">
+    <a href="./screenshot1.png"><img src="./screenshot1.png" width="230"/></a>
+    <a href="./screenshot2.png"><img src="./screenshot2.png" width="230"/></a>
+    <a href="./screenshot3.png"><img src="./screenshot3.png" width="230"/></a>
+    </p>
+    
+    <p align="center">
+    <a href="./screenshot4.png"><img src="./screenshot4.png" width="230"/></a>
+    <a href="./screenshot5.png"><img src="./screenshot5.png" width="230"/></a>
+    <a href="./screenshot6.png"><img src="./screenshot6.png" width="230"/></a>
+    </p>
+    
+    <h3 align="center"><a href="../downloads/index.shtml">>>> DOWNLOAD STANDALONE VERSION (WIN AND MAC) <<<</a></h3>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

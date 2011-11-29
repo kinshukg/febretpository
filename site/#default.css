@@ -1,0 +1,259 @@
+body 
+{
+	margin: 11px 0 0 0;
+	padding: 0;
+	background: #000000 url(images/body_background_dark.png) repeat;
+	font: normal small Arial, Helvetica, sans-serif;
+    font-size: 14px;
+	color: #999999;
+}
+
+h2, h5, h6 
+{
+	margin: 0;
+	padding: 0;
+	letter-spacing: .2em;
+    font-weight: bold;
+	color: #000000;
+}
+
+h1, h4
+{
+	margin: 0;
+	padding: 0;
+	letter-spacing: .2em;
+    font-weight: bold;
+	color: #ffffff;
+}}
+
+p, ul, ol, blockquote 
+{
+	display: block;
+	margin-top: 0;
+ 	line-height: 160%;
+    text-align: justify;
+}
+
+a
+{
+	text-decoration: none;
+	color: #9ED738;
+}
+
+img 
+{
+    border: 1px solid #888888;
+    padding: 2px 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+    /*background-color: #283228;*/
+}
+
+.clickable
+{
+    border: 1px solid #9ED738;
+    padding: 2px 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+    /*background-color: #283228;*/
+}
+
+.rawImg 
+{
+    border: 0px solid #000000;
+    background-color: transparent;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+}
+
+b
+{
+    color: #FFFFFF;
+}
+
+em
+{
+    color: #AAFFAA;
+}
+
+/**************************************************************************************************
+ * Header 
+ */
+#header
+{
+	width: 720px;
+	height: 161px;
+	margin: 0 auto;
+	/*background: url(images/img2.jpg) no-repeat;*/
+}
+
+#header * 
+{
+	text-align: right;
+	color: #ffffff;
+}
+
+#header h1 
+{
+	padding-top: 75px;
+	font-size: 3em;
+}
+
+#header h2 
+{
+	font-size: 1.2em;
+}
+
+/**************************************************************************************************
+ * Menu 
+ */
+#menu 
+{
+	/*width: 1000px;*/
+	height: 55px;
+	margin: 0 auto;
+}
+
+#menu ul 
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li 
+{
+	display: inline;
+}
+
+#menu a 
+{
+	display: block;
+	float: left;
+	width: 142px;
+	height: 21px;
+	padding: 7px 1px 0 1px;
+	background: url(images/img3.gif) no-repeat center center;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size: x-small;
+	font-weight: bold;
+	color: #CCCCCC;
+}
+
+#menu a:hover, #menu .active a 
+{
+	background-image: url(images/img4.gif);
+	color: #FFFFFF;
+}
+
+/**************************************************************************************************
+ * Content 
+ */
+#content 
+{
+    padding: 20px 20px;
+    max-width: 1000px;              
+    min-width: 1000px;
+    margin: 0 auto;                 /* Center content */
+}
+
+.section 
+{
+    float: left;
+    width: 100%;
+ 	line-height: 160%;
+    margin-bottom: 10px;
+    padding: 10px;
+    
+	border: 1px solid #262626; 
+	background: #161616;
+}
+
+.item 
+{
+    display: block;
+    line-height: 160%;
+    /*width: 100%;*/
+    padding: 10px;
+    overflow: auto;
+    text-align: justify;
+	
+	margin-bottom: 1px;
+    
+	border: 1px solid;
+	border-top-color: #555555;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	background: #161616;
+}
+
+.subitem
+{
+    display: block;
+    line-height: 160%;
+    overflow: auto;
+    text-align: justify;
+}
+
+/**************************************************************************************************
+ * Content Elements 
+ */
+#content h2 {
+	height: 21px;
+	margin-bottom: 20px;
+	padding: 9px 0 0 10px;
+	letter-spacing: normal;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+#content h4 {
+	margin-bottom: 20px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+#content h3 {
+	text-transform: uppercase;
+	letter-spacing: normal;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+#content ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: disc inside;
+    text-indent: 10px;
+	color: #FF0000;
+}
+
+#content li {
+	color: #AAAAAA;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+/*#section h2 {
+	height: 21px;
+	margin-bottom: 20px;
+	padding: 9px 0 0 10px;
+	letter-spacing: normal;
+	font-size: .9em;
+}
+
+#section h3 {
+	text-transform: uppercase;
+	letter-spacing: normal;
+	font-size: 16px;
+	color: #FFFFFF;
+}*/

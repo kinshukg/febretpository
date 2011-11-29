@@ -1,0 +1,14 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h2>END OF TUTORIAL</h2>
+    <p>
+    ...And this ends the tutorial! 
+    </p>
+    <ul>
+        <li><a href="./hydroviz.shtml"><b><em>GO TO THE HYDROVIZ MAIN PAGE</em></b></a></li>
+        <li><a href="./hydroviz7.shtml"><b><em>PREVIOUS</em></b></a></li>
+    </ul>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

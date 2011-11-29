@@ -1,0 +1,32 @@
+<!--#include virtual="/etc/header.html" -->
+
+<div class="section">
+    <h1>.</h1>
+    <h1 align="center"><img src="qbviz/Splash.png" class="rawImg"/></h1>
+    
+    <p>
+        Hydroviz is a web application that gives the users access to salinity and currents
+        data of Corpus Christi Bay, Texas. Various layers of data can be attached on top of 
+        a 3d reproduction of the bay, and their variation over time and depth can be explored
+        interactively. Users can also access a common <b>virtual workspace</b> in which they
+        can share created views, and modify them in cooperation. Hydroviz client-side
+        component has been developed in flash, and makes use of <a href="./qbviz.shtml">QbViz</a>
+        to leverage its data visualization and collaborative features.
+    <p>
+        
+        <b>Hydroviz source code will be available as part of the QbViz software package.
+        Original bathymetry and hydrographic datasets won't be part of the software package.
+        The datasets may be made public, If I will be allowed to do so. </b>
+        
+        </br>
+        
+        <ul>
+        <li><a href="./qbviz/software/QbViz 0.3.zip">Download the QbViz and Hydroviz software package</a></li>
+        <li><a href="./qbviz.shtml">Read some more about QbViz</a></li>
+        <li><a href="./hydroviztut.shtml">Read the Hydroviz Tutorial</a></li>
+        <li><a href="http://febretpository.blogspot.com/search/label/News">Read Project News</a></li>
+        </ul>
+    </p>
+</div>
+
+<!--#include virtual="/etc/footer.html" -->

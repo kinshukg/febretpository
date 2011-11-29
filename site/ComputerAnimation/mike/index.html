@@ -1,0 +1,269 @@
+<html>
+<head>
+<title> Alessandro Febretti - CS527 Project 0</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE>
+a:link  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:visited  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:active  {
+	color : #7777FF;
+	text-decoration : none;
+}
+
+a:hover  {
+	color :#7777FF;
+	text-decoration : none;
+}
+
+h3 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+h4 {
+    font-family: Tahoma, Verdana;
+    color: white;
+}
+
+</STYLE>
+<STYLE type="text/css">
+<!--
+BODY {
+font-size: 2;
+font-family: Tahoma, Verdana;
+color: white;
+}
+-->
+</STYLE>
+</head>
+
+<body bgcolor="#000000" text="#000000">
+<table width="100" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><img src="images/header.jpg" width="777" height="150"></td>
+  </tr>
+  <tr>
+    <td>
+      <table width=777 border=0 cellpadding=0 cellspacing=0>
+        <tr> 
+          <td colspan=3> <img src="images/ca_01.jpg" width=777 height=16 alt=""></td>
+        </tr>
+        <tr> 
+          <td background=images/ca_02.jpg width=15>&nbsp; </td>
+          <td background=images/cabg.gif width=748 height=445 valign="top"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="6">
+                <tr> 
+                  <td style="height: 28px">
+<!----------------------------------------------------------------------------->
+<!-- USER HTML START ---------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<a href="../mike/index.html">Project 1 </a>|<a href="../boids/index.html"> Project 2 </a>|<a href="../matcheez/index.html">Project 3 (Team Project) </a>|
+<a href="../paper/index.html"> Paper Presentation </a>|<a href="../final/index.html"> Final Project </a><br /><br />
+
+<table><tr><td><img src="Sign.jpg"/></td><td><h3>TUTORIALS</h3></td></tr></table>
+<table>
+<tr>
+<td><h4>Eggplant</h4>
+Not difficult. Here I just played a little bit with modifiers and the UV Tool.
+</td>
+<td><img src="Eggplant.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="Bird.jpg" border=1/></td>
+<td><h4>Bird</h4>
+The actual bird modeling was quite simple. I got some more difficulty in doing the walk cycle
+right, but I ended up with something almost working anyway. In this tutorial I also tried the
+Graph editor for the first time. Didn't think I would actually end up using this in one of
+the scenes of my animation.
+</td>
+</tr>
+</table>
+<br />
+<br />
+<br />
+
+<table><tr><td><img src="Sign.jpg"/><img src="Sign.jpg"/></td><td><h3>PROJECT</h3></td></tr></table>
+<table>
+<tr>
+<td><h4>The Story</h4>
+My silly animation is about Mike, a little puppet who... finds a sketch of himself
+that I did while working on the animation :)<br />
+After a little bit of surprise, Mike tries to modify the sketch and finds out that
+(quite obviously...) what changes on the sketch changes also on him. At his own expense,
+Mike will discover that things work also the other way around...
+</td>
+<td><img src="Story.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="Mike.jpg"  border=1/></td>
+<td><h4>About Mike</h4>
+Mike is a really simple character. The face has just the eyes on it and I chose to draw
+no arms and legs at all, but just the feet and hands. My main objective was to try and make
+ it as expressive as possible even without this stuff.</td>
+</tr>
+</table>
+
+<h3>Making Of</h3>
+<table>
+<tr>
+<td><img src="Sketch.jpg"  border=1/></td>
+<td><h4>Sketches</h4>
+The first thing I did (apart from having the idea of what the video would be about :P) was to 
+draw some sketches of my main character. I knew that one of those sketches was going to be on the
+video itself, so I tried to do something that was useful for me to understand how to build Mike
+but looked also somewhat cool.</td>
+<td><img src="Sketch 2.jpg" /></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>The Storyboard</h4>
+I then started subdividing the whole video in a set of different scenes. Each of those scene was going
+to correspond to an actual Anim8or scene. I did this mainly to simplify further work, to organize things better
+and also to be able to potentially split up the rendering to different machines.<br />
+After dividing the scenes I actually started drawing brief sketches of them. The resulting storyboard was useful to
+extabilish exactly in wich position I would place the camera and the objects, along with the sequence and (almost) exact
+timing of animations.</td>
+<td><img src="Storyboard.jpg"  border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Creating Objects</h4>
+The objects I needed for my animations were few and really simple: A table, a piece of paper textured with an
+actual photo of one of my sketches, a pencil and, well, Mike :) <br />
+Object creation was straightforward. For the pencil I just used the lathe tool, and a simple 1D texture with the right
+colors.</td> 
+<td><img src="Pencil.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><img src="Sequence.jpg" border=1/></td>
+<td><h4>Creating Mike</h4>
+Drawing Mike was not that difficult either. Simple shapes, and a standard humanoid skeleton. The only particular thing
+I had to do, was to add another bone to the head section of Mike to let the head sphere rotate on itself. At this point
+I also created a simple walk cycle for Mike, as I knew I would have at least a pair of scenes with him going around.
+</td> 
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>The Set</h4>
+All my animation is taking place on a table, but the animation itself is splitted in a certain number of scenes (11). To
+maintain consistency among different scenes (for object positions, lighting and so on) I then decided to create a 'base scene'.
+That I could reuse as a starting point for each scene I was going to create. I saved this special set apart from my project, and
+imported it every time I was beginning another scene.
+</td> 
+<td><img src="BaseScene.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Animation</h4>
+And then came the difficult part... animating stuff :) <br />
+I was lucky with certain parts, as they came out as I wanted them the first time. Some other simply ended up in a mess of
+keyframes and I had to do them from scratch... again and again. One of the most difficult (and probably worse) scenes I did
+is the one with Mike walking towards the camera with the pencil in his hands, and then drawing some stuff on the paper. I tried
+to give the sensation of him going around with an object twice as big as him by making Mike lean backwards and walk in a different way.
+When Mike had to modify the sketch, I tried to make his hands moving in a correct way, but I just wasn't able to do it as I wanted it to be.
+</td> 
+<td><img src="Animation.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+
+<table>
+<tr>
+<td><h4>Pre-Production Rendering And Editing</h4>
+When I got (almost) every scene ready, I did a fast rendering of each one of them with a really low resolution (160x120).
+I then used the generated videos to do some experiments with the editing. I looked around for a soundtrack, and when I found
+one that I liked I had to edit it to be long enough for my animation. The editing wasn't that good, but it quite worked.
+When I got the pre-production video ready I just discovered that some things has to be modified to be more in sync with the music,
+so I was able to do it before the actual final rendering was done.
+<br /> 
+</td> 
+<td><img src="Sound.jpg" border=1/></td>
+</tr>
+</table>
+<br />
+<table>
+
+<tr>
+<td><img src="MovieMaker.jpg" border=1/></td>
+<td><h4>Final Rendering And Editing</h4>
+Nothing much to say about it. It just took a LOOOOOOOONG time. One way of reducing rendering time was to use the Monte Carlo method for
+soft shadow computation. Resulting shadows are not so good, but they need almost half of the computing time required for standard 
+soft shadowing. <br /> 
+After the videos of all the scenes were ready, I just did the editing as I did it for the pre-production version. And voila, the video
+is ready :)
+</td> 
+</tr>
+</table>
+<br />
+
+<h3>The End Of All Things</h3>
+Download it from <b><a href="Mike.wmv">HERE</a></b> <br /><br />
+
+<b>SIDE NOTE:</b> After the final rendering was done, I noticed that in one of the scenes there was a little incongruence...
+I had no time to render the scene again so I just left the thing where it was. If you like to, try to find it :)
+
+<br />
+<br />
+<table><tr><td><img src="Sign.jpg"/><img src="Sign.jpg"/><img src="Sign.jpg"/></td><td><h3>Q&A</h3></td></tr></table>
+<b>Michele Santoro</b><br />
+How did you do the zooming on Mike's face without cutting out his head? Did 
+you create a bigger object or did you change some camera settings?<br />
+<b>Answer</b><br />
+It wasn't a bigger model, I just made Mike walk towards the camera: To avoid having
+his head clipped off when it was too near to the camera, I modified the camera
+parameters in order to have a very close near clipping plane.
+
+                  
+<!----------------------------------------------------------------------------->
+<!-- USER HTML END ------------------------------------------------------------>
+<!----------------------------------------------------------------------------->
+                  </td>
+                </tr>
+            </table>
+          </td>
+          <td background=images/ca_04.jpg width=14 height=445>&nbsp; </td>
+        </tr>
+        <tr> 
+          <td colspan=3> <img src="images/ca_05.jpg" width=777 height=17 alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<div align="center"><br>
+  <font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFFF">&copy; 
+  copyright 2003+ Template designed by <a href="http://www.zymic.com" target="_blank">www.zymic.com</a></font></div>
+</body>
+</html>
