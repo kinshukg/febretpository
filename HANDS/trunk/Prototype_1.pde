@@ -4,6 +4,11 @@
 // Added Buttons, Checkboxes and PopUpSections Functionality - To be Continued
 // ############################################################################################################################################################################################
 
+
+// Variables used to keep track of the prototype state
+public int prototypeVariant = 0;
+public int prototypeState = 0;
+
 // Variables used got holding the different views
 public View mainView;     // The Main View is the background of the window with all of the other widgets on top of it.
 public TitleView titleView;
@@ -14,12 +19,10 @@ public ThirdLevelRowView  musicTherapyView, calmingTechniqueView, calmingTechniq
 public ScrollingView scrollingView;
 public ClosePopUpView closePopUpView;
 public PopUpView popUpView;
-
-
+public TooltipView tooltipView = null;
 
 // Variables used for Font Control
 public PFont font,fbold; 
-
 
 // Variables used for colours
 public color backgroundColor = 255;
@@ -38,6 +41,7 @@ public color popUpSectionColor = #FFF68F;
 public color alertHighColor = #FF6A6A ;
 public color alertMidColor = #DAA520;
 public color alertLowColor = #CAFF70;
+public color tooltipColor = #FFFFFF;
 
 // Variables holding Image names
 public String handIconString = "Red_Handprint__right_orange.png";
@@ -56,9 +60,13 @@ public PImage plusIcon, minusIcon;
 public String name = "Ann Taylor";
 public String dob = "03/12/1938",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
 public String other = "Sister wants to be called ANYTIME at patient's request -- 776-894-1010-#################################";
+
+// Other text strings.
 public String rationale1 = "Data Mining Revealed that the combination of Medication Management, Positioning, and Pain Management has the most positive impact on pain level. ";
 public String rationale2 = "Mrs Taylor's POC indicates that pain level is not controlled, a common finding for EOL patients who have Pain and Impaired Gas Exchange listed as problems on the POC.";
 public String rationale3 = "Research has discovered that >50% of EOL patients do not achieve the expected NOC Pain Level goal by discharge or death.";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setup()
 {
   size(1024, 800);
@@ -262,32 +270,51 @@ public void setup()
   //mainView.subviews.add(checkbox);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 public void draw()
 {
-  
-  background(backgroundColor); 
-  int hs = 0;
-  for(int i = 0; i < popUpView.subviews.size();i++){
-  hs += ((View)popUpView.subviews.get(i)).h;
-  }
-  popUpView.h = hs;
 
-  mainView.draw();
- //System.out.println("Spiritual Support View y = " +spiritualSupportView.y + " and h = "+ spiritualSupportView.h + " and Acute Pain  y = "+acutePainView.y );
- fill(0);
- text("Current \nRating",640,scrollingView.y-30);
- text("Expected \nRating",740,scrollingView.y-30);
- image(firstLevelIconLegend, 20,scrollingView.y+scrollingView.h+10);
- textSize(14);
- text("NANDA-I",60,scrollingView.y+scrollingView.h+20);
- image(secondLevelIconLegend, 20,scrollingView.y+scrollingView.h+45);
- text("NOC",60,scrollingView.y+scrollingView.h+55);
- image(thirdLevelIconLegend, 20,scrollingView.y+scrollingView.h+80);
-text("NIC",60,scrollingView.y+scrollingView.h+90);
- textSize(12);
- text("Nurse's Signature: _________________________", 20, scrollingView.y+scrollingView.h+125);
- text("Printed on: 09/18/2010 02:28:08", 700, scrollingView.y+scrollingView.h+125);
- 
+	background(backgroundColor); 
+	int hs = 0;
+	for(int i = 0; i < popUpView.subviews.size();i++)
+	{
+		hs += ((View)popUpView.subviews.get(i)).h;
+	}
+	popUpView.h = hs;
+
+	mainView.draw();
+	
+	
+	// Draw static view elements
+	drawStaticViewElements();
+
+	if(tooltipView != null)
+	{
+		System.out.println("Creating tooltip");
+		tooltipView.draw();
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void drawStaticViewElements()
+{
+	int footerY = (int)scrollingView.y + (int)scrollingView.h + 90;
+	
+	fill(0);
+	text("Current \nRating", 640, scrollingView.y - 30);
+	text("Expected \nRating", 740, scrollingView.y - 30);
+	
+	textSize(14);
+	image(firstLevelIconLegend, 20, footerY + 10);
+	text("NANDA-I", 60, footerY + 20);
+	image(secondLevelIconLegend, 20, footerY + 45);
+	text("NOC", 60, footerY + 55);
+	image(thirdLevelIconLegend, 20, footerY + 80);
+	text("NIC", 60, footerY + 90);
+	
+	textSize(12);
+	text("Nurse's Signature: _________________________", 20, footerY + 125);
+	text("Printed on: 09/18/2010 02:28:08", 700, footerY + 125);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -350,6 +377,12 @@ static String [] wrapText (String text, int len)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void mousePressed()
 {
+	// KInda hack: after a mouse clikc ANYWHERE, if a tooltip vindow is open we close it.)
+	if(tooltipView != null)
+	{
+		tooltipView = null;
+	}
+
 	//System.out.println(mouseX + " , "+ mouseY);
 	mainView.mousePressed(mouseX, mouseY);
 	if(popUpView.c.pressed)

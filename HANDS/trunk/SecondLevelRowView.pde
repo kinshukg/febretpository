@@ -48,6 +48,9 @@ class SecondLevelRowView extends View
 
 		this.actionButton = new Button(450, 6, 35, 14, "", buttonColor, 255);
 		subviews.add(this.actionButton);
+		
+		this.actionButton.tooltipText = "Tooltip text, bla bla bla ba bla blag askdj sfjwev fweic";
+		this.actionButton.tooltipMode = 1;
 
 		this.actionPopUp = p;   
 	}
