@@ -55,9 +55,12 @@ class SecondLevelRowView extends View {
     // i.e. 0,0 is the top left corner of this view
     // return false if the click is to "pass through" this view
    if(actionButton != null){
-   if(actionButton.selected){
-   if(!mainView.subviews.contains(actionPopUp))mainView.subviews.add(actionPopUp);
-   actionButton.selected = false;
+   if(actionButton.selected)
+   {
+		if(!mainView.subviews.contains(actionPopUp)) mainView.subviews.add(actionPopUp);
+		actionPopUp.arrowX = mouseX;
+		actionPopUp.arrowY = mouseY;
+		actionButton.selected = false;
    }
    else{
    mainView.subviews.remove(actionPopUp);
