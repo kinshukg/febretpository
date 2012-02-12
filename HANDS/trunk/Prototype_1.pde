@@ -290,7 +290,6 @@ public void draw()
 
 	if(tooltipView != null)
 	{
-		System.out.println("Creating tooltip");
 		tooltipView.draw();
 	}
 }
