@@ -61,7 +61,7 @@ public String rationale2 = "Mrs Taylor's POC indicates that pain level is not co
 public String rationale3 = "Research has discovered that >50% of EOL patients do not achieve the expected NOC Pain Level goal by discharge or death.";
 public void setup()
 {
-  size(1200, 700);
+  size(1024, 800);
  
  //Adjust fonts here, if needed 
   font = loadFont("ArialMT-20.vlw");
@@ -143,7 +143,8 @@ public void setup()
   String otherImproved = "";
   
 //  System.out.println("Printing");
-  for(int i = 0 ; i<otherPieces.length;i++){
+  for(int i = 0 ; i<otherPieces.length;i++)
+  {
   // System.out.println(otherPieces[i]);
    otherImproved += otherPieces[i]+"\n";
     
@@ -225,7 +226,7 @@ public void setup()
   PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
  
 
-  popUpView = new PopUpView(750,scrollingView.y-10,400);
+  popUpView = new PopUpView(600,scrollingView.y-10,400);
 
   popUpView.subviews.add(recommended);
   popUpView.subviews.add(alsoConsider);
@@ -288,6 +289,8 @@ text("NIC",60,scrollingView.y+scrollingView.h+90);
  text("Printed on: 09/18/2010 02:28:08", 700, scrollingView.y+scrollingView.h+125);
  
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 static String [] wrapText (String text, int len)
 {
   // return empty array for null text
@@ -343,18 +346,22 @@ static String [] wrapText (String text, int len)
 
   return ret;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void mousePressed()
 {
-  //System.out.println(mouseX + " , "+ mouseY);
-  mainView.mousePressed(mouseX, mouseY);
-  if(popUpView.c.pressed){
-  mainView.subviews.remove(popUpView);
-  popUpView.c.pressed = false;  
-}  //  tabView.mousepressed(mouseX,mouseY);
+	//System.out.println(mouseX + " , "+ mouseY);
+	mainView.mousePressed(mouseX, mouseY);
+	if(popUpView.c.pressed)
+	{
+		mainView.subviews.remove(popUpView);
+		popUpView.c.pressed = false;  
+	}
 }
 
-void roundrect(int x, int y, int w, int h, int r) {
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void roundrect(int x, int y, int w, int h, int r) 
+{
     noStroke();
     rectMode(CORNER);
 
