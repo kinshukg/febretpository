@@ -5,6 +5,10 @@ class Button extends View
 	String t;
 	color buttonColor, textColor;
 	Integrator fader;  
+	
+	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
+	int tooltipMode = 0;
+	String tooltipText;
   
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Button(float x_, float y_,float w_,float h_, String t, color buttonColor, color textColor)
@@ -36,6 +40,13 @@ class Button extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
+		if(tooltipMode == 1)
+		{
+			System.out.println("Creating tooltip");
+			tooltipView = new TooltipView(mouseX + 10, mouseY + 10, 200, 60, tooltipText);
+			tooltipView.arrowX = mouseX;
+			tooltipView.arrowY = mouseY;
+		}
 		// override this
 		// lx, ly are in the local coordinate system of the view,
 		// i.e. 0,0 is the top left corner of this view
