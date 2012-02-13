@@ -13,12 +13,9 @@ class Button extends View
 	Button(float x_, float y_,float w_,float h_, String t, color buttonColor, color textColor)
 	{
 		super(x_, y_,w_ ,h_); 
-		//   this.selected = selected;
 		this.t = t;
 		this.buttonColor = buttonColor;
 		this.textColor = textColor;
-		//   this.flashing = flashing;
-		//  fader = new Integrator(100);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,10 +29,10 @@ class Button extends View
 
 		fill(buttonColor);
 		roundrect(0,0,(int)w,(int)h,5);
+		
 		fill(textColor);
-		 textAlign(LEFT,TOP);
-		text(t,0,0);
-		textAlign(LEFT,CENTER);
+		textAlign(CENTER,CENTER);
+		text(t,w / 2, h / 2 - 2);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

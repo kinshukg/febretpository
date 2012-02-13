@@ -39,7 +39,7 @@ public color rationaleColor = 0;
 public color buttonSelectedColor = 200;
 public color buttonNotColor = #4682B4;
 public color popUpSectionColor = #FFF68F;
-public color alertHighColor = #FF6A6A ;
+public color alertHighColor = #FF3333;
 public color alertMidColor = #DAA520;
 public color alertLowColor = #CAFF70;
 public color tooltipColor = #FFFFFF;
@@ -167,7 +167,7 @@ public void setupPOCView()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPopup()
 {
-CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
+	CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 	ArrayList a = new ArrayList ();
 	a.add(c);
 

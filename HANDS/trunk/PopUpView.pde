@@ -12,8 +12,8 @@ class PopUpView extends View
 		super(x_, y_,w_ ,0);
 		c = new ClosePopUpView(0,0,w,20); 
 		this.subviews.add(c);
-		commit = new Button(20,0,150,20,"             Save Changes",0,255);
-		notApplicable = new Button(200,0,180,20,"       Not Applicable, because...",0,255);
+		commit = new Button(20,0,150,20,"Save Changes",0,255);
+		notApplicable = new Button(200,0,180,20,"Not Applicable, because...",0,255);
 		this.subviews.add(commit);
 		this.subviews.add(notApplicable);	
 		this.parent = parent;
