@@ -116,16 +116,16 @@ public void setup()
 
 	setupPOCView();
 
-	CheckBox c = new CheckBox(0,0,true,false,false,"NIC Positioning",plusIcon,null);
+	CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 	ArrayList a = new ArrayList ();
 	a.add(c);
 
 	PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
-	CheckBox c1 = new CheckBox(0,0,true,false,false,"NOC Energy Conservation",plusIcon,null);
-	CheckBox c2 = new CheckBox(0,0,true,false,false,"NOC Coping",plusIcon,null);
-	CheckBox c3 = new CheckBox(0,0,true,false,false,"NIC Pain Controlled Analgesia",plusIcon,null);
-	CheckBox c4 = new CheckBox(0,0,true,false,false,"NIC Relaxation Therapy",minusIcon,null);
+	CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
+	CheckBox c2 = new CheckBox(0,0,true,false,false,"Coping",plusIcon,null,"NOC");
+	CheckBox c3 = new CheckBox(0,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
+	CheckBox c4 = new CheckBox(0,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
 
 	ArrayList a1 = new ArrayList ();
 	a1.add(c1);
@@ -203,7 +203,7 @@ public void setupPOCView()
 	//mainView.subviews.add(impairedGasExchange);
 	scrollingView.subs.add(impairedGasExchange);  
 
-	anxietyLevelView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h,"Anxiety Level",secondLevelIcon,2,3);
+	anxietyLevelView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h,"Anxiety Level",secondLevelIcon,2,3,impairedGasExchange);
 	//mainView.subviews.add(anxietyLevelView);
 	impairedGasExchange.subs.add(anxietyLevelView);
 
@@ -223,7 +223,7 @@ public void setupPOCView()
 	//mainView.subviews.add(deathAnxietyView);
 	scrollingView.subs.add(deathAnxietyView);
 
-	anxietySelfControlView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h,"Anxiety Self-Control",secondLevelIcon,5,5);
+	anxietySelfControlView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h,"Anxiety Self-Control",secondLevelIcon,5,5,deathAnxietyView);
 	//mainView.subviews.add(anxietySelfControlView);
 	deathAnxietyView.subs.add(anxietySelfControlView);
 
@@ -245,7 +245,7 @@ public void setupPOCView()
 	//mainView.subviews.add(acutePainView);
 	scrollingView.subs.add(acutePainView);
 
-	painLevelView = new SecondLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h, "Pain Level",secondLevelIcon,1,5);
+	painLevelView = new SecondLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h, "Pain Level",secondLevelIcon,1,5,acutePainView);
 	//mainView.subviews.add(painLevelView);
 	acutePainView.subs.add(painLevelView);
 }
@@ -324,7 +324,7 @@ void mouseClicked()
 					if(c.selected)
 					{
 						toRemove.add(c);
-						if(c.icon1.equals(plusIcon))
+						if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
 						{
 							ThirdLevelRowView temp = new ThirdLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,thirdLevelIcon);
 							for(int k =0 ; k < popUpView.parent.subs.size();k++)
@@ -336,7 +336,21 @@ void mouseClicked()
 							popUpView.parent.subs.add(0,temp);
 							scrollingView.rearrange();
 						}
+                                          if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
+						{
+							SecondLevelRowView temp = new SecondLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,secondLevelIcon,0,0,popUpView.parent.parent);
+							for(int k =0 ; k < popUpView.parent.parent.subs.size();k++)
+							{
+						       		SecondLevelRowView tempo = (SecondLevelRowView)popUpView.parent.parent.subs.get(k);
+								tempo.y = temp.y+((k+1)*temp.h);
+							}
+							//mainView.subviews.add(medicationManagementView);
+							popUpView.parent.parent.subs.add(0,temp);
+							scrollingView.rearrange();
+						}
+
 					}
+
 				}
 				// Remove checked items after a commit.
 				for(int j = 0; j < toRemove.size(); j++)
