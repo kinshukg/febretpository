@@ -5,10 +5,16 @@ class Tooltip extends View
 	float arrowX, arrowY;
 	String[] rationaleString;
 	
+	StaticText label;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Tooltip(float x_, float y_, float w_, float h_, String text)
 	{
 		super(x_, y_,w_ ,h_);
+		
+		label = new StaticText(5, 5, w_ - 10, text);
+		subviews.add(label);
+		
 		this.text = text;
 	}
 
@@ -27,16 +33,5 @@ class Tooltip extends View
 		
 		fill(255, 255, 255);
 		roundrect(0, 0, (int)w, (int)h, 5);
-		
-		fill(0);
-		rationaleString = wrapText(text, (int)w / 6);
-
-		String r = "";
-		for(int i = 0; i< rationaleString.length;i++)
-		{
-			r+=rationaleString[i]+"\n";
-		}
-		textAlign(LEFT,TOP);
-		text(r, 5, 5);
 	}
 }
