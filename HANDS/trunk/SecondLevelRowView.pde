@@ -7,9 +7,10 @@ class SecondLevelRowView extends View
 	public ArrayList subs ;
 	Button graphButton, actionButton;
 	public PopUpView actionPopUp, graphPopUp;
-  
+        ColouredRowView parent;
+          
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	SecondLevelRowView(float x_, float y_,String title,PImage logo, int firstColumn, int secondColumn)
+	SecondLevelRowView(float x_, float y_,String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
 	{
 		super(x_, y_,width,25);
 		this.title = title;
@@ -17,6 +18,7 @@ class SecondLevelRowView extends View
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
 		this.subs = new ArrayList();
+this.parent=  parent;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +33,9 @@ class SecondLevelRowView extends View
 		image(logo,40,4);
 		//ellipse(37,12,12,12);
 		text(title,75,12);
+                if(firstColumn != 0)
 		text(firstColumn, 650, 12);
+                if(secondColumn != 0)
 		text(secondColumn, 750, 12);
 	}
 	
