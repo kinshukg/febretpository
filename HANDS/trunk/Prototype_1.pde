@@ -171,6 +171,9 @@ public void setupPopup()
 	ArrayList a = new ArrayList ();
 	a.add(c);
 
+	PopUpSection title = new PopUpSection(0,0,a,"Ms. Taylor's pain is not Controlled: ");
+	
+	
 	PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
 	CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
@@ -186,8 +189,10 @@ public void setupPopup()
 	
 	PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
 	popUpView = new PopUpView(600, pocManager.scrollingView.y - 10, 400, pocManager.painLevelView);
+	popUpView.subviews.add(title);
 	popUpView.subviews.add(recommended);
 	popUpView.subviews.add(alsoConsider);
+	
 	pocManager.painLevelView.setAlertButton(3,popUpView);
 }
 
