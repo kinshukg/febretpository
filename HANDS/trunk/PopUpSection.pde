@@ -26,6 +26,8 @@ class PopUpSection extends View
 		rect(0,0,w,h);
 
 		fill(0);
+		textAlign(LEFT, CENTER);
+		textFont(fbold);
 		textSize(16);
 		text(title, 10,10);
 		textSize(12);
