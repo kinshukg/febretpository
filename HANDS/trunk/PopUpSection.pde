@@ -5,6 +5,9 @@ class PopUpSection extends View
 	StaticText titleBox;
 	StaticText descriptionBox;
 	
+	Button titleButton;
+	int titleButtonMode;
+	
 	int separatorStyle;
 	ArrayList<CheckBox> actionBoxes;
 
@@ -48,8 +51,30 @@ class PopUpSection extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setInfoButton(String text)
+	{
+		titleButton = new Button(0, 0, 16, 16, infoIcon);
+		titleButton.tooltipMode = 1;
+		titleButton.tooltipText = text;
+		subviews.add(titleButton);
+		int titleButtonMode = 1;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
+		if(titleButton != null)
+		{
+			titleButton.y = 0;
+			titleButton.x = 5;
+			titleButton.w = 16;
+			titleButton.h = 16;
+			titleBox.x = 20;
+		}
+		else
+		{
+			titleBox.x = 0;
+		}
 		titleBox.w = w;
 		h = titleBox.h + 5;
 		if(descriptionBox != null)
@@ -77,13 +102,6 @@ class PopUpSection extends View
 		fill(popUpSectionColor);
 		rect(0,0,w,h);
 
-		// fill(0);
-		// textAlign(LEFT, CENTER);
-		// textFont(fbold);
-		// textSize(16);
-		// text(title, 10,10);
-		// textSize(12);
-		
 		if(separatorStyle != 0)
 		{
 			strokeWeight(4);

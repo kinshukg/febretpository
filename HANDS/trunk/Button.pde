@@ -4,11 +4,22 @@ class Button extends View
 	boolean selected = false, flashing = false;
 	String t;
 	color buttonColor, textColor;
+	PImage icon;
 	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
 	int tooltipMode = 0;
 	String tooltipText;
+	
+	boolean transparent;
   
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	Button(float x_, float y_,float w_,float h_, PImage icon_)
+	{
+		super(x_, y_,w_ ,h_); 
+		icon = icon;
+		transparent = true;
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Button(float x_, float y_,float w_,float h_, String t, color buttonColor, color textColor)
 	{
@@ -16,6 +27,8 @@ class Button extends View
 		this.t = t;
 		this.buttonColor = buttonColor;
 		this.textColor = textColor;
+		icon = null;
+		transparent = false;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,15 +37,27 @@ class Button extends View
 		noStroke();
 		//   if(flashing)
 
-		fill(0);
-		roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
+		if(!transparent)
+		{
+			fill(0);
+			roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
 
-		fill(buttonColor);
-		roundrect(0,0,(int)w,(int)h,5);
+			fill(buttonColor);
+			roundrect(0,0,(int)w,(int)h,5);
+		}
 		
-		fill(textColor);
-		textAlign(CENTER,CENTER);
-		text(t,w / 2, h / 2 - 2);
+		if(icon != null)
+		{
+		System.out.println("HGF");
+			image(icon, w / 2, h / 2);
+		}
+		
+		if(t != null)
+		{
+			fill(textColor);
+			textAlign(CENTER,CENTER);
+			text(t,w / 2, h / 2 - 2);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

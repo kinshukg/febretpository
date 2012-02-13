@@ -31,7 +31,8 @@ class PopUpView extends View
 			"Evidence Sugests:\n " +
 				"\t - A combination of Medication management\n " +
 				"\t - Some other stuff\n ");
-		title.separatorStyle = 1;		
+		title.separatorStyle = 1;
+		title.setInfoButton("Here is some information insida a tooltip yall");
 		
 		
 		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
