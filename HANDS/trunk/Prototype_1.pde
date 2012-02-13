@@ -288,6 +288,11 @@ void mouseClicked()
 	  popUpView.commit.selected = false;
 	}
 }
+void keyPressed() {
+  //System.out.println("Here!");
+  //System.out.println(mainView.keypressed());
+  mainView.keypressed();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void roundrect(int x, int y, int w, int h, int r) 
