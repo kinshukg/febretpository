@@ -13,6 +13,10 @@ class ScrollingView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
+		fill(0);
+		text("Current \nRating", 640, - 30);
+		text("Expected \nRating", 740, - 30);
+	
 		strokeWeight(4);
 		stroke(0);
 		fill(255);

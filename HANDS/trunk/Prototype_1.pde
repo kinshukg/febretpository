@@ -12,15 +12,15 @@ public int prototypeState = 0;
 
 // Variables used got holding the different views
 public View mainView;     // The Main View is the background of the window with all of the other widgets on top of it.
+
 public TitleView titleView;
 public PatientDataView nameView,dobView,genderView,allergiesView,codeStatusView,pocView,shftView,roomView,medicalDXView,mrView,physicianView,otherView;
-public ColouredRowView impairedGasExchange, deathAnxietyView,acutePainView;
-public SecondLevelRowView anxietyLevelView,anxietySelfControlView, painLevelView; 
-public ThirdLevelRowView  musicTherapyView, calmingTechniqueView, calmingTechniqueView_2,spiritualSupportView,medicationManagementView,painManagementView;
-public ScrollingView scrollingView;
+
 public ClosePopUpView closePopUpView;
 public PopUpView popUpView;
 public Tooltip tooltipView = null;
+
+POCManager pocManager;
 
 // Variables used for Font Control
 public PFont font,fbold; 
@@ -72,12 +72,12 @@ public void setup()
 {
 	size(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	//Adjust fonts here, if needed 
-	font = loadFont("ArialMT-20.vlw");
-	fbold = loadFont("Arial-BoldMT-20.vlw");
+	//Load fonts.
+	font = loadFont("SegoeUI-14.vlw");
+	fbold = loadFont("SegoeUI-Bold-14.vlw");
 	textFont(font);
 
-	//Images instantiated
+	// Load image assets.
 	handIcon = loadImage(handIconString);
 	handIcon.resize(0,25);
 
@@ -113,44 +113,8 @@ public void setup()
 	mainView.subviews.add(titleView); 
 
 	setupPatientInfoView();
-
 	setupPOCView();
-
-	CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
-	ArrayList a = new ArrayList ();
-	a.add(c);
-
-	PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
-
-	CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
-	CheckBox c2 = new CheckBox(0,0,true,false,false,"Coping",plusIcon,null,"NOC");
-	CheckBox c3 = new CheckBox(0,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
-	CheckBox c4 = new CheckBox(0,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
-
-	ArrayList a1 = new ArrayList ();
-	a1.add(c1);
-	a1.add(c2); 
-	a1.add(c3);
-	a1.add(c4);
-
-
-	PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
-
-
-	popUpView = new PopUpView(600,scrollingView.y-10,400, painLevelView);
-
-	popUpView.subviews.add(recommended);
-	popUpView.subviews.add(alsoConsider);
-
-	painLevelView.setAlertButton(3,popUpView);
-
-	medicationManagementView = new ThirdLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h+painLevelView.h,"Medical Management",thirdLevelIcon);
-	//mainView.subviews.add(medicationManagementView);
-	painLevelView.subs.add(medicationManagementView);
-
-	painManagementView = new ThirdLevelRowView(0, 50+medicationManagementView.h+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h+painLevelView.h,"Pain Management",thirdLevelIcon);
-	//mainView.subviews.add(painManagementView);
-	painLevelView.subs.add(painManagementView);
+	setupPopup();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,58 +160,35 @@ public void setupPatientInfoView()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPOCView()
 {
-	scrollingView = new ScrollingView(0, 40+titleView.h+5+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h, width, SCREEN_HEIGHT - 400);
-	mainView.subviews.add(scrollingView);
+	pocManager = new POCManager();
+	pocManager.reset();
+}
 
-	impairedGasExchange = new ColouredRowView(0, titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40,"Impaired Gas Exchange",firstLevelIcon);
-	//mainView.subviews.add(impairedGasExchange);
-	scrollingView.subs.add(impairedGasExchange);  
+///////////////////////////////////////////////////////////////////////////////////////////////////
+public void setupPopup()
+{
+CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
+	ArrayList a = new ArrayList ();
+	a.add(c);
 
-	anxietyLevelView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h,"Anxiety Level",secondLevelIcon,2,3,impairedGasExchange);
-	//mainView.subviews.add(anxietyLevelView);
-	impairedGasExchange.subs.add(anxietyLevelView);
+	PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
+	CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
+	CheckBox c2 = new CheckBox(0,0,true,false,false,"Coping",plusIcon,null,"NOC");
+	CheckBox c3 = new CheckBox(0,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
+	CheckBox c4 = new CheckBox(0,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
 
-	musicTherapyView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h,"Music Therapy", thirdLevelIcon);
-	//mainView.subviews.add(musicTherapyView);
-	anxietyLevelView.subs.add(musicTherapyView);
-	// musicTherapyView.comments.add("Family Priest to Visit 2am");
-	// musicTherapyView.comments.add("Family Priest to Visit 2am");
-
-	calmingTechniqueView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+musicTherapyView.h,"Calming Technique",thirdLevelIcon);
-	//mainView.subviews.add(calmingTechniqueView);
-	anxietyLevelView.subs.add(calmingTechniqueView);
-
-
-	deathAnxietyView = new ColouredRowView(0, titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+impairedGasExchange.h+anxietyLevelView.h+calmingTechniqueView.h+musicTherapyView.h,"Death Anxiety",firstLevelIcon);
-	//mainView.subviews.add(deathAnxietyView);
-	scrollingView.subs.add(deathAnxietyView);
-
-	anxietySelfControlView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h,"Anxiety Self-Control",secondLevelIcon,5,5,deathAnxietyView);
-	//mainView.subviews.add(anxietySelfControlView);
-	deathAnxietyView.subs.add(anxietySelfControlView);
-
-	calmingTechniqueView_2 = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Calming Technique",thirdLevelIcon);
-	//mainView.subviews.add(calmingTechniqueView_2);
-	anxietySelfControlView.subs.add(calmingTechniqueView_2);
-
-	spiritualSupportView = new ThirdLevelRowView(0,calmingTechniqueView_2.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Spiritual Support",thirdLevelIcon);
-	//mainView.subviews.add(spiritualSupportView);
-	anxietySelfControlView.subs.add(spiritualSupportView);
-
-
-
-	//mainView.subviews.add(new CommentRowView(0,calmingTechniqueView_2.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h+spiritualSupportView.h,"Family Priest to visit 2am"));
-	spiritualSupportView.comments.add("Family Priest to Visit 2am");
-	//  /spiritualSupportView.comments.add("Family Priest to Visit 2am");
-
-	acutePainView = new ColouredRowView(0,  50+calmingTechniqueView_2.h+spiritualSupportView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+calmingTechniqueView.h+musicTherapyView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h,"Acute Pain",firstLevelIcon);
-	//mainView.subviews.add(acutePainView);
-	scrollingView.subs.add(acutePainView);
-
-	painLevelView = new SecondLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h, "Pain Level",secondLevelIcon,1,5,acutePainView);
-	//mainView.subviews.add(painLevelView);
-	acutePainView.subs.add(painLevelView);
+	ArrayList a1 = new ArrayList ();
+	a1.add(c1);
+	a1.add(c2); 
+	a1.add(c3);
+	a1.add(c4);
+	
+	PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
+	popUpView = new PopUpView(600, pocManager.scrollingView.y - 10, 400, pocManager.painLevelView);
+	popUpView.subviews.add(recommended);
+	popUpView.subviews.add(alsoConsider);
+	pocManager.painLevelView.setAlertButton(3,popUpView);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -277,11 +218,7 @@ public void draw()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void drawStaticViewElements()
 {
-	int footerY = (int)scrollingView.y + (int)scrollingView.h + 10;
-	
-	fill(0);
-	text("Current \nRating", 640, scrollingView.y - 30);
-	text("Expected \nRating", 740, scrollingView.y - 30);
+	int footerY = pocManager.getBottom() + 10;
 	
 	textSize(14);
 	image(firstLevelIconLegend, 20, footerY + 10);
@@ -326,31 +263,20 @@ void mouseClicked()
 						toRemove.add(c);
 						if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
 						{
-							ThirdLevelRowView temp = new ThirdLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,thirdLevelIcon);
-							for(int k =0 ; k < popUpView.parent.subs.size();k++)
-							{
-								ThirdLevelRowView tempo = (ThirdLevelRowView)popUpView.parent.subs.get(k);
-								tempo.y = temp.y+((k+1)*temp.h);
-							}
-							//mainView.subviews.add(medicationManagementView);
-							popUpView.parent.subs.add(0,temp);
-							scrollingView.rearrange();
+							pocManager.addNIC(c.t, popUpView.parent);
 						}
-                                          if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
+						if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
 						{
 							SecondLevelRowView temp = new SecondLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,secondLevelIcon,0,0,popUpView.parent.parent);
 							for(int k =0 ; k < popUpView.parent.parent.subs.size();k++)
 							{
-						       		SecondLevelRowView tempo = (SecondLevelRowView)popUpView.parent.parent.subs.get(k);
+								SecondLevelRowView tempo = (SecondLevelRowView)popUpView.parent.parent.subs.get(k);
 								tempo.y = temp.y+((k+1)*temp.h);
 							}
 							//mainView.subviews.add(medicationManagementView);
 							popUpView.parent.parent.subs.add(0,temp);
-							scrollingView.rearrange();
-						}
-
-					}
-
+							pocManager.scrollingView.rearrange();
+						}					}
 				}
 				// Remove checked items after a commit.
 				for(int j = 0; j < toRemove.size(); j++)
