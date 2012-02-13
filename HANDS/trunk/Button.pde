@@ -34,7 +34,10 @@ class Button extends View
 		fill(buttonColor);
 		roundrect(0,0,(int)w,(int)h,5);
 		fill(textColor);
-		text(t,w/2-35,h/2-2);
+		 textAlign(LEFT,TOP);
+       text(t,0,0);
+        textAlign(LEFT,CENTER);
+
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

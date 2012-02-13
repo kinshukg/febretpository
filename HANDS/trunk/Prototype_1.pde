@@ -234,7 +234,7 @@ public void setup()
   PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
  
 
-  popUpView = new PopUpView(600,scrollingView.y-10,400);
+  popUpView = new PopUpView(600,scrollingView.y-10,400, painLevelView);
 
   popUpView.subviews.add(recommended);
   popUpView.subviews.add(alsoConsider);
@@ -248,7 +248,7 @@ public void setup()
   painManagementView = new ThirdLevelRowView(0, 50+medicationManagementView.h+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h+painLevelView.h,"Pain Management",thirdLevelIcon);
   //mainView.subviews.add(painManagementView);
   painLevelView.subs.add(painManagementView);
-  
+    
   
   
  /* Button b = new Button(0,0,100,20,"",0,255);
@@ -376,12 +376,6 @@ static String [] wrapText (String text, int len)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void mousePressed()
 {
-	// KInda hack: after a mouse clikc ANYWHERE, if a tooltip vindow is open we close it.)
-	if(tooltipView != null)
-	{
-		tooltipView = null;
-	}
-
 	//System.out.println(mouseX + " , "+ mouseY);
 	mainView.mousePressed(mouseX, mouseY);
 	if(popUpView.c.pressed)
@@ -389,6 +383,44 @@ void mousePressed()
 		mainView.subviews.remove(popUpView);
 		popUpView.c.pressed = false;  
 	}
+        if(popUpView.commit.selected){
+        
+          	for(int i = 0 ;i<popUpView.subviews.size();i++)
+		{
+		View v = (View)popUpView.subviews.get(i);
+		  
+                 if(!v.equals(popUpView.commit) && !v.equals(popUpView.notApplicable) && !v.equals(popUpView.c)){
+                  
+                   
+                   for(int j = 0; j < v.subviews.size(); j++){
+                   
+                     CheckBox c = (CheckBox)v.subviews.get(j);
+                     if(c.selected){
+                     if(c.icon1.equals(plusIcon)){
+                     v.subviews.remove(c);
+                       ThirdLevelRowView temp = new ThirdLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,thirdLevelIcon);
+                       for(int k =0 ; k < popUpView.parent.subs.size();k++){
+                       ThirdLevelRowView tempo = (ThirdLevelRowView)popUpView.parent.subs.get(k);
+                       tempo.y = temp.y+((k+1)*temp.h);
+                       
+                       }
+                     //mainView.subviews.add(medicationManagementView);
+                     popUpView.parent.subs.add(0,temp);
+                     scrollingView.rearrange();
+                     
+                     }
+                     
+                     }
+                   
+                   }
+                   
+                   
+                 }
+		 // System.out.println(ys);
+		}
+        
+          popUpView.commit.selected = false;
+        }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
