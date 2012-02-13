@@ -57,7 +57,15 @@ class PopUpSection extends View
 		titleButton.tooltipMode = 1;
 		titleButton.tooltipText = text;
 		subviews.add(titleButton);
-		int titleButtonMode = 1;
+		titleButtonMode = 1;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void enableExpandableDescription()
+	{
+		titleButton = new Button(0, 0, 16, 16, infoIcon);
+		subviews.add(titleButton);
+		titleButtonMode = 2;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,8 +73,8 @@ class PopUpSection extends View
 	{
 		if(titleButton != null)
 		{
-			titleButton.y = 0;
-			titleButton.x = 5;
+			titleButton.y = 2;
+			titleButton.x = 0;
 			titleButton.w = 16;
 			titleButton.h = 16;
 			titleBox.x = 20;
@@ -79,10 +87,17 @@ class PopUpSection extends View
 		h = titleBox.h + 5;
 		if(descriptionBox != null)
 		{
-			descriptionBox.y = titleBox.h + 5;
-			descriptionBox.x = 10;
-			descriptionBox.w = w;
-			h = descriptionBox.y + descriptionBox.h;
+			if(titleButtonMode == 2)
+			{
+				descriptionBox.visible = titleButton.selected;
+				if(titleButton.selected)
+				{
+					descriptionBox.y = titleBox.h + 5;
+					descriptionBox.x = 10;
+					descriptionBox.w = w;
+					h = descriptionBox.y + descriptionBox.h;
+				}
+			}
 		}
 		if(actionBoxes != null)
 		{

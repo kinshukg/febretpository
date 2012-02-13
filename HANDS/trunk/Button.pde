@@ -16,7 +16,7 @@ class Button extends View
 	Button(float x_, float y_,float w_,float h_, PImage icon_)
 	{
 		super(x_, y_,w_ ,h_); 
-		icon = icon;
+		icon = icon_;
 		transparent = true;
 	}
 	
@@ -48,8 +48,7 @@ class Button extends View
 		
 		if(icon != null)
 		{
-		System.out.println("HGF");
-			image(icon, w / 2, h / 2);
+			image(icon, 0, 0);
 		}
 		
 		if(t != null)
