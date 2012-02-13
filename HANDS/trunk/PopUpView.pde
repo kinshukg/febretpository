@@ -26,15 +26,20 @@ class PopUpView extends View
 		ArrayList a = new ArrayList ();
 		a.add(c);
 
-		PopUpSection title = new PopUpSection(0,0,a,"Ms. Taylor's pain is not Controlled: ");
+		PopUpSection title = new PopUpSection(0, 0, null, "Mrs. Taylor's Pain Level is not controlled");
+		title.setDescription(
+			"Evidence Sugests:\n " +
+				"\t - A combination of Medication management\n " +
+				"\t - Some other stuff\n ");
+		title.separatorStyle = 1;		
 		
 		
 		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
-		CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
-		CheckBox c2 = new CheckBox(0,0,true,false,false,"Coping",plusIcon,null,"NOC");
-		CheckBox c3 = new CheckBox(0,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
-		CheckBox c4 = new CheckBox(0,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
+		CheckBox c1 = new CheckBox(10,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
+		CheckBox c2 = new CheckBox(10,0,true,false,false,"Coping",plusIcon,null,"NOC");
+		CheckBox c3 = new CheckBox(10,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
+		CheckBox c4 = new CheckBox(10,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
 
 		ArrayList a1 = new ArrayList ();
 		a1.add(c1);

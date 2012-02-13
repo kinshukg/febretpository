@@ -12,12 +12,20 @@ class Tooltip extends View
 	{
 		super(x_, y_,w_ ,h_);
 		
-		label = new StaticText(5, 5, w_ - 10, text);
+		label = new StaticText(text, FORMAT_NORMAL);
 		subviews.add(label);
 		
 		this.text = text;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void layout()
+	{
+		label.w =  w - 10;
+		label.x = 5;
+		label.y = 5;
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
