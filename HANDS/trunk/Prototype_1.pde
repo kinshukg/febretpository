@@ -184,7 +184,6 @@ public void setupPopup()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void draw()
 {
-
 	background(backgroundColor); 
 	int hs = 0;
 	for(int i = 0; i < popUpView.subviews.size();i++)
@@ -194,7 +193,6 @@ public void draw()
 	popUpView.h = hs;
 
 	mainView.draw();
-	
 	
 	// Draw static view elements
 	drawStaticViewElements();
@@ -269,10 +267,12 @@ void mouseClicked()
 				for(int j = 0; j < toRemove.size(); j++)
 				{
 					v.subviews.remove(toRemove.get(j));
+					pps.actionBoxes.remove(toRemove.get(j));
 				}
 			}
 		}
-	  popUpView.commit.selected = false;
+		mainView.subviews.remove(popUpView);
+		popUpView.commit.selected = false;
 	}
 }
 void keyPressed() {

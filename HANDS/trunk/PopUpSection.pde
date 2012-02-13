@@ -105,6 +105,7 @@ class PopUpSection extends View
 			{
 				CheckBox cb = actionBoxes.get(i);
 				cb.x = 15;
+				cb.y = h;
 				h += cb.h + 10;
 			}
 		}
