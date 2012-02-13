@@ -20,7 +20,8 @@ class TextBox extends View
 
     fill(0);
     textFont(font, 12);
-    textAlign(LEFT);
+    textAlign(LEFT,CENTER);
+    
     if (text.equals("") && !activated)
     {
       fill(#A3A3A3);
@@ -34,6 +35,7 @@ class TextBox extends View
       */
       text(text, x + 15, y + 5);
     }
+    textFont(fbold);
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,4 +86,3 @@ class TextBox extends View
       return contentPressed(lx, ly);
     }
   }
-
