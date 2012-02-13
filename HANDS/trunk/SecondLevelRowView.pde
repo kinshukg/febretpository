@@ -18,7 +18,7 @@ class SecondLevelRowView extends View
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
 		this.subs = new ArrayList();
-this.parent=  parent;
+		this.parent=  parent;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,24 +33,19 @@ this.parent=  parent;
 		image(logo,40,4);
 		//ellipse(37,12,12,12);
 		text(title,75,12);
-                if(firstColumn != 0)
-		text(firstColumn, 650, 12);
-                if(secondColumn != 0)
-		text(secondColumn, 750, 12);
+		if(firstColumn != 0) text(firstColumn, 650, 12);
+		if(secondColumn != 0) text(secondColumn, 750, 12);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setAlertButton(int level, PopUpView p)
 	{
 		color buttonColor = 0;
-		if(level == 1)
-		buttonColor = alertLowColor;
-		if(level == 2)
-		buttonColor = alertMidColor;
-		if(level == 3)
-		buttonColor = alertHighColor;
+		if(level == 1) buttonColor = alertLowColor;
+		if(level == 2) buttonColor = alertMidColor;
+		if(level == 3) buttonColor = alertHighColor;
 
-		this.actionButton = new Button(450, 6, 35, 14, "", buttonColor, 255);
+		this.actionButton = new Button(450, 6, 35, 14, "(!)", buttonColor, 255);
 		subviews.add(this.actionButton);
 		
 		this.actionButton.tooltipText = "Tooltip text, bla bla bla ba bla blag askdj sfjwev fweic";

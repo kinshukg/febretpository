@@ -55,6 +55,7 @@ class CheckBox extends View {
  fill(0);
  
  	textFont(font);
+		textAlign(LEFT,CENTER);
  if(!type.equals(""))
     text(type+" "+t, 70, 8);
    else
@@ -72,5 +73,4 @@ class CheckBox extends View {
    
     return true;
   }
-
 }
