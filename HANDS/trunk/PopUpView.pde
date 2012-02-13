@@ -18,6 +18,35 @@ class PopUpView extends View
 		this.subviews.add(notApplicable);	
 		this.parent = parent;
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void reset()
+	{
+		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
+		ArrayList a = new ArrayList ();
+		a.add(c);
+
+		PopUpSection title = new PopUpSection(0,0,a,"Ms. Taylor's pain is not Controlled: ");
+		
+		
+		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
+
+		CheckBox c1 = new CheckBox(0,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
+		CheckBox c2 = new CheckBox(0,0,true,false,false,"Coping",plusIcon,null,"NOC");
+		CheckBox c3 = new CheckBox(0,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
+		CheckBox c4 = new CheckBox(0,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
+
+		ArrayList a1 = new ArrayList ();
+		a1.add(c1);
+		a1.add(c2); 
+		a1.add(c3);
+		a1.add(c4);
+		
+		PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
+		subviews.add(title);
+		subviews.add(recommended);
+		subviews.add(alsoConsider);
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
