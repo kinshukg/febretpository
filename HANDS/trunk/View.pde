@@ -1,6 +1,6 @@
-/* This is the View Class. The class that we're going to use a superclass to all widgets.*/
-
-class View {
+///////////////////////////////////////////////////////////////////////////////////////////////////
+class View 
+{
   float x, y, w, h;
   ArrayList subviews;
   
@@ -114,7 +114,8 @@ class View {
     return contentMouseWheel(lx, ly, delta);
   }
   
-  boolean keypressed(){
+  boolean keypressed()
+  {
     char c = (char) key;  
     for (int i = subviews.size()-1; i >= 0; i--) {
      // System.out.println(i);
