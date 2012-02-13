@@ -4,7 +4,6 @@ class Button extends View
 	boolean selected = false, flashing = false;
 	String t;
 	color buttonColor, textColor;
-	Integrator fader;  
 	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
 	int tooltipMode = 0;
@@ -30,14 +29,13 @@ class Button extends View
 
 		fill(0);
 		roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
-		
+
 		fill(buttonColor);
 		roundrect(0,0,(int)w,(int)h,5);
 		fill(textColor);
 		 textAlign(LEFT,TOP);
-       text(t,0,0);
-        textAlign(LEFT,CENTER);
-
+		text(t,0,0);
+		textAlign(LEFT,CENTER);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,8 +43,7 @@ class Button extends View
 	{
 		if(tooltipMode == 1)
 		{
-			System.out.println("Creating tooltip");
-			tooltipView = new TooltipView(mouseX + 10, mouseY + 10, 200, 60, tooltipText);
+			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 200, 60, tooltipText);
 			tooltipView.arrowX = mouseX;
 			tooltipView.arrowY = mouseY;
 		}
