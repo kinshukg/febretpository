@@ -1,42 +1,51 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-class TooltipView extends View 
+class StaticText extends View 
 {
 	String text;
+	String textLines;
 	float arrowX, arrowY;
-	String[] rationaleString;
+	int numLines;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	TooltipView(float x_, float y_, float w_, float h_, String text)
+	StaticText(float x_, float y_, float w_, String text)
 	{
-		super(x_, y_,w_ ,h_);
+		super(x_, y_,w_ ,0);
 		this.text = text;
+		
+		numLines = 0;
+		textSize(12);
+		textLines = _wrapText(text, (int)w_);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
-		noStroke();
-
-		fill(0);
-		roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
-		
-		fill(tooltipColor);
 		stroke(0);
-		strokeWeight(1);
-		triangle(0, 0, arrowX - x, arrowY - y, 0, h);
-		
-		fill(255, 255, 255);
-		roundrect(0, 0, (int)w, (int)h, 5);
-		
 		fill(0);
-		rationaleString = wrapText(text, (int)w / 6);
-
-		String r = "";
-		for(int i = 0; i< rationaleString.length;i++)
+		System.out.println(textLines);
+		textSize(12);
+		textAlign(LEFT, TOP);
+		text(textLines, 0, 0);
+		h = numLines * (textAscent() + textDescent());
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	String _wrapText(String string, int lineWidth)
+	{
+		String[] words = string.split(" ");
+		String output = "";
+		String line = "";
+		for(int i = 0; i < words.length; i++)
 		{
-			r+=rationaleString[i]+"\n";
+			line += words[i] + " ";
+			if(textWidth(line) >= lineWidth)
+			{
+				output += line + "\n";
+				line = "";
+				numLines++;
+			}
 		}
-		textAlign(LEFT,TOP);
-		text(r, 5, 5);
+		output += line;
+		return output;
 	}
 }

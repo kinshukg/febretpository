@@ -60,7 +60,7 @@ public PImage plusIcon, minusIcon;
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
 public String dob = "03/12/1938",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
-public String other = "Sister wants to be called ANYTIME at patient's request -- 776-894-1010-#################################";
+public String other = "Sister wants to be called ANYTIME at patient's request \n 776-894-1010-#################################";
 
 // Other text strings.
 public String rationale1 = "Data Mining Revealed that the combination of Medication Management, Positioning, and Pain Management has the most positive impact on pain level. ";
@@ -189,17 +189,7 @@ public void setupPatientInfoView()
 	physicianView = new PatientDataView(300, titleView.h+5+nameView.h+dobView.h+20+genderView.h+allergiesView.h, width/2,20, "Physician:",physician);
 	mainView.subviews.add(physicianView);
 
-
-	String[] otherPieces = wrapText(other,60);
-	String otherImproved = "";
-
-	//  System.out.println("Printing");
-	for(int i = 0 ; i<otherPieces.length;i++)
-	{
-		// System.out.println(otherPieces[i]);
-		otherImproved += otherPieces[i]+"\n";
-	}
-	otherView = new PatientDataView(300,  titleView.h+5+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h, width/2,50, "Other:","\n\n"+otherImproved);
+	otherView = new PatientDataView(300,  titleView.h+5+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h, width/2,50, "Other:","\n"+other);
 	mainView.subviews.add(otherView);
 }
 
@@ -322,19 +312,20 @@ void mouseClicked()
 	}
 	if(popUpView.commit.selected)
 	{
-		for(int i = 0 ;i<popUpView.subviews.size();i++)
+		for(int i = 0; i < popUpView.subviews.size(); i++)
 		{
 			View v = (View)popUpView.subviews.get(i);
 			if(!v.equals(popUpView.commit) && !v.equals(popUpView.notApplicable) && !v.equals(popUpView.c))
 			{
+				ArrayList toRemove = new ArrayList();
 				for(int j = 0; j < v.subviews.size(); j++)
 				{
 					CheckBox c = (CheckBox)v.subviews.get(j);
 					if(c.selected)
 					{
+						toRemove.add(c);
 						if(c.icon1.equals(plusIcon))
 						{
-							v.subviews.remove(c);
 							ThirdLevelRowView temp = new ThirdLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,thirdLevelIcon);
 							for(int k =0 ; k < popUpView.parent.subs.size();k++)
 							{
@@ -346,6 +337,11 @@ void mouseClicked()
 							scrollingView.rearrange();
 						}
 					}
+				}
+				// Remove checked items after a commit.
+				for(int j = 0; j < toRemove.size(); j++)
+				{
+					v.subviews.remove(toRemove.get(j));
 				}
 			}
 		}
@@ -376,62 +372,5 @@ void roundrect(int x, int y, int w, int h, int r)
     rect(x+w, y, hr, h);
 
     rectMode(CORNERS);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-static String [] wrapText (String text, int len)
-{
-  // return empty array for null text
-  if (text == null)
-  return new String [] {};
-
-  // return text if len is zero or less
-  if (len <= 0)
-  return new String [] {text};
-
-  // return text if less than length
-  if (text.length() <= len)
-  return new String [] {text};
-
-  char [] chars = text.toCharArray();
-  Vector lines = new Vector();
-  StringBuffer line = new StringBuffer();
-  StringBuffer word = new StringBuffer();
-
-  for (int i = 0; i < chars.length; i++) {
-    word.append(chars[i]);
-
-    if (chars[i] == ' ') {
-      if ((line.length() + word.length()) > len) {
-        lines.add(line.toString());
-        line.delete(0, line.length());
-      }
-
-      line.append(word);
-      word.delete(0, word.length());
-    }
-  }
-
-  // handle any extra chars in current word
-  if (word.length() > 0) {
-    if ((line.length() + word.length()) > len) {
-      lines.add(line.toString());
-      line.delete(0, line.length());
-    }
-    line.append(word);
-  }
-
-  // handle extra line
-  if (line.length() > 0) {
-    lines.add(line.toString());
-  }
-
-  String [] ret = new String[lines.size()];
-  int c = 0; // counter
-  for (Enumeration e = lines.elements(); e.hasMoreElements(); c++) {
-    ret[c] = (String) e.nextElement();
-  }
-
-  return ret;
 }
 
