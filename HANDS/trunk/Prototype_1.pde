@@ -267,16 +267,9 @@ void mouseClicked()
 						}
 						if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
 						{
-							SecondLevelRowView temp = new SecondLevelRowView(0, popUpView.parent.y+popUpView.parent.h,c.t,secondLevelIcon,0,0,popUpView.parent.parent);
-							for(int k =0 ; k < popUpView.parent.parent.subs.size();k++)
-							{
-								SecondLevelRowView tempo = (SecondLevelRowView)popUpView.parent.parent.subs.get(k);
-								tempo.y = temp.y+((k+1)*temp.h);
-							}
-							//mainView.subviews.add(medicationManagementView);
-							popUpView.parent.parent.subs.add(0,temp);
-							pocManager.scrollingView.rearrange();
-						}					}
+							pocManager.addNOC(c.t, popUpView.parent.parent);
+						}
+					}
 				}
 				// Remove checked items after a commit.
 				for(int j = 0; j < toRemove.size(); j++)
