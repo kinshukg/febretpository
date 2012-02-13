@@ -15,6 +15,7 @@ class View
   
   void draw()
   {
+	layout();
     pushMatrix();
     translate(x, y);
     // draw out content, then our subviews on top
@@ -24,6 +25,10 @@ class View
       v.draw();
     }
     popMatrix();
+  }
+  
+  void layout()
+  {
   }
   
   void drawContent()

@@ -6,6 +6,12 @@
 static int SCREEN_WIDTH = 1024;
 static int SCREEN_HEIGHT = 800;
 
+static int POPUP_WIDTH = 400;
+
+static int FORMAT_HEADING1 = 1;
+static int FORMAT_NORMAL = 2;	
+
+
 // Variables used to keep track of the prototype state
 public int prototypeVariant = 0;
 public int prototypeState = 0;
