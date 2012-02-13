@@ -32,6 +32,15 @@ class Button extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void layout()
+	{
+		if(w == 0)
+		{
+			w = textWidth(t) + 10;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
 		noStroke();
@@ -55,7 +64,7 @@ class Button extends View
 		{
 			fill(textColor);
 			textAlign(CENTER,CENTER);
-			text(t,w / 2, h / 2 - 2);
+			text(t, w / 2, h / 2 - 2);
 		}
 	}
 	
@@ -64,7 +73,7 @@ class Button extends View
 	{
 		if(tooltipMode == 1)
 		{
-			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 200, 60, tooltipText);
+			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipText);
 			tooltipView.arrowX = mouseX;
 			tooltipView.arrowY = mouseY;
 		}

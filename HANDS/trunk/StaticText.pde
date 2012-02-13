@@ -63,20 +63,28 @@ class StaticText extends View
 		String[] words = string.split(" ");
 		String output = "";
 		String line = "";
+		boolean bullets = false;
 		for(int i = 0; i < words.length; i++)
 		{
+			if(words[i].equals("BULLET"))
+			{
+				bullets = true;
+				continue;
+			}
 			String testLine = line + words[i] + " ";
 			if(textWidth(testLine) >= lineWidth || words[i].endsWith("\n"))
 			{
 				if(words[i].endsWith("\n"))
 				{
 					output += line + words[i];
-					line = "";
+					if(bullets) line = "        ";
+					else line = "";
 				}
 				else
 				{
 					output += line + "\n";
-					line = words[i];
+					if(bullets) line = "            " + words[i] + " ";
+					else line = words[i] + " ";
 				}
 				numLines++;
 			}

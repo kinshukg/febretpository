@@ -29,7 +29,7 @@ class PopUpSection extends View
 		subviews.add(titleBox);
 		
 		actionBoxes = actions;
-
+		
 		if(actions != null)
 		{
 			int ys = 35;
@@ -98,6 +98,13 @@ class PopUpSection extends View
 					h = descriptionBox.y + descriptionBox.h;
 				}
 			}
+			if(titleButtonMode == 0)
+			{
+				descriptionBox.y = titleBox.h + 5;
+				descriptionBox.x = 10;
+				descriptionBox.w = w;
+				h = descriptionBox.y + descriptionBox.h;
+			}
 		}
 		if(actionBoxes != null)
 		{
@@ -108,6 +115,10 @@ class PopUpSection extends View
 				cb.y = h;
 				h += cb.h + 10;
 			}
+		}
+		if(separatorStyle != 0)
+		{
+			h += 16;
 		}
 	}
 	
