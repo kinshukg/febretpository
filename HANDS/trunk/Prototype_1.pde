@@ -62,6 +62,7 @@ public String minusIconString = "Black_Minus.png";
 public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
 public PImage plusIcon, minusIcon;
+public PImage infoIcon;
 
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
@@ -112,6 +113,8 @@ public void setup()
 	minusIcon = loadImage(minusIconString);
 	minusIcon.resize(0,15);
 
+	infoIcon = loadImage("information.png");
+	
 	// Views created
 	mainView = new View(0, 0, width, height);
 
