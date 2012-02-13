@@ -6,6 +6,7 @@ class PopUpSection extends View
 	StaticText descriptionBox;
 	
 	int separatorStyle;
+	ArrayList<CheckBox> actionBoxes;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PopUpSection(float x_, float y_, ArrayList<CheckBox> actions, String title)
@@ -23,6 +24,8 @@ class PopUpSection extends View
 		this.title = title;
 		this.titleBox = new StaticText(title, FORMAT_HEADING1);
 		subviews.add(titleBox);
+		
+		actionBoxes = actions;
 
 		if(actions != null)
 		{
@@ -48,22 +51,28 @@ class PopUpSection extends View
 	void layout()
 	{
 		titleBox.w = w;
+		h = titleBox.h + 5;
 		if(descriptionBox != null)
 		{
 			descriptionBox.y = titleBox.h + 5;
 			descriptionBox.x = 10;
 			descriptionBox.w = w;
+			h = descriptionBox.y + descriptionBox.h;
+		}
+		if(actionBoxes != null)
+		{
+			for(int i = 0; i < actionBoxes.size(); i++)
+			{
+				CheckBox cb = actionBoxes.get(i);
+				cb.x = 15;
+				h += cb.h + 10;
+			}
 		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
-		if(descriptionBox != null)
-		{
-			h = 60 + (subviews.size() * 20) + descriptionBox.h;
-		}
-		
 		noStroke();
 		fill(popUpSectionColor);
 		rect(0,0,w,h);
@@ -79,7 +88,7 @@ class PopUpSection extends View
 		{
 			strokeWeight(4);
 			stroke(0);
-			line(0, h, w, h);
+			line(0, h - 2, w, h - 2);
 			strokeWeight(1);
 		}
 	}
