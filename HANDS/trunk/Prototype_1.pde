@@ -244,20 +244,24 @@ void mouseClicked()
 			View v = (View)popUpView.subviews.get(i);
 			if(!v.equals(popUpView.commit) && !v.equals(popUpView.notApplicable) && !v.equals(popUpView.c))
 			{
+				PopUpSection pps = (PopUpSection)v;
 				ArrayList toRemove = new ArrayList();
-				for(int j = 0; j < v.subviews.size(); j++)
+				if(pps.actionBoxes != null) 
 				{
-					CheckBox c = (CheckBox)v.subviews.get(j);
-					if(c.selected)
+					for(int j = 0; j < pps.actionBoxes.size(); j++)
 					{
-						toRemove.add(c);
-						if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
+						CheckBox c = pps.actionBoxes.get(j);
+						if(c.selected)
 						{
-							pocManager.addNIC(c.t, popUpView.parent);
-						}
-						if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
-						{
-							pocManager.addNOC(c.t, popUpView.parent.parent);
+							toRemove.add(c);
+							if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
+							{
+								pocManager.addNIC(c.t, popUpView.parent);
+							}
+							if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
+							{
+								pocManager.addNOC(c.t, popUpView.parent.parent);
+							}
 						}
 					}
 				}

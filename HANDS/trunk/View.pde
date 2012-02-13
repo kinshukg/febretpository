@@ -3,6 +3,7 @@ class View
 {
   float x, y, w, h;
   ArrayList subviews;
+  boolean visible;
   
   View(float x_, float y_, float w_, float h_)
   {
@@ -11,20 +12,24 @@ class View
     w = w_;
     h = h_;
     subviews = new ArrayList();
+	visible = true;
   }
   
   void draw()
   {
-	layout();
-    pushMatrix();
-    translate(x, y);
-    // draw out content, then our subviews on top
-    drawContent();
-    for (int i = 0; i < subviews.size(); i++) {
-      View v = (View)subviews.get(i);
-      v.draw();
-    }
-    popMatrix();
+	if(visible)
+	{
+		layout();
+		pushMatrix();
+		translate(x, y);
+		// draw out content, then our subviews on top
+		drawContent();
+		for (int i = 0; i < subviews.size(); i++) {
+		  View v = (View)subviews.get(i);
+		  v.draw();
+		}
+		popMatrix();
+	}
   }
   
   void layout()
