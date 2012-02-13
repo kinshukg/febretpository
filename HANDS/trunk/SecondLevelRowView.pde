@@ -68,7 +68,7 @@ class SecondLevelRowView extends View
 		
 		if(OPTION_ALERT_INFO_BUTTON)
 		{
-			infoButton = new Button(550, 6, 16, 16, infoIcon);
+			infoButton = new Button(520, 6, 16, 16, infoIcon);
 			infoButton.tooltipMode = 1;
 			infoButton.tooltipText = 
 				"This requires action because analysis of similar patient's data shows: BULLET \n " +

@@ -12,9 +12,10 @@ static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
 
 // Variables used to keep track of the prototype state
-public boolean OPTION_LONG_ALERT_BUTTON = false;
-public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
+public boolean OPTION_LONG_ALERT_BUTTON = true;
+public boolean OPTION_EXPANDABLE_POPUP_TEXT = true;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
+public boolean OPTION_ENABLE_POPUP_TEXT = true;
 
 public int prototypeState = 0;
 
@@ -292,12 +293,14 @@ void keyPressed()
 		OPTION_LONG_ALERT_BUTTON = true;
 		OPTION_ALERT_INFO_BUTTON = false;
 		OPTION_EXPANDABLE_POPUP_TEXT = true;
+		OPTION_ENABLE_POPUP_TEXT = true;
 		reset();
 	}
 	else if(key == '2')
 	{
 		OPTION_LONG_ALERT_BUTTON = false;
 		OPTION_EXPANDABLE_POPUP_TEXT = false;
+		OPTION_ENABLE_POPUP_TEXT = false;
 		OPTION_ALERT_INFO_BUTTON = true;
 		reset();
 	}

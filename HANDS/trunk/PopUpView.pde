@@ -27,16 +27,17 @@ class PopUpView extends View
 		a.add(c);
 
 		PopUpSection title = new PopUpSection(0, 0, null, "Mrs. Taylor's Pain Level is not controlled");
-		title.setDescription(
-			"Evidence Sugests That: BULLET \n " +
-				"- A combination of Medication Management, Poitioning and Pain Management has most positive impact on Pain Level\n " +
-				"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
-				"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
-		title.separatorStyle = 1;
+		if(OPTION_ENABLE_POPUP_TEXT)
+		{
+			title.setDescription(
+				"Evidence Sugests That: BULLET \n " +
+					"- A combination of Medication Management, Poitioning and Pain Management has most positive impact on Pain Level\n " +
+					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
+					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
+			title.separatorStyle = 1;
+			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
+		}
 		//title.setInfoButton("Here is some information insida a tooltip yall");
-		
-		if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
-		
 		
 		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
