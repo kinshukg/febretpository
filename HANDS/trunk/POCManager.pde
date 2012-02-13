@@ -28,51 +28,34 @@ class POCManager
 		impairedGasExchange = new ColouredRowView(0, titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40,"Impaired Gas Exchange",firstLevelIcon);
 		scrollingView.subs.add(impairedGasExchange);  
 
-	anxietyLevelView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h,"Anxiety Level",secondLevelIcon,2,3,impairedGasExchange);
-	//mainView.subviews.add(anxietyLevelView);
-	impairedGasExchange.subs.add(anxietyLevelView);
+		anxietyLevelView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h,"Anxiety Level",secondLevelIcon,2,3,impairedGasExchange);
+		impairedGasExchange.subs.add(anxietyLevelView);
 
+		musicTherapyView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h,"Music Therapy", thirdLevelIcon);
+		anxietyLevelView.subs.add(musicTherapyView);
 
-	musicTherapyView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h,"Music Therapy", thirdLevelIcon);
-	//mainView.subviews.add(musicTherapyView);
-	anxietyLevelView.subs.add(musicTherapyView);
-	// musicTherapyView.comments.add("Family Priest to Visit 2am");
-	// musicTherapyView.comments.add("Family Priest to Visit 2am");
+		calmingTechniqueView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+musicTherapyView.h,"Calming Technique",thirdLevelIcon);
+		anxietyLevelView.subs.add(calmingTechniqueView);
 
-	calmingTechniqueView = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+musicTherapyView.h,"Calming Technique",thirdLevelIcon);
-	//mainView.subviews.add(calmingTechniqueView);
-	anxietyLevelView.subs.add(calmingTechniqueView);
+		deathAnxietyView = new ColouredRowView(0, titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+impairedGasExchange.h+anxietyLevelView.h+calmingTechniqueView.h+musicTherapyView.h,"Death Anxiety",firstLevelIcon);
+		scrollingView.subs.add(deathAnxietyView);
 
+		anxietySelfControlView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h,"Anxiety Self-Control",secondLevelIcon,5,5,deathAnxietyView);
+		deathAnxietyView.subs.add(anxietySelfControlView);
 
-	deathAnxietyView = new ColouredRowView(0, titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+impairedGasExchange.h+anxietyLevelView.h+calmingTechniqueView.h+musicTherapyView.h,"Death Anxiety",firstLevelIcon);
-	//mainView.subviews.add(deathAnxietyView);
-	scrollingView.subs.add(deathAnxietyView);
+		calmingTechniqueView_2 = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Calming Technique",thirdLevelIcon);
+		anxietySelfControlView.subs.add(calmingTechniqueView_2);
 
-	anxietySelfControlView = new SecondLevelRowView(0,  titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h,"Anxiety Self-Control",secondLevelIcon,5,5,deathAnxietyView);
-	//mainView.subviews.add(anxietySelfControlView);
-	deathAnxietyView.subs.add(anxietySelfControlView);
+		spiritualSupportView = new ThirdLevelRowView(0,calmingTechniqueView_2.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Spiritual Support",thirdLevelIcon);
+		anxietySelfControlView.subs.add(spiritualSupportView);
 
-	calmingTechniqueView_2 = new ThirdLevelRowView(0,titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Calming Technique",thirdLevelIcon);
-	//mainView.subviews.add(calmingTechniqueView_2);
-	anxietySelfControlView.subs.add(calmingTechniqueView_2);
+		spiritualSupportView.comments.add("Family Priest to Visit 2am");
 
-	spiritualSupportView = new ThirdLevelRowView(0,calmingTechniqueView_2.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h,"Spiritual Support",thirdLevelIcon);
-	//mainView.subviews.add(spiritualSupportView);
-	anxietySelfControlView.subs.add(spiritualSupportView);
+		acutePainView = new ColouredRowView(0,  50+calmingTechniqueView_2.h+spiritualSupportView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+calmingTechniqueView.h+musicTherapyView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h,"Acute Pain",firstLevelIcon);
+		scrollingView.subs.add(acutePainView);
 
-
-
-	//mainView.subviews.add(new CommentRowView(0,calmingTechniqueView_2.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h+calmingTechniqueView.h+musicTherapyView.h+anxietySelfControlView.h+spiritualSupportView.h,"Family Priest to visit 2am"));
-	spiritualSupportView.comments.add("Family Priest to Visit 2am");
-	//  /spiritualSupportView.comments.add("Family Priest to Visit 2am");
-
-	acutePainView = new ColouredRowView(0,  50+calmingTechniqueView_2.h+spiritualSupportView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+calmingTechniqueView.h+musicTherapyView.h+codeStatusView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h,"Acute Pain",firstLevelIcon);
-	//mainView.subviews.add(acutePainView);
-	scrollingView.subs.add(acutePainView);
-
-	painLevelView = new SecondLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h, "Pain Level",secondLevelIcon,1,5,acutePainView);
-	//mainView.subviews.add(painLevelView);
-	acutePainView.subs.add(painLevelView);
+		painLevelView = new SecondLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h, "Pain Level",secondLevelIcon,1,5,acutePainView);
+		acutePainView.subs.add(painLevelView);
 		
 		medicationManagementView = new ThirdLevelRowView(0, 50+calmingTechniqueView_2.h+spiritualSupportView.h+acutePainView.h+titleView.h+15+nameView.h+dobView.h+20+genderView.h+allergiesView.h+codeStatusView.h+calmingTechniqueView.h+musicTherapyView.h+otherView.h+40+ impairedGasExchange.h+anxietyLevelView.h+deathAnxietyView.h + anxietySelfControlView.h+painLevelView.h,"Medical Management",thirdLevelIcon);
 		painLevelView.subs.add(medicationManagementView);
@@ -93,6 +76,20 @@ class POCManager
 		//mainView.subviews.add(medicationManagementView);
 		parentNOC.subs.add(0,temp);
 		scrollingView.rearrange();
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void addNOC(String text, ColouredRowView parentNANDA)
+	{
+		SecondLevelRowView temp = new SecondLevelRowView(0, parentNANDA.y+parentNANDA.h, text, secondLevelIcon, 0, 0, parentNANDA);
+		for(int k =0 ; k < parentNANDA.subs.size();k++)
+		{
+			SecondLevelRowView tempo = (SecondLevelRowView)parentNANDA.subs.get(k);
+			tempo.y = temp.y+((k+1)*temp.h);
+		}
+		//mainView.subviews.add(medicationManagementView);
+		parentNANDA.subs.add(0,temp);
+		pocManager.scrollingView.rearrange();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
