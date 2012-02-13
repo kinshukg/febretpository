@@ -11,9 +11,11 @@ static int POPUP_WIDTH = 400;
 static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
 
-
 // Variables used to keep track of the prototype state
-public int prototypeVariant = 0;
+public boolean OPTION_LONG_ALERT_BUTTON = false;
+public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
+public boolean OPTION_ALERT_INFO_BUTTON = false;
+
 public int prototypeState = 0;
 
 // Variables used got holding the different views
@@ -115,6 +117,12 @@ public void setup()
 
 	infoIcon = loadImage("information.png");
 	
+	reset();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void reset()
+{
 	// Views created
 	mainView = new View(0, 0, width, height);
 
@@ -275,10 +283,26 @@ void mouseClicked()
 		popUpView.commit.selected = false;
 	}
 }
-void keyPressed() {
-  //System.out.println("Here!");
-  //System.out.println(mainView.keypressed());
-  mainView.keypressed();
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void keyPressed() 
+{
+	if(key == '1')
+	{
+		OPTION_LONG_ALERT_BUTTON = true;
+		OPTION_ALERT_INFO_BUTTON = false;
+		OPTION_EXPANDABLE_POPUP_TEXT = true;
+		reset();
+	}
+	else if(key == '2')
+	{
+		OPTION_LONG_ALERT_BUTTON = false;
+		OPTION_EXPANDABLE_POPUP_TEXT = false;
+		OPTION_ALERT_INFO_BUTTON = true;
+		reset();
+	}
+
+	mainView.keypressed();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

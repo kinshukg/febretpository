@@ -2,10 +2,14 @@
 class SecondLevelRowView extends View 
 {
 	String title;
+	String message;
 	PImage logo;
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
+	
 	Button graphButton, actionButton;
+	Button infoButton;
+	
 	public PopUpView actionPopUp, graphPopUp;
         ColouredRowView parent;
           
@@ -35,6 +39,12 @@ class SecondLevelRowView extends View
 		text(title,75,12);
 		if(firstColumn != 0) text(firstColumn, 650, 12);
 		if(secondColumn != 0) text(secondColumn, 750, 12);
+		
+		if(message != null)
+		{
+			fill(alertHighColor);
+			text(message, 200, 12);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,8 +55,27 @@ class SecondLevelRowView extends View
 		if(level == 2) buttonColor = alertMidColor;
 		if(level == 3) buttonColor = alertHighColor;
 
-		this.actionButton = new Button(450, 6, 35, 14, "(!)", buttonColor, 255);
+		if(OPTION_LONG_ALERT_BUTTON)
+		{
+			this.actionButton = new Button(200, 6, 0, 14, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
+		}
+		else 
+		{
+			this.actionButton = new Button(450, 6, 0, 14, "ACTIONS", buttonColor, 0);
+			this.message = "Mrs. Taylor's Pain Level is not controlled.";
+		}
 		subviews.add(this.actionButton);
+		
+		if(OPTION_ALERT_INFO_BUTTON)
+		{
+			infoButton = new Button(550, 6, 16, 16, infoIcon);
+			infoButton.tooltipMode = 1;
+			infoButton.tooltipText = 
+				"This requires action because analysis of similar patient's data shows: BULLET \n " +
+				"* It is difficult to control Pain in EOL ptients who also have impaired Gas Exchange\n " + 
+				"* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n";
+			subviews.add(infoButton);
+		}
 		
 		//this.actionButton.tooltipText = "Tooltip text, bla bla bla ba bla blag askdj sfjwev fweic";
 		//this.actionButton.tooltipMode = 1;

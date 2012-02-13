@@ -24,6 +24,7 @@ class Tooltip extends View
 		label.w =  w - 10;
 		label.x = 5;
 		label.y = 5;
+		this.h = label.h + 15;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,13 +32,20 @@ class Tooltip extends View
 	{
 		noStroke();
 
-		fill(0);
-		roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
+		int contours = 12;
+		for(int i = 0; i < contours; i++)
+		{
+			int alpha = 50 - (16 / contours) * (i * i);
+			fill(0, 0, 0, alpha);
+			stroke(0, 0, 0, alpha);
+			strokeWeight(1);
+			roundrect(-i, -i, (int)w + i * 2, (int)h + i * 2, 5);
+			//triangle(0, (contours - i) * 2, arrowX - x, arrowY - y, 0, h - (contours - i) * 2);
+		}
 		
 		fill(tooltipColor);
 		stroke(0);
-		strokeWeight(1);
-		triangle(0, 0, arrowX - x, arrowY - y, 0, h);
+		triangle(0, contours, arrowX - x, arrowY - y, 0, h - contours);
 		
 		fill(255, 255, 255);
 		roundrect(0, 0, (int)w, (int)h, 5);
