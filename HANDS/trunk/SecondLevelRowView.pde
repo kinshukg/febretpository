@@ -4,15 +4,16 @@ class SecondLevelRowView extends View
 	String title;
 	String message;
 	PImage logo;
-String comment = "";
+	String comment = "";
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
-	
+
 	Button graphButton, actionButton;
 	Button infoButton;
-	
-	public PopUpView actionPopUp, graphPopUp;
-        ColouredRowView parent;
+
+	PopUpView actionPopUp;
+	GraphPopUpView graphPopUp;
+	ColouredRowView parent;
           
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(float x_, float y_,String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
@@ -29,35 +30,32 @@ String comment = "";
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
-  
-//System.out.println("Title = "+ title+ " Comment = " +comment+".");
-                if(!comment.equals(""))
-                h = 50;
-                else
-                h = 25;
+		if(!comment.equals("")) h = 50;
+		else h = 25;
 		stroke(0);
-		// textLeading(fbold);
+		
 		fill(secondLevelRowColor);
 		rect(-1,0,w+10,h);
 		fill(0);
 		textSize(12);
 		image(logo,40,4);
-		//ellipse(37,12,12,12);
 		text(title,75,12);
+		
 		if(firstColumn != 0) text(firstColumn, 650, 12);
 		if(secondColumn != 0) text(secondColumn, 750, 12);
-		
+
 		if(message != null)
 		{
 			fill(alertHighColor);
 			text(message, 200, 12);
 		}
-if(!comment.equals("")){
-  textFont(font);
-  textSize(12);
-            text(comment,100, 32);
-            textFont(fbold);
-  }
+		if(!comment.equals(""))
+		{
+			textFont(font);
+			textSize(12);
+			text(comment,100, 32);
+			textFont(fbold);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +80,6 @@ if(!comment.equals("")){
 		if(OPTION_ALERT_INFO_BUTTON)
 		{
 			infoButton = new Button(520, 6, 16, 16, infoIcon);
-			infoButton.tooltipMode = 1;
 			infoButton.tooltipText = 
 				"This requires action because analysis of similar patient's data shows: BULLET \n " +
 				"* It is difficult to control Pain in EOL ptients who also have impaired Gas Exchange\n " + 
@@ -97,7 +94,7 @@ if(!comment.equals("")){
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setGraphButton(int level, PImage graphIcon)
+	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p)
 	{
 		color buttonColor = 0;
 		if(level == 1) buttonColor = alertLowColor;
@@ -107,27 +104,42 @@ if(!comment.equals("")){
 		graphButton.transparent = false;
 		graphButton.buttonColor = buttonColor;
 		subviews.add(this.graphButton);
+		this.graphPopUp = p;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
-		// override this
-		// lx, ly are in the local coordinate system of the view,
-		// i.e. 0,0 is the top left corner of this view
-		// return false if the click is to "pass through" this view
 		if(actionButton != null)
 		{
 			if(actionButton.selected)
 			{
-				if(!mainView.subviews.contains(actionPopUp)) mainView.subviews.add(actionPopUp);
-				actionPopUp.arrowX = mouseX;
-				actionPopUp.arrowY = mouseY;
-				actionButton.selected = false;
+				if(popUpView == null)
+				{
+					mainView.subviews.add(actionPopUp);
+					popUpView = actionPopUp;
+					actionPopUp.x = mouseX + 50;
+					actionPopUp.y = mouseY - 250;
+					actionPopUp.arrowX = mouseX;
+					actionPopUp.arrowY = mouseY;
+					actionButton.selected = false;
+				}
 			}
-			else
+		}
+		if(graphButton != null)
+		{
+			if(graphButton.selected)
 			{
-				mainView.subviews.remove(actionPopUp);
+				if(popUpView == null)
+				{
+					mainView.subviews.add(graphPopUp);
+					popUpView = graphPopUp;
+					graphPopUp.x = mouseX + 20;
+					graphPopUp.y = mouseY - 50;
+					graphPopUp.arrowX = mouseX;
+					graphPopUp.arrowY = mouseY;
+					graphButton.selected = false;
+				}
 			}
 		}
 		return true;
