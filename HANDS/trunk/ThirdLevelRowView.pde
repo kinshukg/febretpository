@@ -11,12 +11,15 @@ class ThirdLevelRowView extends View
 		this.title = title;
 		this.logo = logo;
 		comments = new ArrayList<String>();
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
 		h = 25+(25*comments.size());
+if(comments.size()>1)
+System.out.println("Title = "+ title+ " Comment = " +comments.get(0)+".");
 
 		//if(comments.size()>1)
 		//System.out.println(comments.size() + "so h = "+h);
