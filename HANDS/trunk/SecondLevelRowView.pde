@@ -97,6 +97,19 @@ if(!comment.equals("")){
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setGraphButton(int level, PImage graphIcon)
+	{
+		color buttonColor = 0;
+		if(level == 1) buttonColor = alertLowColor;
+		if(level == 2) buttonColor = alertMidColor;
+		if(level == 3) buttonColor = alertHighColor;
+		graphButton = new Button(550, 5, 50, 16, graphIcon);
+		graphButton.transparent = false;
+		graphButton.buttonColor = buttonColor;
+		subviews.add(this.graphButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
 		// override this
