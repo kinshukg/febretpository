@@ -4,6 +4,7 @@ class SecondLevelRowView extends View
 	String title;
 	String message;
 	PImage logo;
+String comment = "";
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
 	
@@ -28,6 +29,12 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
+  
+//System.out.println("Title = "+ title+ " Comment = " +comment+".");
+                if(!comment.equals(""))
+                h = 25;
+                else
+                h = 50;
 		stroke(0);
 		// textLeading(fbold);
 		fill(secondLevelRowColor);
@@ -45,6 +52,9 @@ class SecondLevelRowView extends View
 			fill(alertHighColor);
 			text(message, 200, 12);
 		}
+if(!comment.equals("")){
+            text(comment,200, 32);
+  }
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

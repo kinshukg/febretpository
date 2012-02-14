@@ -11,21 +11,25 @@ class TextBox extends View
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
-  public void draw()
-  {
+ void drawContent()
+	{
     fill(255);
-    stroke(80);
-    strokeWeight(1);
+  if(activated)
+    stroke(0);
+    else
+    
+    stroke(#A3A3A3);
+    strokeWeight(1.5);
     rect(0, 0, w, h);
 
     fill(0);
     textFont(font, 12);
-    textAlign(LEFT,CENTER);
+  //  textAlign(LEFT,CENTER);
     
     if (text.equals("") && !activated)
     {
       fill(#A3A3A3);
-      text("Enter a comment", x+15, y+5);
+      text("Enter a comment", 15, 5);
     }
     else {
     /*  if (activated)
@@ -33,9 +37,11 @@ class TextBox extends View
       else
         fill(#A3A3A3);
       */
-      text(text, x + 15, y + 5);
+      text(text, 15, 5);
     }
     textFont(fbold);
+    //textAlign(CENTER,CENTER);
+    
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,18 +69,19 @@ class TextBox extends View
     boolean contentPressed(float lx, float ly)
     {
 
-      activated = true;
+      activated = !activated;
       System.out.println("Activated = "+ activated);
       return true;
     }
-    boolean mousePressed(float px, float py)
-    {
-      if (!ptInRect(px, py, 0,0, w, h)) { 
+  /* void mouseClicked()
+    { 
+      
+      if (!ptInRect(px, py, x,y, w, h)) { 
 
         activated = false;
         System.out.println("Activated = "+ activated);
 
-        return false;
+        return;
       }
       float lx = px - x;
       float ly = py - y;
@@ -83,6 +90,9 @@ class TextBox extends View
         View v = (View)subviews.get(i);
         if (v.mousePressed(lx, ly)) return true;
       }
-      return contentPressed(lx, ly);
+      contentPressed(lx,ly);
     }
+    */
   }
+
+

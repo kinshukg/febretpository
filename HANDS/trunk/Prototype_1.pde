@@ -287,11 +287,11 @@ void mouseClicked()
 							toRemove.add(c);
 							if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
 							{
-								pocManager.addNIC(c.t, popUpView.parent);
+								pocManager.addNIC(c.t, c.tb.text,popUpView.parent);
 							}
 							if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
 							{
-								pocManager.addNOC(c.t, popUpView.parent.parent);
+								pocManager.addNOC(c.t, c.tb.text,popUpView.parent.parent);
 							}
 						}
 					}

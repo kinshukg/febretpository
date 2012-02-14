@@ -5,6 +5,8 @@ class CheckBox extends View {
   String t;
   PImage icon1, icon2;
   String type = "";
+  TextBox tb;
+  
   CheckBox(float x_, float y_,boolean iconUsed,boolean icon2Used,boolean selected, String t, PImage icon1, PImage icon2)
   {
     super(x_, y_,250,20); 
@@ -17,7 +19,7 @@ class CheckBox extends View {
       
     if(icon2Used)
      this.icon2 = icon2;
-    
+    tb = new TextBox(20,30);
   }
   CheckBox(float x_, float y_,boolean iconUsed,boolean icon2Used,boolean selected, String t, PImage icon1, PImage icon2, String type)
   {
@@ -32,11 +34,14 @@ class CheckBox extends View {
     if(icon2Used)
      this.icon2 = icon2;
     this.type = type;
+    
+    
+    tb = new TextBox(20,30);
   }
   void drawContent()
   {
     
-    
+    textAlign(LEFT,CENTER);
     strokeWeight(3);
     stroke(0);
     if(selected)
@@ -54,8 +59,7 @@ class CheckBox extends View {
  
  fill(0);
  
- 	textFont(font);
-		textAlign(LEFT,CENTER);
+ textSize(16);
  if(!type.equals(""))
     text(type+" "+t, 70, 8);
    else
@@ -70,7 +74,19 @@ class CheckBox extends View {
     // i.e. 0,0 is the top left corner of this view
     // return false if the click is to "pass through" this view
    selected =!selected;
+   tb.activated = false;
+   System.out.println("Selected = "+ selected);
+   if(selected){
+   this.subviews.add(tb);
+   this.h = 60; 
+   }  else{
+   this.subviews.remove(tb);
+   this.h = 20; 
    
+   }
     return true;
   }
+
 }
+
+
