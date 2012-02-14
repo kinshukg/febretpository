@@ -16,6 +16,8 @@ public boolean OPTION_LONG_ALERT_BUTTON = true;
 public boolean OPTION_EXPANDABLE_POPUP_TEXT = true;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
+public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
+public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 
 public int prototypeState = 0;
 
@@ -27,9 +29,10 @@ public View mainView;     // The Main View is the background of the window with 
 public TitleView titleView;
 public PatientDataView nameView,dobView,genderView,allergiesView,codeStatusView,pocView,shftView,roomView,medicalDXView,mrView,physicianView,otherView;
 
-public ClosePopUpView closePopUpView;
-public PopUpView popUpView;
+//public ClosePopUpView closePopUpView;
+public View popUpView;
 public Tooltip tooltipView = null;
+
 
 POCManager pocManager;
 
@@ -73,6 +76,10 @@ public PImage smallGraph1;
 public PImage smallGraph2;
 public PImage smallGraph3;
 
+public PImage anxietyLevelTrend;
+public PImage anxietySelfControlTrend;
+public PImage painLevelTrend;
+
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
 public String dob = "03/12/1938",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
@@ -87,6 +94,7 @@ public String rationale3 = "Research has discovered that >50% of EOL patients do
 public void setup()
 {
 	size(SCREEN_WIDTH, SCREEN_HEIGHT);
+	frameRate(20);
 
 	//Load fonts.
 	font = loadFont("SegoeUI-14.vlw");
@@ -126,6 +134,13 @@ public void setup()
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
+	
+	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
+	anxietyLevelTrend.resize(400, 0);
+	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
+	anxietySelfControlTrend.resize(400, 0);
+	painLevelTrend = loadImage("painLevelTrend.png");
+	painLevelTrend.resize(400, 0);
 	
 	reset();
 }
@@ -194,27 +209,34 @@ public void setupPOCView()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPopup()
 {
-	popUpView = new PopUpView(600, pocManager.scrollingView.y - 10, 400, pocManager.painLevelView);
-	popUpView.reset();
-	pocManager.painLevelView.setAlertButton(3,popUpView);
+	PopUpView ppw = new PopUpView(400, pocManager.painLevelView);
+	ppw.reset();
+	
+	pocManager.painLevelView.setAlertButton(3, ppw);
+	
+	GraphPopUpView gp1 = new GraphPopUpView(400, pocManager.anxietyLevelView);
+	gp1.reset(anxietyLevelTrend);
+
+	GraphPopUpView gp2 = new GraphPopUpView(400, pocManager.anxietySelfControlView);
+	gp2.reset(anxietySelfControlTrend);
+	
+	GraphPopUpView gp3 = new GraphPopUpView(400, pocManager.painLevelView);
+	gp3.reset(painLevelTrend);
+	
+	pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1); 
+	pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2); 
+	pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void draw()
 {
 	background(backgroundColor); 
-	int hs = 0;
-	for(int i = 0; i < popUpView.subviews.size();i++)
-	{
-		hs += ((View)popUpView.subviews.get(i)).h;
-	}
-	popUpView.h = hs;
-
-	mainView.draw();
-	
 	// Draw static view elements
 	drawStaticViewElements();
 
+	mainView.draw();
+	
 	if(tooltipView != null)
 	{
 		tooltipView.draw();
@@ -263,58 +285,21 @@ void drawStaticViewElements()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void mouseMoved()
+{
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseClicked()
 {
 	// Kinda hack: if a tooltip window is enabled, a click closes it regardless of where the user clicks.
 	if(tooltipView != null)
 	{
 		tooltipView = null;
+		return;
 	}
+	
 	mainView.mousePressed(mouseX, mouseY);
-	if(popUpView.c.pressed)
-	{
-		mainView.subviews.remove(popUpView);
-		popUpView.c.pressed = false;  
-	}
-	if(popUpView.commit.selected)
-	{
-		for(int i = 0; i < popUpView.subviews.size(); i++)
-		{
-			View v = (View)popUpView.subviews.get(i);
-			if(!v.equals(popUpView.commit) && !v.equals(popUpView.notApplicable) && !v.equals(popUpView.c))
-			{
-				PopUpSection pps = (PopUpSection)v;
-				ArrayList toRemove = new ArrayList();
-				if(pps.actionBoxes != null) 
-				{
-					for(int j = 0; j < pps.actionBoxes.size(); j++)
-					{
-						CheckBox c = pps.actionBoxes.get(j);
-						if(c.selected)
-						{
-							toRemove.add(c);
-							if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
-							{
-								pocManager.addNIC(c.t, c.tb.text,popUpView.parent);
-							}
-							if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
-							{
-								pocManager.addNOC(c.t, c.tb.text,popUpView.parent.parent);
-							}
-						}
-					}
-				}
-				// Remove checked items after a commit.
-				for(int j = 0; j < toRemove.size(); j++)
-				{
-					v.subviews.remove(toRemove.get(j));
-					pps.actionBoxes.remove(toRemove.get(j));
-				}
-			}
-		}
-		mainView.subviews.remove(popUpView);
-		popUpView.commit.selected = false;
-	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,6 +319,7 @@ void keyPressed()
 		OPTION_EXPANDABLE_POPUP_TEXT = false;
 		OPTION_ENABLE_POPUP_TEXT = false;
 		OPTION_ALERT_INFO_BUTTON = true;
+		OPTION_ENABLE_ACTION_INFO_POPUP = true;
 		reset();
 	}
 

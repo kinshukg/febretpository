@@ -7,7 +7,6 @@ class Button extends View
 	PImage icon;
 	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
-	int tooltipMode = 0;
 	String tooltipText;
 	
 	boolean transparent;
@@ -71,11 +70,9 @@ class Button extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
-		if(tooltipMode == 1)
+		if(!OPTION_TOOLTIP_AUTO_OPEN && tooltipText != null && tooltipText.length() != 0)
 		{
-			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipText);
-			tooltipView.arrowX = mouseX;
-			tooltipView.arrowY = mouseY;
+			showTooltip();
 		}
 		// override this
 		// lx, ly are in the local coordinate system of the view,
@@ -85,5 +82,20 @@ class Button extends View
 		System.out.println("Clicked");
 
 		return false;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void showTooltip()
+	{
+		tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipText);
+		tooltipView.arrowX = mouseX;
+		tooltipView.arrowY = mouseY;
+		// If mouse X is closer to border of screen, resize popup accordingly.
+		if(mouseX > SCREEN_WIDTH - 400)
+		{
+			tooltipView.y = mouseY + 20;
+			tooltipView.x = mouseX - 100;
+			tooltipView.w = 200;
+		}
 	}
 }

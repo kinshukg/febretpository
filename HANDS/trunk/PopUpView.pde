@@ -1,17 +1,18 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class PopUpView extends View 
 {
-	ClosePopUpView c;
 	float arrowX, arrowY;
 	Button commit, notApplicable;
 	SecondLevelRowView parent;
+	ClosePopUpView close;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	PopUpView(float x_, float y_, float w_, SecondLevelRowView parent)
+	PopUpView(float w_, SecondLevelRowView parent)
 	{
-		super(x_, y_,w_ ,0);
-		c = new ClosePopUpView(0,0,w,20); 
-		this.subviews.add(c);
+		super(0, 0,w_ ,0);
+		close = new ClosePopUpView(0,-20,w,20);
+		this.subviews.add(close);
+		
 		commit = new Button(20,0,150,20,"Save Changes",0,255);
 		notApplicable = new Button(200,0,180,20,"Not Applicable, because...",0,255);
 		this.subviews.add(commit);
@@ -22,10 +23,6 @@ class PopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
-		ArrayList a = new ArrayList ();
-		a.add(c);
-
 		PopUpSection title = new PopUpSection(0, 0, null, "Mrs. Taylor's Pain Level is not controlled");
 		if(OPTION_ENABLE_POPUP_TEXT)
 		{
@@ -39,6 +36,13 @@ class PopUpView extends View
 		}
 		//title.setInfoButton("Here is some information insida a tooltip yall");
 		
+		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
+		if(OPTION_ENABLE_ACTION_INFO_POPUP)
+		{
+			c.setInfoButton("Evidence suggests that Positioning and Pain Management are effective in treating pain level");
+		}
+		ArrayList a = new ArrayList ();
+		a.add(c);
 		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
 		CheckBox c1 = new CheckBox(10,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
@@ -56,6 +60,18 @@ class PopUpView extends View
 		subviews.add(title);
 		subviews.add(recommended);
 		subviews.add(alsoConsider);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void layout()
+	{
+		h = 0;
+		for(int i = 0; i < subviews.size();i++)
+		{
+			View w = (View)popUpView.subviews.get(i);
+			w.y = h;
+			h += w.h;
+		}
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,5 +108,51 @@ class PopUpView extends View
 		fill(popUpSectionColor);
 		stroke(0);
 		triangle(0, 0, arrowX - x, arrowY - y, 0, ys);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentPressed(float lx, float ly)
+	{
+		if(commit.selected)
+		{
+			commit.selected = false;
+			for(int i = 0; i < subviews.size(); i++)
+			{
+				View v = (View)subviews.get(i);
+				if(v != commit && v != notApplicable && v != close)
+				{
+					PopUpSection pps = (PopUpSection)v;
+					ArrayList toRemove = new ArrayList();
+					if(pps.actionBoxes != null) 
+					{
+						for(int j = 0; j < pps.actionBoxes.size(); j++)
+						{
+							CheckBox c = pps.actionBoxes.get(j);
+							if(c.selected)
+							{
+								toRemove.add(c);
+								if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
+								{
+									pocManager.addNIC(c.t, c.tb.text, parent);
+								}
+								if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
+								{
+									pocManager.addNOC(c.t, c.tb.text, parent.parent);
+								}
+							}
+						}
+					}
+					// Remove checked items after a commit.
+					for(int j = 0; j < toRemove.size(); j++)
+					{
+						v.subviews.remove(toRemove.get(j));
+						pps.actionBoxes.remove(toRemove.get(j));
+					}
+				}
+			}
+			mainView.subviews.remove(this);
+			popUpView = null;
+		}
+		return true;
 	}
 }

@@ -10,6 +10,8 @@ class PopUpSection extends View
 	
 	int separatorStyle;
 	ArrayList<CheckBox> actionBoxes;
+	
+	PImage img;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PopUpSection(float x_, float y_, ArrayList<CheckBox> actions, String title)
@@ -54,10 +56,15 @@ class PopUpSection extends View
 	void setInfoButton(String text)
 	{
 		titleButton = new Button(0, 0, 16, 16, infoIcon);
-		titleButton.tooltipMode = 1;
 		titleButton.tooltipText = text;
 		subviews.add(titleButton);
 		titleButtonMode = 1;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setImage(PImage img)
+	{
+		this.img = img;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +113,10 @@ class PopUpSection extends View
 				h = descriptionBox.y + descriptionBox.h;
 			}
 		}
+		if(img != null)
+		{
+			h += img.height + 10;
+		}
 		if(actionBoxes != null)
 		{
 			for(int i = 0; i < actionBoxes.size(); i++)
@@ -128,6 +139,17 @@ class PopUpSection extends View
 		noStroke();
 		fill(popUpSectionColor);
 		rect(0,0,w,h);
+		
+		if(img != null)
+		{
+			int imageY = (int)titleBox.h + 5;
+			if(descriptionBox != null)
+			{
+				imageY = (int)descriptionBox.y + (int)descriptionBox.h;
+			}
+			int imageX = (int)w / 2 - img.width / 2;
+			image(img, imageX, imageY);
+		}
 
 		if(separatorStyle != 0)
 		{
