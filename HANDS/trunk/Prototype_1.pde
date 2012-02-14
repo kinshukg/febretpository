@@ -19,6 +19,8 @@ public boolean OPTION_ENABLE_POPUP_TEXT = true;
 
 public int prototypeState = 0;
 
+public GradientUtils gu = new GradientUtils();
+
 // Variables used got holding the different views
 public View mainView;     // The Main View is the background of the window with all of the other widgets on top of it.
 
@@ -217,13 +219,35 @@ void drawStaticViewElements()
 {
 	int footerY = pocManager.getBottom() + 10;
 	
-	textSize(14);
+	textSize(12);
 	image(firstLevelIconLegend, 20, footerY + 10);
 	text("NANDA-I", 60, footerY + 20);
 	image(secondLevelIconLegend, 20, footerY + 45);
 	text("NOC", 60, footerY + 55);
 	image(thirdLevelIconLegend, 20, footerY + 80);
 	text("NIC", 60, footerY + 90);
+	
+	int graphLegendX = 600;
+	// Legend Button width, height.
+	int bw = 26;
+	int bh = 12;
+	
+	int curY = footerY + 20;
+	
+	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertLowColor);
+	fill(0);
+	text("NOC Rating is currently at expected rating", graphLegendX, curY);
+	curY += 35;
+	
+	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertMidColor);
+	fill(0);
+	text("NOC rating is within point 1 of expected rating", graphLegendX, curY);
+	curY += 35;
+
+	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertHighColor);
+	fill(0);
+	text("NOC rating is 2 or more points away from expected rating", graphLegendX, curY);
+	curY += 35;
 	
 	textSize(12);
 	text("Nurse's Signature: _________________________", 20, footerY + 125);
