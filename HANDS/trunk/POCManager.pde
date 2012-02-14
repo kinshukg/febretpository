@@ -68,11 +68,12 @@ class POCManager
 	void addNIC(String text, String comment,SecondLevelRowView parentNOC)
 	{
 		ThirdLevelRowView temp = new ThirdLevelRowView(0, parentNOC.y+parentNOC.h,text,thirdLevelIcon);
-		for(int k =0 ; k < parentNOC.subs.size();k++)
+     temp.comments.add(comment);
+				
+for(int k =0 ; k < parentNOC.subs.size();k++)
 		{
 			ThirdLevelRowView tempo = (ThirdLevelRowView)parentNOC.subs.get(k);
-                        tempo.comments.add(comment);
-			tempo.y = temp.y+((k+1)*temp.h);
+                   	tempo.y = temp.y+((k+1)*temp.h);
 		}
 		//mainView.subviews.add(medicationManagementView);
 		parentNOC.subs.add(0,temp);
@@ -83,11 +84,12 @@ class POCManager
 	void addNOC(String text,String comment, ColouredRowView parentNANDA)
 	{
 		SecondLevelRowView temp = new SecondLevelRowView(0, parentNANDA.y+parentNANDA.h, text, secondLevelIcon, 0, 0, parentNANDA);
-		for(int k =0 ; k < parentNANDA.subs.size();k++)
+ temp.comment = comment;
+					
+for(int k =0 ; k < parentNANDA.subs.size();k++)
 		{
 			SecondLevelRowView tempo = (SecondLevelRowView)parentNANDA.subs.get(k);
-                        tempo.comment = comment;
-			tempo.y = temp.y+((k+1)*temp.h);
+                       tempo.y = temp.y+((k+1)*temp.h);
 		}
 		//mainView.subviews.add(medicationManagementView);
 		parentNANDA.subs.add(0,temp);
