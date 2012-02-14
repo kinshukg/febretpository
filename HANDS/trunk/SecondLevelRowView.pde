@@ -59,7 +59,7 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setAlertButton(int level, PopUpView p)
+	void setAlertButton(int level, PopUpView p, PImage graph)
 	{
 		color buttonColor = 0;
 		if(level == 1) buttonColor = alertLowColor;
@@ -68,7 +68,7 @@ class SecondLevelRowView extends View
 
 		if(OPTION_LONG_ALERT_BUTTON)
 		{
-			this.actionButton = new Button(200, 6, 0, 14, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
+			this.actionButton = new Button(250, 6, 0, 14, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
 		}
 		else 
 		{
@@ -76,6 +76,11 @@ class SecondLevelRowView extends View
 			this.message = "Mrs. Taylor's Pain Level is not controlled.";
 		}
 		subviews.add(this.actionButton);
+		
+		if(graph != null)
+		{
+			this.actionButton.icon = graph;
+		}
 		
 		if(OPTION_ALERT_INFO_BUTTON)
 		{
@@ -94,13 +99,13 @@ class SecondLevelRowView extends View
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p)
+	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
 		color buttonColor = 0;
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
 		if(level == 3) buttonColor = alertHighColor;
-		graphButton = new Button(550, 5, 50, 16, graphIcon);
+		graphButton = new Button(x, 6, 40, 14, graphIcon);
 		graphButton.transparent = false;
 		graphButton.buttonColor = buttonColor;
 		subviews.add(this.graphButton);
@@ -119,7 +124,7 @@ class SecondLevelRowView extends View
 					mainView.subviews.add(actionPopUp);
 					popUpView = actionPopUp;
 					actionPopUp.x = mouseX + 50;
-					actionPopUp.y = mouseY - 250;
+					actionPopUp.y = mouseY - 350;
 					actionPopUp.arrowX = mouseX;
 					actionPopUp.arrowY = mouseY;
 					actionButton.selected = false;

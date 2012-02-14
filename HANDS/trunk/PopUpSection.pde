@@ -115,7 +115,17 @@ class PopUpSection extends View
 		}
 		if(img != null)
 		{
-			h += img.height + 10;
+			if(titleButtonMode == 2)
+			{
+				if(titleButton.selected)
+				{
+					h += img.height + 10;
+				}
+			}
+			if(titleButtonMode == 0)
+			{
+				h += img.height + 10;
+			}
 		}
 		if(actionBoxes != null)
 		{
@@ -145,10 +155,20 @@ class PopUpSection extends View
 			int imageY = (int)titleBox.h + 5;
 			if(descriptionBox != null)
 			{
-				imageY = (int)descriptionBox.y + (int)descriptionBox.h;
+				imageY = (int)descriptionBox.y + (int)descriptionBox.h + 10;
 			}
 			int imageX = (int)w / 2 - img.width / 2;
-			image(img, imageX, imageY);
+			if(titleButtonMode == 2)
+			{
+				if(titleButton.selected)
+				{
+					image(img, imageX, imageY);
+				}
+			}
+			else
+			{
+				image(img, imageX, imageY);
+			}
 		}
 
 		if(separatorStyle != 0)

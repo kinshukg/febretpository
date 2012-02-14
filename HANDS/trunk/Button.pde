@@ -36,6 +36,10 @@ class Button extends View
 		if(w == 0)
 		{
 			w = textWidth(t) + 10;
+			if(icon != null)
+			{
+				w += icon.width;
+			}
 		}
 	}
 	
@@ -56,14 +60,23 @@ class Button extends View
 		
 		if(icon != null)
 		{
-			image(icon, -1, 0);
+			image(icon, 0, 0);
 		}
 		
 		if(t != null)
 		{
 			fill(textColor);
 			textAlign(CENTER,CENTER);
-			text(t, w / 2, h / 2 - 2);
+			int textW = (int)w;
+			if(icon != null) 
+			{
+				textW -= icon.width;
+				text(t, icon.width + textW / 2, h / 2 - 2);
+			}
+			else
+			{
+				text(t, textW / 2, h / 2 - 2);
+			}
 		}
 	}
 	
