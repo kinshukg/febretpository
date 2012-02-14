@@ -32,9 +32,9 @@ String comment = "";
   
 //System.out.println("Title = "+ title+ " Comment = " +comment+".");
                 if(!comment.equals(""))
-                h = 25;
-                else
                 h = 50;
+                else
+                h = 25;
 		stroke(0);
 		// textLeading(fbold);
 		fill(secondLevelRowColor);
@@ -53,7 +53,10 @@ String comment = "";
 			text(message, 200, 12);
 		}
 if(!comment.equals("")){
-            text(comment,200, 32);
+  textFont(font);
+  textSize(12);
+            text(comment,100, 32);
+            textFont(fbold);
   }
 	}
 	
