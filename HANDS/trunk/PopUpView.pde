@@ -72,12 +72,25 @@ class PopUpView extends View
 				ys +=v.h;
 			}
 		}
+		
+		int contours = 12;
+		for(int i = 0; i < contours; i++)
+		{
+			int alpha = 50 - (50 / contours) * (i * i);
+			fill(0, 0, 0, alpha);
+			stroke(0, 0, 0, alpha);
+			strokeWeight(1);
+			roundrect(-i, -i, (int)w + i * 2, (int)(h - 10) + i * 2, 5);
+			//triangle(0, (contours - i) * 2, arrowX - x, arrowY - y, 0, h - (contours - i) * 2);
+		}
+		
 		noStroke();
 		fill(popUpSectionColor);
 		rect(0,ys,w,ys+30);
 		commit.y = ys;
 		notApplicable.y = ys;                
 		fill(popUpSectionColor);
+		stroke(0);
 		triangle(0, 0, arrowX - x, arrowY - y, 0, ys);
 	}
 }

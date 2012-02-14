@@ -51,8 +51,8 @@ public color buttonSelectedColor = 200;
 public color buttonNotColor = #4682B4;
 public color popUpSectionColor = #FFF68F;
 public color alertHighColor = #FF3333;
-public color alertMidColor = #DAA520;
-public color alertLowColor = #CAFF70;
+public color alertMidColor = #FCF112;
+public color alertLowColor = #AAFF50;
 public color tooltipColor = #FFFFFF;
 
 // Variables holding Image names
@@ -68,6 +68,10 @@ public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
 public PImage plusIcon, minusIcon;
 public PImage infoIcon;
+
+public PImage smallGraph1;
+public PImage smallGraph2;
+public PImage smallGraph3;
 
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
@@ -119,6 +123,9 @@ public void setup()
 	minusIcon.resize(0,15);
 
 	infoIcon = loadImage("information.png");
+	smallGraph1 = loadImage("SmallGraph1.png");
+	smallGraph2 = loadImage("SmallGraph2.png");
+	smallGraph3 = loadImage("SmallGraph3.png");
 	
 	reset();
 }
@@ -218,6 +225,7 @@ public void draw()
 void drawStaticViewElements()
 {
 	int footerY = pocManager.getBottom() + 10;
+	textFont(fbold);
 	
 	textSize(12);
 	image(firstLevelIconLegend, 20, footerY + 10);
