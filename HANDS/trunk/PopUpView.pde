@@ -33,8 +33,23 @@ class PopUpView extends View
 					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
 			title.separatorStyle = 1;
 			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
+			if(OPTION_GRAPH_IN_MAIN_POPUP)
+			{
+				title.setImage(painLevelTrend);
+			}
 		}
+		subviews.add(title);
 		//title.setInfoButton("Here is some information insida a tooltip yall");
+			
+		// if(OPTION_GRAPH_IN_MAIN_POPUP)
+		// {
+			// PopUpSection graph = new PopUpSection(0, 0, null, "Pain Level Trend");
+			// graph.setImage(painLevelTrend);
+			// subviews.add(graph);
+			// title.separatorStyle = 0;
+			// graph.separatorStyle = 1;
+		// }
+		
 		
 		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
@@ -57,7 +72,6 @@ class PopUpView extends View
 		a1.add(c4);
 		
 		PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
-		subviews.add(title);
 		subviews.add(recommended);
 		subviews.add(alsoConsider);
 	}
@@ -68,9 +82,13 @@ class PopUpView extends View
 		h = 0;
 		for(int i = 0; i < subviews.size();i++)
 		{
-			View w = (View)popUpView.subviews.get(i);
-			w.y = h;
-			h += w.h;
+			View v = (View)popUpView.subviews.get(i);
+			v.y = h;
+			h += v.h;
+			if(v != commit && v != notApplicable && v != close)
+			{
+				v.w = this.w;
+			}
 		}
 	}
 

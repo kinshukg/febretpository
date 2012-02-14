@@ -18,6 +18,7 @@ public boolean OPTION_ALERT_INFO_BUTTON = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
 public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
+public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 
 public int prototypeState = 0;
 
@@ -95,6 +96,7 @@ public void setup()
 {
 	size(SCREEN_WIDTH, SCREEN_HEIGHT);
 	frameRate(20);
+	smooth();
 
 	//Load fonts.
 	font = loadFont("SegoeUI-14.vlw");
@@ -134,13 +136,16 @@ public void setup()
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
+	smallGraph1.resize(0, 16);
+	smallGraph2.resize(0, 16);
+	smallGraph3.resize(0, 16);
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-	anxietyLevelTrend.resize(400, 0);
+	anxietyLevelTrend.resize(350, 0);
 	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-	anxietySelfControlTrend.resize(400, 0);
+	anxietySelfControlTrend.resize(350, 0);
 	painLevelTrend = loadImage("painLevelTrend.png");
-	painLevelTrend.resize(400, 0);
+	painLevelTrend.resize(350, 0);
 	
 	reset();
 }
@@ -148,6 +153,8 @@ public void setup()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void reset()
 {
+	popUpView = null;
+	
 	// Views created
 	mainView = new View(0, 0, width, height);
 
@@ -209,10 +216,8 @@ public void setupPOCView()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPopup()
 {
-	PopUpView ppw = new PopUpView(400, pocManager.painLevelView);
+	PopUpView ppw = new PopUpView(460, pocManager.painLevelView);
 	ppw.reset();
-	
-	pocManager.painLevelView.setAlertButton(3, ppw);
 	
 	GraphPopUpView gp1 = new GraphPopUpView(400, pocManager.anxietyLevelView);
 	gp1.reset(anxietyLevelTrend);
@@ -222,10 +227,22 @@ public void setupPopup()
 	
 	GraphPopUpView gp3 = new GraphPopUpView(400, pocManager.painLevelView);
 	gp3.reset(painLevelTrend);
-	
-	pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1); 
-	pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2); 
-	pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3); 
+
+	if(OPTION_GRAPH_IN_MAIN_POPUP)
+	{
+		int graphButtonX = 250;
+		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+		pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2, graphButtonX); 
+		pocManager.painLevelView.setAlertButton(3, ppw, smallGraph3); 
+	}
+	else
+	{
+		int graphButtonX = 550;
+		pocManager.painLevelView.setAlertButton(3, ppw, null);
+		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+		pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2, graphButtonX); 
+		pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3, graphButtonX); 
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -320,6 +337,15 @@ void keyPressed()
 		OPTION_ENABLE_POPUP_TEXT = false;
 		OPTION_ALERT_INFO_BUTTON = true;
 		OPTION_ENABLE_ACTION_INFO_POPUP = true;
+		reset();
+	}
+	else if(key == '3')
+	{
+		OPTION_LONG_ALERT_BUTTON = true;
+		OPTION_ALERT_INFO_BUTTON = false;
+		OPTION_EXPANDABLE_POPUP_TEXT = true;
+		OPTION_ENABLE_POPUP_TEXT = true;
+		OPTION_GRAPH_IN_MAIN_POPUP = true;
 		reset();
 	}
 
