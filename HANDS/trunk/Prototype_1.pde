@@ -21,6 +21,7 @@ public boolean OPTION_ENABLE_POPUP_TEXT = true;
 public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
+public int OPTION_NNN_ICON_STYLE = 0;
 
 public int prototypeState = 0;
 
@@ -63,9 +64,6 @@ public color tooltipColor = #FFFFFF;
 
 // Variables holding Image names
 public String handIconString = "Red_Handprint__right_orange.png";
-public String firstLevelIconString = "black-square.png";
-public String secondLevelIconString = "black_circle.png";
-public String thirdLevelIconString = "532px-TriangleArrow-Up.svg.png";
 public String plusIconString = "add.png";
 public String minusIconString = "delete.png";
 
@@ -111,25 +109,6 @@ public void setup()
 	handIcon = loadImage(handIconString);
 	handIcon.resize(0,25);
 
-	firstLevelIcon = loadImage(firstLevelIconString);
-	firstLevelIcon.resize(0,15);
-
-	secondLevelIcon  = loadImage(secondLevelIconString);
-	secondLevelIcon.resize(0,15);
-
-	thirdLevelIcon = loadImage(thirdLevelIconString);
-	thirdLevelIcon.resize(0,15);
-
-
-	firstLevelIconLegend = loadImage(firstLevelIconString);
-	firstLevelIconLegend.resize(0,25);
-
-	secondLevelIconLegend  = loadImage(secondLevelIconString);
-	secondLevelIconLegend.resize(0,25);
-
-	thirdLevelIconLegend = loadImage(thirdLevelIconString);
-	thirdLevelIconLegend.resize(0,25);
-
 	plusIcon = loadImage(plusIconString);
 	plusIcon.resize(0,15);
  
@@ -159,9 +138,42 @@ public void setup()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void loadNNNIcons()
+{
+	if(OPTION_NNN_ICON_STYLE == 0)
+	{
+		firstLevelIcon = loadImage("black_square.png");
+		secondLevelIcon  = loadImage("black_circle.png");
+		thirdLevelIcon = loadImage("black_triangle.png");
+
+		firstLevelIconLegend = loadImage("black_square.png");
+		secondLevelIconLegend  = loadImage("black_circle.png");
+		thirdLevelIconLegend = loadImage("black_triangle.png");
+		firstLevelIconLegend.resize(0,25);
+		secondLevelIconLegend.resize(0,25);
+		thirdLevelIconLegend.resize(0,25);
+	}
+	else if(OPTION_NNN_ICON_STYLE == 1)
+	{
+		firstLevelIcon = loadImage("NANDA.png");
+		secondLevelIcon  = loadImage("NOC.png");
+		thirdLevelIcon = loadImage("NIC.png");
+
+		firstLevelIconLegend = loadImage("NANDA.png");
+		secondLevelIconLegend  = loadImage("NOC.png");
+		thirdLevelIconLegend = loadImage("NIC.png");
+		firstLevelIconLegend.resize(0,25);
+		secondLevelIconLegend.resize(0,25);
+		thirdLevelIconLegend.resize(0,25);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void reset()
 {
 	popUpView = null;
+	
+	loadNNNIcons();
 	
 	// Views created
 	mainView = new View(0, 0, width, height);
@@ -365,6 +377,16 @@ void keyPressed()
 	else if(key == '4')
 	{
 		OPTION_NO_SUGGESTIONS = true;
+		reset();
+	}
+	else if(key == '6')
+	{
+		OPTION_NNN_ICON_STYLE = 0;
+		reset();
+	}
+	else if(key == '5')
+	{
+		OPTION_NNN_ICON_STYLE = 1;
 		reset();
 	}
 	else if(key == '0')
