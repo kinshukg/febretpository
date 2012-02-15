@@ -47,7 +47,7 @@ class Tooltip extends View
 		stroke(0);
 		triangle(0, contours, arrowX - x, arrowY - y, 0, h - contours);
 		
-		fill(255, 255, 255);
+		fill(#FFFCE5);
 		roundrect(0, 0, (int)w, (int)h, 5);
 	}
 }

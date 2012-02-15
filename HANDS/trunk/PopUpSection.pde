@@ -147,8 +147,8 @@ class PopUpSection extends View
 	void drawContent()
 	{
 		noStroke();
-		fill(popUpSectionColor);
-		rect(0,0,w,h);
+		//fill(popUpSectionColor);
+		//rect(0,0,w,h);
 		
 		if(img != null)
 		{
@@ -173,7 +173,7 @@ class PopUpSection extends View
 
 		if(separatorStyle != 0)
 		{
-			strokeWeight(4);
+			strokeWeight(3);
 			stroke(0);
 			line(0, h - 2, w, h - 2);
 			strokeWeight(1);

@@ -62,6 +62,7 @@ class ColouredRowView extends View
 		}
 		
 		textAlign(LEFT,CENTER);
+		textFont(fbold);
 		textSize(12);
 		image(logo, indent,6);
 		text(title, indent + 35,12);

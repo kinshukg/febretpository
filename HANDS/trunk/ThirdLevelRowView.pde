@@ -54,6 +54,7 @@ class ThirdLevelRowView extends View
 		}
 		
 		textSize(12);
+		textFont(fbold);
 		image(logo, indent, 4);
 		textAlign(LEFT,CENTER);
 		text(title, indent +  35,12);
