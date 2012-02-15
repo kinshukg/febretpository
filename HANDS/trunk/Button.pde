@@ -37,6 +37,8 @@ class Button extends View
 	{
 		if(w == 0)
 		{
+			textFont(font);
+			textSize(14);
 			w = textWidth(t) + 15;
 			if(icon != null)
 			{

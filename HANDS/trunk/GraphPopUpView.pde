@@ -37,23 +37,12 @@ class GraphPopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
-		
-		int contours = 12;
-		for(int i = 0; i < contours; i++)
-		{
-			int alpha = 50 - (50 / contours) * (i * i);
-			fill(0, 0, 0, alpha);
-			stroke(0, 0, 0, alpha);
-			strokeWeight(1);
-			roundrect(-i, -i, (int)w + i * 2, (int)h + i * 2, 5);
-			//triangle(0, (contours - i) * 2, arrowX - x, arrowY - y, 0, h - (contours - i) * 2);
-		}
-		
+		int border = 5;
+		fill(0, 0, 0, 180);
 		noStroke();
+		rect(-border, -border, w + border, h + border);
+		triangle(-border, 10, arrowX - x, arrowY - y, -border, h - 10);
 		fill(255);
-		rect(0,0,w,h);
-		fill(255);
-		stroke(0);
-		triangle(0, 0, arrowX - x, arrowY - y, 0, h);
+		rect(0, 0, w, h);
 	}
 }

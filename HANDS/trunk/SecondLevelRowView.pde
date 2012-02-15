@@ -66,6 +66,7 @@ class SecondLevelRowView extends View
 			fill(0);
 		}
 		textAlign(LEFT,CENTER);
+		textFont(fbold);
 		textSize(12);
 		image(logo, indent,4);
 		text(title, indent + 35,12);
@@ -90,7 +91,7 @@ class SecondLevelRowView extends View
 
 		if(OPTION_LONG_ALERT_BUTTON)
 		{
-			this.actionButton = new Button(250, 5, 0, 16, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
+			this.actionButton = new Button(200, 5, 0, 16, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
 		}
 		else 
 		{

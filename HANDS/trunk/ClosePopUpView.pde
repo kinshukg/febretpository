@@ -14,7 +14,7 @@ class ClosePopUpView extends View
 		noStroke();
 		textSize(12);
 		textFont(fbold);
-		fill(closePopUpColor);
+		fill(30);
 		textAlign(LEFT, CENTER);
 		rect(0,0,w,h);
 		fill(255);

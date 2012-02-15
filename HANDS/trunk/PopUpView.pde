@@ -13,8 +13,11 @@ class PopUpView extends View
 		close = new ClosePopUpView(0,-20,w,20);
 		this.subviews.add(close);
 		
-		commit = new Button(20,0,150,20,"Save Changes",0,255);
-		notApplicable = new Button(200,0,180,20,"Mark as Read",0,255);
+		//commit = new Button(20,0,150,20,"Save Changes",0,255);
+		//notApplicable = new Button(200,0,180,20,"Mark as Read",0,255);
+		commit = new Button(20,0,150,20,"Save Changes",200,0);
+		notApplicable = new Button(200,0,180,20,"Mark as Read",200,0);
+		
 		this.subviews.add(commit);
 		this.subviews.add(notApplicable);	
 		this.parent = parent;
@@ -116,25 +119,17 @@ class PopUpView extends View
 			}
 		}
 		
-		int contours = 12;
-		for(int i = 0; i < contours; i++)
-		{
-			int alpha = 50 - (50 / contours) * (i * i);
-			fill(0, 0, 0, alpha);
-			stroke(0, 0, 0, alpha);
-			strokeWeight(1);
-			roundrect(-i, -i, (int)w + i * 2, (int)(h - 10) + i * 2, 5);
-			//triangle(0, (contours - i) * 2, arrowX - x, arrowY - y, 0, h - (contours - i) * 2);
-		}
-		
-		noStroke();
-		fill(popUpSectionColor);
-		rect(0,ys,w,ys+30);
 		commit.y = ys;
-		notApplicable.y = ys;                
-		fill(popUpSectionColor);
-		stroke(0);
-		triangle(0, 0, arrowX - x, arrowY - y, 0, ys);
+		notApplicable.y = ys;  
+
+		
+		int border = 5;
+		fill(0, 0, 0, 180);
+		noStroke();
+		rect(-border, -border, w + border, h + border);
+		triangle(-border, 10, arrowX - x, arrowY - y, -border, ys - 10);
+		fill(255);
+		rect(0, 0, w, h);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
