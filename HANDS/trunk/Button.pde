@@ -5,6 +5,8 @@ class Button extends View
 	String t;
 	color buttonColor, textColor;
 	PImage icon;
+	int style = 1;
+	boolean blinking;
 	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
 	String tooltipText;
@@ -35,7 +37,7 @@ class Button extends View
 	{
 		if(w == 0)
 		{
-			w = textWidth(t) + 10;
+			w = textWidth(t) + 15;
 			if(icon != null)
 			{
 				w += icon.width;
@@ -49,13 +51,38 @@ class Button extends View
 		noStroke();
 		//   if(flashing)
 
+		color baseColor = buttonColor;	
+		if(blinking) 
+		{
+			baseColor = lerpColor(buttonColor, color(200), (1 + sin(radians(frameCount) * 8)) / 2);
+		}
+
 		if(!transparent)
 		{
-			fill(0);
-			roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
+			if(style == 0)
+			{
+				fill(0);
+				roundrect(-1, -1, (int)w + 2, (int)h + 2, 5);
 
-			fill(buttonColor);
-			roundrect(0,0,(int)w,(int)h,5);
+				fill(buttonColor);
+				roundrect(0,0,(int)w,(int)h,5);
+			}
+			if(style == 1)
+			{
+				strokeWeight(1);
+				
+				gu.drawVGradient(0, 0, w + 1, h + 1, baseColor, 180, baseColor, 255, 0.6);
+
+				gu.drawBox(0, 0, (int)w, (int)h, 1, 0, 255);
+				gu.drawBox(0, 0, (int)w, (int)h, 2, 0, 60);
+			}
+			if(style == 2)
+			{
+				textFont(fbold);
+				strokeWeight(1);
+				stroke(buttonColor);
+				line(0, h - 1, w, h - 1);
+			}
 		}
 		
 		if(icon != null)
@@ -66,6 +93,13 @@ class Button extends View
 		if(t != null)
 		{
 			fill(textColor);
+			textFont(font);
+			textSize(14);
+			if(style == 2)
+			{
+				textFont(fbold);
+				fill(buttonColor);
+			}
 			textAlign(CENTER,CENTER);
 			int textW = (int)w;
 			if(icon != null) 

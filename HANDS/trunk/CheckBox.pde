@@ -50,7 +50,7 @@ class CheckBox extends View
 	{
 		if(infoButton != null)
 		{
-			infoButton.x = w - 20;
+			infoButton.x = w - 110;
 		}
 	}
 	
@@ -58,31 +58,40 @@ class CheckBox extends View
 	void drawContent()
 	{
 		textAlign(LEFT,CENTER);
-		strokeWeight(3);
-		stroke(0);
+		
+		int checkX = 4;
+		int checkY = 4;
+		int checkW = 12;
+		int checkH = 12;
+		color checkColor = #333333;
+
+		gu.drawBox(checkX, checkY, checkW, checkH, 1, 0, 255);
+		gu.drawBox(checkX, checkY, checkW, checkH, 2, 0, 60);
 		if(selected)
 		{
-			fill(0);
+			checkX += 4;
+			checkY += 4;
+			checkW -= 8;
+			checkH -= 8;
+			gu.drawBox(checkX, checkY, checkW, checkH, 1, checkColor, 180);
+			fill(checkColor, 255);
+			rect(checkX, checkY, checkX + checkW, checkY + checkH + 1);
 		}
-		else
-		{
-			fill(popUpSectionColor);
-		}
-
-		rect(5,1.65,23,16);
-		if(iconUsed) image(icon1,30,2);
-		if(icon2Used) image(icon2,48,2);
+		
+		if(iconUsed) image(icon1,20,2);
+		if(icon2Used) image(icon2,40,2);
 
 		fill(0);
 
-		textSize(16);
+		textSize(14);
+		textFont(font);
 		if(!type.equals(""))
 		{
-			text(type+" "+t, 70, 8);
+			text(type+" "+t, 40, 8);
 		}
 		else
 		{
-			text(t, 70, 8);
+			text(t, 40, 8);
 		}
 		textSize(12);
 	}

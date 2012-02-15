@@ -77,13 +77,13 @@ class StaticText extends View
 				if(words[i].endsWith("\n"))
 				{
 					output += line + words[i];
-					if(bullets) line = "        ";
+					if(bullets) line = "  ";
 					else line = "";
 				}
 				else
 				{
 					output += line + "\n";
-					if(bullets) line = "            " + words[i] + " ";
+					if(bullets) line = "     " + words[i] + " ";
 					else line = words[i] + " ";
 				}
 				numLines++;

@@ -15,6 +15,7 @@ class ClosePopUpView extends View
 		textSize(12);
 		textFont(fbold);
 		fill(closePopUpColor);
+		textAlign(LEFT, CENTER);
 		rect(0,0,w,h);
 		fill(255);
 		text("Close Popup    X",w - 120,h/2-2);

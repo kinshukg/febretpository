@@ -14,7 +14,7 @@ class PopUpView extends View
 		this.subviews.add(close);
 		
 		commit = new Button(20,0,150,20,"Save Changes",0,255);
-		notApplicable = new Button(200,0,180,20,"Not Applicable, because...",0,255);
+		notApplicable = new Button(200,0,180,20,"Mark as Read",0,255);
 		this.subviews.add(commit);
 		this.subviews.add(notApplicable);	
 		this.parent = parent;
@@ -58,18 +58,27 @@ class PopUpView extends View
 		}
 		ArrayList a = new ArrayList ();
 		a.add(c);
+		
 		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
 
-		CheckBox c1 = new CheckBox(10,0,true,false,false,"Energy Conservation",plusIcon,null,"NOC");
-		CheckBox c2 = new CheckBox(10,0,true,false,false,"Coping",plusIcon,null,"NOC");
-		CheckBox c3 = new CheckBox(10,0,true,false,false,"Pain Controlled Analgesia",plusIcon,null,"NIC");
-		CheckBox c4 = new CheckBox(10,0,true,false,false,"Relaxation Therapy",minusIcon,null,"NIC");
+		CheckBox c1 = new CheckBox(10,0,true,false,false,"Pain Prioritize", prioritizeIcon, null, "NANDAI");
+		CheckBox c2 = new CheckBox(10,0,true,false,false,"Impaired Gas Exchange", minusIcon, null, "NANDAI");
+		CheckBox c3 = new CheckBox(10,0,true,false,false,"Energy Conservation", plusIcon, null, "NOC");
+		CheckBox c4 = new CheckBox(10,0,true,false,false,"Coping", plusIcon, null, "NOC");
+		CheckBox c5 = new CheckBox(10,0,true,false,false,"Pain controlled analgesia", plusIcon, null, "NIC");
+		CheckBox c6 = new CheckBox(10,0,true,false,false,"Massage", plusIcon, null, "NIC");
+		CheckBox c7 = new CheckBox(10,0,true,false,false,"Relaxation Therapy", plusIcon, null, "NIC");
+		CheckBox c8 = new CheckBox(10,0,true,false,false,"Guided Imagery", plusIcon, null, "NIC");
 
 		ArrayList a1 = new ArrayList ();
 		a1.add(c1);
 		a1.add(c2); 
 		a1.add(c3);
 		a1.add(c4);
+		a1.add(c5);
+		a1.add(c6);
+		a1.add(c7);
+		a1.add(c8);
 		
 		PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
 		subviews.add(recommended);
@@ -131,8 +140,16 @@ class PopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
+		if(notApplicable.selected)
+		{
+			parent.stopBlinking();		
+			notApplicable.selected = false;
+			mainView.subviews.remove(this);
+			popUpView = null;
+		}
 		if(commit.selected)
 		{
+			parent.stopBlinking();		
 			commit.selected = false;
 			for(int i = 0; i < subviews.size(); i++)
 			{
@@ -156,6 +173,16 @@ class PopUpView extends View
 								if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
 								{
 									pocManager.addNOC(c.t, c.tb.text, parent.parent);
+								}
+								if(c.icon1.equals(minusIcon) && c.type.equals("NANDAI"))
+								{
+									pocManager.deleteNANDA(pocManager.impairedGasExchange);
+									if(c.tb.text.length() != 0) pocManager.impairedGasExchange.addComment(c.tb.text);
+								}
+								if(c.icon1.equals(prioritizeIcon) && c.type.equals("NANDAI"))
+								{
+									pocManager.prioritizeNANDA(parent.parent);
+									if(c.tb.text.length() != 0) parent.parent.addComment(c.tb.text);
 								}
 							}
 						}
