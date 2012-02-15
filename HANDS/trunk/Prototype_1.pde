@@ -237,7 +237,11 @@ public void setupPOCView()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPopup()
 {
-	PopUpView ppw = new PopUpView(460, pocManager.painLevelView);
+	int ppwidth = 570;
+	if(OPTION_GRAPH_IN_MAIN_POPUP) ppwidth = 705;
+	if(OPTION_ALERT_INFO_BUTTON) ppwidth = 400;
+	
+	PopUpView ppw = new PopUpView(ppwidth, pocManager.painLevelView);
 	ppw.reset();
 	
 	GraphPopUpView gp1 = new GraphPopUpView(400, pocManager.anxietyLevelView);

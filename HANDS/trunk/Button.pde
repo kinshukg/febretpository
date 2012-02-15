@@ -51,7 +51,6 @@ class Button extends View
 	void drawContent()
 	{
 		noStroke();
-		//   if(flashing)
 
 		color baseColor = buttonColor;	
 		if(blinking) 
