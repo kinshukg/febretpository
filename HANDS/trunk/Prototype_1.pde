@@ -13,6 +13,7 @@ static String VERSION = "v0.4";
 static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
 
 // Variables used to keep track of the prototype state
+public boolean OPTION_NO_SUGGESTIONS = false;
 public boolean OPTION_LONG_ALERT_BUTTON = true;
 public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
@@ -170,7 +171,8 @@ void reset()
 
 	setupPatientInfoView();
 	setupPOCView();
-	setupPopup();
+	
+	if(!OPTION_NO_SUGGESTIONS) setupPopup();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -331,6 +333,7 @@ void keyPressed()
 {
 	if(key == '1')
 	{
+		OPTION_NO_SUGGESTIONS = false;
 		OPTION_LONG_ALERT_BUTTON = true;
 		OPTION_ALERT_INFO_BUTTON = false;
 		OPTION_EXPANDABLE_POPUP_TEXT = false;
@@ -340,6 +343,7 @@ void keyPressed()
 	}
 	else if(key == '2')
 	{
+		OPTION_NO_SUGGESTIONS = false;
 		OPTION_LONG_ALERT_BUTTON = false;
 		OPTION_EXPANDABLE_POPUP_TEXT = false;
 		OPTION_ENABLE_POPUP_TEXT = false;
@@ -350,11 +354,17 @@ void keyPressed()
 	}
 	else if(key == '3')
 	{
+		OPTION_NO_SUGGESTIONS = false;
 		OPTION_LONG_ALERT_BUTTON = true;
 		OPTION_ALERT_INFO_BUTTON = false;
 		OPTION_EXPANDABLE_POPUP_TEXT = true;
 		OPTION_ENABLE_POPUP_TEXT = true;
 		OPTION_GRAPH_IN_MAIN_POPUP = true;
+		reset();
+	}
+	else if(key == '4')
+	{
+		OPTION_NO_SUGGESTIONS = true;
 		reset();
 	}
 	else if(key == '0')

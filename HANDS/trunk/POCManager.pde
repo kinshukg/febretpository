@@ -22,7 +22,6 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		
 		scrollingView = new ScrollingView(0, 250, SCREEN_WIDTH, SCREEN_HEIGHT - 400);
 		mainView.subviews.add(scrollingView);
 
