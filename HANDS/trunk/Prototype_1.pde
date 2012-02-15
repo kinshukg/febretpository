@@ -123,16 +123,16 @@ public void setup()
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
-	smallGraph1.resize(0, 16);
-	smallGraph2.resize(0, 16);
-	smallGraph3.resize(0, 16);
+	smallGraph1.resize(0, 15);
+	smallGraph2.resize(0, 15);
+	smallGraph3.resize(0, 15);
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-	anxietyLevelTrend.resize(350, 0);
+	anxietyLevelTrend.resize(450, 0);
 	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-	anxietySelfControlTrend.resize(350, 0);
+	anxietySelfControlTrend.resize(450, 0);
 	painLevelTrend = loadImage("painLevelTrend.png");
-	painLevelTrend.resize(350, 0);
+	painLevelTrend.resize(450, 0);
 	
 	reset();
 }
@@ -244,13 +244,13 @@ public void setupPopup()
 	PopUpView ppw = new PopUpView(ppwidth, pocManager.painLevelView);
 	ppw.reset();
 	
-	GraphPopUpView gp1 = new GraphPopUpView(400, pocManager.anxietyLevelView);
+	GraphPopUpView gp1 = new GraphPopUpView(500, pocManager.anxietyLevelView);
 	gp1.reset(anxietyLevelTrend);
 
-	GraphPopUpView gp2 = new GraphPopUpView(400, pocManager.anxietySelfControlView);
+	GraphPopUpView gp2 = new GraphPopUpView(500, pocManager.anxietySelfControlView);
 	gp2.reset(anxietySelfControlTrend);
 	
-	GraphPopUpView gp3 = new GraphPopUpView(400, pocManager.painLevelView);
+	GraphPopUpView gp3 = new GraphPopUpView(500, pocManager.painLevelView);
 	gp3.reset(painLevelTrend);
 
 	if(OPTION_GRAPH_IN_MAIN_POPUP)

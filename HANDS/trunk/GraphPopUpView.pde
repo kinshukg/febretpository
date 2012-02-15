@@ -19,6 +19,7 @@ class GraphPopUpView extends View
 	{
 		PopUpSection title = new PopUpSection(0, 0, null, "");
 		title.setImage(img);
+		title.w = w;
 		subviews.add(title);
 	}
 
