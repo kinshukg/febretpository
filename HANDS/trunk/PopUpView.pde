@@ -30,7 +30,7 @@ class PopUpView extends View
 		if(OPTION_ENABLE_POPUP_TEXT)
 		{
 			title.setDescription(
-				"Evidence Sugests That: BULLET \n " +
+				"Evidence Suggests That: BULLET \n " +
 					"- A combination of Medication Management, Poitioning and Pain Management has most positive impact on Pain Level\n " +
 					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
 					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
