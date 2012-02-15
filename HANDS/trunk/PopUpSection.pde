@@ -80,11 +80,11 @@ class PopUpSection extends View
 	{
 		if(titleButton != null)
 		{
-			titleButton.y = 2;
+			titleButton.y = 0;
 			titleButton.x = 0;
 			titleButton.w = 16;
 			titleButton.h = 16;
-			titleBox.x = 20;
+			titleBox.x = 30;
 		}
 		else
 		{

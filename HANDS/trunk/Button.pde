@@ -88,7 +88,7 @@ class Button extends View
 		
 		if(icon != null)
 		{
-			image(icon, 0, 0);
+			image(icon, 1, 1);
 		}
 		
 		if(t != null)
