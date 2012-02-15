@@ -1,19 +1,20 @@
-// ############################################################################################################################################################################################
-// EVL - Hands On Project Prototype # 1
-// Draft # 2
-// Added Buttons, Checkboxes and PopUpSections Functionality - To be Continued
-// ############################################################################################################################################################################################
-static int SCREEN_WIDTH = 1024;
-static int SCREEN_HEIGHT = 800;
+///////////////////////////////////////////////////////////////////////////////////////////////////
+static int SCREEN_WIDTH = 1400;
+static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
 static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
+static int FORMAT_SUBTEXT = 3;	
+
+static String VERSION = "v0.4";	
+
+static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
 
 // Variables used to keep track of the prototype state
 public boolean OPTION_LONG_ALERT_BUTTON = true;
-public boolean OPTION_EXPANDABLE_POPUP_TEXT = true;
+public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
 public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
@@ -64,13 +65,13 @@ public String handIconString = "Red_Handprint__right_orange.png";
 public String firstLevelIconString = "black-square.png";
 public String secondLevelIconString = "black_circle.png";
 public String thirdLevelIconString = "532px-TriangleArrow-Up.svg.png";
-public String plusIconString = "Black_Plus.png";
-public String minusIconString = "Black_Minus.png";
+public String plusIconString = "add.png";
+public String minusIconString = "delete.png";
 
 // Variables holding Images
 public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
-public PImage plusIcon, minusIcon;
+public PImage plusIcon, minusIcon, prioritizeIcon;
 public PImage infoIcon;
 
 public PImage smallGraph1;
@@ -99,8 +100,10 @@ public void setup()
 	smooth();
 
 	//Load fonts.
-	font = loadFont("SegoeUI-14.vlw");
-	fbold = loadFont("SegoeUI-Bold-14.vlw");
+	//font = loadFont("SegoeUI-14.vlw");
+	font = createFont("Verdana", 12);
+	//fbold = loadFont("SegoeUI-Bold-14.vlw");
+	fbold = createFont("Verdana Bold", 12);
 	textFont(font);
 
 	// Load image assets.
@@ -132,7 +135,11 @@ public void setup()
 	minusIcon = loadImage(minusIconString);
 	minusIcon.resize(0,15);
 
-	infoIcon = loadImage("information.png");
+	prioritizeIcon = loadImage("arrow_up.png");
+	prioritizeIcon.resize(0,15);
+	
+	infoIcon = loadImage("help-browser.png");
+	infoIcon.resize(0, 24);
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
@@ -326,8 +333,9 @@ void keyPressed()
 	{
 		OPTION_LONG_ALERT_BUTTON = true;
 		OPTION_ALERT_INFO_BUTTON = false;
-		OPTION_EXPANDABLE_POPUP_TEXT = true;
+		OPTION_EXPANDABLE_POPUP_TEXT = false;
 		OPTION_ENABLE_POPUP_TEXT = true;
+		OPTION_GRAPH_IN_MAIN_POPUP = false;
 		reset();
 	}
 	else if(key == '2')
@@ -337,6 +345,7 @@ void keyPressed()
 		OPTION_ENABLE_POPUP_TEXT = false;
 		OPTION_ALERT_INFO_BUTTON = true;
 		OPTION_ENABLE_ACTION_INFO_POPUP = true;
+		OPTION_GRAPH_IN_MAIN_POPUP = false;
 		reset();
 	}
 	else if(key == '3')
@@ -347,6 +356,10 @@ void keyPressed()
 		OPTION_ENABLE_POPUP_TEXT = true;
 		OPTION_GRAPH_IN_MAIN_POPUP = true;
 		reset();
+	}
+	else if(key == '0')
+	{
+		saveFrame("HANDS-"+VERSION+"-####.png");
 	}
 
 	mainView.keypressed();

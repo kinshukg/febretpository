@@ -4,9 +4,10 @@ class SecondLevelRowView extends View
 	String title;
 	String message;
 	PImage logo;
-	String comment = "";
+	StaticText commentBox;
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
+	int indent;
 
 	Button graphButton, actionButton;
 	Button infoButton;
@@ -16,30 +17,58 @@ class SecondLevelRowView extends View
 	ColouredRowView parent;
           
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	SecondLevelRowView(float x_, float y_,String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
+	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
 	{
-		super(x_, y_,width,25);
+		super(0, 0,width,25);
 		this.title = title;
 		this.logo = logo;
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
 		this.subs = new ArrayList();
 		this.parent=  parent;
+		indent = 40;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void addComment(String comment)
+	{
+		commentBox = new StaticText(comment, FORMAT_NORMAL);
+		commentBox.w = w;
+		subviews.add(commentBox);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void layout()
+	{
+		h = 25;
+		if(commentBox != null)
+		{
+			commentBox.y = h;
+			commentBox.x = indent + 80;
+			h += 25;
+		}
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
-		if(!comment.equals("")) h = 50;
-		else h = 25;
 		stroke(0);
 		
-		fill(secondLevelRowColor);
-		rect(-1,0,w+10,h);
-		fill(0);
+		if(parent.deleted)
+		{
+			fill(STYLE_DELETED_ROW_BACK_COLOR);
+			rect(-1,0,w+10,h);
+			fill(0);
+		}
+		else
+		{
+			fill(secondLevelRowColor);
+			rect(-1,0,w+10,h);
+			fill(0);
+		}
+		textAlign(LEFT,CENTER);
 		textSize(12);
-		image(logo,40,4);
-		text(title,75,12);
+		image(logo, indent,4);
+		text(title, indent + 35,12);
 		
 		if(firstColumn != 0) text(firstColumn, 650, 12);
 		if(secondColumn != 0) text(secondColumn, 750, 12);
@@ -47,14 +76,7 @@ class SecondLevelRowView extends View
 		if(message != null)
 		{
 			fill(alertHighColor);
-			text(message, 200, 12);
-		}
-		if(!comment.equals(""))
-		{
-			textFont(font);
-			textSize(12);
-			text(comment,100, 32);
-			textFont(fbold);
+			text(message, 170, 12);
 		}
 	}
 	
@@ -68,13 +90,14 @@ class SecondLevelRowView extends View
 
 		if(OPTION_LONG_ALERT_BUTTON)
 		{
-			this.actionButton = new Button(250, 6, 0, 14, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
+			this.actionButton = new Button(250, 5, 0, 16, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
 		}
 		else 
 		{
-			this.actionButton = new Button(450, 6, 0, 14, "ACTIONS", buttonColor, 0);
+			this.actionButton = new Button(450, 5, 0, 16, "Actions", buttonColor, 0);
 			this.message = "Mrs. Taylor's Pain Level is not controlled.";
 		}
+		this.actionButton.blinking = true;
 		subviews.add(this.actionButton);
 		
 		if(graph != null)
@@ -84,7 +107,7 @@ class SecondLevelRowView extends View
 		
 		if(OPTION_ALERT_INFO_BUTTON)
 		{
-			infoButton = new Button(520, 6, 16, 16, infoIcon);
+			infoButton = new Button(520, 1, 24, 24, infoIcon);
 			infoButton.tooltipText = 
 				"This requires action because analysis of similar patient's data shows: BULLET \n " +
 				"* It is difficult to control Pain in EOL ptients who also have impaired Gas Exchange\n " + 
@@ -105,10 +128,11 @@ class SecondLevelRowView extends View
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
 		if(level == 3) buttonColor = alertHighColor;
-		graphButton = new Button(x, 6, 40, 14, graphIcon);
+		graphButton = new Button(x, 5, 40, 16, graphIcon);
 		graphButton.transparent = false;
 		graphButton.buttonColor = buttonColor;
 		subviews.add(this.graphButton);
+		if(level == 3) graphButton.blinking = true;
 		this.graphPopUp = p;
 	}
 	
@@ -128,6 +152,8 @@ class SecondLevelRowView extends View
 					actionPopUp.arrowX = mouseX;
 					actionPopUp.arrowY = mouseY;
 					actionButton.selected = false;
+					
+					if(actionPopUp.y < 50) actionPopUp.y = 50;
 				}
 			}
 		}
@@ -148,5 +174,12 @@ class SecondLevelRowView extends View
 			}
 		}
 		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void stopBlinking()
+	{
+		if(actionButton != null) actionButton.blinking = false;
+		if(graphButton != null) graphButton.blinking = false;
 	}
 }
