@@ -29,7 +29,7 @@ class TextBox extends View
     if (text.equals("") && !activated)
     {
       fill(#A3A3A3);
-      text("Enter a comment", 15, 5);
+      text("Optional comment", 15, 7);
     }
     else {
     /*  if (activated)
@@ -37,7 +37,7 @@ class TextBox extends View
       else
         fill(#A3A3A3);
       */
-      text(text, 15, 5);
+      text(text, 15, 7);
     }
     textFont(fbold);
     //textAlign(CENTER,CENTER);

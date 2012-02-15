@@ -1,3 +1,0 @@
-
-Prototype_1
-Prototype_1.jar,core.jar
