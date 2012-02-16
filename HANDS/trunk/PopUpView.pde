@@ -16,7 +16,7 @@ class PopUpView extends View
 		//commit = new Button(20,0,150,20,"Save Changes",0,255);
 		//notApplicable = new Button(200,0,180,20,"Mark as Read",0,255);
 		commit = new Button(20,0,150,20,"Save Changes",200,0);
-		notApplicable = new Button(200,0,180,20,"Mark as Read",200,0);
+		notApplicable = new Button(200,0,180,20,"Decline Changes",200,0);
 		
 		this.subviews.add(commit);
 		this.subviews.add(notApplicable);	
@@ -31,7 +31,7 @@ class PopUpView extends View
 		{
 			title.setDescription(
 				"Evidence Suggests That: BULLET \n " +
-					"- A combination of Medication Management, Poitioning and Pain Management has most positive impact on Pain Level\n " +
+					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level\n " +
 					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
 					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
 			title.separatorStyle = 1;
@@ -57,7 +57,7 @@ class PopUpView extends View
 		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
-			c.setInfoButton("Evidence suggests that Positioning and Pain Management are effective in treating pain level");
+			c.setInfoButton("Evidence suggests that Positioning and Pain Management are effective in treating pain");
 		}
 		ArrayList a = new ArrayList ();
 		a.add(c);

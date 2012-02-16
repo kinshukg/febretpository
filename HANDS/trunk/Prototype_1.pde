@@ -8,7 +8,7 @@ static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
 static int FORMAT_SUBTEXT = 3;	
 
-static String VERSION = "v0.4";	
+static String VERSION = "v0.6";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
 
@@ -118,7 +118,7 @@ public void setup()
 	prioritizeIcon = loadImage("arrow_up.png");
 	prioritizeIcon.resize(0,15);
 	
-	infoIcon = loadImage("help-browser.png");
+	infoIcon = loadImage("information.png");
 	infoIcon.resize(0, 24);
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
