@@ -1,12 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class View 
 {
-  float x, y, w, h;
-  ArrayList subviews;
-  boolean visible;
+	float x, y, w, h;
+	ArrayList subviews;
+	float dragX;
+	float dragY;
+	boolean visible;
+	boolean moving;
   
   View(float x_, float y_, float w_, float h_)
   {
+	moving = false;
     x = x_;
     y = y_;
     w = w_;
@@ -52,7 +56,16 @@ class View
     return true;
   }
   
-  boolean contentDragged(float lx, float ly)
+  boolean contentReleased(float lx, float ly)
+  {
+    // override this
+    // lx, ly are in the local coordinate system of the view,
+    // i.e. 0,0 is the top left corner of this view
+    // return false if the click is to "pass through" this view
+    return true;
+  }
+  
+  boolean contentMoved(float lx, float ly)
   {
     return true;
   }
@@ -85,7 +98,7 @@ class View
     return contentPressed(lx, ly);
   }
 
-  boolean mouseDragged(float px, float py)
+  boolean mouseMoved(float px, float py)
   {
     if (!ptInRect(px, py, x, y, w, h)) return false;
     float lx = px - x;
@@ -93,9 +106,9 @@ class View
     // check our subviews first
     for (int i = subviews.size()-1; i >= 0; i--) {
       View v = (View)subviews.get(i);
-      if (v.mouseDragged(lx, ly)) return true;
+      if (v.mouseMoved(lx, ly)) return true;
     }
-    return contentDragged(lx, ly);
+    return contentMoved(lx, ly);
   }
 
   boolean mouseClicked(float px, float py)
@@ -109,6 +122,19 @@ class View
       if (v.mouseClicked(lx, ly)) return true;
     }
     return contentClicked(lx, ly);
+  }
+  
+  boolean mouseReleased(float px, float py)
+  {
+    if (!ptInRect(px, py, x, y, w, h)) return false;
+    float lx = px - x;
+    float ly = py - y;
+    // check our subviews first
+    for (int i = subviews.size()-1; i >= 0; i--) {
+      View v = (View)subviews.get(i);
+      if (v.mouseReleased(lx, ly)) return true;
+    }
+    return contentReleased(lx, ly);
   }
   
   boolean mouseWheel(float px, float py, int delta)

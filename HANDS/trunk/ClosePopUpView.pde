@@ -22,14 +22,44 @@ class ClosePopUpView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentClicked(float lx, float ly)
+	{
+		if(popUpView != null)
+		{
+			//if(w - lx > 50)
+			{
+				mainView.subviews.remove(popUpView);
+				popUpView = null;
+			}
+		}
+		pressed = true;
+		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentMoved(float lx, float ly)
+	{
+		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentPressed(float lx, float ly)
 	{
 		if(popUpView != null)
 		{
-			mainView.subviews.remove(popUpView);
-			popUpView = null;
+			println("moving");
+			popUpView.moving = true;
+			popUpView.dragX = popUpView.x - mouseX;
+			popUpView.dragY = popUpView.y - mouseY;
 		}
 		pressed = true;
+		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentReleased(float lx, float ly)
+	{
+		pressed = false;
 		return true;
 	}
 }
