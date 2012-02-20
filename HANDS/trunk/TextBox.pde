@@ -66,7 +66,7 @@ class TextBox extends View
     PImage icon;
     String label;
     /////////////////////////////////////////////////////////////////////////////////////////////////////
-    boolean contentClicked(float lx, float ly)
+    boolean contentPressed(float lx, float ly)
     {
 
       activated = !activated;
