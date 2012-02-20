@@ -9,6 +9,11 @@ class CheckBox extends View
 	Button infoButton;
 	float tw;
 
+	int checkX = 4;
+	int checkY = 4;
+	int checkW = 12;
+	int checkH = 12;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	CheckBox(float x_, float y_,boolean iconUsed,boolean icon2Used,boolean selected, String t, PImage icon1, PImage icon2)
 	{
@@ -41,7 +46,7 @@ class CheckBox extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setInfoButton(String text)
 	{
-		infoButton = new Button(0, 0, 16, 16, infoIcon);
+		infoButton = new Button(0, 0, 22, 22, infoIcon);
 		infoButton.tooltipText = text;
 		subviews.add(infoButton);
 	}
@@ -51,7 +56,7 @@ class CheckBox extends View
 	{
 		if(infoButton != null)
 		{
-			infoButton.x = w - 110;
+			infoButton.x = w - 210;
 		}
 		w = popUpView.w;
 		tb.x = tw + 50;
@@ -64,12 +69,13 @@ class CheckBox extends View
 	{
 		textAlign(LEFT,CENTER);
 		
-		int checkX = 4;
-		int checkY = 4;
-		int checkW = 12;
-		int checkH = 12;
 		color checkColor = #333333;
 
+		checkX = 4;
+		checkY = 4;
+		checkW = 12;
+		checkH = 12;
+	
 		gu.drawBox(checkX, checkY, checkW, checkH, 1, 0, 255);
 		gu.drawBox(checkX, checkY, checkW, checkH, 2, 0, 60);
 		if(selected)
@@ -106,22 +112,23 @@ class CheckBox extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
-		// override this
-		// lx, ly are in the local coordinate system of the view,
-		// i.e. 0,0 is the top left corner of this view
-		// return false if the click is to "pass through" this view
-		selected =!selected;
-		tb.activated = false;
-		System.out.println("Selected = "+ selected);
-		if(selected)
+		int margin = 4;
+		if(lx > checkX - margin && lx < checkX + checkW + margin &&
+			ly > checkY - margin && ly < checkY + checkH + margin)
 		{
-			this.subviews.add(tb);
-			//this.h = 60; 
-		} 
-		else	
-		{
-			this.subviews.remove(tb);
-			//this.h = 20; 
+			selected =!selected;
+			tb.activated = false;
+			System.out.println("Selected = "+ selected);
+			if(selected)
+			{
+				this.subviews.add(tb);
+				//this.h = 60; 
+			} 
+			else	
+			{
+				this.subviews.remove(tb);
+				//this.h = 20; 
+			}
 		}
 		return true;
 	}

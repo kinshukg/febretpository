@@ -116,7 +116,7 @@ class Button extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	boolean contentPressed(float lx, float ly)
+	boolean contentClicked(float lx, float ly)
 	{
 		if(!OPTION_TOOLTIP_AUTO_OPEN && tooltipText != null && tooltipText.length() != 0)
 		{

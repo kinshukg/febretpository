@@ -138,7 +138,7 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	boolean contentPressed(float lx, float ly)
+	boolean contentClicked(float lx, float ly)
 	{
 		if(actionButton != null)
 		{
