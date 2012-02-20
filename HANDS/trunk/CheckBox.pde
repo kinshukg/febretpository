@@ -7,6 +7,7 @@ class CheckBox extends View
 	String type = "";
 	TextBox tb;
 	Button infoButton;
+	float tw;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	CheckBox(float x_, float y_,boolean iconUsed,boolean icon2Used,boolean selected, String t, PImage icon1, PImage icon2)
@@ -52,6 +53,10 @@ class CheckBox extends View
 		{
 			infoButton.x = w - 110;
 		}
+		w = popUpView.w;
+		tb.x = tw + 50;
+		tb.w = popUpView.w - tw - 70;
+		tb.y = 0;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,10 +93,12 @@ class CheckBox extends View
 		if(!type.equals(""))
 		{
 			text(type+" "+t, 40, 8);
+			tw = textWidth(type+" "+t);
 		}
 		else
 		{
 			text(t, 40, 8);
+			tw = textWidth(t);
 		}
 		textSize(12);
 	}
@@ -109,12 +116,12 @@ class CheckBox extends View
 		if(selected)
 		{
 			this.subviews.add(tb);
-			this.h = 60; 
+			//this.h = 60; 
 		} 
 		else	
 		{
 			this.subviews.remove(tb);
-			this.h = 20; 
+			//this.h = 20; 
 		}
 		return true;
 	}
