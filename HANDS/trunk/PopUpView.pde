@@ -57,7 +57,8 @@ class PopUpView extends View
 		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
-			c.setInfoButton("Evidence suggests that Positioning and Pain Management are effective in treating pain");
+			c.setInfoButton("Analysis of similar patient's data shows: BULLET \n" +
+							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
 		}
 		ArrayList a = new ArrayList ();
 		a.add(c);
@@ -133,7 +134,7 @@ class PopUpView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	boolean contentPressed(float lx, float ly)
+	boolean contentClicked(float lx, float ly)
 	{
 		if(notApplicable.selected)
 		{

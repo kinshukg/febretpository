@@ -8,7 +8,7 @@ static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
 static int FORMAT_SUBTEXT = 3;	
 
-static String VERSION = "v0.6";	
+static String VERSION = "v1.0";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
 
@@ -119,7 +119,7 @@ public void setup()
 	prioritizeIcon.resize(0,15);
 	
 	infoIcon = loadImage("information.png");
-	infoIcon.resize(0, 24);
+	infoIcon.resize(0, 22);
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
@@ -380,6 +380,7 @@ void keyPressed()
 		OPTION_EXPANDABLE_POPUP_TEXT = false;
 		OPTION_ENABLE_POPUP_TEXT = true;
 		OPTION_GRAPH_IN_MAIN_POPUP = false;
+		OPTION_ENABLE_ACTION_INFO_POPUP = false;
 		reset();
 	}
 	else if(key == '2')
