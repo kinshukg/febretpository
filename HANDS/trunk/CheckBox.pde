@@ -97,7 +97,7 @@ class CheckBox extends View
 	}
   
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	boolean contentPressed(float lx, float ly)
+	boolean contentClicked(float lx, float ly)
 	{
 		// override this
 		// lx, ly are in the local coordinate system of the view,
