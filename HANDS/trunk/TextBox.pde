@@ -70,6 +70,7 @@ class TextBox extends View
     {
 
       activated = !activated;
+	  filterKeyInput = activated;
       System.out.println("Activated = "+ activated);
       return true;
     }
