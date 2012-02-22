@@ -8,7 +8,7 @@ static int FORMAT_HEADING1 = 1;
 static int FORMAT_NORMAL = 2;	
 static int FORMAT_SUBTEXT = 3;	
 
-static String VERSION = "v1.0";	
+static String VERSION = "v1.1";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
 
@@ -37,6 +37,7 @@ public PatientDataView nameView,dobView,genderView,allergiesView,codeStatusView,
 public View popUpView;
 public Tooltip tooltipView = null;
 
+boolean filterKeyInput = false;
 
 POCManager pocManager;
 
@@ -372,58 +373,60 @@ void mouseClicked()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void keyPressed() 
 {
-	if(key == '1')
+	if(!filterKeyInput || popUpView == null)
 	{
-		OPTION_NO_SUGGESTIONS = false;
-		OPTION_LONG_ALERT_BUTTON = true;
-		OPTION_ALERT_INFO_BUTTON = false;
-		OPTION_EXPANDABLE_POPUP_TEXT = false;
-		OPTION_ENABLE_POPUP_TEXT = true;
-		OPTION_GRAPH_IN_MAIN_POPUP = false;
-		OPTION_ENABLE_ACTION_INFO_POPUP = false;
-		reset();
+		if(key == '1')
+		{
+			OPTION_NO_SUGGESTIONS = false;
+			OPTION_LONG_ALERT_BUTTON = true;
+			OPTION_ALERT_INFO_BUTTON = false;
+			OPTION_EXPANDABLE_POPUP_TEXT = false;
+			OPTION_ENABLE_POPUP_TEXT = true;
+			OPTION_GRAPH_IN_MAIN_POPUP = false;
+			OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			reset();
+		}
+		else if(key == '2')
+		{
+			OPTION_NO_SUGGESTIONS = false;
+			OPTION_LONG_ALERT_BUTTON = false;
+			OPTION_EXPANDABLE_POPUP_TEXT = false;
+			OPTION_ENABLE_POPUP_TEXT = false;
+			OPTION_ALERT_INFO_BUTTON = true;
+			OPTION_ENABLE_ACTION_INFO_POPUP = true;
+			OPTION_GRAPH_IN_MAIN_POPUP = false;
+			reset();
+		}
+		else if(key == '3')
+		{
+			OPTION_NO_SUGGESTIONS = false;
+			OPTION_LONG_ALERT_BUTTON = true;
+			OPTION_ALERT_INFO_BUTTON = false;
+			OPTION_EXPANDABLE_POPUP_TEXT = true;
+			OPTION_ENABLE_POPUP_TEXT = true;
+			OPTION_GRAPH_IN_MAIN_POPUP = true;
+			reset();
+		}
+		else if(key == '4')
+		{
+			OPTION_NO_SUGGESTIONS = true;
+			reset();
+		}
+		else if(key == '6')
+		{
+			OPTION_NNN_ICON_STYLE = 0;
+			reset();
+		}
+		else if(key == '5')
+		{
+			OPTION_NNN_ICON_STYLE = 1;
+			reset();
+		}
+		else if(key == '0')
+		{
+			saveFrame("HANDS-"+VERSION+"-####.png");
+		}
 	}
-	else if(key == '2')
-	{
-		OPTION_NO_SUGGESTIONS = false;
-		OPTION_LONG_ALERT_BUTTON = false;
-		OPTION_EXPANDABLE_POPUP_TEXT = false;
-		OPTION_ENABLE_POPUP_TEXT = false;
-		OPTION_ALERT_INFO_BUTTON = true;
-		OPTION_ENABLE_ACTION_INFO_POPUP = true;
-		OPTION_GRAPH_IN_MAIN_POPUP = false;
-		reset();
-	}
-	else if(key == '3')
-	{
-		OPTION_NO_SUGGESTIONS = false;
-		OPTION_LONG_ALERT_BUTTON = true;
-		OPTION_ALERT_INFO_BUTTON = false;
-		OPTION_EXPANDABLE_POPUP_TEXT = true;
-		OPTION_ENABLE_POPUP_TEXT = true;
-		OPTION_GRAPH_IN_MAIN_POPUP = true;
-		reset();
-	}
-	else if(key == '4')
-	{
-		OPTION_NO_SUGGESTIONS = true;
-		reset();
-	}
-	else if(key == '6')
-	{
-		OPTION_NNN_ICON_STYLE = 0;
-		reset();
-	}
-	else if(key == '5')
-	{
-		OPTION_NNN_ICON_STYLE = 1;
-		reset();
-	}
-	else if(key == '0')
-	{
-		saveFrame("HANDS-"+VERSION+"-####.png");
-	}
-
 	mainView.keypressed();
 }
 
