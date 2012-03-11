@@ -46,19 +46,15 @@ class ColouredRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
+		stroke(0);
+		fill(colouredRowColor);
+		rect(-1,0,w+10,h);
+		fill(0);
+		
 		if(deleted)
 		{
-			stroke(0);
+			stroke(STYLE_DELETED_ROW_BACK_COLOR);
 			fill(STYLE_DELETED_ROW_BACK_COLOR);
-			rect(-1,0,w+10,h);
-			fill(0);
-		}
-		else
-		{
-			stroke(0);
-			fill(colouredRowColor);
-			rect(-1,0,w+10,h);
-			fill(0);
 		}
 		
 		textAlign(LEFT,CENTER);
@@ -66,5 +62,10 @@ class ColouredRowView extends View
 		textSize(12);
 		image(logo, indent,6);
 		text(title, indent + 35,12);
+		
+		if(deleted)
+		{
+			line(0, 15, w, 15);
+		}
 	}
 }
