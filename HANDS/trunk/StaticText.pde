@@ -9,6 +9,8 @@ class StaticText extends View
 	
 	String[] textWords;
 	
+	int maxTextWidth;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	StaticText(String text)
 	{
@@ -65,6 +67,8 @@ class StaticText extends View
 		int curLineWidth = 0;
 		int lineWidth = (int)w;
 		
+		maxTextWidth = 0;
+		
 		for(int i = 0; i < textWords.length; i++)
 		{
 			if(textWords[i].equals("<l>")) { bullets = true; continue; }
@@ -81,6 +85,7 @@ class StaticText extends View
 			
 			if(curLineWidth + wordWidth >= lineWidth || textWords[i].endsWith("\n"))
 			{
+				if(curLineWidth > maxTextWidth) maxTextWidth = curLineWidth;
 				if(textWords[i].endsWith("\n"))
 				{
 					text(textWords[i], curX, curY);
@@ -122,6 +127,7 @@ class StaticText extends View
 				curLineWidth = curX;
 			}
 		}
+		if(curLineWidth > maxTextWidth) maxTextWidth = curLineWidth;
 		
 		h = curY + 10;
 	}
