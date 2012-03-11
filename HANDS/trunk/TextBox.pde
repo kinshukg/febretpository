@@ -24,7 +24,7 @@ class TextBox extends View
 
     fill(0);
     textFont(font, 12);
-  //  textAlign(LEFT,CENTER);
+    textAlign(LEFT,CENTER);
     
     if (text.equals("") && !activated)
     {
