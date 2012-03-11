@@ -53,23 +53,31 @@ class SecondLevelRowView extends View
 	{
 		stroke(0);
 		
+		fill(secondLevelRowColor);
+		rect(-1,0,w+10,h);
+		fill(0);
+		
 		if(parent.deleted)
 		{
+			stroke(STYLE_DELETED_ROW_BACK_COLOR);
 			fill(STYLE_DELETED_ROW_BACK_COLOR);
-			rect(-1,0,w+10,h);
-			fill(0);
-		}
-		else
-		{
-			fill(secondLevelRowColor);
-			rect(-1,0,w+10,h);
-			fill(0);
-		}
+			if(graphButton != null)
+			{
+				subviews.remove(graphButton);
+				graphButton = null;
+			}
+		}		
+		
 		textAlign(LEFT,CENTER);
 		textFont(fbold);
 		textSize(12);
 		image(logo, indent,4);
 		text(title, indent + 35,12);
+		
+		if(parent.deleted)
+		{
+			line(0, 15, w, 15);
+		}
 		
 		if(firstColumn != 0) text(firstColumn, 650, 12);
 		if(secondColumn != 0) text(secondColumn, 750, 12);

@@ -6,7 +6,7 @@ static int POPUP_WIDTH = 400;
 
 static String VERSION = "v2.0";	
 
-static color STYLE_DELETED_ROW_BACK_COLOR = #bbbbbb;	
+static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
 // Variables used to keep track of the prototype state
 public boolean OPTION_NO_SUGGESTIONS = false;
