@@ -17,7 +17,7 @@ class GraphPopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset(PImage img)
 	{
-		PopUpSection title = new PopUpSection(0, 0, null, "");
+		PopUpSection title = new PopUpSection("");
 		title.setImage(img);
 		title.w = w;
 		subviews.add(title);

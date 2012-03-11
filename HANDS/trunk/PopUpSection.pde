@@ -14,35 +14,43 @@ class PopUpSection extends View
 	PImage img;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	PopUpSection(float x_, float y_, ArrayList<CheckBox> actions, String title)
+	PopUpSection(String title)
 	{
-		super(x_, y_, 400, 0);
-		if(actions != null) 
-		{
-			h = 60 + (actions.size() * 20);
-		}
-		else
-		{
-			h = 60;
-		}
+		super(0, 0, 400, 0);
+		// if(actions != null) 
+		// {
+			// h = 60 + (actions.size() * 20);
+		// }
+		// else
+		// {
+			// h = 60;
+		// }
 		
 		this.title = title;
 		this.titleBox = new StaticText("<b> <h1> " + title);
 		subviews.add(titleBox);
 		
-		actionBoxes = actions;
+		//actionBoxes = actions;
 		
-		if(actions != null)
-		{
-			int ys = 35;
-			for(int i = 0; i < actions.size(); i++)
-			{
-				CheckBox c = actions.get(i);
-				c.y = ys;
-				this.subviews.add(c);
-				ys += 25;
-			}
-		}		
+		// if(actions != null)
+		// {
+			// int ys = 35;
+			// for(int i = 0; i < actions.size(); i++)
+			// {
+				// CheckBox c = actions.get(i);
+				// c.y = ys;
+				// this.subviews.add(c);
+				// ys += 25;
+			// }
+		// }		
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void addAction(CheckBox action)
+	{
+		if(actionBoxes == null) actionBoxes = new ArrayList<CheckBox>();
+		actionBoxes.add(action);
+		subviews.add(action);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,7 +99,7 @@ class PopUpSection extends View
 			titleBox.x = 0;
 		}
 		titleBox.w = w;
-		h = titleBox.h + 5;
+		h = titleBox.h + 10;
 		if(descriptionBox != null)
 		{
 			if(titleButtonMode == 2)

@@ -1,6 +1,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class PopUpView extends View 
 {
+	int ADD_NIC = 0;
+	int ADD_NOC = 1;
+	int REMOVE_NANDA = 2;
+	int PRIORITIZE_NANDA = 3;
+
 	float arrowX, arrowY;
 	Button commit, notApplicable;
 	SecondLevelRowView parent;
@@ -26,14 +31,17 @@ class PopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		PopUpSection title = new PopUpSection(0, 0, null, "<h1> Mrs. Taylor's Pain Level is not controlled");
+		PopUpSection title = new PopUpSection("<h1> Mrs. Taylor's Pain Level is not controlled");
 		if(OPTION_ENABLE_POPUP_TEXT)
 		{
 			title.setDescription(
 				"Evidence Suggests That: <l> \n " +
-					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. <*> <b> Add NIC Positioning. </b> \n " +
-					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. <*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
-					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. <*> <b> Additional actions needed. </b> \n ");
+					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
+						"<*> <b> Add NIC Positioning. </b> \n " +
+					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
+						"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
+					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
+						"<*> <b> Additional actions needed. </b> \n ");
 			title.separatorStyle = 1;
 			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
 			if(OPTION_GRAPH_IN_MAIN_POPUP)
@@ -54,37 +62,35 @@ class PopUpView extends View
 		// }
 		
 		
-		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
+		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b>", "Positioning", plusIcon, ADD_NIC);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
 							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
 		}
-		ArrayList a = new ArrayList ();
-		a.add(c);
 		
-		PopUpSection recommended = new PopUpSection(0,0,a,"Recommended Actions: ");
+		PopUpSection recommended = new PopUpSection("Recommended Actions: ");
+		recommended.addAction(c);
 
-		CheckBox c1 = new CheckBox(10,0,true,false,false,"Pain Prioritize", prioritizeIcon, null, "NANDAI");
-		CheckBox c2 = new CheckBox(10,0,true,false,false,"Impaired Gas Exchange", minusIcon, null, "NANDAI");
-		CheckBox c3 = new CheckBox(10,0,true,false,false,"Energy Conservation", plusIcon, null, "NOC");
-		CheckBox c4 = new CheckBox(10,0,true,false,false,"Coping", plusIcon, null, "NOC");
-		CheckBox c5 = new CheckBox(10,0,true,false,false,"Pain controlled analgesia", plusIcon, null, "NIC");
-		CheckBox c6 = new CheckBox(10,0,true,false,false,"Massage", plusIcon, null, "NIC");
-		CheckBox c7 = new CheckBox(10,0,true,false,false,"Relaxation Therapy", plusIcon, null, "NIC");
-		CheckBox c8 = new CheckBox(10,0,true,false,false,"Guided Imagery", plusIcon, null, "NIC");
+		CheckBox c1 = new CheckBox("Pain Prioritize", prioritizeIcon, PRIORITIZE_NANDA);
+		CheckBox c2 = new CheckBox("Impaired Gas Exchange", minusIcon, REMOVE_NANDA);
+		CheckBox c3 = new CheckBox("Energy Conservation", plusIcon, ADD_NOC);
+		CheckBox c4 = new CheckBox("Coping", plusIcon, ADD_NOC);
+		CheckBox c5 = new CheckBox("Pain controlled analgesia", plusIcon, ADD_NIC);
+		CheckBox c6 = new CheckBox("Massage", plusIcon, ADD_NIC);
+		CheckBox c7 = new CheckBox("Relaxation Therapy", plusIcon, ADD_NIC);
+		CheckBox c8 = new CheckBox("Guided Imagery", plusIcon, ADD_NIC);
 
-		ArrayList a1 = new ArrayList ();
-		a1.add(c1);
-		a1.add(c2); 
-		a1.add(c3);
-		a1.add(c4);
-		a1.add(c5);
-		a1.add(c6);
-		a1.add(c7);
-		a1.add(c8);
+		PopUpSection alsoConsider = new PopUpSection("Also Consider: ");
+		alsoConsider.addAction(c1);
+		alsoConsider.addAction(c2);
+		alsoConsider.addAction(c3);
+		alsoConsider.addAction(c4);
+		alsoConsider.addAction(c5);
+		alsoConsider.addAction(c6);
+		alsoConsider.addAction(c7);
+		alsoConsider.addAction(c8);
 		
-		PopUpSection alsoConsider = new PopUpSection(0,0,a1,"Also Consider: ");
 		subviews.add(recommended);
 		subviews.add(alsoConsider);
 	}
@@ -162,20 +168,20 @@ class PopUpView extends View
 							if(c.selected)
 							{
 								toRemove.add(c);
-								if(c.icon1.equals(plusIcon) && c.type.equals("NIC"))
+								if(c.id == ADD_NIC)
 								{
-									pocManager.addNIC(c.t, c.tb.text, parent);
+									pocManager.addNIC(c.tag, c.tb.text, parent);
 								}
-								if(c.icon1.equals(plusIcon) && c.type.equals("NOC"))
+								if(c.id == ADD_NOC)
 								{
-									pocManager.addNOC(c.t, c.tb.text, parent.parent);
+									pocManager.addNOC(c.tag, c.tb.text, parent.parent);
 								}
-								if(c.icon1.equals(minusIcon) && c.type.equals("NANDAI"))
+								if(c.id == REMOVE_NANDA)
 								{
 									pocManager.deleteNANDA(pocManager.impairedGasExchange);
 									if(c.tb.text.length() != 0) pocManager.impairedGasExchange.addComment(c.tb.text);
 								}
-								if(c.icon1.equals(prioritizeIcon) && c.type.equals("NANDAI"))
+								if(c.id == PRIORITIZE_NANDA)
 								{
 									pocManager.prioritizeNANDA(parent.parent);
 									if(c.tb.text.length() != 0) parent.parent.addComment(c.tb.text);
