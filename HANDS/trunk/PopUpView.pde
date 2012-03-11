@@ -31,9 +31,9 @@ class PopUpView extends View
 		{
 			title.setDescription(
 				"Evidence Suggests That: <l> \n " +
-					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level <b> merda cacca </b> \n " +
-					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
-					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
+					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. <*> <b> Add NIC Positioning. </b> \n " +
+					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. <*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
+					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. <*> <b> Additional actions needed. </b> \n ");
 			title.separatorStyle = 1;
 			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
 			if(OPTION_GRAPH_IN_MAIN_POPUP)
