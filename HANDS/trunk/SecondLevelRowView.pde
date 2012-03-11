@@ -32,7 +32,7 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
-		commentBox = new StaticText(comment, FORMAT_NORMAL);
+		commentBox = new StaticText(comment);
 		commentBox.w = w;
 		subviews.add(commentBox);
 	}
@@ -110,8 +110,8 @@ class SecondLevelRowView extends View
 		{
 			infoButton = new Button(520, 1, 24, 24, infoIcon);
 			infoButton.tooltipText = 
-				"This requires action because analysis of similar patient's data shows: BULLET \n " +
-				"* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange\n " + 
+				"This requires action because analysis of similar patient's data shows: <l> \n " +
+				"* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
 				"* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n";
 			subviews.add(infoButton);
 		}

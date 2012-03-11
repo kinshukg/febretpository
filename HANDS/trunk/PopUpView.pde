@@ -26,12 +26,12 @@ class PopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		PopUpSection title = new PopUpSection(0, 0, null, "Mrs. Taylor's Pain Level is not controlled");
+		PopUpSection title = new PopUpSection(0, 0, null, "<h1> Mrs. Taylor's Pain Level is not controlled");
 		if(OPTION_ENABLE_POPUP_TEXT)
 		{
 			title.setDescription(
-				"Evidence Suggests That: BULLET \n " +
-					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level\n " +
+				"Evidence Suggests That: <l> \n " +
+					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level <b> merda cacca </b> \n " +
 					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems\n " +
 					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.\n ");
 			title.separatorStyle = 1;
@@ -57,7 +57,7 @@ class PopUpView extends View
 		CheckBox c = new CheckBox(0,0,true,false,false,"Positioning",plusIcon,null,"NIC");
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
-			c.setInfoButton("Analysis of similar patient's data shows: BULLET \n" +
+			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
 							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
 		}
 		ArrayList a = new ArrayList ();
