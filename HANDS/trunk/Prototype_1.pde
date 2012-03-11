@@ -130,7 +130,7 @@ public void setup()
 	anxietyLevelTrend.resize(450, 0);
 	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
 	anxietySelfControlTrend.resize(450, 0);
-	painLevelTrend = loadImage("painLevelTrend.png");
+	painLevelTrend = loadImage("painLevelTrend2.png");
 	painLevelTrend.resize(450, 0);
 	
 	reset();
