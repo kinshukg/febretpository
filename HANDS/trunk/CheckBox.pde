@@ -59,7 +59,7 @@ class CheckBox extends View
 	{
 		if(infoButton != null)
 		{
-			infoButton.x = w - 210;
+			infoButton.x = text.maxTextWidth + text.x + 10;
 		}
 		w = popUpView.w;
 		tb.x = tw + 50;
