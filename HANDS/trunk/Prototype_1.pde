@@ -17,7 +17,7 @@ public boolean OPTION_ENABLE_POPUP_TEXT = true;
 public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
-public int OPTION_NNN_ICON_STYLE = 0;
+public int OPTION_NNN_ICON_STYLE = 1;
 
 public int prototypeState = 0;
 
@@ -67,7 +67,7 @@ public String minusIconString = "delete.png";
 // Variables holding Images
 public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
-public PImage plusIcon, minusIcon, prioritizeIcon;
+public PImage plusIcon, minusIcon, prioritizeIcon, starIcon;
 public PImage infoIcon;
 
 public PImage smallGraph1;
@@ -123,6 +123,8 @@ public void setup()
 	smallGraph1.resize(0, 15);
 	smallGraph2.resize(0, 15);
 	smallGraph3.resize(0, 15);
+	
+	starIcon = loadImage("star.png");
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
 	anxietyLevelTrend.resize(450, 0);

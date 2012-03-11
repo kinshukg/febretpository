@@ -37,7 +37,7 @@ class PopUpView extends View
 			title.setDescription(
 				"Evidence Suggests That: <l> \n " +
 					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
-						"<*> <b> Add NIC Positioning. </b> \n " +
+						"<*> <b> Add NIC Positioning. </b> <s1> \n " +
 					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
 						"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
 					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
@@ -62,7 +62,7 @@ class PopUpView extends View
 		// }
 		
 		
-		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b>", "Positioning", thirdLevelIcon, ADD_NIC);
+		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b> <s1>", "Positioning", thirdLevelIcon, ADD_NIC);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
