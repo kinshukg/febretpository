@@ -76,6 +76,8 @@ class PopUpView extends View
 		CheckBox c6 = new CheckBox("Massage", thirdLevelIcon, ADD_NIC);
 		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
 		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
+		
+		c1.setIconTooltip("kajf svdkdjv klsalkv sfdkljsbdlj dlkbsjkljb sfjk df");
 
 		PopUpSection addSection = new PopUpSection("Consider Adding: ");
 		addSection.addAction(c);
