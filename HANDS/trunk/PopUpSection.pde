@@ -96,8 +96,9 @@ class PopUpSection extends View
 		}
 		else
 		{
-			titleBox.x = 0;
+			titleBox.x = 10;
 		}
+		titleBox.y = 0;
 		titleBox.w = w;
 		h = titleBox.h + 10;
 		if(descriptionBox != null)
@@ -107,17 +108,17 @@ class PopUpSection extends View
 				descriptionBox.visible = titleButton.selected;
 				if(titleButton.selected)
 				{
-					descriptionBox.y = titleBox.h + 5;
+					descriptionBox.y = titleBox.h + 10;
 					descriptionBox.x = 10;
-					descriptionBox.w = w;
+					descriptionBox.w = w - 10;
 					h = descriptionBox.y + descriptionBox.h;
 				}
 			}
 			if(titleButtonMode == 0)
 			{
-				descriptionBox.y = titleBox.h + 5;
+				descriptionBox.y = titleBox.h + 10;
 				descriptionBox.x = 10;
-				descriptionBox.w = w;
+				descriptionBox.w = w - 10;
 				h = descriptionBox.y + descriptionBox.h;
 			}
 		}

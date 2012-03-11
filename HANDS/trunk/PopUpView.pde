@@ -62,37 +62,39 @@ class PopUpView extends View
 		// }
 		
 		
-		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b>", "Positioning", plusIcon, ADD_NIC);
+		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b>", "Positioning", thirdLevelIcon, ADD_NIC);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
 							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
 		}
-		
-		PopUpSection recommended = new PopUpSection("Recommended Actions: ");
-		recommended.addAction(c);
+		CheckBox c1 = new CheckBox("Pain Prioritize", firstLevelIcon, PRIORITIZE_NANDA);
+		CheckBox c2 = new CheckBox("Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
+		CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
+		CheckBox c4 = new CheckBox("Coping", secondLevelIcon, ADD_NOC);
+		CheckBox c5 = new CheckBox("Pain controlled analgesia", thirdLevelIcon, ADD_NIC);
+		CheckBox c6 = new CheckBox("Massage", thirdLevelIcon, ADD_NIC);
+		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
+		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
 
-		CheckBox c1 = new CheckBox("Pain Prioritize", prioritizeIcon, PRIORITIZE_NANDA);
-		CheckBox c2 = new CheckBox("Impaired Gas Exchange", minusIcon, REMOVE_NANDA);
-		CheckBox c3 = new CheckBox("Energy Conservation", plusIcon, ADD_NOC);
-		CheckBox c4 = new CheckBox("Coping", plusIcon, ADD_NOC);
-		CheckBox c5 = new CheckBox("Pain controlled analgesia", plusIcon, ADD_NIC);
-		CheckBox c6 = new CheckBox("Massage", plusIcon, ADD_NIC);
-		CheckBox c7 = new CheckBox("Relaxation Therapy", plusIcon, ADD_NIC);
-		CheckBox c8 = new CheckBox("Guided Imagery", plusIcon, ADD_NIC);
-
-		PopUpSection alsoConsider = new PopUpSection("Also Consider: ");
-		alsoConsider.addAction(c1);
-		alsoConsider.addAction(c2);
-		alsoConsider.addAction(c3);
-		alsoConsider.addAction(c4);
-		alsoConsider.addAction(c5);
-		alsoConsider.addAction(c6);
-		alsoConsider.addAction(c7);
-		alsoConsider.addAction(c8);
+		PopUpSection addSection = new PopUpSection("Consider Adding: ");
+		addSection.addAction(c);
+		addSection.addAction(c3);
+		addSection.addAction(c4);
+		addSection.addAction(c5);
+		addSection.addAction(c6);
+		addSection.addAction(c7);
+		addSection.addAction(c8);
 		
-		subviews.add(recommended);
-		subviews.add(alsoConsider);
+		PopUpSection removeSection = new PopUpSection("Removing: ");
+		removeSection.addAction(c2);
+		
+		PopUpSection prioritizeSection = new PopUpSection("Prioritizing: ");
+		prioritizeSection.addAction(c1);
+		
+		subviews.add(addSection);
+		subviews.add(removeSection);
+		subviews.add(prioritizeSection);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
