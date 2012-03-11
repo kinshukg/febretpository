@@ -31,7 +31,7 @@ class ThirdLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
-		commentBox = new StaticText(comment, FORMAT_NORMAL);
+		commentBox = new StaticText(comment);
 		commentBox.w = w;
 		subviews.add(commentBox);
 	}

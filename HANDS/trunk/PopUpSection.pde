@@ -27,7 +27,7 @@ class PopUpSection extends View
 		}
 		
 		this.title = title;
-		this.titleBox = new StaticText(title, FORMAT_HEADING1);
+		this.titleBox = new StaticText("<b> <h1> " + title);
 		subviews.add(titleBox);
 		
 		actionBoxes = actions;
@@ -48,7 +48,7 @@ class PopUpSection extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setDescription(String text)
 	{
-		descriptionBox = new StaticText(text, FORMAT_NORMAL);
+		descriptionBox = new StaticText(text);
 		subviews.add(descriptionBox);
 	}
 	
