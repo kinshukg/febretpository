@@ -3,8 +3,8 @@ class CheckBox extends View
 {
 	boolean selected;
 	StaticText text;
-	PImage icon1;
 	TextBox tb;
+	Button iconButton;
 	Button infoButton;
 	float tw;
 	
@@ -26,8 +26,13 @@ class CheckBox extends View
 		text = new StaticText(t);
 		subviews.add(text);
 		
+		if(icon1 != null)
+		{
+			iconButton = new Button(25, 2, 22, 22, icon1);
+			subviews.add(iconButton);
+		}
+		
 		this.selected = selected;
-		this.icon1 = icon1;
 		tb = new TextBox(20,30);
 	}
 	
@@ -41,8 +46,13 @@ class CheckBox extends View
 		text = new StaticText(t);
 		subviews.add(text);
 		
+		if(icon1 != null)
+		{
+			iconButton = new Button(25, 2, 22, 22, icon1);
+			subviews.add(iconButton);
+		}
+		
 		this.selected = selected;
-		this.icon1 = icon1;
 		tb = new TextBox(20,30);
 	}
 	
@@ -52,6 +62,15 @@ class CheckBox extends View
 		infoButton = new Button(0, 0, 22, 22, infoIcon);
 		infoButton.tooltipText = text;
 		subviews.add(infoButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setIconTooltip(String text)
+	{
+		if(iconButton != null)
+		{
+			iconButton.tooltipText = text;
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,23 +115,7 @@ class CheckBox extends View
 			rect(checkX, checkY, checkX + checkW, checkY + checkH + 1);
 		}
 		
-		if(icon1 != null) image(icon1,25,2);
-
 		fill(0);
-
-		// textSize(14);
-		// textFont(font);
-		// if(!type.equals(""))
-		// {
-			// text(type+" "+t, 40, 8);
-			// tw = textWidth(type+" "+t);
-		// }
-		// else
-		// {
-			// text(t, 40, 8);
-			// tw = textWidth(t);
-		// }
-		// textSize(12);
 	}
   
 	///////////////////////////////////////////////////////////////////////////////////////////////
