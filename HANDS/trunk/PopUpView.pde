@@ -63,19 +63,29 @@ class PopUpView extends View
 		
 		
 		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b> <s1>", "Positioning", thirdLevelIcon, ADD_NIC);
+		c.setIconTooltip(DEF_POSITIONING);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
 							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
 		}
-		CheckBox c1 = new CheckBox("Pain Prioritize", firstLevelIcon, PRIORITIZE_NANDA);
+		CheckBox c1 = new CheckBox("Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
 		CheckBox c2 = new CheckBox("Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
 		CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
 		CheckBox c4 = new CheckBox("Coping", secondLevelIcon, ADD_NOC);
-		CheckBox c5 = new CheckBox("Pain controlled analgesia", thirdLevelIcon, ADD_NIC);
+		CheckBox c5 = new CheckBox("Patient controlled analgesia", thirdLevelIcon, ADD_NIC);
 		CheckBox c6 = new CheckBox("Massage", thirdLevelIcon, ADD_NIC);
 		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
 		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
+		
+		c1.setIconTooltip(DEF_ACUTE_PAIN);
+		c2.setIconTooltip(DEF_IMPAIRED_GAS_EXCHANGE);
+		c3.setIconTooltip(DEF_ENERGY_CONSERVATION);
+		c4.setIconTooltip(DEF_COPING);
+		c5.setIconTooltip(DEF_PATIENT_CONTROLLED_ANALGESIA);
+		c6.setIconTooltip(DEF_MASSAGE);
+		c7.setIconTooltip(DEF_RELAXATION_THERAPY);
+		c8.setIconTooltip(DEF_GUIDED_IMAGERY);
 		
 		PopUpSection addSection = new PopUpSection("Consider Adding: ");
 		addSection.addAction(c);
