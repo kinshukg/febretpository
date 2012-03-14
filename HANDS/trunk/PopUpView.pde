@@ -10,6 +10,8 @@ class PopUpView extends View
 	Button commit, notApplicable;
 	SecondLevelRowView parent;
 	ClosePopUpView close;
+	
+	Button descriptionButton;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PopUpView(float w_, SecondLevelRowView parent)
@@ -26,22 +28,36 @@ class PopUpView extends View
 		this.subviews.add(commit);
 		this.subviews.add(notApplicable);	
 		this.parent = parent;
+		
+		descriptionButton = null;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
 		PopUpSection title = new PopUpSection("<h1> Mrs. Taylor's Pain Level is not controlled");
+		String alertDescription = 
+			"Evidence Suggests That: <l> \n " +
+				"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
+					"<*> <b> Add NIC Positioning. </b> <s1> \n " +
+				"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
+					"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
+				"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
+					"<*> <b> Additional actions needed. </b> \n ";
 		if(OPTION_ENABLE_POPUP_TEXT)
 		{
-			title.setDescription(
-				"Evidence Suggests That: <l> \n " +
-					"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
-						"<*> <b> Add NIC Positioning. </b> <s1> \n " +
-					"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
-						"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
-					"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
-						"<*> <b> Additional actions needed. </b> \n ");
+			if(OPTION_GRAPH_ALERT_BUTTON)
+			{
+				descriptionButton = new Button(
+					322, 55, 0, 40, "Pain Level will not\n be met without action", alertHighColor, 0);
+				descriptionButton.tooltipText = alertDescription;
+				descriptionButton.blinking = true;
+				title.subviews.add(descriptionButton);
+			}
+			else
+			{
+				title.setDescription(alertDescription);
+			}
 			title.separatorStyle = 1;
 			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
 			if(OPTION_GRAPH_IN_MAIN_POPUP)

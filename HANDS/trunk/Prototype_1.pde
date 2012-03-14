@@ -17,6 +17,7 @@ public boolean OPTION_ENABLE_POPUP_TEXT = true;
 public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
+public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
 
 public int prototypeState = 0;
@@ -193,11 +194,11 @@ void loadNNNIcons()
 	}
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-	anxietyLevelTrend.resize(450, 0);
+	anxietyLevelTrend.resize(500, 0);
 	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-	anxietySelfControlTrend.resize(450, 0);
+	anxietySelfControlTrend.resize(500, 0);
 	painLevelTrend = loadImage("painLevelTrend.png");
-	painLevelTrend.resize(450, 0);
+	painLevelTrend.resize(500, 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -415,6 +416,7 @@ void keyPressed()
 			OPTION_ENABLE_POPUP_TEXT = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			OPTION_GRAPH_ALERT_BUTTON = false;
 			reset();
 		}
 		else if(key == '2')
@@ -426,6 +428,7 @@ void keyPressed()
 			OPTION_ALERT_INFO_BUTTON = true;
 			OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
+			OPTION_GRAPH_ALERT_BUTTON = false;
 			reset();
 		}
 		else if(key == '3')
@@ -436,11 +439,18 @@ void keyPressed()
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
+			OPTION_GRAPH_ALERT_BUTTON = false;
 			reset();
 		}
 		else if(key == '4')
 		{
-			OPTION_NO_SUGGESTIONS = true;
+			OPTION_NO_SUGGESTIONS = false;
+			OPTION_LONG_ALERT_BUTTON = true;
+			OPTION_ALERT_INFO_BUTTON = false;
+			OPTION_EXPANDABLE_POPUP_TEXT = false;
+			OPTION_ENABLE_POPUP_TEXT = true;
+			OPTION_GRAPH_IN_MAIN_POPUP = true;
+			OPTION_GRAPH_ALERT_BUTTON = true;
 			reset();
 		}
 		else if(key == '0')
