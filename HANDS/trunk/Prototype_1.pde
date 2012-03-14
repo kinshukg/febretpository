@@ -18,7 +18,6 @@ public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 public int OPTION_NNN_ICON_STYLE = 1;
-public int OPTION_GRAPH_STYLE = 2;
 
 public int prototypeState = 0;
 
@@ -193,33 +192,12 @@ void loadNNNIcons()
 		thirdLevelIconLegend.resize(0,25);
 	}
 	
-	if(OPTION_GRAPH_STYLE == 0)
-	{
-		anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-		anxietyLevelTrend.resize(450, 0);
-		anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-		anxietySelfControlTrend.resize(450, 0);
-		painLevelTrend = loadImage("painLevelTrend.png");
-		painLevelTrend.resize(450, 0);
-	}
-	else if(OPTION_GRAPH_STYLE == 1)
-	{
-		anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-		anxietyLevelTrend.resize(450, 0);
-		anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-		anxietySelfControlTrend.resize(450, 0);
-		painLevelTrend = loadImage("painLevelTrend2.png");
-		painLevelTrend.resize(450, 0);
-	}
-	else if(OPTION_GRAPH_STYLE == 2)
-	{
-		anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
-		anxietyLevelTrend.resize(450, 0);
-		anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
-		anxietySelfControlTrend.resize(450, 0);
-		painLevelTrend = loadImage("painLevelTrend3.png");
-		painLevelTrend.resize(450, 0);
-	}
+	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
+	anxietyLevelTrend.resize(450, 0);
+	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
+	anxietySelfControlTrend.resize(450, 0);
+	painLevelTrend = loadImage("painLevelTrend.png");
+	painLevelTrend.resize(450, 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -463,21 +441,6 @@ void keyPressed()
 		else if(key == '4')
 		{
 			OPTION_NO_SUGGESTIONS = true;
-			reset();
-		}
-		else if(key == '7')
-		{
-			OPTION_GRAPH_STYLE = 2;
-			reset();
-		}
-		else if(key == '6')
-		{
-			OPTION_GRAPH_STYLE = 1;
-			reset();
-		}
-		else if(key == '5')
-		{
-			OPTION_GRAPH_STYLE = 0;
 			reset();
 		}
 		else if(key == '0')
