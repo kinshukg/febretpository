@@ -4,7 +4,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "v2.0";	
+static String VERSION = "v2.1";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -19,6 +19,7 @@ public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
+public int OPTION_NUMBER = 1;
 
 public int prototypeState = 0;
 
@@ -417,6 +418,7 @@ void keyPressed()
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_NUMBER = 1;
 			reset();
 		}
 		else if(key == '2')
@@ -429,6 +431,7 @@ void keyPressed()
 			OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_NUMBER = 2;
 			reset();
 		}
 		else if(key == '3')
@@ -439,7 +442,9 @@ void keyPressed()
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
+			OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_NUMBER = 3;
 			reset();
 		}
 		else if(key == '4')
@@ -449,8 +454,10 @@ void keyPressed()
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
+			OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = true;
+			OPTION_NUMBER = 4;
 			reset();
 		}
 		else if(key == '0')

@@ -66,7 +66,7 @@ class PopUpSection extends View
 		titleButton = new Button(0, 0, 16, 16, infoIcon);
 		titleButton.tooltipText = text;
 		subviews.add(titleButton);
-		titleButtonMode = 1;
+		//titleButtonMode = 1;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,18 +86,7 @@ class PopUpSection extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
-		if(titleButton != null)
-		{
-			titleButton.y = 0;
-			titleButton.x = 0;
-			titleButton.w = 16;
-			titleButton.h = 16;
-			titleBox.x = 30;
-		}
-		else
-		{
-			titleBox.x = 10;
-		}
+		titleBox.x = 10;
 		titleBox.y = 0;
 		titleBox.w = w;
 		h = titleBox.h + 10;
@@ -121,6 +110,14 @@ class PopUpSection extends View
 				descriptionBox.w = w - 10;
 				h = descriptionBox.y + descriptionBox.h;
 			}
+		}
+		// v2.1: place the info icon under the description (will fall next to the graph)
+		if(titleButton != null)
+		{
+			titleButton.w = 16;
+			titleButton.h = 16;
+			titleButton.y = h;
+			titleButton.x = 600;
 		}
 		if(img != null)
 		{
