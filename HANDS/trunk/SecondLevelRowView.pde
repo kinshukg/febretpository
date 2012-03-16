@@ -160,10 +160,9 @@ class SecondLevelRowView extends View
 					actionPopUp.y = mouseY - 350;
 					actionPopUp.arrowX = mouseX;
 					actionPopUp.arrowY = mouseY;
-					actionButton.selected = false;
-					
 					if(actionPopUp.y < 50) actionPopUp.y = 50;
 				}
+				actionButton.selected = false;
 			}
 		}
 		if(graphButton != null)
@@ -178,8 +177,8 @@ class SecondLevelRowView extends View
 					graphPopUp.y = mouseY - 50;
 					graphPopUp.arrowX = mouseX;
 					graphPopUp.arrowY = mouseY;
-					graphButton.selected = false;
 				}
+				graphButton.selected = false;
 			}
 		}
 		return true;

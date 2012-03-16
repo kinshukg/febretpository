@@ -4,7 +4,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "v2.1";	
+static String VERSION = "v2.1.1";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 

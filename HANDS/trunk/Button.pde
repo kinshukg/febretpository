@@ -139,11 +139,11 @@ class Button extends View
 		tooltipView.arrowX = mouseX;
 		tooltipView.arrowY = mouseY;
 		// If mouse X is closer to border of screen, resize popup accordingly.
-		if(mouseX > SCREEN_WIDTH - 400)
+		if(mouseX > SCREEN_WIDTH - 300)
 		{
 			tooltipView.y = mouseY + 20;
 			tooltipView.x = mouseX - 100;
-			tooltipView.w = 200;
+			tooltipView.w = 300;
 		}
 	}
 }
