@@ -60,9 +60,11 @@ class PopUpView extends View
 			}
 			title.separatorStyle = 1;
 			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
+			// v2.1: graph has info button (we hack the infobutton from popup section)
 			if(OPTION_GRAPH_IN_MAIN_POPUP)
 			{
 				title.setImage(painLevelTrend);
+				title.setInfoButton("Graph shows actual Pain NOC levels during first 24hr and projected levels to 72 hours if current actions are continued.");
 			}
 		}
 		subviews.add(title);
@@ -78,7 +80,14 @@ class PopUpView extends View
 		// }
 		
 		
-		CheckBox c = new CheckBox("Positioning <b> (Recommended) </b> <s1>", "Positioning", thirdLevelIcon, ADD_NIC);
+		// v2.1: on option 2 we do not use the star icon.
+		String positioningText = "Positioning <b> (Recommended) </b> <s1>";
+		if(OPTION_NUMBER == 2)
+		{
+			positioningText = "Positioning <b> (Recommended) </b>";
+		}
+		
+		CheckBox c = new CheckBox(positioningText, thirdLevelIcon, ADD_NIC);
 		c.setIconTooltip(DEF_POSITIONING);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
@@ -136,6 +145,12 @@ class PopUpView extends View
 			{
 				v.w = this.w;
 			}
+		}
+		
+		// v2.1: popup never goes off-screen vertically.
+		if(y + h > SCREEN_HEIGHT)
+		{
+			y = SCREEN_HEIGHT - h;
 		}
 	}
 
