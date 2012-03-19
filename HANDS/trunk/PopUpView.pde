@@ -87,7 +87,7 @@ class PopUpView extends View
 			positioningText = "Positioning <b> (Recommended) </b>";
 		}
 		
-		CheckBox c = new CheckBox(positioningText, thirdLevelIcon, ADD_NIC);
+		CheckBox c = new CheckBox(positioningText, "Positioning", thirdLevelIcon, ADD_NIC);
 		c.setIconTooltip(DEF_POSITIONING);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
