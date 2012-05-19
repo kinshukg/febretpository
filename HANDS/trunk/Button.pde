@@ -127,7 +127,7 @@ class Button extends View
 		// i.e. 0,0 is the top left corner of this view
 		// return false if the click is to "pass through" this view
 		selected =!selected;
-		System.out.println("Clicked");
+		//System.out.println("Clicked");
 
 		return false;
 	}

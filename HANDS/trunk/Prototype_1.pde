@@ -1,3 +1,5 @@
+import controlP5.*;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 static int SCREEN_WIDTH = 1400;
 static int SCREEN_HEIGHT = 900;
@@ -83,7 +85,7 @@ public PImage painLevelTrend;
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
 public String dob = "03/12/1938",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
-public String other = "Sister wants to be called ANYTIME at patient's request \n 776-894-1010-#################################";
+public String other = "Sister wants to be called ANYTIME at patient's request \n 776-894-1010";
 
 // Other text strings.
 String DEF_ACUTE_PAIN = 
