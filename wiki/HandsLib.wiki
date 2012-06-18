@@ -1,18 +1,18 @@
 #summary HANDS Prototype library
 #sidebar Sidebar.wiki
 
-= Cycle 1 Round 3 (Interiews2) =
+== Cycle 1 Round 3 (Interiews2) ==
 * Internal version ids: * 2.1, 2.1.1
-== Notes ==
+=== Notes ===
 General notes go here
-== Feature Table ==
+=== Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * ||
 || Big Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] ||
 
-= Cycle 1 Round 2 (Interiews1) =
+== Cycle 1 Round 2 (Interiews1) ==
 * Internal version ids: * 1.0, 1.1
-== Notes ==
+=== Notes ===
 General notes go here
-== Feature Table ==
+=== Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * || * Prototype 4 * ||
 || Big Graph		|| [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] ||
