@@ -7,9 +7,9 @@
 General notes go here
 === Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * ||
-|| Big Graph		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] ||
-|| Small Graph		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png A] ||
-|| Alert Bar		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] || [http://wiki.febretpository.net/handslib/BigGraph-A.png C] ||
+|| Big Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] ||
+|| Small Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] ||
+|| Alert Bar		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png C] ||
 
 ---------------------------------------------------------------------------------------------------
 
@@ -19,6 +19,6 @@ General notes go here
 General notes go here
 === Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * || * Prototype 4 * ||
-|| Big Graph		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] ||
-|| Small Graph		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png C] ||
-|| Alert Bar		|| [http://wiki.febretpository.net/handslib/BigGraph-A.png A] || [http://wiki.febretpository.net/handslib/BigGraph-A.png B] || [http://wiki.febretpository.net/handslib/BigGraph-A.png C] || [http://wiki.febretpository.net/handslib/BigGraph-A.png D] ||
+|| Big Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] ||
+|| Small Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png C] ||
+|| Alert Bar		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png C] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png D] ||
