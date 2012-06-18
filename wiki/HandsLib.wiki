@@ -1,4 +1,5 @@
 #summary HANDS Prototype library
+#sidebar Sidebar.wiki
 
 = Cycle 1 Round 3 (Interiews2) =
 * Internal version ids: * 2.1, 2.1.1
