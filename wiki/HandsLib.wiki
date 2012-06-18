@@ -7,7 +7,11 @@
 General notes go here
 === Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * ||
-|| Big Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] ||
+|| Big Graph		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png B] || [wiki.febretpository.net/handslib/BigGraph-A.png B] ||
+|| Small Graph		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png A] ||
+|| Alert Bar		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png B] || [wiki.febretpository.net/handslib/BigGraph-A.png C] ||
+
+---------------------------------------------------------------------------------------------------
 
 == Cycle 1 Round 2 (Interiews1) ==
 * Internal version ids: * 1.0, 1.1
@@ -15,4 +19,6 @@ General notes go here
 General notes go here
 === Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * || * Prototype 4 * ||
-|| Big Graph		|| [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] || [handslib/BigGraph-A.png A] ||
+|| Big Graph		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png B] || [wiki.febretpository.net/handslib/BigGraph-A.png B] || [wiki.febretpository.net/handslib/BigGraph-A.png B] ||
+|| Small Graph		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png C] ||
+|| Alert Bar		|| [wiki.febretpository.net/handslib/BigGraph-A.png A] || [wiki.febretpository.net/handslib/BigGraph-A.png B] || [wiki.febretpository.net/handslib/BigGraph-A.png C] || [wiki.febretpository.net/handslib/BigGraph-A.png D] ||
