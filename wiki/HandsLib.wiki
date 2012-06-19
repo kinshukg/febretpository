@@ -4,8 +4,7 @@
 == Cycle 1 Round 3 (Interiews2) ==
 * Internal version ids: * 2.1, 2.1.1
 === Notes ===
-General notes go here
-=== Feature Table ===
+A new prototype (*Prototye 4*) was added to this version. Major changes in graph design.
 === Feature Table ===
 || * Feature Name * ||  * Prototype 1 * || * Prototype 2 * || * Prototype 3 * || * Prototype 4 * ||
 || Big Graph		|| [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png A] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] || [http://febretpository.googlecode.com/svn/wiki/handslib/BigGraph-A.png B] ||
