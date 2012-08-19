@@ -1,19 +1,24 @@
 class ColouredRowView extends View 
 {
 	String title;
-	PImage logo;
 	public ArrayList subs;  
 	boolean deleted = false;
 	StaticText commentBox;
 	int indent;
+	
+	Button iconButton;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ColouredRowView(String title,PImage logo)
 	{
 		super(0, 0,width,25);
 		this.title = title;
-		this.logo = logo;
 		this.subs = new ArrayList();
+		
+		iconButton = new Button(0, 0, 16, 16, logo);
+		iconButton.tooltipImage = IMG_IMP_GAS_EXC;
+		subviews.add(iconButton);
+		
 		indent = 10;
 	}
 
@@ -41,6 +46,8 @@ class ColouredRowView extends View
 			commentBox.x = indent + 80;
 			h += 25;
 		}
+		iconButton.x = indent;
+		iconButton.y = 12;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +67,7 @@ class ColouredRowView extends View
 		textAlign(LEFT,CENTER);
 		textFont(fbold);
 		textSize(12);
-		image(logo, indent,6);
+		
 		text(title, indent + 35,12);
 		
 		if(deleted)

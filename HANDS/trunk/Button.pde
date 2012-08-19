@@ -10,6 +10,7 @@ class Button extends View
 	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
 	String tooltipText;
+	PImage tooltipImage;
 	
 	boolean transparent;
   
@@ -19,6 +20,8 @@ class Button extends View
 		super(x_, y_,w_ ,h_); 
 		icon = icon_;
 		transparent = true;
+		
+		tooltipImage = null;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +121,8 @@ class Button extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
-		if(!OPTION_TOOLTIP_AUTO_OPEN && tooltipText != null && tooltipText.length() != 0)
+	
+		if(!OPTION_TOOLTIP_AUTO_OPEN && (tooltipText != null && tooltipText.length() != 0) || tooltipImage != null)
 		{
 			showTooltip();
 		}
@@ -135,7 +139,15 @@ class Button extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void showTooltip()
 	{
-		tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipText);
+		if(tooltipImage != null)
+		{
+			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipImage);
+		}
+		else
+		{
+			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipText);
+		}
+		
 		tooltipView.arrowX = mouseX;
 		tooltipView.arrowY = mouseY;
 		// If mouse X is closer to border of screen, resize popup accordingly.
