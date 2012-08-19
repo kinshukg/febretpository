@@ -6,6 +6,7 @@ class Tooltip extends View
 	String[] rationaleString;
 	
 	StaticText label;
+	PImage ttimage;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Tooltip(float x_, float y_, float w_, float h_, String text)
@@ -19,12 +20,32 @@ class Tooltip extends View
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	Tooltip(float x_, float y_, float w_, float h_, PImage _image)
+	{
+		super(x_, y_,w_ ,h_);
+		
+		ttimage = _image;
+		
+		label = null;
+		
+		this.text = text;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
-		label.w =  w - 10;
-		label.x = 5;
-		label.y = 5;
-		this.h = label.h + 15;
+		if(label != null)
+		{
+			label.w =  w - 10;
+			label.x = 5;
+			label.y = 5;
+			this.h = label.h + 15;
+		}
+		if(ttimage != null)
+		{
+			this.w = ttimage.width + 5;
+			this.h = ttimage.height + 5;
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,5 +70,10 @@ class Tooltip extends View
 		
 		fill(#FFFCE5);
 		roundrect(0, 0, (int)w, (int)h, 5);
+		
+		if(ttimage != null)
+		{
+			image(ttimage, 0, 0);
+		}
 	}
 }

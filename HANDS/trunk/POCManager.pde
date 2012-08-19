@@ -22,7 +22,7 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		scrollingView = new ScrollingView(0, 250, SCREEN_WIDTH, SCREEN_HEIGHT - 400);
+		scrollingView = new ScrollingView(0, 80, SCREEN_WIDTH - 400, SCREEN_HEIGHT - 100);
 		mainView.subviews.add(scrollingView);
 
 		impairedGasExchange = new ColouredRowView("Impaired Gas Exchange",firstLevelIcon);
