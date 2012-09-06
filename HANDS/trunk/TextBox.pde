@@ -44,6 +44,7 @@ class TextBox extends View
        fill(#A3A3A3);
        */
       if (timer){
+        System.out.println(text);
       String pre = text.substring(0,cursorPos);
       pre+="|";
       pre += text.substring(cursorPos);
@@ -67,11 +68,12 @@ class TextBox extends View
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   public boolean keypressed() 
   {
-    //System.out.println("Key = "+(int)key);
+    System.out.println("Key = "+(int)key);
     if (activated) {
       if (key == 8)
       {
         if (text.length() > 0) text = text.substring(0, text.length() - 1);
+        cursorPos--;
       }
       else
       {
