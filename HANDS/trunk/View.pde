@@ -7,6 +7,7 @@ class View
 	float dragY;
 	boolean visible;
 	boolean moving;
+	boolean interactive;
   
   View(float x_, float y_, float w_, float h_)
   {
@@ -17,6 +18,7 @@ class View
     h = h_;
     subviews = new ArrayList();
 	visible = true;
+	interactive = false;
   }
   
   void draw()
@@ -100,7 +102,12 @@ class View
 
   boolean mouseMoved(float px, float py)
   {
-    if (!ptInRect(px, py, x, y, w, h)) return false;
+    if (!ptInRect(px, py, x, y, w, h)) 
+	{
+		cursor(ARROW);
+		return false;
+	}
+	if(interactive) cursor(HAND);
     float lx = px - x;
     float ly = py - y;
     // check our subviews first

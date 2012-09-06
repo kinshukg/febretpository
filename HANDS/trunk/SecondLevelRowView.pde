@@ -12,9 +12,19 @@ class SecondLevelRowView extends View
 	Button graphButton, actionButton;
 	Button infoButton;
 
-	PopUpView actionPopUp;
+	PopUpViewBase actionPopUp;
+	
 	GraphPopUpView graphPopUp;
 	ColouredRowView parent;
+	
+	// Cycle 2 stuff
+	StaticText qa1Text;
+	Button qa1YesButton;
+	Button qa1NoButton;
+	
+	StaticText qa2Text;
+	Button qa2YesButton;
+	Button qa2NoButton;
           
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
@@ -32,9 +42,27 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
-		commentBox = new StaticText(comment);
-		commentBox.w = w;
-		subviews.add(commentBox);
+		if(comment == "")
+		{
+			if(commentBox != null)
+			{
+				subviews.remove(commentBox);
+				commentBox = null;
+			}
+		}
+		else
+		{
+			if(commentBox == null)
+			{
+				commentBox = new StaticText(comment);
+				subviews.add(commentBox);
+				commentBox.w = w;
+			}
+			else
+			{
+				commentBox.setText(comment);
+			}
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,8 +107,8 @@ class SecondLevelRowView extends View
 			line(0, 15, w, 15);
 		}
 		
-		if(firstColumn != 0) text(firstColumn, 650, 12);
-		if(secondColumn != 0) text(secondColumn, 750, 12);
+		if(firstColumn != 0) text(firstColumn, 850, 12);
+		if(secondColumn != 0) text(secondColumn, 950, 12);
 
 		if(message != null)
 		{
@@ -90,22 +118,78 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setAlertButton(int level, PopUpView p, PImage graph)
+	void enableQuickActionButton1(int cx, int textWidth, String text)
+	{
+		//float cx = 250;
+		qa1Text = new StaticText(text);
+		qa1Text.w = textWidth;
+		qa1Text.x = cx;
+		qa1Text.y = 4;
+		subviews.add(qa1Text);
+		cx += qa1Text.w - 10;
+		qa1YesButton = new Button(cx, 1, 24, 24, checkIcon);
+		subviews.add(qa1YesButton);
+		cx += 28;
+		qa1NoButton = new Button(cx, 1, 24, 24, crossIcon);
+		subviews.add(qa1NoButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void enableQuickActionButton2(int cx, int textWidth, String text)
+	{
+		//float cx = 550;
+		qa2Text = new StaticText(text);
+		qa2Text.w = textWidth;
+		qa2Text.x = cx;
+		qa2Text.y = 4;
+		subviews.add(qa2Text);
+		cx += qa2Text.w - 10;
+		qa2YesButton = new Button(cx, 1, 24, 24, checkIcon);
+		subviews.add(qa2YesButton);
+		cx += 28;
+		qa2NoButton = new Button(cx, 1, 24, 24, crossIcon);
+		subviews.add(qa2NoButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void removeQuickActionButton1()
+	{
+		subviews.remove(qa1NoButton);
+		subviews.remove(qa1YesButton);
+		subviews.remove(qa1Text);
+		qa1NoButton = null;
+		qa1YesButton = null;
+		qa1Text = null;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void removeQuickActionButton2()
+	{
+		subviews.remove(qa2NoButton);
+		subviews.remove(qa2YesButton);
+		subviews.remove(qa2Text);
+		qa2NoButton = null;
+		qa2YesButton = null;
+		qa2Text = null;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setInfoButton(int bx, String text)
+	{
+		infoButton = new Button(bx, 1, 24, 24, infoIcon);
+		infoButton.tooltipText = text;
+		subviews.add(infoButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setAlertButton(int level, String text, int bx, PImage graph)
 	{
 		color buttonColor = 0;
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
 		if(level == 3) buttonColor = alertHighColor;
 
-		if(OPTION_LONG_ALERT_BUTTON)
-		{
-			this.actionButton = new Button(200, 5, 0, 16, "Mrs. Taylor's Pain Level is not controlled.", buttonColor, 0);
-		}
-		else 
-		{
-			this.actionButton = new Button(450, 5, 0, 16, "Actions", buttonColor, 0);
-			this.message = "Mrs. Taylor's Pain Level is not controlled.";
-		}
+		this.actionButton = new Button(bx, 5, 0, 16, text, buttonColor, 0);
 		this.actionButton.blinking = true;
 		subviews.add(this.actionButton);
 		
@@ -114,20 +198,10 @@ class SecondLevelRowView extends View
 			this.actionButton.icon = graph;
 		}
 		
-		if(OPTION_ALERT_INFO_BUTTON)
-		{
-			infoButton = new Button(520, 1, 24, 24, infoIcon);
-			infoButton.tooltipText = 
-				"This requires action because analysis of similar patient's data shows: <l> \n " +
-				"* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
-				"* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n";
-			subviews.add(infoButton);
-		}
-		
 		//this.actionButton.tooltipText = "Tooltip text, bla bla bla ba bla blag askdj sfjwev fweic";
 		//this.actionButton.tooltipMode = 1;
 
-		this.actionPopUp = p;   
+		//this.actionPopUp = p;   
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,22 +220,58 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void showPopUp()
+	{
+		if(popUpView == null)
+		{
+			mainView.subviews.add(actionPopUp);
+			popUpView = actionPopUp;
+			actionPopUp.x = mouseX + 50;
+			actionPopUp.y = mouseY - 350;
+			actionPopUp.arrowX = mouseX;
+			actionPopUp.arrowY = mouseY;
+			if(actionPopUp.y < 50) actionPopUp.y = 50;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
+		if(qa1NoButton != null)
+		{
+			if(qa1NoButton.selected)
+			{
+				showPopUp();
+			}
+		}
+		if(qa1YesButton != null)
+		{
+			if(qa1YesButton.selected)
+			{
+				removeQuickActionButton1();
+				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+			}
+		}
+		if(qa2YesButton != null)
+		{
+			if(qa2YesButton.selected)
+			{
+				removeQuickActionButton2();
+				pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
+			}
+		}
+		if(qa2NoButton != null)
+		{
+			if(qa2NoButton.selected)
+			{
+				removeQuickActionButton1();
+			}
+		}
 		if(actionButton != null)
 		{
 			if(actionButton.selected)
 			{
-				if(popUpView == null)
-				{
-					mainView.subviews.add(actionPopUp);
-					popUpView = actionPopUp;
-					actionPopUp.x = mouseX + 50;
-					actionPopUp.y = mouseY - 350;
-					actionPopUp.arrowX = mouseX;
-					actionPopUp.arrowY = mouseY;
-					if(actionPopUp.y < 50) actionPopUp.y = 50;
-				}
+				showPopUp();
 				actionButton.selected = false;
 			}
 		}

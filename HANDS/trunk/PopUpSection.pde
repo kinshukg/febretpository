@@ -51,6 +51,14 @@ class PopUpSection extends View
 		if(actionBoxes == null) actionBoxes = new ArrayList<CheckBox>();
 		actionBoxes.add(action);
 		subviews.add(action);
+		action.ownerSection = this;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void removeAction(CheckBox action)
+	{
+		actionBoxes.remove(action);
+		subviews.remove(action);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +75,21 @@ class PopUpSection extends View
 		titleButton.tooltipText = text;
 		subviews.add(titleButton);
 		//titleButtonMode = 1;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void onRadioButtonChanged(CheckBox cb)
+	{
+		// Can't unselect a selected radio button. Must click on different one. Fix selection
+		if(!cb.selected) cb.selected = true;
+		else
+		{
+			for(int j = 0; j < actionBoxes.size(); j++)
+			{
+				CheckBox c = actionBoxes.get(j);
+				if(c != cb) c.selected = false;
+			}
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

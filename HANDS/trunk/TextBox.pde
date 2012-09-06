@@ -12,6 +12,7 @@ class TextBox extends View
   {
     super(x_, y_, 320, 20);
     text = "";
+	interactive = true;
     // tickTock = new Timer();
   }
 
