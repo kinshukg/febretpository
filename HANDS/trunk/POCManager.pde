@@ -47,7 +47,7 @@ class POCManager
 		deathAnxietyView = new ColouredRowView("Death Anxiety",firstLevelIcon);
 		scrollingView.subs.add(deathAnxietyView);
 
-		anxietySelfControlView = new SecondLevelRowView("Comfortable Death",secondLevelIcon,5,5,deathAnxietyView);
+		anxietySelfControlView = new SecondLevelRowView("Comfortable Death",secondLevelIcon,2,5,deathAnxietyView);
 		deathAnxietyView.subs.add(anxietySelfControlView);
 
 		calmingTechniqueView_2 = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietySelfControlView);

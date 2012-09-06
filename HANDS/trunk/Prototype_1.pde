@@ -76,10 +76,10 @@ String MSG_PAIN_EVIDENCE_POPUP =
 String MSG_PAIN_GRAPH_DESCRIPTION = "Graph shows actual Pain NOC levels during first 24hr and projected levels to 72 hours if current actions are continued.";
 
 // Cycle 2: add family coping message on aciton bar
-String MSG_ACTION_COPING = "<b> Add family coping mini POC </b>";	
+String MSG_ACTION_COPING = "Add family coping mini POC";	
 
 // Cycle 2: add consultation message on aciton bar
-String MSG_ACTION_CONSULTATION = "<b> Add consultation </b>";
+String MSG_ACTION_CONSULTATION = "Add consultation";
 
 // Cycle 2: NIC Consultation POC text
 String NIC_CONSULTATION_TEXT = "Consultation: palliative care";
@@ -228,7 +228,7 @@ void loadNNNIcons()
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
 	anxietyLevelTrend.resize(500, 0);
-	anxietySelfControlTrend = loadImage("anxietySelfControlTrend.png");
+	anxietySelfControlTrend = loadImage("anxietySelfControlTrend2.png");
 	anxietySelfControlTrend.resize(500, 0);
 	painLevelTrend = loadImage("painLevelTrend.png");
 	painLevelTrend.resize(500, 0);
@@ -372,7 +372,7 @@ public void setupPopup()
 	int alertButtonX;
 	if(OPTION_LONG_ALERT_BUTTON)
 	{
-		alertButtonX = 250;
+		alertButtonX = 300;
 		pocManager.painLevelView.setAlertButton(3, "Mrs. Taylor's Pain Level is not controlled.", alertButtonX, painLevelActionButtonImage);
 	}
 	else 
@@ -395,7 +395,7 @@ public void setupPopup()
 	{
 		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
 		dppw.setupConsultRefuse();
-		pocManager.anxietySelfControlView.enableQuickActionButton1(250, 120, MSG_ACTION_CONSULTATION);
+		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 120, MSG_ACTION_CONSULTATION);
 		pocManager.anxietySelfControlView.enableQuickActionButton2(470, 200, MSG_ACTION_COPING);
 		pocManager.anxietySelfControlView.actionPopUp = dppw;
 	}

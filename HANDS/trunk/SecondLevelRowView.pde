@@ -205,6 +205,16 @@ class SecondLevelRowView extends View
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void removeAlertButton()
+	{
+		if(actionButton != null)
+		{
+			subviews.remove(actionButton);
+			actionButton = null;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
 		color buttonColor = 0;
@@ -264,7 +274,7 @@ class SecondLevelRowView extends View
 		{
 			if(qa2NoButton.selected)
 			{
-				removeQuickActionButton1();
+				removeQuickActionButton2();
 			}
 		}
 		if(actionButton != null)

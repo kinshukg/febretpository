@@ -13,6 +13,8 @@ class DeathPopUpView extends PopUpViewBase
 	CheckBox reason2;
 	CheckBox reason3;
 	
+	boolean consultCheckAdded = false;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	DeathPopUpView(int w_, SecondLevelRowView parent)
 	{
@@ -112,10 +114,11 @@ class DeathPopUpView extends PopUpViewBase
 			actionSection.removeAction(consultCheck);
 			parent.addComment("");
 			consultCheck = null;
+			consultCheckAdded = true;
 		}
 		else
 		{
-			if(consultCheck != null)
+			if(!consultCheckAdded)
 			{
 				if(reason1.selected)
 				{
@@ -138,6 +141,13 @@ class DeathPopUpView extends PopUpViewBase
 			actionSection.removeAction(copingCheck);
 			copingCheck = null;
 		}
+		
 		hide();
+		
+		// If we added both actions and we are in cycle2 option 2, remove the action button from the POC action bar
+		if(copingCheck == null && consultCheck == null && CYCLE2_OPTION_NUMBER == 2)
+		{
+			parent.removeAlertButton();
+		}
 	}
 }
