@@ -7,7 +7,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "v2.1.1";	
+static String VERSION = "v3.0.0";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -23,10 +23,13 @@ public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
 public int OPTION_NUMBER = 1;
+public int CYCLE2_OPTION_NUMBER = 1;
 
 // NNN definition images
 public PImage IMG_IMP_GAS_EXC = null; 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Message library
 // Other text strings.
 String DEF_ACUTE_PAIN = 
 	"<b> Acute Pain: </b> \n " +
@@ -59,6 +62,28 @@ String DEF_GUIDED_IMAGERY =
 	"<b> Guided Imagery: </b> \n " +
 	"Purposeful use of imagination to achieve a particular state, outcome, or action or to direct attention away from undesirable sensations";
 
+// Pain evidence message for popup screen.
+String MSG_PAIN_EVIDENCE_POPUP = 			
+	"Evidence Suggests That: <l> \n " +
+	"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
+		"<*> <b> Add NIC Positioning. </b> <s1> \n " +
+	"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
+		"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
+	"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
+		"<*> <b> Additional actions needed. </b> \n ";
+
+// Message for info button next to pain graph
+String MSG_PAIN_GRAPH_DESCRIPTION = "Graph shows actual Pain NOC levels during first 24hr and projected levels to 72 hours if current actions are continued.";
+
+// Cycle 2: add family coping message on aciton bar
+String MSG_ACTION_COPING = "<b> Add family coping mini POC </b>";	
+
+// Cycle 2: add consultation message on aciton bar
+String MSG_ACTION_CONSULTATION = "<b> Add consultation </b>";
+
+// Cycle 2: NIC Consultation POC text
+String NIC_CONSULTATION_TEXT = "Consultation: palliative care";
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Globl variables
 public int prototypeState = 0;
@@ -71,7 +96,6 @@ public View mainView;     // The Main View is the background of the window with 
 public TitleView titleView;
 public PatientDataView nameView,dobView,genderView,allergiesView,codeStatusView,pocView,shftView,roomView,medicalDXView,mrView,physicianView,otherView;
 
-//public ClosePopUpView closePopUpView;
 public View popUpView;
 public Tooltip tooltipView = null;
 
@@ -109,7 +133,7 @@ public String minusIconString = "delete.png";
 // Variables holding Images
 public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
-public PImage plusIcon, minusIcon, prioritizeIcon, starIcon;
+public PImage plusIcon, minusIcon, prioritizeIcon, starIcon, checkIcon, crossIcon;
 public PImage infoIcon;
 
 public PImage smallGraph1;
@@ -162,8 +186,12 @@ public void setup()
 	smallGraph3.resize(0, 15);
 	
 	starIcon = loadImage("star.png");
+	checkIcon = loadImage("accept.png");
+	checkIcon.resize(0, 22);
+	crossIcon = loadImage("cross.png");
+	crossIcon.resize(0, 22);
 	
-	IMG_IMP_GAS_EXC = loadImage("impairedGasExchange.png");
+	IMG_IMP_GAS_EXC = loadImage("impairedgasExchange.png");
 	
 	reset();
 }
@@ -296,7 +324,7 @@ public void setupPopup()
 	if(OPTION_GRAPH_IN_MAIN_POPUP) ppwidth = 705;
 	if(OPTION_ALERT_INFO_BUTTON) ppwidth = 400;
 	
-	PopUpView ppw = new PopUpView(ppwidth, pocManager.painLevelView);
+	PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView);
 	ppw.reset();
 	
 	GraphPopUpView gp1 = new GraphPopUpView(500, pocManager.anxietyLevelView);
@@ -308,30 +336,75 @@ public void setupPopup()
 	GraphPopUpView gp3 = new GraphPopUpView(500, pocManager.painLevelView);
 	gp3.reset(painLevelTrend);
 
+	PImage painLevelActionButtonImage = null;
+	
 	if(OPTION_GRAPH_IN_MAIN_POPUP)
 	{
-                if( OPTION_NUMBER != 3 &&  OPTION_NUMBER !=4){
-		int graphButtonX = 250;
-		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
-		pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2, graphButtonX); 
-		pocManager.painLevelView.setAlertButton(3, ppw, smallGraph3);
-	}
-                else{
-                int graphButtonX = 500;
-		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
-		pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2, graphButtonX); 
-		graphButtonX = 250;
-                pocManager.painLevelView.setAlertButton(3, ppw, smallGraph3);
-                
-                }
+		if( OPTION_NUMBER != 3 &&  OPTION_NUMBER !=4)
+		{
+			int graphButtonX = 750;
+			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
+			painLevelActionButtonImage = smallGraph3;
+			pocManager.painLevelView.actionPopUp = ppw;
+		}
+		else
+		{
+			int graphButtonX = 750;
+			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
+			graphButtonX = 750;
+			painLevelActionButtonImage = smallGraph3;
+			pocManager.painLevelView.actionPopUp = ppw;
+		}
 	}
 	else
 	{
-		int graphButtonX = 550;
-		pocManager.painLevelView.setAlertButton(3, ppw, null);
+		// Default
+		int graphButtonX = 750;
+		pocManager.painLevelView.actionPopUp = ppw;
 		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
-		pocManager.anxietySelfControlView.setGraphButton(1, smallGraph2, gp2, graphButtonX); 
+		pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
 		pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3, graphButtonX); 
+	}
+
+	// alert button position, used for inter-row button alignment
+	int alertButtonX;
+	if(OPTION_LONG_ALERT_BUTTON)
+	{
+		alertButtonX = 250;
+		pocManager.painLevelView.setAlertButton(3, "Mrs. Taylor's Pain Level is not controlled.", alertButtonX, painLevelActionButtonImage);
+	}
+	else 
+	{
+		alertButtonX = 450;
+		pocManager.painLevelView.setAlertButton(3, "Actions", alertButtonX, painLevelActionButtonImage);
+		pocManager.painLevelView.message = "Mrs. Taylor's Pain Level is not controlled.";
+	}
+	
+	if(OPTION_ALERT_INFO_BUTTON)
+	{
+		pocManager.painLevelView.setInfoButton(520, 
+			"This requires action because analysis of similar patient's data shows: <l> \n " +
+			"* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
+			"* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n");
+	}
+	
+	// Cycle 2 addition
+	if(CYCLE2_OPTION_NUMBER == 1)
+	{
+		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
+		dppw.setupConsultRefuse();
+		pocManager.anxietySelfControlView.enableQuickActionButton1(250, 120, MSG_ACTION_CONSULTATION);
+		pocManager.anxietySelfControlView.enableQuickActionButton2(470, 200, MSG_ACTION_COPING);
+		pocManager.anxietySelfControlView.actionPopUp = dppw;
+	}
+	else if(CYCLE2_OPTION_NUMBER == 2)
+	{
+		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
+		dppw.setupFull();
+		pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
+		pocManager.anxietySelfControlView.actionPopUp = dppw;
 	}
 }
 
@@ -385,10 +458,6 @@ void drawStaticViewElements()
 	fill(0);
 	text("NOC rating is 2 or more points away from expected rating", graphLegendX, curY);
 	curY += 35;
-	
-	textSize(12);
-	text("Nurse's Signature: _________________________", 20, footerY + 125);
-	text("Printed on: 09/18/2010 02:28:08", 700, footerY + 125);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -402,6 +471,12 @@ void mouseReleased()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void mouseMoved()
+{
+	mainView.mouseMoved(mouseX, mouseY);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseDragged()
 {
 	if(popUpView != null)
@@ -412,7 +487,6 @@ void mouseDragged()
 			popUpView.y = mouseY + popUpView.dragY;
 		}
 	}
-	mainView.mouseMoved(mouseX, mouseY);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -439,20 +513,33 @@ void keyPressed()
 {
 	if(!filterKeyInput || popUpView == null)
 	{
+		// if(key == '1')
+		// {
+			// OPTION_NO_SUGGESTIONS = false;
+			// OPTION_LONG_ALERT_BUTTON = true;
+			// OPTION_ALERT_INFO_BUTTON = false;
+			// OPTION_EXPANDABLE_POPUP_TEXT = false;
+			// OPTION_ENABLE_POPUP_TEXT = true;
+			// OPTION_GRAPH_IN_MAIN_POPUP = false;
+			// OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			// OPTION_GRAPH_ALERT_BUTTON = false;
+			// OPTION_NUMBER = 1;
+			// reset();
+		// }
+		// else if(key == '3')
+		// {
+			// OPTION_NO_SUGGESTIONS = false;
+			// OPTION_LONG_ALERT_BUTTON = true;
+			// OPTION_ALERT_INFO_BUTTON = false;
+			// OPTION_EXPANDABLE_POPUP_TEXT = false;
+			// OPTION_ENABLE_POPUP_TEXT = true;
+			// OPTION_GRAPH_IN_MAIN_POPUP = true;
+			// OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			// OPTION_GRAPH_ALERT_BUTTON = false;
+			// OPTION_NUMBER = 3;
+			// reset();
+		// }
 		if(key == '1')
-		{
-			OPTION_NO_SUGGESTIONS = false;
-			OPTION_LONG_ALERT_BUTTON = true;
-			OPTION_ALERT_INFO_BUTTON = false;
-			OPTION_EXPANDABLE_POPUP_TEXT = false;
-			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_GRAPH_IN_MAIN_POPUP = false;
-			OPTION_ENABLE_ACTION_INFO_POPUP = false;
-			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 1;
-			reset();
-		}
-		else if(key == '2')
 		{
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = false;
@@ -463,19 +550,35 @@ void keyPressed()
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 2;
+			CYCLE2_OPTION_NUMBER = 1;
 			reset();
 		}
-		else if(key == '3')
+		else if(key == '2')
 		{
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = true;
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			OPTION_GRAPH_IN_MAIN_POPUP = true;
+			OPTION_GRAPH_ALERT_BUTTON = true;
+			OPTION_NUMBER = 4;
+			CYCLE2_OPTION_NUMBER = 1;
+			reset();
+		}
+		if(key == '3')
+		{
+			OPTION_NO_SUGGESTIONS = false;
+			OPTION_LONG_ALERT_BUTTON = false;
+			OPTION_EXPANDABLE_POPUP_TEXT = false;
+			OPTION_ENABLE_POPUP_TEXT = false;
+			OPTION_ALERT_INFO_BUTTON = true;
+			OPTION_ENABLE_ACTION_INFO_POPUP = true;
+			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 3;
+			OPTION_NUMBER = 2;
+			CYCLE2_OPTION_NUMBER = 2;
 			reset();
 		}
 		else if(key == '4')
@@ -489,6 +592,7 @@ void keyPressed()
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = true;
 			OPTION_NUMBER = 4;
+			CYCLE2_OPTION_NUMBER = 2;
 			reset();
 		}
 		else if(key == '0')

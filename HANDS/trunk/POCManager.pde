@@ -19,6 +19,13 @@ class POCManager
 	ThirdLevelRowView painManagementView;
 	ScrollingView scrollingView;
 	
+	// Cycle 2
+	
+	// Family coping stuff
+	ColouredRowView nandaInterruptedFamilyProcess;
+	SecondLevelRowView nocFamilyCoping;
+	ThirdLevelRowView nicFamilySupport;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
@@ -40,7 +47,7 @@ class POCManager
 		deathAnxietyView = new ColouredRowView("Death Anxiety",firstLevelIcon);
 		scrollingView.subs.add(deathAnxietyView);
 
-		anxietySelfControlView = new SecondLevelRowView("Anxiety Self-Control",secondLevelIcon,5,5,deathAnxietyView);
+		anxietySelfControlView = new SecondLevelRowView("Comfortable Death",secondLevelIcon,5,5,deathAnxietyView);
 		deathAnxietyView.subs.add(anxietySelfControlView);
 
 		calmingTechniqueView_2 = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietySelfControlView);
@@ -62,6 +69,13 @@ class POCManager
 
 		painManagementView = new ThirdLevelRowView("Pain Management",thirdLevelIcon,painLevelView);
 		painLevelView.subs.add(painManagementView);
+		
+		// Cycle 2 stuff
+		nandaInterruptedFamilyProcess = new ColouredRowView("Interrupted Family Processes", firstLevelIcon);
+		nocFamilyCoping = new SecondLevelRowView("Interrupted Family Processes", secondLevelIcon, 1, 5, nandaInterruptedFamilyProcess);
+		nandaInterruptedFamilyProcess.subs.add(nocFamilyCoping);
+		nicFamilySupport = new ThirdLevelRowView("Interrupted Family Processes", thirdLevelIcon, nocFamilyCoping);
+		nocFamilyCoping.subs.add(nicFamilySupport);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +90,7 @@ class POCManager
                    	tempo.y = temp.y+((k+1)*temp.h);
 		}
 		//mainView.subviews.add(medicationManagementView);
-		parentNOC.subs.add(0,temp);
+		parentNOC.subs.add(temp);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,6 +119,12 @@ class POCManager
 	{
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(0, nanda);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void addNANDA(ColouredRowView nanda)
+	{
+		scrollingView.subs.add(nanda);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

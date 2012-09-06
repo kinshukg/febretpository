@@ -20,7 +20,7 @@ class Button extends View
 		super(x_, y_,w_ ,h_); 
 		icon = icon_;
 		transparent = true;
-		
+		interactive = true;
 		tooltipImage = null;
 	}
 	
@@ -32,6 +32,7 @@ class Button extends View
 		this.buttonColor = buttonColor;
 		this.textColor = textColor;
 		icon = null;
+		interactive = true;
 		transparent = false;
 	}
 	
