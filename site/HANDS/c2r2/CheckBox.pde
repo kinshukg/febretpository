@@ -186,8 +186,8 @@ class CheckBox extends View
 			selected =!selected;
 			if(owner != null) owner.onCheckBoxChanged(this);
 			if(radio && ownerSection != null) ownerSection.onRadioButtonChanged(this);
-			if(selected) tb.activate();
-			else tb.deactivate();
+			//if(selected) tb.activate();
+			//else tb.deactivate();
 			if(!textBoxAlwaysVisible)
 			{
 				if(selected)
