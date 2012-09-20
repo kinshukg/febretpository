@@ -39,14 +39,15 @@ class POCManager
 		scrollingView.subs.add(impairedGasExchange);  
 
 		anxietyLevelView = new SecondLevelRowView("Anxiety Level",secondLevelIcon,3,3,impairedGasExchange);
-		//calmingTechniqueView_2.iconButton.tooltipImage = IMG_COMFORTABLE_DEATH;
+		anxietyLevelView.iconButton.tooltipImage = IMG_ANXIETY_LEVEL;
 		impairedGasExchange.subs.add(anxietyLevelView);
 
 		musicTherapyView = new ThirdLevelRowView("Music Therapy", thirdLevelIcon,anxietyLevelView);
-		//calmingTechniqueView_2.iconButton.tooltipImage = IMG_COMFORTABLE_DEATH;
+		musicTherapyView.iconButton.tooltipImage = IMG_MUSIC_THERAPY;
 		anxietyLevelView.subs.add(musicTherapyView);
 
 		calmingTechniqueView = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietyLevelView);
+		calmingTechniqueView.iconButton.tooltipImage = IMG_CALMING_TECHNIQUE;
 		anxietyLevelView.subs.add(calmingTechniqueView);
 
 		deathAnxietyView = new ColouredRowView("Death Anxiety",firstLevelIcon);
@@ -58,11 +59,11 @@ class POCManager
 		deathAnxietyView.subs.add(anxietySelfControlView);
 
 		calmingTechniqueView_2 = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietySelfControlView);
-		//calmingTechniqueView_2.iconButton.tooltipImage = IMG_COMFORTABLE_DEATH;
+		calmingTechniqueView_2.iconButton.tooltipImage = IMG_CALMING_TECHNIQUE;
 		anxietySelfControlView.subs.add(calmingTechniqueView_2);
 
 		spiritualSupportView = new ThirdLevelRowView("Spiritual Support",thirdLevelIcon,anxietySelfControlView);
-		//spiritualSupportView
+		spiritualSupportView.iconButton.tooltipImage = IMG_SPIRITUAL_SUPPORT;
 		anxietySelfControlView.subs.add(spiritualSupportView);
 
 		spiritualSupportView.addComment("Family Priest to Visit 2am");
@@ -72,15 +73,15 @@ class POCManager
 		scrollingView.subs.add(acutePainView);
 
 		painLevelView = new SecondLevelRowView("Pain Level",secondLevelIcon,1,5,acutePainView);
-		//
+		painLevelView.iconButton.tooltipImage = IMG_PAIN_LEVEL;
 		acutePainView.subs.add(painLevelView);
 		
-		medicationManagementView = new ThirdLevelRowView("Medical Management",thirdLevelIcon,painLevelView);
-		//
+		medicationManagementView = new ThirdLevelRowView("Medication Management",thirdLevelIcon,painLevelView);
+		medicationManagementView.iconButton.tooltipImage = IMG_MEDICATION_MANAGEMENT;
 		painLevelView.subs.add(medicationManagementView);
 
 		painManagementView = new ThirdLevelRowView("Pain Management",thirdLevelIcon,painLevelView);
-		//painManagementView
+		painManagementView.iconButton.tooltipImage = IMG_PAIN_MANAGEMENT;
 		painLevelView.subs.add(painManagementView);
 		
 		// Cycle 2 stuff
