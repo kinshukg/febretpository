@@ -1293,6 +1293,7 @@ class DeathPopUpView extends PopUpViewBase
 		consultCheck = new CheckBox("Add NIC: Consultation", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
+		
 		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
 		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
 		recommendedActionSection = new PopUpSection("Recommended actions: ");
@@ -1385,7 +1386,7 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		if(consultCheck != null && consultCheck.selected)
 		{
-			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
 			actionSection.removeAction(consultCheck);
 			parent.addComment("");
 			consultCheck = null;
@@ -1721,9 +1722,10 @@ class POCManager
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	public void addNIC(String text, String comment,SecondLevelRowView parentNOC)
+	public void addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
+		temp.iconButton.tooltipImage = tooltip;
 		if(comment.length() != 0) temp.addComment(comment);
 				
 		for(int k =0 ; k < parentNOC.subs.size();k++)
@@ -1736,9 +1738,10 @@ class POCManager
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	public void addNOC(String text,String comment, ColouredRowView parentNANDA)
+	public void addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
 		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA);
+		temp.iconButton.tooltipImage = tooltip;
 		GraphPopUpView gp = new GraphPopUpView(500, temp);
 		gp.reset(emptyTrend);
 		temp.setGraphButton(0, emptySmallGraph, gp, 750); 
@@ -1838,7 +1841,7 @@ class PainPopUpView extends PopUpViewBase
 		}
 		
 		CheckBox c = new CheckBox(positioningText, "Positioning", thirdLevelIcon, ADD_NIC);
-		c.setIconTooltip(DEF_POSITIONING);
+		c.setIconTooltipImage(IMG_POSITIONING);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
@@ -1853,14 +1856,14 @@ class PainPopUpView extends PopUpViewBase
 		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
 		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
 		
-		c1.setIconTooltip(DEF_ACUTE_PAIN);
-		c2.setIconTooltip(DEF_IMPAIRED_GAS_EXCHANGE);
-		c3.setIconTooltip(DEF_ENERGY_CONSERVATION);
-		c4.setIconTooltip(DEF_COPING);
-		c5.setIconTooltip(DEF_PATIENT_CONTROLLED_ANALGESIA);
-		c6.setIconTooltip(DEF_MASSAGE);
-		c7.setIconTooltip(DEF_RELAXATION_THERAPY);
-		c8.setIconTooltip(DEF_GUIDED_IMAGERY);
+		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
+		c2.setIconTooltipImage(IMG_IMPAIRED_GAS_EXCHANGE);
+		c3.setIconTooltipImage(IMG_ENERGY_CONSERVATION);
+		c4.setIconTooltipImage(IMG_COPING);
+		c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
+		c6.setIconTooltipImage(IMG_MASSAGE);
+		c7.setIconTooltipImage(IMG_MASSAGE);
+		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
 		PopUpSection addSection = new PopUpSection("Consider Adding: ");
 		addSection.addAction(c);
@@ -1910,11 +1913,11 @@ class PainPopUpView extends PopUpViewBase
 							toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
-								pocManager.addNIC(c.tag, c.tb.text, parent);
+								pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == ADD_NOC)
 							{
-								pocManager.addNOC(c.tag, c.tb.text, parent.parent);
+								pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == REMOVE_NANDA)
 							{
@@ -2630,6 +2633,7 @@ class SecondLevelRowView extends View
 			{
 				qa1NoButton.selected = false;
 				showPopUp();
+				stopBlinking();		
 			}
 		}
 		if(qa1YesButton != null)
@@ -2638,7 +2642,8 @@ class SecondLevelRowView extends View
 			{
 				qa1YesButton.selected = false;
 				removeQuickActionButton1();
-				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+				stopBlinking();		
 			}
 		}
 		if(qa2YesButton != null)

@@ -28,6 +28,7 @@ class DeathPopUpView extends PopUpViewBase
 		consultCheck = new CheckBox("Add NIC: Consultation", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
+		
 		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
 		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
 		recommendedActionSection = new PopUpSection("Recommended actions: ");
@@ -120,7 +121,7 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		if(consultCheck != null && consultCheck.selected)
 		{
-			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
 			actionSection.removeAction(consultCheck);
 			parent.addComment("");
 			consultCheck = null;
