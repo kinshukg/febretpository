@@ -8,6 +8,8 @@ class View
 	boolean visible;
 	boolean moving;
 	boolean interactive;
+	
+	float focusx, focusy, focush, focusw;
   
   View(float x_, float y_, float w_, float h_)
   {
@@ -39,6 +41,10 @@ class View
   }
   
   void layout()
+  {
+  }
+  
+  void hide()
   {
   }
   
@@ -89,7 +95,7 @@ class View
 
   boolean mousePressed(float px, float py)
   {
-    if (!ptInRect(px, py, x, y, w, h)) return false;
+    if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) return false;
     float lx = px - x;
     float ly = py - y;
     // check our subviews first
@@ -102,7 +108,7 @@ class View
 
   boolean mouseMoved(float px, float py)
   {
-    if (!ptInRect(px, py, x, y, w, h)) 
+    if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) 
 	{
 		cursor(ARROW);
 		return false;
@@ -120,7 +126,7 @@ class View
 
   boolean mouseClicked(float px, float py)
   {
-    if (!ptInRect(px, py, x, y, w, h)) return false;
+    if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) return false;
     float lx = px - x;
     float ly = py - y;
     // check our subviews first

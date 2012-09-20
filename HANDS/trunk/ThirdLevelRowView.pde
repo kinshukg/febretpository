@@ -1,7 +1,7 @@
 class ThirdLevelRowView extends View 
 {
 	String title;
-	PImage logo;
+	Button iconButton;
 	SecondLevelRowView parent;
 	int indent;
 	StaticText commentBox;
@@ -11,7 +11,10 @@ class ThirdLevelRowView extends View
 	{
 		super(0, 0,width,25);
 		this.title = title;
-		this.logo = logo;
+
+		iconButton = new Button(0, 0, 16, 16, logo);
+		subviews.add(iconButton);
+		
 		parent = parent_;
 		indent = 60;
 	}
@@ -26,6 +29,8 @@ class ThirdLevelRowView extends View
 			commentBox.x = indent + 80;
 			h += 25;
 		}
+		iconButton.x = indent;
+		iconButton.y = 4;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +57,6 @@ class ThirdLevelRowView extends View
 		
 		textSize(12);
 		textFont(fbold);
-		image(logo, indent, 4);
 		textAlign(LEFT,CENTER);
 		text(title, indent +  35,12);
 		

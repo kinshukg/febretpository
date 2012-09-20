@@ -3,7 +3,7 @@ class SecondLevelRowView extends View
 {
 	String title;
 	String message;
-	PImage logo;
+	Button iconButton;
 	StaticText commentBox;
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
@@ -31,7 +31,8 @@ class SecondLevelRowView extends View
 	{
 		super(0, 0,width,25);
 		this.title = title;
-		this.logo = logo;
+		iconButton = new Button(0, 0, 16, 16, logo);
+		subviews.add(iconButton);
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
 		this.subs = new ArrayList();
@@ -75,6 +76,8 @@ class SecondLevelRowView extends View
 			commentBox.x = indent + 80;
 			h += 25;
 		}
+		iconButton.x = indent;
+		iconButton.y = 4;
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
@@ -99,7 +102,6 @@ class SecondLevelRowView extends View
 		textAlign(LEFT,CENTER);
 		textFont(fbold);
 		textSize(12);
-		image(logo, indent,4);
 		text(title, indent + 35,12);
 		
 		if(parent.deleted)
@@ -107,8 +109,8 @@ class SecondLevelRowView extends View
 			line(0, 15, w, 15);
 		}
 		
-		if(firstColumn != 0) text(firstColumn, 850, 12);
-		if(secondColumn != 0) text(secondColumn, 950, 12);
+		if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);
+		if(secondColumn != 0) text(secondColumn, 950, 12); else text("NR", 950, 12);
 
 		if(message != null)
 		{
@@ -141,14 +143,18 @@ class SecondLevelRowView extends View
 		qa2Text = new StaticText(text);
 		qa2Text.w = textWidth;
 		qa2Text.x = cx;
-		qa2Text.y = 4;
+		qa2Text.y = -20;
 		subviews.add(qa2Text);
 		cx += qa2Text.w - 10;
-		qa2YesButton = new Button(cx, 1, 24, 24, checkIcon);
+		qa2YesButton = new Button(cx, -22, 24, 24, checkIcon);
 		subviews.add(qa2YesButton);
 		cx += 28;
-		qa2NoButton = new Button(cx, 1, 24, 24, crossIcon);
+		qa2NoButton = new Button(cx, -22, 24, 24, crossIcon);
 		subviews.add(qa2NoButton);
+		
+		// expand focus area fo this view to cover external button
+		focusy = -20;
+		focush = h;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,7 +223,7 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
-		color buttonColor = 0;
+		color buttonColor = 200;
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
 		if(level == 3) buttonColor = alertHighColor;
@@ -251,6 +257,7 @@ class SecondLevelRowView extends View
 		{
 			if(qa1NoButton.selected)
 			{
+				qa1NoButton.selected = false;
 				showPopUp();
 			}
 		}
@@ -258,6 +265,7 @@ class SecondLevelRowView extends View
 		{
 			if(qa1YesButton.selected)
 			{
+				qa1YesButton.selected = false;
 				removeQuickActionButton1();
 				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
 			}
@@ -266,6 +274,7 @@ class SecondLevelRowView extends View
 		{
 			if(qa2YesButton.selected)
 			{
+				qa2YesButton.selected = false;
 				removeQuickActionButton2();
 				pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
 			}
@@ -274,6 +283,7 @@ class SecondLevelRowView extends View
 		{
 			if(qa2NoButton.selected)
 			{
+				qa2NoButton.selected = false;
 				removeQuickActionButton2();
 			}
 		}

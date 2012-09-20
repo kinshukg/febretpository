@@ -26,11 +26,7 @@ class ClosePopUpView extends View
 	{
 		if(popUpView != null)
 		{
-			//if(w - lx > 50)
-			{
-				mainView.subviews.remove(popUpView);
-				popUpView = null;
-			}
+			popUpView.hide();
 		}
 		pressed = true;
 		return true;

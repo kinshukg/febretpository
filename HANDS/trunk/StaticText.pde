@@ -11,6 +11,10 @@ class StaticText extends View
 	
 	int maxTextWidth;
 	
+	int clickableX;
+	int clickableY;
+	PImage tooltipImage;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	StaticText(String text)
 	{
@@ -90,6 +94,30 @@ class StaticText extends View
 				curX += 20;
 				continue; 
 			}
+			if(textWords[i].equals("<nanda>")) 
+			{ 
+				image(firstLevelIcon,curX,curY); 
+				clickableX = curX;
+				clickableY = curY;
+				curX += 20;
+				continue; 
+			}
+			if(textWords[i].equals("<noc>")) 
+			{ 
+				image(secondLevelIcon,curX,curY); 
+				clickableX = curX;
+				clickableY = curY;
+				curX += 20;
+				continue; 
+			}
+			if(textWords[i].equals("<nic>")) 
+			{ 
+				image(thirdLevelIcon,curX,curY); 
+				clickableX = curX;
+				clickableY = curY;
+				curX += 20;
+				continue; 
+			}
 			
 			if(bold) textFont(fbold);
 			else textFont(font);
@@ -143,6 +171,35 @@ class StaticText extends View
 		if(curLineWidth > maxTextWidth) maxTextWidth = curLineWidth;
 		
 		h = curY + 10;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentMoved(float px, float py)
+	{
+		if(ptInRect(px, py, clickableX, clickableY, 20, 20) && tooltipImage != null)
+		{
+			cursor(HAND);
+		}
+		else
+		{
+			cursor(ARROW);
+		}
+		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentClicked(float lx, float ly)
+	{
+		if(ptInRect(lx, ly, clickableX, clickableY, 20, 20))
+		{
+			if(tooltipImage != null)
+			{
+				tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipImage);
+				tooltipView.arrowX = mouseX;
+				tooltipView.arrowY = mouseY;
+			}
+		}
+		return true;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

@@ -17,6 +17,7 @@ class CheckBox extends View
 	int checkH = 12;
 	
 	boolean textBoxEnabled = true;
+	boolean textBoxAlwaysVisible = false;
 	boolean radio = false;
 	
 	PopUpViewBase owner = null;
@@ -80,16 +81,43 @@ class CheckBox extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setIconTooltipImage(PImage img)
+	{
+		if(iconButton != null)
+		{
+			iconButton.tooltipImage = img;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void showTextBox()
+	{
+		textBoxAlwaysVisible = true;
+		this.subviews.add(tb);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
 		if(infoButton != null)
 		{
 			infoButton.x = text.maxTextWidth + text.x + 10;
 		}
+		
 		w = popUpView.w;
-		tb.x = tw + 50;
-		tb.w = popUpView.w - tw - 70;
-		tb.y = 0;
+		
+		if(textBoxAlwaysVisible)
+		{
+			tb.x = text.maxTextWidth + text.x + 10;
+			tb.w = popUpView.w - tb.x - 70;
+			tb.y = 0;
+		}
+		else
+		{
+			tb.x = tw + 50;
+			tb.w = popUpView.w - tw - 70;
+			tb.y = 0;
+		}
 		
 		text.x = 50;
 		text.y = 2;
@@ -156,19 +184,22 @@ class CheckBox extends View
 			ly > checkY - margin && ly < checkY + checkH + margin)
 		{
 			selected =!selected;
-			tb.activated = false;
-			//System.out.println("Selected = "+ selected);
 			if(owner != null) owner.onCheckBoxChanged(this);
 			if(radio && ownerSection != null) ownerSection.onRadioButtonChanged(this);
-			if(selected)
+			if(selected) tb.activate();
+			else tb.deactivate();
+			if(!textBoxAlwaysVisible)
 			{
-				if(textBoxEnabled) this.subviews.add(tb);
-				//this.h = 60; 
-			} 
-			else	
-			{
-				if(textBoxEnabled) this.subviews.remove(tb);
-				//this.h = 20; 
+				if(selected)
+				{
+					if(textBoxEnabled) this.subviews.add(tb);
+					//this.h = 60; 
+				} 
+				else	
+				{
+					if(textBoxEnabled) this.subviews.remove(tb);
+					//this.h = 20; 
+				}
 			}
 		}
 		return true;

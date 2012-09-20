@@ -90,10 +90,10 @@ class PainPopUpView extends PopUpViewBase
 		addSection.addAction(c7);
 		addSection.addAction(c8);
 		
-		PopUpSection removeSection = new PopUpSection("Removing: ");
+		PopUpSection removeSection = new PopUpSection("Consider Removing: ");
 		removeSection.addAction(c2);
 		
-		PopUpSection prioritizeSection = new PopUpSection("Prioritizing: ");
+		PopUpSection prioritizeSection = new PopUpSection("Consider Prioritizing: ");
 		prioritizeSection.addAction(c1);
 		
 		subviews.add(addSection);
