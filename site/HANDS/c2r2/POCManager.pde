@@ -106,9 +106,10 @@ class POCManager
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void addNIC(String text, String comment,SecondLevelRowView parentNOC)
+	void addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
+		temp.iconButton.tooltipImage = tooltip;
 		if(comment.length() != 0) temp.addComment(comment);
 				
 		for(int k =0 ; k < parentNOC.subs.size();k++)
@@ -121,9 +122,10 @@ class POCManager
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void addNOC(String text,String comment, ColouredRowView parentNANDA)
+	void addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
 		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA);
+		temp.iconButton.tooltipImage = tooltip;
 		GraphPopUpView gp = new GraphPopUpView(500, temp);
 		gp.reset(emptyTrend);
 		temp.setGraphButton(0, emptySmallGraph, gp, 750); 

@@ -260,6 +260,7 @@ class SecondLevelRowView extends View
 			{
 				qa1NoButton.selected = false;
 				showPopUp();
+				stopBlinking();		
 			}
 		}
 		if(qa1YesButton != null)
@@ -268,7 +269,8 @@ class SecondLevelRowView extends View
 			{
 				qa1YesButton.selected = false;
 				removeQuickActionButton1();
-				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+				stopBlinking();		
 			}
 		}
 		if(qa2YesButton != null)

@@ -57,7 +57,7 @@ class PainPopUpView extends PopUpViewBase
 		}
 		
 		CheckBox c = new CheckBox(positioningText, "Positioning", thirdLevelIcon, ADD_NIC);
-		c.setIconTooltip(DEF_POSITIONING);
+		c.setIconTooltipImage(IMG_POSITIONING);
 		if(OPTION_ENABLE_ACTION_INFO_POPUP)
 		{
 			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
@@ -72,14 +72,14 @@ class PainPopUpView extends PopUpViewBase
 		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
 		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
 		
-		c1.setIconTooltip(DEF_ACUTE_PAIN);
-		c2.setIconTooltip(DEF_IMPAIRED_GAS_EXCHANGE);
-		c3.setIconTooltip(DEF_ENERGY_CONSERVATION);
-		c4.setIconTooltip(DEF_COPING);
-		c5.setIconTooltip(DEF_PATIENT_CONTROLLED_ANALGESIA);
-		c6.setIconTooltip(DEF_MASSAGE);
-		c7.setIconTooltip(DEF_RELAXATION_THERAPY);
-		c8.setIconTooltip(DEF_GUIDED_IMAGERY);
+		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
+		c2.setIconTooltipImage(IMG_IMPAIRED_GAS_EXCHANGE);
+		c3.setIconTooltipImage(IMG_ENERGY_CONSERVATION);
+		c4.setIconTooltipImage(IMG_COPING);
+		c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
+		c6.setIconTooltipImage(IMG_MASSAGE);
+		c7.setIconTooltipImage(IMG_MASSAGE);
+		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
 		PopUpSection addSection = new PopUpSection("Consider Adding: ");
 		addSection.addAction(c);
@@ -129,11 +129,11 @@ class PainPopUpView extends PopUpViewBase
 							toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
-								pocManager.addNIC(c.tag, c.tb.text, parent);
+								pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == ADD_NOC)
 							{
-								pocManager.addNOC(c.tag, c.tb.text, parent.parent);
+								pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == REMOVE_NANDA)
 							{
