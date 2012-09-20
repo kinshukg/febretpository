@@ -47,6 +47,14 @@ public PImage IMG_MASSAGE = null;
 public PImage IMG_PATIENT_CONTROLLED_ANALGESIA = null;
 public PImage IMG_POSITIONING = null;
 
+public PImage IMG_MUSIC_THERAPY = null;
+public PImage IMG_CALMING_TECHNIQUE = null;
+public PImage IMG_SPIRITUAL_SUPPORT = null;
+public PImage IMG_MEDICATION_MANAGEMENT = null;
+public PImage IMG_PAIN_MANAGEMENT = null;
+public PImage IMG_ANXIETY_LEVEL = null;
+public PImage IMG_PAIN_LEVEL = null;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
 // Other text strings.
@@ -236,6 +244,14 @@ public void setup()
 	IMG_MASSAGE =  loadImage("massage.PNG");
 	IMG_PATIENT_CONTROLLED_ANALGESIA =  loadImage("patientControlledAnalgesia.PNG");
 	IMG_POSITIONING =  loadImage("positioning.png");
+	
+	IMG_MUSIC_THERAPY = loadImage("musicTherapy.PNG");
+	IMG_CALMING_TECHNIQUE = loadImage("calmingTechnique.PNG");
+	IMG_SPIRITUAL_SUPPORT = loadImage("spiritualSupport.PNG");
+	IMG_MEDICATION_MANAGEMENT = loadImage("medicationManagement.PNG");
+	IMG_PAIN_MANAGEMENT = loadImage("painManagement.PNG");
+	IMG_ANXIETY_LEVEL = loadImage("anxietyLevel.PNG");
+	IMG_PAIN_LEVEL = loadImage("painLevel.PNG");
 	reset();
 }
 
