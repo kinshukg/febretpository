@@ -7,6 +7,7 @@ class DeathPopUpView extends PopUpViewBase
 	CheckBox copingCheck;
 
 	PopUpSection reasonSection;
+	PopUpSection recommendedActionSection;
 	PopUpSection actionSection;
 	
 	CheckBox reason1;
@@ -27,43 +28,52 @@ class DeathPopUpView extends PopUpViewBase
 		consultCheck = new CheckBox("Add NIC: Consultation", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
+		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
+		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
+		recommendedActionSection = new PopUpSection("Recommended actions: ");
+		recommendedActionSection.addAction(consultCheck);
+		
 		copingCheck = new CheckBox("Add NANDA: Family coping mini POC", firstLevelIcon, 0);
 		copingCheck.textBoxEnabled = false;
 		copingCheck.owner = this;
 		
-		consultCheck.setIconTooltip("Adds consultation to the current NOC");
-		copingCheck.setIconTooltip("Adds a NANDA section with: <l> \n " +
-			"<*> NANDA: Interrupted Family Proceses \n " +
-			"<*>   NOC: Family Coping \n " +
-			"<*>     NIC: Family Support \n " +
-			"<*>     NIC: Family Integrity Promotion \n " +
-			"<*>     NIC: Health Education: End Of Life Process \n ");
+		// copingCheck.setIconTooltip("Adds a NANDA section with: <l> \n " +
+			// "<*> <nanda> Interrupted Family Processes \n " +
+			// "<*>   <noc> Family Coping \n " +
+			// "<*>     <nic> Family Support \n " +
+			// "<*>     <nic> Family Integrity Promotion \n " +
+			// "<*>     <nic> Health Education: End Of Life Process \n ");
 		
-		actionSection = new PopUpSection("Suggested actions: ");
-		actionSection.addAction(consultCheck);
+		copingCheck.setIconTooltipImage(IMG_INTERRUPTED_FAMILY_PROCESS);
+		
+		actionSection = new PopUpSection("Also consider: ");
 		actionSection.addAction(copingCheck);
 		
 		consultCheck.selected = true;
 		copingCheck.selected = true;
 		
+		subviews.add(recommendedActionSection);
 		subviews.add(actionSection);
-		
 		createConsultRefuseSection();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void createConsultRefuseSection()
 	{
-		reason1 = new CheckBox("Does not apply", starIcon, 0);
-		reason2 = new CheckBox("Doctor refused it", starIcon, 0);
-		reason3 = new CheckBox("Other reason", starIcon, 0);
+		reason1 = new CheckBox("Patient / Family refused", null, 0);
+		reason2 = new CheckBox("Doctor refused", null, 0);
+		reason3 = new CheckBox("", null, 0);
 		
 		reason1.radio = true;
 		reason2.radio = true;
 		reason3.radio = true;
 		reason1.textBoxEnabled = false;
-		reason2.textBoxEnabled = false;
-		reason3.textBoxEnabled = false;
+		reason2.textBoxEnabled = true;
+		reason3.textBoxEnabled = true;
+		reason2.showTextBox();
+		reason2.tb.suggestion = "Enter doctor name";
+		reason3.tb.suggestion = "Other reason";
+		reason3.showTextBox();
 		
 		reason1.selected = true;
 		
@@ -96,7 +106,7 @@ class DeathPopUpView extends PopUpViewBase
 		{
 			if(!consultCheck.selected)
 			{
-				subviews.add(reasonSection);
+				subviews.add(4, reasonSection);
 			}
 			else
 			{
@@ -122,15 +132,15 @@ class DeathPopUpView extends PopUpViewBase
 			{
 				if(reason1.selected)
 				{
-					parent.addComment("Dismissed consultation: reason 1");
+					parent.addComment("Dismissed consultation: Family / Patient Refused");
 				}
 				else if(reason2.selected)
 				{
-					parent.addComment("Dismissed consultation: reason 2");
+					parent.addComment("Dismissed consultation: Doctor " + reason2.tb.text + " refused");
 				}
 				else if(reason3.selected)
 				{
-					parent.addComment("Dismissed consultation: reason 3");
+					parent.addComment("Dismissed consultation: " + reason3.tb.text);
 				}
 			}
 			parent.removeQuickActionButton1();

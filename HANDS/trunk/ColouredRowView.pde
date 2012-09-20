@@ -16,7 +16,6 @@ class ColouredRowView extends View
 		this.subs = new ArrayList();
 		
 		iconButton = new Button(0, 0, 16, 16, logo);
-		iconButton.tooltipImage = IMG_IMP_GAS_EXC;
 		subviews.add(iconButton);
 		
 		indent = 10;
@@ -47,7 +46,7 @@ class ColouredRowView extends View
 			h += 25;
 		}
 		iconButton.x = indent;
-		iconButton.y = 12;
+		iconButton.y = 4;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

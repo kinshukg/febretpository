@@ -94,6 +94,7 @@ class PopUpViewBase extends View
 	{
 		mainView.subviews.remove(this);
 		popUpView = null;
+		if(activeTextBox != null) activeTextBox.deactivate();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-import controlP5.*;
+//import controlP5.*;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Global constants
@@ -7,7 +7,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "v3.0.0";	
+static String VERSION = "c2r2";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -27,6 +27,25 @@ public int CYCLE2_OPTION_NUMBER = 1;
 
 // NNN definition images
 public PImage IMG_IMP_GAS_EXC = null; 
+public PImage IMG_ACUTE_PAIN = null;
+public PImage IMG_DEATH_ANXIETY = null;
+public PImage IMG_COMFORTABLE_DEATH = null;
+public PImage IMG_CONSULTATION = null;
+public PImage IMG_COPING = null;
+public PImage IMG_ENERGY_CONSERVATION = null;
+public PImage IMG_ENVIRONMENTAL_MANAGEMENT = null;
+public PImage IMG_FAMILY_COPING = null;
+public PImage IMG_FAMILY_INTEGRITY_PROMOTION = null;
+public PImage IMG_FAMILY_SUPPORT = null;
+public PImage IMG_FAMILY_THERAPY = null;
+public PImage IMG_GRIEVING = null;
+public PImage IMG_GUIDED_IMAGERY = null;
+public PImage IMG_HEALTH_EDUCATION = null;
+public PImage IMG_IMPAIRED_GAS_EXCHANGE = null;
+public PImage IMG_INTERRUPTED_FAMILY_PROCESS = null;
+public PImage IMG_MASSAGE = null;
+public PImage IMG_PATIENT_CONTROLLED_ANALGESIA = null;
+public PImage IMG_POSITIONING = null;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
@@ -76,10 +95,10 @@ String MSG_PAIN_EVIDENCE_POPUP =
 String MSG_PAIN_GRAPH_DESCRIPTION = "Graph shows actual Pain NOC levels during first 24hr and projected levels to 72 hours if current actions are continued.";
 
 // Cycle 2: add family coping message on aciton bar
-String MSG_ACTION_COPING = "Add family coping mini POC";	
+String MSG_ACTION_COPING = "Add <nanda> Interrupted Family Process mini POC";	
 
 // Cycle 2: add consultation message on aciton bar
-String MSG_ACTION_CONSULTATION = "Add consultation";
+String MSG_ACTION_CONSULTATION = "Add <nic> consultation";
 
 // Cycle 2: NIC Consultation POC text
 String NIC_CONSULTATION_TEXT = "Consultation: palliative care";
@@ -98,6 +117,7 @@ public PatientDataView nameView,dobView,genderView,allergiesView,codeStatusView,
 
 public View popUpView;
 public Tooltip tooltipView = null;
+public TextBox activeTextBox = null;
 
 boolean filterKeyInput = false;
 
@@ -136,6 +156,7 @@ public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
 public PImage plusIcon, minusIcon, prioritizeIcon, starIcon, checkIcon, crossIcon;
 public PImage infoIcon;
 
+public PImage emptySmallGraph;
 public PImage smallGraph1;
 public PImage smallGraph2;
 public PImage smallGraph3;
@@ -143,11 +164,12 @@ public PImage smallGraph3;
 public PImage anxietyLevelTrend;
 public PImage anxietySelfControlTrend;
 public PImage painLevelTrend;
+public PImage emptyTrend;
 
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
-public String dob = "03/12/1938",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
-public String other = "Sister to be called ANYTIME \n at patient's request \n 776-894-1010";
+public String dob = "03/12/1959",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
+public String other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setup()
@@ -178,12 +200,14 @@ public void setup()
 	
 	infoIcon = loadImage("information.png");
 	infoIcon.resize(0, 22);
+	emptySmallGraph = loadImage("emptySmallGraph.png");
 	smallGraph1 = loadImage("SmallGraph1.png");
 	smallGraph2 = loadImage("SmallGraph2.png");
 	smallGraph3 = loadImage("SmallGraph3.png");
 	smallGraph1.resize(0, 15);
 	smallGraph2.resize(0, 15);
 	smallGraph3.resize(0, 15);
+	emptySmallGraph.resize(0, 15);
 	
 	starIcon = loadImage("star.png");
 	checkIcon = loadImage("accept.png");
@@ -192,7 +216,26 @@ public void setup()
 	crossIcon.resize(0, 22);
 	
 	IMG_IMP_GAS_EXC = loadImage("impairedgasExchange.png");
+	IMG_ACUTE_PAIN = loadImage("acutePain.png");
+	IMG_DEATH_ANXIETY = loadImage("deathAnxiety.png");
+	IMG_INTERRUPTED_FAMILY_PROCESS = loadImage("interruptedFamilyProcess.PNG");
 	
+	IMG_FAMILY_INTEGRITY_PROMOTION = loadImage("familyIntegrityPromotion.PNG");
+	IMG_COMFORTABLE_DEATH = loadImage("comfortableDeath.PNG");
+	IMG_CONSULTATION =  loadImage("consultation.PNG");
+	IMG_COPING =  loadImage("coping.PNG");
+	IMG_ENERGY_CONSERVATION =  loadImage("energyConservation.PNG");
+	IMG_ENVIRONMENTAL_MANAGEMENT =  loadImage("environmentalManagement.PNG");
+	IMG_FAMILY_COPING =  loadImage("familyCoping.PNG");
+	IMG_FAMILY_INTEGRITY_PROMOTION =  loadImage("familyIntegrityPromotion.PNG");
+	IMG_FAMILY_SUPPORT =  loadImage("familySupport.PNG");
+	IMG_FAMILY_THERAPY =  loadImage("familyTherapy.PNG");
+	IMG_GRIEVING =  loadImage("grieving.PNG");
+	IMG_GUIDED_IMAGERY =  loadImage("guidedImagery.PNG");
+	IMG_HEALTH_EDUCATION =  loadImage("healthEducation.PNG");
+	IMG_MASSAGE =  loadImage("massage.PNG");
+	IMG_PATIENT_CONTROLLED_ANALGESIA =  loadImage("patientControlledAnalgesia.PNG");
+	IMG_POSITIONING =  loadImage("positioning.png");
 	reset();
 }
 
@@ -232,6 +275,8 @@ void loadNNNIcons()
 	anxietySelfControlTrend.resize(500, 0);
 	painLevelTrend = loadImage("painLevelTrend.png");
 	painLevelTrend.resize(500, 0);
+	emptyTrend = loadImage("emptyTrend.png");
+	emptyTrend.resize(500, 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -336,6 +381,9 @@ public void setupPopup()
 	GraphPopUpView gp3 = new GraphPopUpView(500, pocManager.painLevelView);
 	gp3.reset(painLevelTrend);
 
+	GraphPopUpView gp4 = new GraphPopUpView(500, pocManager.nocFamilyCoping);
+	gp4.reset(emptyTrend);
+	
 	PImage painLevelActionButtonImage = null;
 	
 	if(OPTION_GRAPH_IN_MAIN_POPUP)
@@ -345,6 +393,7 @@ public void setupPopup()
 			int graphButtonX = 750;
 			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
 			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
+			pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
 			painLevelActionButtonImage = smallGraph3;
 			pocManager.painLevelView.actionPopUp = ppw;
 		}
@@ -353,6 +402,7 @@ public void setupPopup()
 			int graphButtonX = 750;
 			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
 			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
+			pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
 			graphButtonX = 750;
 			painLevelActionButtonImage = smallGraph3;
 			pocManager.painLevelView.actionPopUp = ppw;
@@ -366,6 +416,7 @@ public void setupPopup()
 		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
 		pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
 		pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3, graphButtonX); 
+		pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
 	}
 
 	// alert button position, used for inter-row button alignment
@@ -395,8 +446,10 @@ public void setupPopup()
 	{
 		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
 		dppw.setupConsultRefuse();
-		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 120, MSG_ACTION_CONSULTATION);
-		pocManager.anxietySelfControlView.enableQuickActionButton2(470, 200, MSG_ACTION_COPING);
+		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 150, MSG_ACTION_CONSULTATION);
+		pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
+		pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING);
+		pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
 		pocManager.anxietySelfControlView.actionPopUp = dppw;
 	}
 	else if(CYCLE2_OPTION_NUMBER == 2)
@@ -426,37 +479,41 @@ public void draw()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void drawStaticViewElements()
 {
-	int footerY = pocManager.getBottom() + 10;
+	int footerY = 670;
+	int footerX = 1020;
 	textFont(fbold);
 	
+	fill(0);
 	textSize(12);
-	image(firstLevelIconLegend, 20, footerY + 10);
-	text("NANDA-I", 60, footerY + 20);
-	image(secondLevelIconLegend, 20, footerY + 45);
-	text("NOC", 60, footerY + 55);
-	image(thirdLevelIconLegend, 20, footerY + 80);
-	text("NIC", 60, footerY + 90);
+	textAlign(LEFT, CENTER);
 	
-	int graphLegendX = 600;
+	image(firstLevelIconLegend, footerX, footerY + 10);
+	text("NANDA-I", footerX + 40, footerY + 20);
+	image(secondLevelIconLegend, footerX, footerY + 45);
+	text("NOC", footerX + 40, footerY + 55);
+	image(thirdLevelIconLegend, footerX, footerY + 80);
+	text("NIC", footerX + 40, footerY + 90);
+	
+	int graphLegendX = 1055;
 	// Legend Button width, height.
 	int bw = 26;
 	int bh = 12;
 	
-	int curY = footerY + 20;
+	int curY = footerY + 120;
 	
 	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertLowColor);
 	fill(0);
-	text("NOC Rating is currently at expected rating", graphLegendX, curY);
+	text("NOC Rating at expected", graphLegendX, curY);
 	curY += 35;
 	
 	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertMidColor);
 	fill(0);
-	text("NOC rating is within point 1 of expected rating", graphLegendX, curY);
+	text("NOC rating within point 1 of expected", graphLegendX, curY);
 	curY += 35;
 
 	gu.drawButtonBase(graphLegendX - bw - 10, curY - bh / 2, bw, bh, alertHighColor);
 	fill(0);
-	text("NOC rating is 2 or more points away from expected rating", graphLegendX, curY);
+	text("NOC rating 2 or more points below expected", graphLegendX, curY);
 	curY += 35;
 }
 
@@ -511,7 +568,7 @@ void mouseClicked()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void keyPressed() 
 {
-	if(!filterKeyInput || popUpView == null)
+	if(!filterKeyInput)
 	{
 		// if(key == '1')
 		// {
@@ -600,7 +657,10 @@ void keyPressed()
 			saveFrame("HANDS-"+VERSION+"-####.png");
 		}
 	}
-	mainView.keypressed();
+	if(activeTextBox != null)
+	{
+		activeTextBox.keypressed();
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

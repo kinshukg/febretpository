@@ -46,6 +46,10 @@ class Tooltip extends View
 			this.w = ttimage.width + 5;
 			this.h = ttimage.height + 5;
 		}
+		
+		// If tooltip goes out of screen, fix its position
+		if(x + w > SCREEN_WIDTH) x = SCREEN_WIDTH - w - 10;
+		if(y + h > SCREEN_HEIGHT) y = SCREEN_HEIGHT - h - 10;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
