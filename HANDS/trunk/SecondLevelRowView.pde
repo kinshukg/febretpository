@@ -155,6 +155,7 @@ class SecondLevelRowView extends View
 		// expand focus area fo this view to cover external button
 		focusy = -20;
 		focush = h;
+		focusx = 30;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
