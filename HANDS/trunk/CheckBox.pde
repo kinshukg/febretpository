@@ -114,8 +114,16 @@ class CheckBox extends View
 		}
 		else
 		{
-			tb.x = tw + 50;
-			tb.w = popUpView.w - tw - 70;
+			// The following code overlays the comment box on top of text
+			// tb.x = tw + 50;
+			// tb.w = popUpView.w - tw - 70;
+			// tb.y = 0;
+			
+			// The following code puts the comment box at the right edge of this view, and applies a fixed width.
+			tb.w = popUpView.w - 300;
+			tb.x = w - tb.w - 20;
+			
+			
 			tb.y = 0;
 		}
 		
@@ -136,6 +144,9 @@ class CheckBox extends View
 		checkW = 12;
 		checkH = 12;
 	
+		//fill(#ffffee);
+		//rect(0, 0, w, h);
+		
 		if(radio)
 		{
 			checkX = 2;
@@ -186,8 +197,8 @@ class CheckBox extends View
 			selected =!selected;
 			if(owner != null) owner.onCheckBoxChanged(this);
 			if(radio && ownerSection != null) ownerSection.onRadioButtonChanged(this);
-			if(selected) tb.activate();
-			else tb.deactivate();
+			//if(selected) tb.activate();
+			//else tb.deactivate();
 			if(!textBoxAlwaysVisible)
 			{
 				if(selected)
