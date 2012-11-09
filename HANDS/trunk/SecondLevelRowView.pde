@@ -286,6 +286,7 @@ class SecondLevelRowView extends View
 				qa2YesButton.selected = false;
 				removeQuickActionButton2();
 				pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
+				stopBlinking();		
 			}
 		}
 		if(qa2NoButton != null)
@@ -294,6 +295,7 @@ class SecondLevelRowView extends View
 			{
 				qa2NoButton.selected = false;
 				removeQuickActionButton2();
+				stopBlinking();		
 			}
 		}
 		if(actionButton != null)

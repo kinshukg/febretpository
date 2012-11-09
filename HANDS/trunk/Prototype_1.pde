@@ -106,7 +106,7 @@ String MSG_PAIN_GRAPH_DESCRIPTION = "Graph shows actual Pain NOC levels during f
 String MSG_ACTION_COPING = "Add <nanda> Interrupted Family Process mini POC";	
 
 // Cycle 2: add consultation message on aciton bar
-String MSG_ACTION_CONSULTATION = "Add <nic> consultation";
+String MSG_ACTION_CONSULTATION = "Add <nic> Consultation: palliative care";
 
 // Cycle 2: NIC Consultation POC text
 String NIC_CONSULTATION_TEXT = "Consultation: palliative care";
@@ -320,7 +320,7 @@ void reset()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setupPatientInfoView()
 {
-	float cx = width - 390;
+	float cx = width - 380;
 	float cy = titleView.h + 25;
 	float cw = 200;
 	float ch = 20;
@@ -465,7 +465,7 @@ public void setupPopup()
 	{
 		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
 		dppw.setupConsultRefuse();
-		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 150, MSG_ACTION_CONSULTATION);
+		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION);
 		pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
 		pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING);
 		pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
@@ -527,7 +527,7 @@ public void draw()
 void drawStaticViewElements()
 {
 	int footerY = 670;
-	int footerX = 1020;
+	int footerX = 1030;
 	textFont(fbold);
 	
 	fill(0);
@@ -541,7 +541,7 @@ void drawStaticViewElements()
 	image(thirdLevelIconLegend, footerX, footerY + 80);
 	text("NIC", footerX + 40, footerY + 90);
 	
-	int graphLegendX = 1055;
+	int graphLegendX = 1065;
 	// Legend Button width, height.
 	int bw = 26;
 	int bh = 12;
