@@ -134,6 +134,9 @@ class SecondLevelRowView extends View
 		cx += 28;
 		qa1NoButton = new Button(cx, 1, 24, 24, crossIcon);
 		subviews.add(qa1NoButton);
+		
+		qa1YesButton.helpText = "Add to plan of care";
+		qa1NoButton.helpText = "Remove notification";
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,6 +159,9 @@ class SecondLevelRowView extends View
 		focusy = -20;
 		focush = h;
 		focusx = 30;
+		
+		qa2YesButton.helpText = "Add to plan of care";
+		qa2NoButton.helpText = "Remove notification";
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -260,6 +266,7 @@ class SecondLevelRowView extends View
 			{
 				qa1NoButton.selected = false;
 				showPopUp();
+				stopBlinking();		
 			}
 		}
 		if(qa1YesButton != null)
@@ -268,7 +275,8 @@ class SecondLevelRowView extends View
 			{
 				qa1YesButton.selected = false;
 				removeQuickActionButton1();
-				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView);
+				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+				stopBlinking();		
 			}
 		}
 		if(qa2YesButton != null)

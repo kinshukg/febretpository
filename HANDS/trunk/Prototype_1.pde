@@ -131,6 +131,9 @@ boolean filterKeyInput = false;
 
 POCManager pocManager;
 
+float helpTextFade;
+String currentHelpText;
+
 // Variables used for Font Control
 public PFont font,fbold; 
 
@@ -490,6 +493,34 @@ public void draw()
 	{
 		tooltipView.draw();
 	}
+	if(helpTextFade > 0 && currentHelpText != null)
+	{
+		float helpTextX = mouseX + 10;
+		float helpTextY = mouseY + 20;
+		float helpTextHeight = 20;
+		float helpTextWidth = textWidth(currentHelpText);
+		
+		noStroke();
+		
+		int contours = 4;
+		for(int i = 0; i < contours; i++)
+		{
+			int alpha = 50 - (16 / contours) * (i * i);
+			fill(0, 0, 0, alpha);
+			stroke(0, 0, 0, alpha);
+			strokeWeight(1);
+			roundrect((int)helpTextX-i, (int)helpTextY-i, (int)helpTextWidth + i * 2, (int)helpTextHeight + i * 2, 5);
+			//triangle(0, (contours - i) * 2, arrowX - x, arrowY - y, 0, h - (contours - i) * 2);
+		}
+
+		fill(#FFFCE5);
+		roundrect((int)helpTextX, (int)helpTextY, (int)helpTextWidth, (int)helpTextHeight, 5);
+		
+		textFont(font);
+		fill(0);
+		text(currentHelpText, helpTextX, helpTextY + 8);
+		//System.out.println(currentHelpText);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -534,6 +565,11 @@ void drawStaticViewElements()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void hideHelpText(String text)
+{
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseReleased()
 {
 	if(popUpView != null)
@@ -546,6 +582,7 @@ void mouseReleased()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseMoved()
 {
+	helpTextFade = 0;
 	mainView.mouseMoved(mouseX, mouseY);
 }
 

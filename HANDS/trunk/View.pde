@@ -11,6 +11,10 @@ class View
 	
 	float focusx, focusy, focush, focusw;
   
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	// Help text stuff
+	String helpText;
+	
   View(float x_, float y_, float w_, float h_)
   {
 	moving = false;
@@ -36,6 +40,7 @@ class View
 		  View v = (View)subviews.get(i);
 		  v.draw();
 		}
+		
 		popMatrix();
 	}
   }
@@ -110,10 +115,18 @@ class View
   {
     if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) 
 	{
-		cursor(ARROW);
+		//cursor(ARROW);
 		return false;
 	}
-	if(interactive) cursor(HAND);
+	//if(interactive) cursor(HAND);
+	if(interactive)
+	{
+		if(helpText != null) 
+		{
+			helpTextFade = 1;
+			currentHelpText = helpText;
+		}
+	}
     float lx = px - x;
     float ly = py - y;
     // check our subviews first
