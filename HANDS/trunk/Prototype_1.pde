@@ -410,7 +410,7 @@ public void setupPopup()
 		if( OPTION_NUMBER != 3 &&  OPTION_NUMBER !=4)
 		{
 			int graphButtonX = 750;
-			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+			pocManager.anxietyLevelView.setGraphButton(1, smallGraph1, gp1, graphButtonX); 
 			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
 			pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
 			painLevelActionButtonImage = smallGraph3;
@@ -419,7 +419,7 @@ public void setupPopup()
 		else
 		{
 			int graphButtonX = 750;
-			pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+			pocManager.anxietyLevelView.setGraphButton(1, smallGraph1, gp1, graphButtonX); 
 			pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
 			pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
 			graphButtonX = 750;
@@ -432,7 +432,7 @@ public void setupPopup()
 		// Default
 		int graphButtonX = 750;
 		pocManager.painLevelView.actionPopUp = ppw;
-		pocManager.anxietyLevelView.setGraphButton(2, smallGraph1, gp1, graphButtonX); 
+		pocManager.anxietyLevelView.setGraphButton(1, smallGraph1, gp1, graphButtonX); 
 		pocManager.anxietySelfControlView.setGraphButton(3, smallGraph2, gp2, graphButtonX); 
 		pocManager.painLevelView.setGraphButton(3, smallGraph3, gp3, graphButtonX); 
 		pocManager.nocFamilyCoping.setGraphButton(0, emptySmallGraph, gp4, graphButtonX); 
