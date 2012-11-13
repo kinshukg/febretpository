@@ -25,7 +25,7 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupFull()
 	{
-		consultCheck = new CheckBox("Add NIC: Consultation", thirdLevelIcon, 0);
+		consultCheck = new CheckBox("Add NIC Consultation: Palliative Care", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
 		

@@ -386,7 +386,7 @@ public void setupPopup()
 {
 	int ppwidth = 570;
 	if(OPTION_GRAPH_IN_MAIN_POPUP) ppwidth = 705;
-	if(OPTION_ALERT_INFO_BUTTON) ppwidth = 400;
+	if(OPTION_ALERT_INFO_BUTTON) ppwidth = 570;
 	
 	PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView);
 	ppw.reset();
