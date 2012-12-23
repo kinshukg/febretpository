@@ -18,17 +18,23 @@
 		targeting a very broad audience: from scientists working in national laboratories to museum visitors, from instructors interested in new learning technologies to casual videogame players.
 		</p>
     </div>
-    <div class="item"><h3>Publications</h3>
-        <ul>
-        </ul>    
-    </div>
     <div class="item"><h3>Academic and Professional Experiences</h3>
         <ul>
-            <li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Research Assistant, works as the main developer of omegalib, a multiplatform VR framework used to develop on devices like the OmegaDesk, tiled stereo displays, and NGCave.</li>
+            <li><b>June 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+                <li>Research & Developement on the CAVE2 system.</li>
             </ul></li>
+            <li><b>January 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+                <li>Works on the HANDS project, in collaboration with the UIC Nursing department.</li>
+            </ul></li>
+            <li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+                <li>Works as the main developer of omegalib, a multiplatform VR framework used to develop on devices like the OmegaDesk, tiled stereo displays, and NGCave.</li>
+            </ul></li>
+            <li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+                <li>Research & Developement on the OmegaDesk.</li>
+            </ul></li>
+			
             <li><b>January 2009 - June 2011, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Research Assistant, develops the visualization toolset used by researchers to analyze data coming from the ENDURANCE project, a NASA funded exploration of Lake Bonney, Antarctica.</li>
+                <li>Develops the visualization toolset used by researchers to analyze data coming from the ENDURANCE project, a NASA funded exploration of Lake Bonney, Antarctica.</li>
             </ul></li>
             <li><b>October 2007 – December 2008, Milestone Games, Italy:</b><ul>
                 <li>Works as a Gameplay Programmer on two titles published worldwide for PC, XBOX360, Playstation 3 and Nintendo Wii: Superbike World Championship 08 (Black Bean) and MotoGP08 (Capcom).</li>
