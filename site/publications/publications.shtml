@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository</h1>
+<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
+</div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+<li><a href="../main/bio.shtml">About Me</a></li>
+<li><a href="../main/pastProjects.shtml">Past Projects</a></li>
+<li><a href="../publications/publications.shtml">Publications</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">EVL</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
+<div class="section"><h2>Publications</h2>
+<div class="item" style="text-align: justify">
+<h3>CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis</h3>
+<img src="./EVL-Mars-Curiosity_LJL6719.jpg" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Nishimoto, A., Thigpen, T., Talandis, J., Long, L., Pirtle, J., Peterka, T., Verlo, A., Brown, M., Plepys, D., Sandin, D., Renambot, L., Johnson, A., Leigh, J.</p>
+<p><i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013.</i></p>
+<p>
+Hybrid Reality Environments represent a new kind of visualization spaces that blur the line between virtual environments and high resolution tiled display walls. This paper outlines the design and implementation of the CAVE2TM Hybrid Reality Environment. CAVE2 is the world's first near-seamless flat-panel-based, surround-screen immersive system. Unique to CAVE2 is that it will enable users to simultaneously view both 2D and 3D information, providing more flexibility for mixed media applications.
+</p>
+<p>
+CAVE2 is a cylindrical system of 24 feet in diameter and 8 feet tall, and consists of 72 near-seamless, off-axis-optimized passive stereo LCD panels, creating an approximately 320 degree panoramic environment for displaying information at 37 Megapixels (in stereoscopic 3D) or 74 Megapixels in 2D and at a horizontal visual acuity of 20/20. Custom LCD panels with shifted polarizers were built so the images in the top and bottom rows of LCDs are optimized for vertical off-center viewing- allowing viewers to come closer to the displays while minimizing ghosting.
+</p>
+<p>
+CAVE2 is designed to support multiple operating modes. In the Fully Immersive mode, the entire room can be dedicated to one virtual simulation. In 2D model, the room can operate like a traditional tiled display wall enabling users to work with large numbers of documents at the same time. In the Hybrid mode, a mixture of both 2D and 3D applications can be simultaneously supported. The ability to treat immersive work spaces in this Hybrid way has never been achieved before, and leverages the special abilities of CAVE2 to enable researchers to seamlessly interact with large collections of 2D and 3D data. To realize this hybrid ability, we merged the Scalable Adaptive Graphics Environment (SAGE) - a system for supporting 2D tiled displays, with Omegalib - a virtual reality middleware supporting OpenGL, OpenSceneGraph and Vtk applications.
+</p>
+<a href="./SPIE13Paper-revised.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Poisson reconstruction of extreme submersed environments: The ENDURANCE exploration of an under-ice Antarctic Lake</h3>
+<img src="../images/DSC_0017.jpg" width="" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Richmond, K., Gulati, S., Flesher, C., Hogan, B.P., Johnson, A., Stone, W.C., Priscu, J., Doran, P.</p>
+<p><i>8th International Symposium on Visual Computing (ISVC12), Crete, Greece, Springer-Verlag, Lecture Notes in Computer Science, 07/16/2012 - 07/18/2012</i></p>
+<p>
+We evaluate the use of Poisson reconstruction to generate a 3D bathymetric model of West Lake Bonney, Antarctica. The source sonar dataset has been collected by the ENDURANCE autonomous vehicle in the course of two Antarctic summer missions. The reconstruction workflow involved processing 200 million datapoints to generate a high resolution model of the lake bottom, Narrows region and underwater glacier face. A novel and flexible toolset has been developed to automate the processing of the Bonney data.
+</p>
+<a href="./ENDURANCE-ISVC12.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>The OmegaDesk: Towards A Hybrid 2D & 3D Work Desk</h3>
+<img src="./OmegaDesk_crop_painted.jpg" width="" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Mateevitsi, V.A., Chau, D., Nishimoto, A., McGinnis, B., Misterka, J., Johnson, A., Leigh, J.</p>
+<p><i>7th International Symposium on Visual Computing (ISVC11), Las Vegas, Nevada, 09/26/2011 - 09/28/2011</i></p>
+<p>
+OmegaDesk is a device that allows for seamless interaction between 2D and 3D content. In order to develop this hybrid device, a new form of Operating System is needed to manage and display heterogeneous content. In this paper we address the hardware and software requirements for such a system, as well as challenges. A set of heterogeneous applications has been successfully developed on OmegaDesk. They allowed us to develop a set of guidelines to drive future investigations into 2D/3D hybridized viewing and interaction.
+</p>
+<a href="./OmegaDesk-final.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Sub-Ice Exploration of an Antarctic Lake: Results from the ENDURANCE Project</h3>
+<img src="./endurance.jpg" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> Richmon, K., <b>Febretti, A.</b>, Gulati, S., Flesher, C., Hogan, B.P., Murarka, A., Kuhlman, G., Sridharan, M, Johnson, A., Stone, W.C., Priscu, J., Doran, P.</p>
+<p><i>17th International Symposium on Unmanned Untethered Submersible Technology (UUST11), Portsmouth, NH, US, 08/21/2011 - 08/24/2011</i></p>
+<p>
+The ENDURANCE autonomous underwater vehicle was developed and deployed to explore and map a unique environment: the waters of Lake Bonney in Taylor Valley, one of the McMurdo Dry Valleys of Antarctica. This permanently ice-covered lake presented several unique challenges and opportunities for exploration and mapping with an AUV. ENDURANCE was successfully deployed in 2008 and 2009, completing the first full synoptic 3-D chemical profile and high-resolution 3-D geometric mapping of such a body of water. Following the 2008 campaign, several upgrades were made to the vehicle to improve its exploration capabilities. The most significant of these was replacement of two battery packs. The improved energy capacity of these batteries coupled with analysis of in-situ transit speed efficiency tests resulted in an almost tripled range of the vehicle. This fact, combined with a longer fiber-optic data tether, enabled vastly more ambitious missions during the 2009 campaign. In addition, operational changes were made in 2009, including a super-ballasted mode to enable the vehicle to operate within the super-saline lower lake layers and investigate previously inaccessible areas of the Taylor Glacier face.
+ENDURANCE successfully navigated in the presence of ice cover and large density gradients, including precise approach and negotiation of narrow passageways and demonstrated autonomous melt hole location, position lock and auto recovery on a routine, daily basis. It performed general automated mapping and profiling surveys, as well as detailed studies of localized phenomena, operating in an extreme, remote, unknown environment. Post-processing of the data gathered on the two campaigns has made available a never-before-seen level of detail greatly enhancing the understanding of the lake biogeochemistry. The ENDURANCE project has demonstrated new underwater mapping capabilities to enhance the understanding of extreme, unique environments. Many of the characteristics and capabilities of ENDURANCE now successfully demonstrated in complex under-ice settings beneath West Lake Bonney are the types of behaviors that will be needed for sub-ice autonomous probes to Europa, Enceladus, and other outer planet watery moons.
+</p>
+<a href="./SubIceExploration_UUST11.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Usability, Playability, and Long-Term Engagement in Computer Games</h3>
+<img src="./Febretti_CHI09_sm.png" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Garzotto, F.</p>
+<p><i>CHI 2009 Work In Progress, Boston, MA, ACM SIGCHI, 04/04/2009 - 04/09/2009</i></p>
+<p>
+Does usability affect long term user engagement in computer games, or are other factors more influential? This paper explores this issue, discussing an evaluation study that measured the relevance of usability versus playability factors for long-term user engagement in eight commercial games.
+</p>
+<a href="./EngageComputerGames_febrettiCHI09.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Evaluating the Flash Platform for Web-based Collaborative Data Visualization</h3>
+<img src="./thesis.PNG" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b></p>
+<p><i>M.S. Thesis, Politecnico di Milano and University of Illinois at Chicago, 2006</i></p>
+<p>
+This thesis will present and discuss the use of Adobe Flash for the implementation of collaborative visualization applications over the web. The work will be driven by the analysis
+of typical requirements for this kind of applications, depending on their usage context: in particular, the work will address requirements of visualization applications targeted at public
+users, rather than scientists or other professionals with specific knowledge about visualization systems. Public users dispose of little or no training on the application, need simplified access
+to data which is usually of limited complexity, and may prefer an application that, while being functional, also offers a pleasant interactive experience. The Flash technology may bring several
+advantages to the developement of such a system, compared to other available alternatives. The work will first define a novel and simple conceptual visualization framework: the
+framework will be based on the standard dataflow visualization model, expanding it to add support for interaction and collaborative work. The framework design will be kept as simple
+as possible to support easy and fast developement of web applications based on it. A prototype implementation of the framework will be built using the Flash technology, and a
+proof-of-concept visualization application will be developed on top of the framework, to test its capabilities. The final evaluation of the technological choice and of the developed system
+will consider both the success of the application in respecting the specified requirements, and the developement effort needed to implement the overall system.
+</p>
+<a href="./Thesis.pdf">Download pdf</a>
+</div></div>
+</div>
+<div class="section"><h2>Whitepapers and Articles</h2>
+<div class="item" style="text-align: justify">
+<h3>Template Choice and Template Hierarchy Graph construction during the Partition Phase in reconfigurable environments</h3>
+<img src="./hpps.png" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Frossi, A.</p>
+<p><i>Laboratory of Microarchitectures, Politecnico di Milano, 2006</i></p>
+<p>
+This project is intended to be used within the PandA Project, developed in Politecnico di Milano. The primary objective of the PandA project is to develop a usable framework that will enable the research of new ideas in the HW-SW Co-Design field; the current research program aims at defining an efficient high-level synthesis tool that starting from C, C++ or SystemC system descriptions generates synthesizable VHDL RTL descriptions.
+The problem addressed in this report is the Template Choice and Candidate Evaluation in the context of partial dynamic reconfiguration on FPGAs (Field Programmable Gate Array). Given as input a set of possible templates that cover a Data Flow Graph, we want to identify isomorphic subgraphs common to at least two of those templates, and classify them using given thresholds and
+metrics.
+</p>
+<a href="./HPPS_FebrettiFrossi.pdf">Download pdf</a>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Fast late-bound invocation through Dynamic Method delegates</h3>
+<img src="./DynamicMethodDelegates1.gif" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b></p>
+<p><i>Codeproject, 2005</i></p>
+<p>
+Reflection is a feature that allows a program to find out type (and metadata) information about objects at run-time. Programs written in languages that support Reflection, like Java and the CLR languages family (C#, Visual Basic .NET etc.) can inspect types, obtain detailed information about class members, dynamically instantiate classes and invoke methods at run-time. The .NET Framework exposes its reflection services through the System.Reflection namespace. Late-bound invocation, for instance, can be achieved through the Type.InvokeMember and MemberInfo.Invoke methods. The use of Reflection, however, comes with a price. While some of its functions are pretty fast, some others, like late-bound invocation routines, are costly and if not used wisely could result in a major bottleneck inside your application.
+The basic idea presented here is to obtain a method handle through the common Reflection services, and then emit MSIL code to patch up a static call site for the method. This call site will be kept as simple as possible: no type safety / security checks will be performed, assuming that hybrid invocation is done only between fully trusted code entities. Generation of the MSIL call site will be done through a new feature of the .NET Framework 2.0, called Lightweight Code Generation (LGC). Hybrid invocation can be achieved also under .NET Framework 1.1 using the standard Reflection.Emit facilities, but at the price of a heavier implementation.
+</p>
+<a href="./flb.pdf">Download pdf</a></br>
+<a href="http://www.codeproject.com/Articles/10951/Fast-late-bound-invocation-through-DynamicMethod-d">Original article</a>
+</div></div>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

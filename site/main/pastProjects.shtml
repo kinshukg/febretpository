@@ -20,11 +20,11 @@
 <!-- BEGIN Menu -->
 <div id="menu">
 <ul>
-<li><a href="http://febretpository.blogspot.com/">Home</a></li>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
 <li><a href="../main/bio.shtml">About Me</a></li>
-<li><a href="../main/currentProjects.shtml">Current Projects</a></li>
 <li><a href="../main/pastProjects.shtml">Past Projects</a></li>
-<li><a href="../main/pastProjects.shtml">Publications</a></li>
+<li><a href="../publications/publications.shtml">Publications</a></li>
 <li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">EVL</a></li>
 </ul>
 </div>
@@ -109,21 +109,13 @@ The official game of the 2008 season, MotoGP 08 features all the riders, bikes a
 </p>
 </div></div>
 <div class="item" style="text-align: justify">
-<h3>Thesis</h3>
-<img src="../images/Thesis.png" width="" style="float: left"/>
-<div class="subitem">
-My Master Degree Thesis, titled <i>Evaluating the Flash Platform for Web-Based Collaborative Data Visualization</i> has been discussed 8 May 08 at University of Illinois at Chicago, and will be presented at Politecnico di Milano (Italy) by the end of July. It is mainly a discussion of the work I did developing <a href="./qbviz.shtml">Qbviz</a> and <a href="./hydroviz.shtml">Hydroviz</a>.
-<p><b>Downloads:</b>
-<a href="../thesis/Thesis_-_Febretti.pdf">Thesis Document</a> |
-<a href="./thesis/PresentationFinal.pdf">Presentation</a> |
-<a href="./qbviz/software/QbViz 0.3.zip">Software package 0.3</a>
-</p>
-</div></div>
-<div class="item" style="text-align: justify">
 <h3><a href="./qbviz.shtml">QbViz</a></h3>
 <a href="./qbviz.shtml"><img class="clickable" src="../images/qbviz.png" width="" style="float: left; border: 1px solid #D63D26; background: #f6dDc6;"/></a>
 <div class="subitem">
 QbViz is a lightweight actionscript library aimed at collaborative data visualization. Its main purpose is to simplify the creation of web applications capable of accessing fairly complex data sources, render them as interactive 3d visualizations, and share the created views between a set of remote users connected to the same virtual workspace.
+<p><b>Downloads:</b>
+<a href="./qbviz/software/QbViz 0.3.zip">Software package 0.3</a>
+</p>
 </div></div>
 <div class="item" style="text-align: justify">
 <h3><a href="./hydroviz.shtml">Hydroviz</a></h3>
@@ -184,25 +176,6 @@ Material from a seminar on Videogame design I held during the Spring 2007 Human-
 Yamo (Yet another music organizer), manages a music library, moving and renaming song files based on a set of options specified by the user. Yamo is composed of a dynamic library that implements the library manager engine, and a wizard application that allows easy access to the Yamo engine services. Both the library and the wizard are written in C#. Being a library, the Yamo engine can be used even inside third party applications.
 <p><b>Links:</b>
 <a href="http://www.codeproject.com/KB/audio-video/yamo.aspx">Original CodeProject Article And Downloads</a>
-</p>
-</div></div>
-<div class="item" style="text-align: justify">
-<h3>Template Choice and Template Hierarchy Graph construction during the Partition Phase in reconfigurable environments.</h3>
-<img src="../images/HPPS.png" width="" style="float: left"/>
-<div class="subitem">
-Paper written for the High Performance Processors and Systems class at Politecnico di MIlano. It talks about the theory and practical aspects of a project done by me and a colleague of mine, which was part of a bigger work in the area of reconfigurable hardware architectures.
-<p><b>Downloads:</b>
-<a href="http://cs.uic.edu/~afebrett/docs/HPPS_FebrettiFrossi.pdf">Paper</a>
-</p>
-</div></div>
-<div class="item" style="text-align: justify">
-<h3>Fast late-bound invocation through Dynamic Method delegates</h3>
-<img src="./dmd.gif" width="" style="float: left"/>
-<div class="subitem">
-Reflection is a feature that allows a program to find out type (and metadata) information about objects at run-time. The use of Reflection, however, comes with a price. While some of its functions are pretty fast, some others, like late-bound invocation routines, are costly and if not used wisely could result
-in a major bottleneck inside your application. This article discusses a way to obtain fast late-bound invocation inside the .Net framework, by obtaining a method handle through the common Reflection services, and then emiting MSIL code to patch up a static call site for the method.
-<p><b>Links:</b>
-<a href="http://www.codeproject.com/KB/cs/dynamicmethoddelegates.aspx">Original CodeProject Article And Downloads</a>
 </p>
 </div></div>
 </div>
