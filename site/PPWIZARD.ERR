@@ -1,25 +1,26 @@
 
 
 *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
-                 D:\Workspace\febretpository\site\main\bio.it
-                        Tuesday, 29 Nov 2011 4:33:10pm
+        D:\Workspace\febretpository\site\publications\publications.it
+                        Friday, 11 Jan 2013 8:16:07pm
 *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ Fatal  Error ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Location  : line 2 of "D:\Workspace\febretpository\site\main\bio.it"
-File Line : #include "../etc/header.html"<div class="item">
+Location  : line 9 of "D:\Workspace\febretpository\site\publications\publications.it"
+File Line : 		<$img "../images/DSC_0017.jpg.png" caption="Side-by-side analysis of West Lake Bonney reconstruction results on a high resolution display wall. image provided by L. Long, EVL"/)
+Expanding : <$img ...>
 More Info?: PPWIZARD.ERR (error file)
-Detected @: Line 16,886 of PPWIZARD.rex (v08.298)
+Detected @: Line 16,816 of PPWIZARD.rex (v08.298)
 PPWIZARD  : Length 441,019 bytes.  TimeStamped 20081023163713
 Running In: WIN32 ("UNKNOWN"), REXX-Regina_3.3(MT) 5.00 25 Apr 2004
 Reason
 ~~~~~~
-Could not find a matching end quote character of "<"!
-Processing:
-        `<div class="item">`
+There is no whitespace after the 2nd quote char of """ (did not expect to find "/")
+The rest of the line:
+        `/)`
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
