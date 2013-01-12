@@ -1,161 +1,59 @@
 #include "../etc/febretpository.ih"
 #include "../etc/header.html"
 
-<$section "Welcome to FebretPository!">
-	<$item img="../images/Avatar.jpg">
-		<p>That's it! The work of my very own hands (and sometimes brain) has finally reached teh internets! Here you will find all the stuff I did in the past and stuff I'm doing right now. Read "Stuff" as "programs, games, snippets and other blabbling of dubious utility". You can use everything from this site in whichever way you like, unless otherwise specified. Just remember to give credit! And beware of sharp edges (that is, I DO NOT respond of any damage blah blah blah...)</p>
-	<$end-item>
-<$end-section>
-
-<$section "Things I'm Into">
-	<$item title="Omegalib" img="../images/omegalib-black.png">
-		omegalib is a middleware designed to ease the development of applications on virtual reality and immersive systems. Its main features are:
-		<ul>
-			<li>Support for hybrid systems, presenting high definition 2d and 3d content on the same display surface</li>
-			<li>Display system scalability</li>
-			<li>Support for a wide range of input peripherals (controllers, motion capture systems, touch surfaces)</li>
-			<li>Integration with third party higher level toolkits like Unity, vtk, Open Scene Graph, Qt.</li>
-		</ul>
-		<p>Altough omegalib is designed mostly to run on VR systems, it can be used to develop applications on standard desktop systems as well, leveraging the power of multiple Gpu units when available.</p>
-        <p><b>Links:</b> 
-			<a href="https://code.google.com/p/omegalib/">Omegalib on Google Code</a>
+<$section "Current Projects">
+	<$item title="HANDS" img="../images/HANDS.png">
+		<p>The Hands-on Automated Nursing Data System (HANDS) is a standardized plan of care method in which the patient's plan is updated at every nurse hand-off allowing the interdisciplinary team to track the story about care and progress toward desired outcomes in a standardized format across time and units.</p>
+		<p>
+		EVL is collaborating with UIC's College of Nursing and College of Engineering on the visual component of the HANDS system. Current goals include: - improving the original HANDS user interface for more potential users such as doctors and therapists. - investigating and understanding the needs of prospective users, and adding additional functionality to HANDS to address the needs of those users. - adding visualization to HANDS existing reports in an effort to empower current and future users to do more data exploration and visual analytics.
 		</p>
 	<$end-item>
 	
-	<$item title="NASA ENDURANCE" img="../endurance/endurance.png" url="../endurance/endurance.shtml">
+	<$item title="CAVE2" img="../images/cave2.jpg">
+		CAVE2, the next-generation large-scale virtual-reality environment, is a hybrid system that combines the benefits of both scalable-resolution display walls and virtual-reality systems to create a seamless 2D/3D environment that supports both information-rich analysis as well as virtual-reality simulation exploration at a resolution matching human visual acuity.
+        <p><b>Links:</b><ul>
+			<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=424">CAVE2 EVL page</a></li>
+		</ul></p>
+	<$end-item>
+	
+	<$item title="Omegadesk" img="../images/omegadesk.jpg">
+		The OmegaDesk prototype is a hybrid, 2D/3D work desk that enables users to work seamlessly with 2D content (such as text documents and web browsers), as well as 3D content (such as 3D geometry and volume visualizations), and integrates multi-touch-sensitive surfaces so that users can intuitively point, write, touch and manipulate the information displayed, and communicate and share this information with remote colleagues.
+        <p><b>Links:</b><ul>
+			<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=416">OmegaDesk EVL page</a></li>
+		</ul></p>
+	<$end-item>
+	
+	<$item title="Omegalib and the Omicron SDK" img="../images/omegalib-white.png">
+		<p>
+			<b>omegalib</b>, a C++ library that is being designed to ease the development of applications on virtual-reality and immersive systems. Its main features are: support for hybrid systems, presenting 2D and 3D content on the same display surface; display system scalability; seamless integration of a wide range of input peripherals (controllers, 3D head- and hand-tracking, motion capture [mocap] systems, touch surfaces); and, integration with third-party high-level toolkits, such as Unity3d, Processing, VTK, Open Scene Graph, and Qt.
+		</p>
+		<p>
+			<b>The omicron SDK</b> is a library providing access to a variety of input devices, mostly used in immersive installations and stereo display systems. Some of the devices currently supported by omicron are:
+			<ul>
+				<li>All motion capture systems supporting the VRPN protocol</li>
+				<li>NaturalPoint trackers (TrackIR, Optitrack)</li>
+				<li>Game controllers (Wii, XBox360, PS3)</li>
+				<li>Microsoft Kinect (multiple Kinects supported. omicron also offers some functions for Multi-kinect transform calibration)</li>
+				<li>SAGE pointer connections</li>
+				<li>PQLabs multitouch overlays</li>
+				<li>Thinkgear brainwave interfaces</li>
+			</ul>
+			omicron abstracts input using modular event services, each providing access to a specific input device. Events can be easily streamed over the network using the omicron connector API. Also, Event services can be chained together to provide advanced functionality. In addition to event services, omicron provides additional utility APIs to simplify the developement of the non-graphics part of VR applications.
+		</p>
+        <p><b>Links:</b><ul>
+			<li><a href="https://code.google.com/p/omegalib/">Omegalib on Google Code</a></li>
+			<li><a href="https://code.google.com/p/omicron-sdk/">Omicron SDK on Google Code</a></li>
+		</ul></p>
+	<$end-item>
+	
+	<$item title="NASA ENDURANCE" img="../images/DSC_0017.jpg">
         NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting 
         <b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. As part of the first field test in Antarctica, collected data was relayed back to EVL to generate three-dimensional images, maps and data renderings of the lake for analysis.
-	<$end-item>
-<$end-section>
-
-<$section "Things I Did">
-	<$item title="24H Games" img="../tfhgames/tfhglogo2.png" url="../tfhgames/index.shtml">
-        The 24H Games project is an experiment in gameplay design and developement. Its main objective is
-        the creation of simple web-based games in <b>a single day</b>. Each of the presented games has
-        been built by a single developer (that is, me ^-^) in just 24 hours. Each game is presented along with
-        its <b>developement log</b>, describing the various steps in the creation of the games, things that worked 
-        and things that didn't. 
-	<$end-item>
-	
-	<$item title="CS525 - GPU Programming" img="../images/cs525.png" url="../cs525/index.shtml">
-        This section contains the projects I worked on for the GPU Programming class, Spring 2010.
-	<$end-item>
-	
-	<$item title="FlowViz" img="../flowviz/Logo.png" url="../flowviz/index.shtml">
-        FlowViz is a generic 3D flow visualization for Omega Desk, a multitouch + stereo
-        3D display system developed at EVL. The application has been built using Processing, and has been designed
-        to be easily portable to other devices offering a subset of the capabilities of Omega Desk, a stereo, multi touch
-        display system prototype.
-	<$end-item>
-    
-	<$item title="CS491 - Visualization and Visual Analytics" img="../images/cs491.png" url="../cs491/index.shtml">
-        This section contains the projects I worked on for the Visualization and Visual Analytics class, Fall 2009.
-	<$end-item>
-    
-	<$item title="Computer Graphics 2 - Scientific Visualization" img="../images/cg2.png" url="../cg2/cg2.shtml">
-        This section contains projects and presentations for CS526 - Spring 2009.
-	<$end-item>
-    
-	<$item title="Usability in Games" img="../images/chi09.png">
-        We are investigating how interface usability influences user engagement in long-term computer games, and 
-        working to assess the relevance of usability versus playability factors on the overall experience engagement.
-        A preliminary paper on this topic has been accepted at the Engagement By Design workshop, which is part of the 
-        CHI09 conference on Human-Computer Interaction. The conference and workshops will be held in Boston, 
-        April 4-9 2009.
-        <p><b>Links:</b> 
-			<a href="http://ebd.wikispaces.com/">Engagement by Design Workshop page</a>
-			<a href="http://www.chi2009.org/">CHI09 homepage</a>
-		</p>
-        <p><b>Downloads:</b> 
-			<a href="../UsabilityInGames/FebrettiGarzotto.pdf">Presented paper (pdf)</a>
-		</p>
-	<$end-item>
-    
-	<$item title="Game Design Seminar 2008" img="../images/id09.png">
-		Material from the game design seminar held for Interaction Design students, Politecnico di Milano, Fall 08.
-		<p><b>Downloads:</b> 
-			<a href="../InteractionDesign09/VideogameDesign.pdf">Lecture material (Italian)</a></br>
-		</p>
-	<$end-item>
-    
-	<$item title="MotoGP 08" img="../images/motogp.jpg">
-		The official game of the 2008 season, MotoGP 08 features all the riders, bikes and tracks providing the definitive 2 wheeled racing experience. MotoGP 08 puts the player at the centre of the MotoGP experience by letting them join a team and compete alongside their sporting heroes in all three race classes: 125cc, 250cc and MotoGP. MotoGP 08 will mark the debut of the series on both the PlayStation 3 and Wii plus see the inclusion of the all new Indianapolis track plus the spectacle of night racing at the Qatar circuit. The game will also offer online play for PlayStation 3, Xbox 360 and PC owners.
-		<p><b>Links:</b> 
-			<a href="http://febretpository.blogspot.com/search/label/MotoGP08">Blog Entries</a>
-		</p>
-	<$end-item>
-    
-	<$item title="Thesis" img="../images/Thesis.png">
-		My Master Degree Thesis, titled <i>Evaluating the Flash Platform for Web-Based Collaborative Data Visualization</i> has been discussed 8 May 08 at University of Illinois at Chicago, and will be presented at Politecnico di Milano (Italy) by the end of July. It is mainly a discussion of the work I did developing <a href="./qbviz.shtml">Qbviz</a> and <a href="./hydroviz.shtml">Hydroviz</a>.
-		<p><b>Downloads:</b> 
-			<a href="../thesis/Thesis_-_Febretti.pdf">Thesis Document</a> | 
-			<a href="./thesis/PresentationFinal.pdf">Presentation</a> | 
-			<a href="./qbviz/software/QbViz 0.3.zip">Software package 0.3</a>
-		</p>
-	<$end-item>
-    
-	<$item title="QbViz" img="../images/qbviz.png" url="./qbviz.shtml">
-        QbViz is a lightweight actionscript library aimed at collaborative data visualization. Its main purpose is to simplify the creation of web applications capable of accessing fairly complex data sources, render them as interactive 3d visualizations, and share the created views between a set of remote users connected to the same virtual workspace.
-	<$end-item>
-    
-	<$item title="Hydroviz" img="../images/hydroviz.png" url="./hydroviz.shtml">
-		Hydroviz is a web application that gives the users access to salinity and currents data of Corpus Christi Bay, Texas. Various layers of data can be attached on top of a 3d reproduction of the bay, and their variation over time and depth can be explored interactively. Users can also access a common <b>virtual workspace</b> in which they can share created views, and modify them in cooperation. Hydroviz client-side component has been developed in flash, and makes use of <a href="./qbviz.shtml">QbViz</a> to leverage its data visualization and collaborative features.
-	<$end-item>
-    
-	<$item title="Edanarion" img="../images/screen2.png" url="../edanarion/edanarion.shtml">
-        Edanarion is a multiplayer RPG game written in ActionScript 3 and C#. It can be played directly from a browser window. One of the main objectives of this project is to create a browser game in which users can actually build parts of the playable world. This project server is not currently published or active due to lack of time to actively maintain it.
-	<$end-item>
-    
-	<$item title="SBK08 - Superbike World Championship" img="../images/sbk.png">
-		This is the game I worked on as a Game Programmer at Milestone. SBK 08 is the official videogame of the Superbike World Championship. It has been released for XBOX360, PS3, PS2, PSP, WII and PC.
-		<p><b>Links:</b> 
-			<a href="http://www.sbkthegame.com">SBK08 Official Site</a>
-		</p>
-	<$end-item>
-	
-	<$item title="Computer Animation Projects" img="../images/mike.png" url="../ComputerAnimation/index.html">
-		This site contains all the projects I did for my Computer Animation class at UIC. These projects were voted by my fellow classmates to choose the best ones in each category (rendered animation, flocking, motion capture), and they all won first place, so I'm pretty proud of them :)
-	<$end-item>
-    
-	<$item title="Inner Battlefield" img="../images/ibf.png" url="./ibf.shtml">
-		Inner Battlefield is a serious game that will educate the player regarding the working of the human immune system, the different kinds of disease causing pathogens, 
-		and the effects of antibiotics on the human body. Inner Battlefield won first prize at the game development competition held at UIC VideoGame Design Class 8th of December, 2006.
-	<$end-item>
-    
-	<$item title="FlowTest" img="../FlowTest/img.png">
-		This is a small program I did as a proof-of-concept for an idea I had for the <a href="./ibf.shtml">Inner Battlefield</a> game. The first concept of the game involved the dynamic creation and destruction of blood vessels. The FlowTest application was a test for an algorythm that was able to reroute the blood flow dynamically from blood sources to drains inside the gameplay area. The algorythm is extremely simple: it involves a recursive recalculation of 'pressure' levels for each cell inside the game area each time a cell changes from obstructed to non-abstructed (or vice-versa). Then, blood 'particles' move inside the unobstructed paths, always directed towards cells with lower 'pressure' than their current one. The blood source cells are set to a specified maximum pressure level and the drain cells always have zero pressure. After launching the application, you can click on areas of the window to obstruct-unobstruct cells and see how the blood flow behaves.
-		<p><b>Downloads:</b> 
-			<a href="../FlowTest/FlowTest.zip">Application souce (C#) and binaries</a>
-		</p>
-	<$end-item>
-    
-	<$item title="Videogame design seminar" img="../images/gd.png">
-		Material from a seminar on Videogame design I held during the Spring 2007 Human-Computer Interaction class (Politecnico di Milano).
-		<p><b>Downloads:</b> 
-			<a href="../hci/VideogameDesign.pdf">Presentation PDF (italian)</a>
-		</p>
-	<$end-item>
-    
-	<$item title="YAMO - Yet Another Music Organizer" img="../images/Yamo.png">
-		Yamo (Yet another music organizer), manages a music library, moving and renaming song files based on a set of options specified by the user. Yamo is composed of a dynamic library that implements the library manager engine, and a wizard application that allows easy access to the Yamo engine services. Both the library and the wizard are written in C#. Being a library, the Yamo engine can be used even inside third party applications.
-		<p><b>Links:</b> 
-			<a href="http://www.codeproject.com/KB/audio-video/yamo.aspx">Original CodeProject Article And Downloads</a>
-		</p>
-	<$end-item>
-    
-	<$item title="Template Choice and Template Hierarchy Graph construction during the Partition Phase in reconfigurable environments." img="../images/HPPS.png">
-    Paper written for the High Performance Processors and Systems class at Politecnico di MIlano. It talks about the theory and practical aspects of a project done by me and a colleague of mine, which was part of a bigger work in the area of reconfigurable hardware architectures.
-		<p><b>Downloads:</b> 
-			<a href="http://cs.uic.edu/~afebrett/docs/HPPS_FebrettiFrossi.pdf">Paper</a>
-		</p>
-	<$end-item>
-
-	<$item title="Fast late-bound invocation through Dynamic Method delegates" img="./dmd.gif">
-		Reflection is a feature that allows a program to find out type (and metadata) information about objects at run-time. The use of Reflection, however, comes with a price. While some of its functions are pretty fast, some others, like late-bound invocation routines, are costly and if not used wisely could result 
-		in a major bottleneck inside your application. This article discusses a way to obtain fast late-bound invocation inside the .Net framework, by obtaining a method handle through the common Reflection services, and then emiting MSIL code to patch up a static call site for the method.
-		<p><b>Links:</b> 
-			<a href="http://www.codeproject.com/KB/cs/dynamicmethoddelegates.aspx">Original CodeProject Article And Downloads</a>
-		</p>
+        <p><b>Links:</b>
+			<li><a href="../endurance/endurance.shtml">ENDURANCE Subprojects</a></li>
+			<li><a href="http://www.evl.uic.edu/endurance/">ENDURANCE EVL page</a></li>
+			</ul>
+		</ul></p>
 	<$end-item>
 <$end-section>
 
