@@ -13,8 +13,8 @@
 <body>
 <!-- BEGIN Header -->
 <div id="header">
-<h1>febretPository</h1>
-<h2>Successfully Climbing the Ballmer Peak Since 2006</h2>
+<font color="#aaaaaa"><h1>febretPository</h1></font>
+<!-- <h2>Successfully Climbing the Ballmer Peak Since 2006</h2> -->
 </div>
 <!-- END Header -->
 <!-- BEGIN Menu -->

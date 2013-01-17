@@ -40,8 +40,8 @@ img
 #header
 {
 /*	width: 100%;*/
-	height: 55px;
-	margin-left: 32px;
+	height: 40px;
+	margin-left: 20px;
 }
 
 #header * 
@@ -52,13 +52,12 @@ img
 
 #header h1 
 {
-	padding-top: 0px;
-	font-size: 20pt;
-	margin: 0;
-	padding: 0;
-	letter-spacing: .2em;
-    font-weight: bold;
-	color: #000000;
+	padding-top: 5px;
+	padding-left: 0px;
+	font-size: 21pt;
+	margin: 0px;
+    font-weight: normal;
+	color: #666666;
 }
 
 #header h2 
@@ -84,7 +83,7 @@ img
 
 #menu ul 
 {
-	margin-left: 32px;
+	margin-left: 112px;
 	padding: 0;
 	list-style: none;
 	line-height: normal;
@@ -97,12 +96,16 @@ img
 
 #menu a 
 {
+	font: Helvetica;
 	display: block;
 	float: left; 
-	padding: 7px 20px 10px 1px;
+	padding: 9px 10px 8px 4px;
+	margin: 0px;
 	text-align: left;
-	font-size: 12pt;
-	color: #cccccc;
+	font-size: 10.2pt;
+    font-weight: 500;
+	letter-spacing: -0.06em;
+	color: #aaaaaa;
 }
 
 /**************************************************************************************************
