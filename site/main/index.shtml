@@ -35,16 +35,14 @@
 </div><br/>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
 <!-- AddThis Button END -->
-<div class="section"><h2>Current Projects</h2>
 <div class="item" style="text-align: justify">
-<h3>HANDS</h3>
-<img src="../images/HANDS.png" width="" style="float: left"/>
+<img src="../images/me.jpg" width="250" style="float: left"/>
 <div class="subitem">
-<p>The Hands-on Automated Nursing Data System (HANDS) is a standardized plan of care method in which the patient's plan is updated at every nurse hand-off allowing the interdisciplinary team to track the story about care and progress toward desired outcomes in a standardized format across time and units.</p>
-<p>
-EVL is collaborating with UIC's College of Nursing and College of Engineering on the visual component of the HANDS system. Current goals include: - improving the original HANDS user interface for more potential users such as doctors and therapists. - investigating and understanding the needs of prospective users, and adding additional functionality to HANDS to address the needs of those users. - adding visualization to HANDS existing reports in an effort to empower current and future users to do more data exploration and visual analytics.
-</p>
+<p><b>Welcome!</b> I'm Alessandro Febretti. I'm a Research Assistant and Ph.D. Student at the <a href="evl.uic.edu">Electronic Visualization Lab</a> of the University of Illinois at Chicago.</p>
+<p>This website is a repository of all the projects I'm currently working on or I did in the past, together with my publications, class projects, presentations and stuff I do for fun.</p>
+<p>I'm into <b>Virtual Reality and Immersive Systems, Human Computer Interaction, Scientific and Information Visualization, Tiled Display Systems, GPU Programming and Videogame Design.</b></p>
 </div></div>
+<div class="section"><h2>Current Projects</h2>
 <div class="item" style="text-align: justify">
 <h3>CAVE2</h3>
 <img src="../images/cave2.jpg" width="" style="float: left"/>
@@ -53,6 +51,26 @@ CAVE2, the next-generation large-scale virtual-reality environment, is a hybrid 
 <p><b>Links:</b><ul>
 <li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=424">CAVE2 EVL page</a></li>
 </ul></p>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>Porthole</h3>
+<img src="../images/porthole.jpg" width="250" style="float: left"/>
+<div class="subitem">
+<p>
+Porthole is a framework that helps Virtual Environment applications developers to generate decoupled HTML5 interfaces. The goal is to ease the interaction between VE systems and smartphones, tablets, laptops or desktop computers, without the need of ad-hoc client applications. For instance, CAVE2 developers now can use handheld devices to interact and manage their VE applications, just by providing a XML Interfaces Description (XID) File (and, optionally, a Cascading Style Sheets (CSS) File for changing client interface style). Clients can connect to CAVE2 using an HTML5 enabled browser, receive a tailored Graphical User Interface, and manage VE application cameras and parameters. Connection, messaging and streaming management is, hence, transparent to VE applications developers.
+</p>
+<p>
+Porthole addresses earlier work limitations by proposing a novel Human-Computer Interaction (HCI) model that exploits browsers as a mean of interaction with VE systems. State of art works, instead, present application or Operating System (OS) specific solutions. Moreover, Porthole suggests a new concept of remote collaboration, with respect to Collaborative Virtual Environments (CVEs) model proposed in earlier work in this area.
+</p>
+</div></div>
+<div class="item" style="text-align: justify">
+<h3>HANDS</h3>
+<img src="../images/HANDS.png" width="" style="float: left"/>
+<div class="subitem">
+<p>The Hands-on Automated Nursing Data System (HANDS) is a standardized plan of care method in which the patient's plan is updated at every nurse hand-off allowing the interdisciplinary team to track the story about care and progress toward desired outcomes in a standardized format across time and units.</p>
+<p>
+EVL is collaborating with UIC's College of Nursing and College of Engineering on the visual component of the HANDS system. Current goals include: - improving the original HANDS user interface for more potential users such as doctors and therapists. - investigating and understanding the needs of prospective users, and adding additional functionality to HANDS to address the needs of those users. - adding visualization to HANDS existing reports in an effort to empower current and future users to do more data exploration and visual analytics.
+</p>
 </div></div>
 <div class="item" style="text-align: justify">
 <h3>Omegadesk</h3>
