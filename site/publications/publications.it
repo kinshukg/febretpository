@@ -18,7 +18,7 @@
 		CAVE2 is designed to support multiple operating modes. In the Fully Immersive mode, the entire room can be dedicated to one virtual simulation. In 2D model, the room can operate like a traditional tiled display wall enabling users to work with large numbers of documents at the same time. In the Hybrid mode, a mixture of both 2D and 3D applications can be simultaneously supported. The ability to treat immersive work spaces in this Hybrid way has never been achieved before, and leverages the special abilities of CAVE2 to enable researchers to seamlessly interact with large collections of 2D and 3D data. To realize this hybrid ability, we merged the Scalable Adaptive Graphics Environment (SAGE) - a system for supporting 2D tiled displays, with Omegalib - a virtual reality middleware supporting OpenGL, OpenSceneGraph and Vtk applications.
 		</p>
 		
-		<a href="./SPIE13Paper-revised.pdf">Download pdf</a>
+		<a href="./SPIE13Paper-final.pdf">Download pdf</a>
 	<$end-item>
 	<$item title="Poisson reconstruction of extreme submersed environments: The ENDURANCE exploration of an under-ice Antarctic Lake" img="../images/DSC_0017.jpg">
 		<p><b>Authors:</b> <b>Febretti, A.</b>, Richmond, K., Gulati, S., Flesher, C., Hogan, B.P., Johnson, A., Stone, W.C., Priscu, J., Doran, P.</p>
