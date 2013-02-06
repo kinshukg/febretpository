@@ -8,6 +8,7 @@ class SecondLevelRowView extends View
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
 	int indent;
+        boolean valuesAvailable;
 
 	Button graphButton, actionButton;
 	Button infoButton;
@@ -25,7 +26,9 @@ class SecondLevelRowView extends View
 	StaticText qa2Text;
 	Button qa2YesButton;
 	Button qa2NoButton;
-          
+       
+        Button insertFirstValue;
+        Button insertSecondValue; 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
 	{
@@ -35,11 +38,39 @@ class SecondLevelRowView extends View
 		subviews.add(iconButton);
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
+                this.valuesAvailable = true;
 		this.subs = new ArrayList();
 		this.parent=  parent;
 		indent = 40;
 	}
-
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+	SecondLevelRowView(String title,PImage logo, ColouredRowView parent)
+	{
+              
+		super(0, 0,width,25);
+                PImage button =loadImage("silver-rectangle-blank-button-hi.png");
+                button.resize(50,20);
+		this.title = title;
+                //System.out.println("Doing that here");
+		iconButton = new Button(0, 0, 16, 16, logo);
+		subviews.add(iconButton);
+		this.firstColumn = -1;
+		this.secondColumn = -1;
+                this.insertFirstValue = new Button(838, 2, button.width, button.height,button,"NR",textColor);
+                this.insertSecondValue = new Button(938, 2, button.width, button.height,button,"NR",textColor); 
+                if(!valuesAvailable){
+                  if(firstColumn == -1 && !this.subviews.contains(insertFirstValue)){this.subviews.add(insertFirstValue);
+              //  System.out.println("uh...Why?");}
+                }
+                  if(secondColumn == -1 && !this.subviews.contains(insertSecondValue))this.subviews.add(insertSecondValue);
+                }
+                this.valuesAvailable = false;
+		this.subs = new ArrayList();
+		this.parent=  parent;
+		indent = 40;
+this.insertFirstValue.revealRating = true;
+this.insertSecondValue.revealRating = true;
+	}
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
@@ -109,8 +140,8 @@ class SecondLevelRowView extends View
 			line(0, 15, w, 15);
 		}
 		
-		if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);
-		if(secondColumn != 0) text(secondColumn, 950, 12); else text("NR", 950, 12);
+		if(firstColumn != 0 && firstColumn > 0) text(firstColumn, 850, 12); //else text("NR", 850, 12);
+		if(secondColumn != 0 && secondColumn > 0) text(secondColumn, 950, 12);// else text("NR", 950, 12);
 
 		if(message != null)
 		{
@@ -230,6 +261,7 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
+                if(level > 0){
 		color buttonColor = 200;
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
@@ -240,6 +272,16 @@ class SecondLevelRowView extends View
 		subviews.add(this.graphButton);
 		if(level == 3) graphButton.blinking = true;
 		this.graphPopUp = p;
+                }
+                else{
+                  
+                  color buttonColor = alertNoColor;
+                graphButton = new Button(x, 5, 40, 16, graphIcon);
+		graphButton.transparent = false;
+                graphButton.buttonColor = buttonColor;
+                subviews.add(this.graphButton);
+                }
+
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

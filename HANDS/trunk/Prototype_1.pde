@@ -154,7 +154,9 @@ public color popUpSectionColor = #FFF68F;
 public color alertHighColor = #FF3333;
 public color alertMidColor = #FCF112;
 public color alertLowColor = #AAFF50;
+public color alertNoColor = #A9A9A9;
 public color tooltipColor = #FFFFFF;
+public color textColor = 0;
 
 // Variables holding Image names
 public String handIconString = "Red_Handprint__right_orange.png";
@@ -296,6 +298,7 @@ void loadNNNIcons()
 	painLevelTrend.resize(500, 0);
 	emptyTrend = loadImage("emptyTrend.png");
 	emptyTrend.resize(500, 0);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -313,6 +316,8 @@ void reset()
 
 	setupPatientInfoView();
 	setupPOCView();
+
+
 	
 	if(!OPTION_NO_SUGGESTIONS) setupPopup();
 }
@@ -597,6 +602,10 @@ void mouseDragged()
 			popUpView.y = mouseY + popUpView.dragY;
 		}
 	}
+        else{
+        
+          mainView.mouseDragged(mouseX, mouseY);
+        }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

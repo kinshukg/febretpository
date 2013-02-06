@@ -27,6 +27,8 @@ class POCManager
 	ThirdLevelRowView nicFamilySupport;
 	ThirdLevelRowView nicFamilyIntegrityPromotion;
 	ThirdLevelRowView nicEducationEOL;
+
+         RatingPopUpView rw;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
@@ -38,7 +40,7 @@ class POCManager
 		impairedGasExchange.iconButton.tooltipImage = IMG_IMP_GAS_EXC;
 		scrollingView.subs.add(impairedGasExchange);  
 
-		anxietyLevelView = new SecondLevelRowView("Anxiety Level",secondLevelIcon,3,3,impairedGasExchange);
+		anxietyLevelView = new SecondLevelRowView("Anxiety Level",secondLevelIcon,1,5, impairedGasExchange);
 		anxietyLevelView.iconButton.tooltipImage = IMG_ANXIETY_LEVEL;
 		impairedGasExchange.subs.add(anxietyLevelView);
 
@@ -88,7 +90,7 @@ class POCManager
 		nandaInterruptedFamilyProcess = new ColouredRowView("Interrupted Family Processes", firstLevelIcon);
 		nandaInterruptedFamilyProcess.iconButton.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
 
-		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, 0, 0, nandaInterruptedFamilyProcess);
+		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, nandaInterruptedFamilyProcess);
 		nocFamilyCoping.iconButton.tooltipImage = IMG_FAMILY_COPING;
 		nandaInterruptedFamilyProcess.subs.add(nocFamilyCoping);
 		
@@ -103,6 +105,11 @@ class POCManager
 		nicEducationEOL = new ThirdLevelRowView("Health Education: End Of Life Process", thirdLevelIcon, nocFamilyCoping);
 		nicEducationEOL.iconButton.tooltipImage = IMG_HEALTH_EDUCATION;
 		nocFamilyCoping.subs.add(nicEducationEOL);
+
+
+
+       rw = new RatingPopUpView(300,300,400,100,nocFamilyCoping);
+       // mainView.subviews.add(rw);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,11 +131,13 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
-		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA);
+  System.out.println("Why no printing?");
+		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, parentNANDA);
+//SecondLevelRowView(String title,PImage logo, ColouredRowView parent)
 		temp.iconButton.tooltipImage = tooltip;
-		GraphPopUpView gp = new GraphPopUpView(500, temp);
-		gp.reset(emptyTrend);
-		temp.setGraphButton(0, emptySmallGraph, gp, 750); 
+		//GraphPopUpView gp = new GraphPopUpView(500, temp);
+		//gp.reset(emptyTrend);
+		//temp.setGraphButton(-1, emptySmallGraph, gp, 750); 
 		
 		if(comment.length() != 0) temp.addComment(comment);
 					
