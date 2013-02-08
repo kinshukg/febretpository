@@ -1,18 +1,21 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class POCManager
 {
-	// NANDA lines
+	// Impaired Gas Exchange Section
 	ColouredRowView impairedGasExchange;
+	SecondLevelRowView respiratoryStatusView;
+	ThirdLevelRowView acidBaseView;
+	ThirdLevelRowView bedsideLaboratoryView;
+	ThirdLevelRowView airwayManagementView;
+	
+	// NANDA lines
 	ColouredRowView deathAnxietyView;
 	ColouredRowView acutePainView;
 	
 	// NOC Lines
-	SecondLevelRowView anxietyLevelView;
 	SecondLevelRowView anxietySelfControlView;
 	SecondLevelRowView painLevelView; 
 	
-	ThirdLevelRowView musicTherapyView;
-	ThirdLevelRowView calmingTechniqueView;
 	ThirdLevelRowView calmingTechniqueView_2; 
 	ThirdLevelRowView spiritualSupportView;
 	ThirdLevelRowView medicationManagementView;
@@ -27,8 +30,16 @@ class POCManager
 	ThirdLevelRowView nicFamilySupport;
 	ThirdLevelRowView nicFamilyIntegrityPromotion;
 	ThirdLevelRowView nicEducationEOL;
-
-         RatingPopUpView rw;
+	
+	// Cycle 3
+	
+	// Impaired Physical Mobility Section
+	ColouredRowView NANDAImpairedPhysicalMobility;
+	SecondLevelRowView NOCMobility;
+	ThirdLevelRowView NICFallPrevention;
+	ThirdLevelRowView NICEnergyConservation;
+	
+	SecondLevelRowView NOCImmobilityConsequences;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
@@ -36,37 +47,36 @@ class POCManager
 		scrollingView = new ScrollingView(0, 80, SCREEN_WIDTH - 400, SCREEN_HEIGHT - 100);
 		mainView.subviews.add(scrollingView);
 
+		// Impaired Gas Exchange Section
 		impairedGasExchange = new ColouredRowView("Impaired Gas Exchange",firstLevelIcon);
 		impairedGasExchange.iconButton.tooltipImage = IMG_IMP_GAS_EXC;
-		scrollingView.subs.add(impairedGasExchange);  
+		scrollingView.subs.add(impairedGasExchange);
+		
+		respiratoryStatusView = new SecondLevelRowView("Respiratory Status: Gas Exchange",secondLevelIcon,2,3,impairedGasExchange);
+		respiratoryStatusView.iconButton.tooltipImage = IMG_RESPIRATORY_STATUS_GAS_EXCHANGE;
 
-		anxietyLevelView = new SecondLevelRowView("Anxiety Level",secondLevelIcon,1,5, impairedGasExchange);
-		anxietyLevelView.iconButton.tooltipImage = IMG_ANXIETY_LEVEL;
-		impairedGasExchange.subs.add(anxietyLevelView);
+		acidBaseView = new ThirdLevelRowView("Acid-Base Monitoring", thirdLevelIcon,respiratoryStatusView);
+		acidBaseView.iconButton.tooltipImage = IMG_ACID_BASE_MONITORING;
 
-		musicTherapyView = new ThirdLevelRowView("Music Therapy", thirdLevelIcon,anxietyLevelView);
-		musicTherapyView.iconButton.tooltipImage = IMG_MUSIC_THERAPY;
-		anxietyLevelView.subs.add(musicTherapyView);
+		bedsideLaboratoryView = new ThirdLevelRowView("Bedside Laboratory Testing",thirdLevelIcon,respiratoryStatusView);
+		bedsideLaboratoryView.iconButton.tooltipImage = IMG_BEDSIDE_LABORATORY_TESTING;
 
-		calmingTechniqueView = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietyLevelView);
-		calmingTechniqueView.iconButton.tooltipImage = IMG_CALMING_TECHNIQUE;
-		anxietyLevelView.subs.add(calmingTechniqueView);
-
+		airwayManagementView = new ThirdLevelRowView("Airway Management",thirdLevelIcon,respiratoryStatusView);
+		airwayManagementView.iconButton.tooltipImage = IMG_AIRWAY_MANAGEMENT;
+		
+		// Death Anxiety Section
 		deathAnxietyView = new ColouredRowView("Death Anxiety",firstLevelIcon);
 		deathAnxietyView.iconButton.tooltipImage = IMG_DEATH_ANXIETY;
 		scrollingView.subs.add(deathAnxietyView);
 
 		anxietySelfControlView = new SecondLevelRowView("Comfortable Death",secondLevelIcon,2,5,deathAnxietyView);
 		anxietySelfControlView.iconButton.tooltipImage = IMG_COMFORTABLE_DEATH;
-		deathAnxietyView.subs.add(anxietySelfControlView);
 
 		calmingTechniqueView_2 = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietySelfControlView);
 		calmingTechniqueView_2.iconButton.tooltipImage = IMG_CALMING_TECHNIQUE;
-		anxietySelfControlView.subs.add(calmingTechniqueView_2);
 
 		spiritualSupportView = new ThirdLevelRowView("Spiritual Support",thirdLevelIcon,anxietySelfControlView);
 		spiritualSupportView.iconButton.tooltipImage = IMG_SPIRITUAL_SUPPORT;
-		anxietySelfControlView.subs.add(spiritualSupportView);
 
 		spiritualSupportView.addComment("Family Priest to Visit 2am");
 
@@ -76,44 +86,44 @@ class POCManager
 
 		painLevelView = new SecondLevelRowView("Pain Level",secondLevelIcon,1,5,acutePainView);
 		painLevelView.iconButton.tooltipImage = IMG_PAIN_LEVEL;
-		acutePainView.subs.add(painLevelView);
+		//acutePainView.subs.add(painLevelView);
 		
 		medicationManagementView = new ThirdLevelRowView("Medication Management",thirdLevelIcon,painLevelView);
 		medicationManagementView.iconButton.tooltipImage = IMG_MEDICATION_MANAGEMENT;
-		painLevelView.subs.add(medicationManagementView);
+		//painLevelView.subs.add(medicationManagementView);
 
 		painManagementView = new ThirdLevelRowView("Pain Management",thirdLevelIcon,painLevelView);
 		painManagementView.iconButton.tooltipImage = IMG_PAIN_MANAGEMENT;
-		painLevelView.subs.add(painManagementView);
+		//painLevelView.subs.add(painManagementView);
 		
 		// Cycle 2 stuff
 		nandaInterruptedFamilyProcess = new ColouredRowView("Interrupted Family Processes", firstLevelIcon);
 		nandaInterruptedFamilyProcess.iconButton.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
 
-		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, nandaInterruptedFamilyProcess);
+		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, 0, 0, nandaInterruptedFamilyProcess);
 		nocFamilyCoping.iconButton.tooltipImage = IMG_FAMILY_COPING;
-		nandaInterruptedFamilyProcess.subs.add(nocFamilyCoping);
 		
 		nicFamilySupport = new ThirdLevelRowView("Family Support", thirdLevelIcon, nocFamilyCoping);
 		nicFamilySupport.iconButton.tooltipImage = IMG_FAMILY_SUPPORT;
-		nocFamilyCoping.subs.add(nicFamilySupport);
 		
 		nicFamilyIntegrityPromotion = new ThirdLevelRowView("Family Integrity Promotion", thirdLevelIcon, nocFamilyCoping);
 		nicFamilyIntegrityPromotion.iconButton.tooltipImage = IMG_FAMILY_INTEGRITY_PROMOTION;
-		nocFamilyCoping.subs.add(nicFamilyIntegrityPromotion);
 		
 		nicEducationEOL = new ThirdLevelRowView("Health Education: End Of Life Process", thirdLevelIcon, nocFamilyCoping);
 		nicEducationEOL.iconButton.tooltipImage = IMG_HEALTH_EDUCATION;
-		nocFamilyCoping.subs.add(nicEducationEOL);
+		
+		// Cycle 3 stuff
+		NANDAImpairedPhysicalMobility =  new ColouredRowView("Impaired Physical Mobility", firstLevelIcon);
+		NANDAImpairedPhysicalMobility.iconButton.tooltipImage = IMG_IMPAIRED_PHYSICAL_MOBILITY;
+		scrollingView.subs.add(NANDAImpairedPhysicalMobility);
 
-
-
-       rw = new RatingPopUpView(300,300,400,100,nocFamilyCoping);
-       // mainView.subviews.add(rw);
+		NOCMobility = addNOC("Mobility", "", NANDAImpairedPhysicalMobility, IMG_MOBILITY);
+		NICFallPrevention = addNIC("Fall Prevention", "", NOCMobility, IMG_FALL_PREVENTION);
+		NICEnergyConservation = addNIC("Energy Conservation", "", NOCMobility, IMG_ENERGY_CONSERVATION);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
+	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
 		temp.iconButton.tooltipImage = tooltip;
@@ -124,20 +134,19 @@ class POCManager
 			ThirdLevelRowView tempo = (ThirdLevelRowView)parentNOC.subs.get(k);
                    	tempo.y = temp.y+((k+1)*temp.h);
 		}
+		return temp;
 		//mainView.subviews.add(medicationManagementView);
-		parentNOC.subs.add(temp);
+		//parentNOC.subs.add(temp);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
+	SecondLevelRowView addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
-  System.out.println("Why no printing?");
-		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, parentNANDA);
-//SecondLevelRowView(String title,PImage logo, ColouredRowView parent)
+		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA);
 		temp.iconButton.tooltipImage = tooltip;
-		//GraphPopUpView gp = new GraphPopUpView(500, temp);
-		//gp.reset(emptyTrend);
-		//temp.setGraphButton(-1, emptySmallGraph, gp, 750); 
+		GraphPopUpView gp = new GraphPopUpView(500, temp);
+		gp.reset(emptyTrend);
+		temp.setGraphButton(0, emptySmallGraph, gp, 750); 
 		
 		if(comment.length() != 0) temp.addComment(comment);
 					
@@ -147,7 +156,8 @@ class POCManager
                        tempo.y = temp.y+((k+1)*temp.h);
 		}
 		//mainView.subviews.add(medicationManagementView);
-		parentNANDA.subs.add(0,temp);
+		//parentNANDA.subs.add(0,temp);
+		return temp;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

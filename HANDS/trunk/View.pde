@@ -93,27 +93,11 @@ class View
     return false;
   }
 
-  boolean contentDragged(float lx, float ly){
-  
-    return true;
-  }
   boolean ptInRect(float px, float py, float rx, float ry, float rw, float rh)
   {
     return px >= rx && px <= rx+rw && py >= ry && py <= ry+rh;
   }
 
-  boolean mouseDragged(float px, float py){
-     if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) return false;
-    float lx = px - x;
-    float ly = py - y;
-    // check our subviews first
-    for (int i = subviews.size()-1; i >= 0; i--) {
-      View v = (View)subviews.get(i);
-      if (v.mouseDragged(lx, ly)) return true;
-    }
-    return contentDragged(lx, ly);
-    
-  }
   boolean mousePressed(float px, float py)
   {
     if (!ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush)) return false;
