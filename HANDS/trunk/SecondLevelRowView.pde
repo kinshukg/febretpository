@@ -8,7 +8,6 @@ class SecondLevelRowView extends View
 	int firstColumn,secondColumn;
 	public ArrayList subs ;
 	int indent;
-        boolean valuesAvailable;
 
 	Button graphButton, actionButton;
 	Button infoButton;
@@ -22,13 +21,64 @@ class SecondLevelRowView extends View
 	StaticText qa1Text;
 	Button qa1YesButton;
 	Button qa1NoButton;
+	Button qa1InfoButton;
+	boolean qa1IsEBI = false; // True if quick action 1 is supported by evidence based information (will use different icons for buttons)
 	
 	StaticText qa2Text;
 	Button qa2YesButton;
 	Button qa2NoButton;
-       
-        Button insertFirstValue;
-        Button insertSecondValue; 
+	Button qa2InfoButton;
+	boolean qa2IsEBI = false; // True if quick action 2 is supported by evidence based information (will use different icons for buttons)
+          
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void onQuickActionButtonClicked(int action, boolean yesClicked)
+	{
+		// Quick action handler for Anxiety Self Control NOC
+		if(this == pocManager.anxietySelfControlView)
+		{
+			if(action == 1)
+			{
+				if(yesClicked)
+				{
+					removeQuickActionButton1();
+					pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+				}
+				else
+				{
+					showPopUp();
+				}
+			}
+			else if(action == 2)
+			{
+				if(yesClicked)
+				{
+					removeQuickActionButton2();
+					pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
+				}
+				else
+				{
+					removeQuickActionButton2();
+				}
+			}
+		}
+		// Quick action handler for Mobility NOC
+		else if(this == pocManager.NOCMobility)
+		{
+			if(action == 2)
+			{
+				if(yesClicked)
+				{
+					removeQuickActionButton2();
+					pocManager.addNOC("Immobility Consequences","", pocManager.NANDAImpairedPhysicalMobility, IMG_IMMOBILITY_CONSEQUENCES);
+				}
+				else
+				{
+					removeQuickActionButton2();
+				}
+			}
+		}
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
 	{
@@ -38,39 +88,12 @@ class SecondLevelRowView extends View
 		subviews.add(iconButton);
 		this.firstColumn = firstColumn;
 		this.secondColumn = secondColumn;
-                this.valuesAvailable = true;
 		this.subs = new ArrayList();
 		this.parent=  parent;
+		parent.subs.add(this);
 		indent = 40;
 	}
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-	SecondLevelRowView(String title,PImage logo, ColouredRowView parent)
-	{
-              
-		super(0, 0,width,25);
-                PImage button =loadImage("silver-rectangle-blank-button-hi.png");
-                button.resize(50,20);
-		this.title = title;
-                //System.out.println("Doing that here");
-		iconButton = new Button(0, 0, 16, 16, logo);
-		subviews.add(iconButton);
-		this.firstColumn = -1;
-		this.secondColumn = -1;
-                this.insertFirstValue = new Button(838, 2, button.width, button.height,button,"NR",textColor);
-                this.insertSecondValue = new Button(938, 2, button.width, button.height,button,"NR",textColor); 
-                if(!valuesAvailable){
-                  if(firstColumn == -1 && !this.subviews.contains(insertFirstValue)){this.subviews.add(insertFirstValue);
-              //  System.out.println("uh...Why?");}
-                }
-                  if(secondColumn == -1 && !this.subviews.contains(insertSecondValue))this.subviews.add(insertSecondValue);
-                }
-                this.valuesAvailable = false;
-		this.subs = new ArrayList();
-		this.parent=  parent;
-		indent = 40;
-this.insertFirstValue.revealRating = true;
-this.insertSecondValue.revealRating = true;
-	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
@@ -140,18 +163,18 @@ this.insertSecondValue.revealRating = true;
 			line(0, 15, w, 15);
 		}
 		
-		if(firstColumn != 0 && firstColumn > 0) text(firstColumn, 850, 12); //else text("NR", 850, 12);
-		if(secondColumn != 0 && secondColumn > 0) text(secondColumn, 950, 12);// else text("NR", 950, 12);
+		if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);
+		if(secondColumn != 0) text(secondColumn, 950, 12); else text("NR", 950, 12);
 
 		if(message != null)
 		{
 			fill(alertHighColor);
-			text(message, 170, 12);
+			text(message, 300, 12);
 		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void enableQuickActionButton1(int cx, int textWidth, String text)
+	void enableQuickActionButton1(int cx, int textWidth, String text, boolean ebi, String infoText)
 	{
 		//float cx = 250;
 		qa1Text = new StaticText(text);
@@ -165,13 +188,20 @@ this.insertSecondValue.revealRating = true;
 		cx += 28;
 		qa1NoButton = new Button(cx, 1, 24, 24, crossIcon);
 		subviews.add(qa1NoButton);
+		cx += 28;
 		
 		qa1YesButton.helpText = "Add to plan of care";
 		qa1NoButton.helpText = "Remove notification";
+		
+		qa1IsEBI = ebi;
+		if(ebi)	qa1InfoButton = new Button(cx, 1, 24, 24, IMG_EBI);
+		else qa1InfoButton = new Button(cx, 1, 24, 24, IMG_SUGGESTION);
+		qa1InfoButton.tooltipText = infoText;
+		subviews.add(qa1InfoButton);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void enableQuickActionButton2(int cx, int textWidth, String text)
+	void enableQuickActionButton2(int cx, int textWidth, String text, boolean ebi, String infoText)
 	{
 		//float cx = 550;
 		qa2Text = new StaticText(text);
@@ -185,6 +215,7 @@ this.insertSecondValue.revealRating = true;
 		cx += 28;
 		qa2NoButton = new Button(cx, -22, 24, 24, crossIcon);
 		subviews.add(qa2NoButton);
+		cx += 28;
 		
 		// expand focus area fo this view to cover external button
 		focusy = -20;
@@ -193,6 +224,12 @@ this.insertSecondValue.revealRating = true;
 		
 		qa2YesButton.helpText = "Add to plan of care";
 		qa2NoButton.helpText = "Remove notification";
+
+		qa2IsEBI = ebi;
+		if(ebi)	qa2InfoButton = new Button(cx, -22, 24, 24, IMG_EBI);
+		else qa2InfoButton = new Button(cx, -22, 24, 24, IMG_SUGGESTION);
+		qa2InfoButton.tooltipText = infoText;
+		subviews.add(qa2InfoButton);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -201,9 +238,11 @@ this.insertSecondValue.revealRating = true;
 		subviews.remove(qa1NoButton);
 		subviews.remove(qa1YesButton);
 		subviews.remove(qa1Text);
+		subviews.remove(qa1InfoButton);
 		qa1NoButton = null;
 		qa1YesButton = null;
 		qa1Text = null;
+		qa1InfoButton= null;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,9 +251,11 @@ this.insertSecondValue.revealRating = true;
 		subviews.remove(qa2NoButton);
 		subviews.remove(qa2YesButton);
 		subviews.remove(qa2Text);
+		subviews.remove(qa2InfoButton);
 		qa2NoButton = null;
 		qa2YesButton = null;
 		qa2Text = null;
+		qa2InfoButton= null;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -261,7 +302,6 @@ this.insertSecondValue.revealRating = true;
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
-                if(level > 0){
 		color buttonColor = 200;
 		if(level == 1) buttonColor = alertLowColor;
 		if(level == 2) buttonColor = alertMidColor;
@@ -272,16 +312,6 @@ this.insertSecondValue.revealRating = true;
 		subviews.add(this.graphButton);
 		if(level == 3) graphButton.blinking = true;
 		this.graphPopUp = p;
-                }
-                else{
-                  
-                  color buttonColor = alertNoColor;
-                graphButton = new Button(x, 5, 40, 16, graphIcon);
-		graphButton.transparent = false;
-                graphButton.buttonColor = buttonColor;
-                subviews.add(this.graphButton);
-                }
-
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -307,7 +337,7 @@ this.insertSecondValue.revealRating = true;
 			if(qa1NoButton.selected)
 			{
 				qa1NoButton.selected = false;
-				showPopUp();
+				onQuickActionButtonClicked(1, false);
 				stopBlinking();		
 			}
 		}
@@ -316,8 +346,7 @@ this.insertSecondValue.revealRating = true;
 			if(qa1YesButton.selected)
 			{
 				qa1YesButton.selected = false;
-				removeQuickActionButton1();
-				pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+				onQuickActionButtonClicked(1, true);
 				stopBlinking();		
 			}
 		}
@@ -326,8 +355,7 @@ this.insertSecondValue.revealRating = true;
 			if(qa2YesButton.selected)
 			{
 				qa2YesButton.selected = false;
-				removeQuickActionButton2();
-				pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
+				onQuickActionButtonClicked(2, true);
 				stopBlinking();		
 			}
 		}
@@ -336,7 +364,7 @@ this.insertSecondValue.revealRating = true;
 			if(qa2NoButton.selected)
 			{
 				qa2NoButton.selected = false;
-				removeQuickActionButton2();
+				onQuickActionButtonClicked(2, false);
 				stopBlinking();		
 			}
 		}

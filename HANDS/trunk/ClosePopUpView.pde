@@ -24,10 +24,8 @@ class ClosePopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
-                System.out.println("Hey");
 		if(popUpView != null)
 		{
-                        
 			popUpView.hide();
 		}
 		pressed = true;

@@ -16,6 +16,7 @@ class ThirdLevelRowView extends View
 		subviews.add(iconButton);
 		
 		parent = parent_;
+		parent.subs.add(this);  
 		indent = 70;
 	}
 

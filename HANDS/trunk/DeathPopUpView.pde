@@ -25,6 +25,10 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupFull()
 	{
+		PopUpSection title = new PopUpSection("<h1> TITLE FOR DEATH POPUP");
+		title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
+		subviews.add(title);
+
 		consultCheck = new CheckBox("Add NIC Consultation: Palliative Care", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;

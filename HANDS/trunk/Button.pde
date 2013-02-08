@@ -1,21 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class Button extends View 
 {
-	boolean selected = false, flashing = false;
+	boolean selected = false; //, flashing = false;
 	String t;
 	color buttonColor, textColor;
 	PImage icon;
 	int style = 1;
 	boolean blinking;
-	boolean imageWithText;
+	
 	// Tooltip mode: 0 = disabled, 1 = open on click, 2 = open on hover.
 	String tooltipText;
 	PImage tooltipImage;
 	
 	boolean transparent;
   
-        boolean revealRating;
-        int valueNumber;
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Button(float x_, float y_,float w_,float h_, PImage icon_)
 	{
@@ -24,19 +22,6 @@ class Button extends View
 		transparent = true;
 		interactive = true;
 		tooltipImage = null;
-                this.imageWithText = false;
-	}
-		///////////////////////////////////////////////////////////////////////////////////////////////
-	Button(float x_, float y_,float w_,float h_, PImage icon_, String t, color textColor)
-	{
-		super(x_, y_,w_ ,h_); 
-		icon = icon_;
-		transparent = true;
-		interactive = true;
-		tooltipImage = null;
-                this.t = t;
-		this.textColor = textColor;
-                this.imageWithText = true;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +34,6 @@ class Button extends View
 		icon = null;
 		interactive = true;
 		transparent = false;
-                this.imageWithText = false;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,14 +110,7 @@ class Button extends View
 			if(icon != null) 
 			{
 				textW -= icon.width;
-                                 if(imageWithText){
-                                  textFont(fbold);
-                                  text(t, icon.width/2, h / 2 - 2);
-                                }
-                                else{
-                                  
 				text(t, icon.width + textW / 2, h / 2 - 2);
-                                }
 			}
 			else
 			{
@@ -149,34 +126,12 @@ class Button extends View
 		{
 			showTooltip();
 		}
-
 		// override this
 		// lx, ly are in the local coordinate system of the view,
 		// i.e. 0,0 is the top left corner of this view
 		// return false if the click is to "pass through" this view
 		selected =!selected;
 		//System.out.println("Clicked");
-                if(revealRating){
-                 pocManager.rw.arrowX = x;
-                 pocManager.rw.arrowY = y;
-                 mainView.subviews.add(pocManager.rw);
-                }
-
-		return false;
-	}
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	boolean contentDragged(float lx, float ly)
-	{
-		if(!OPTION_TOOLTIP_AUTO_OPEN && (tooltipText != null && tooltipText.length() != 0) || tooltipImage != null)
-		{
-			showTooltip();
-		}
-		// override this
-		// lx, ly are in the local coordinate system of the view,
-		// i.e. 0,0 is the top left corner of this view
-		// return false if the click is to "pass through" this view
-                System.out.println("Dragged");
-		selected =true;
 
 		return false;
 	}
