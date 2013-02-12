@@ -121,7 +121,7 @@ class DeathPopUpView extends PopUpViewBase
 		{
 			if(!consultCheck.selected)
 			{
-				subviews.add(4, reasonSection);
+				subviews.add(5, reasonSection);
 			}
 			else
 			{
