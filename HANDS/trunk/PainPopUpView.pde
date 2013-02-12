@@ -17,88 +17,115 @@ class PainPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupPainTitleSection()
 	{
-		PopUpSection title = new PopUpSection("<h1> Mrs. Taylor's Pain Level is not controlled");
-		String alertDescription = MSG_PAIN_EVIDENCE_POPUP;
+		// PopUpSection title = new PopUpSection("<h1> Mrs. Taylor's Pain Level is not controlled");
+		// String alertDescription = MSG_PAIN_EVIDENCE_POPUP;
 		
-		if(OPTION_ENABLE_POPUP_TEXT)
+		// if(OPTION_ENABLE_POPUP_TEXT)
+		// {
+			// if(OPTION_GRAPH_ALERT_BUTTON)
+			// {
+				// descriptionButton = new Button(
+					// 322, 75, 0, 20, "Action required!", alertHighColor, 0);
+				// descriptionButton.tooltipText = alertDescription;
+				// descriptionButton.blinking = true;
+				// title.subviews.add(descriptionButton);
+			// }
+			// else
+			// {
+				// //title.setDescription(alertDescription);
+			// }
+			// title.separatorStyle = 1;
+			// if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
+			// // v2.1: graph has info button (we hack the infobutton from popup section)
+			// if(OPTION_GRAPH_IN_MAIN_POPUP)
+			// {
+				// title.setImage(painLevelTrend);
+				// title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
+			// }
+		// }
+		
+		if(OPTION_BIG_INFORMATION)
 		{
-			if(OPTION_GRAPH_ALERT_BUTTON)
-			{
-				descriptionButton = new Button(
-					322, 75, 0, 20, "Action required!", alertHighColor, 0);
-				descriptionButton.tooltipText = alertDescription;
-				descriptionButton.blinking = true;
-				title.subviews.add(descriptionButton);
-			}
-			else
-			{
-				title.setDescription(alertDescription);
-			}
-			title.separatorStyle = 1;
-			if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
-			// v2.1: graph has info button (we hack the infobutton from popup section)
-			if(OPTION_GRAPH_IN_MAIN_POPUP)
-			{
-				title.setImage(painLevelTrend);
-				title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
-			}
+			PopUpSection title = new PopUpSection("");
+			title.setImage(painLevelTrend);
+			title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
+			subviews.add(title);
 		}
-		subviews.add(title);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupPainActionSections()
 	{
 		// v2.1: on option 2 we do not use the star icon.
-		String positioningText = "Positioning <b> (Recommended) </b> <s1>";
-		if(OPTION_NUMBER == 2)
-		{
-			positioningText = "Positioning <b> (Recommended) </b>";
-		}
+		// String positioningText = "Positioning <b> (Recommended) </b> <s1>";
+		// if(OPTION_NUMBER == 2)
+		// {
+			// positioningText = "Positioning <b> (Recommended) </b>";
+		// }
 		
-		CheckBox c = new CheckBox(positioningText, "Positioning", thirdLevelIcon, ADD_NIC);
+		CheckBox c = new CheckBox("Add NIC: Positioning", "Positioning", thirdLevelIcon, ADD_NIC);
 		c.setIconTooltipImage(IMG_POSITIONING);
-		if(OPTION_ENABLE_ACTION_INFO_POPUP)
-		{
-			c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
-							"A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
-		}
-		CheckBox c1 = new CheckBox("Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
-		CheckBox c2 = new CheckBox("Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
-		CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
-		CheckBox c4 = new CheckBox("Coping", secondLevelIcon, ADD_NOC);
-		CheckBox c5 = new CheckBox("Patient controlled analgesia", thirdLevelIcon, ADD_NIC);
-		CheckBox c6 = new CheckBox("Massage", thirdLevelIcon, ADD_NIC);
-		CheckBox c7 = new CheckBox("Relaxation Therapy", thirdLevelIcon, ADD_NIC);
-		CheckBox c8 = new CheckBox("Guided Imagery", thirdLevelIcon, ADD_NIC);
+		// if(OPTION_ENABLE_ACTION_INFO_POPUP)
+		// {
+			// c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
+							// "A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
+		// }
+		CheckBox c1 = new CheckBox("Prioritize NANDA: Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
+		CheckBox c2 = new CheckBox("Remove NANDA: Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
+		//CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
+		//CheckBox c4 = new CheckBox("Coping", secondLevelIcon, ADD_NOC);
+		CheckBox c5 = new CheckBox("Add NIC: Patient controlled analgesia", thirdLevelIcon, ADD_NIC);
+		CheckBox c6 = new CheckBox("Add NIC: Massage", thirdLevelIcon, ADD_NIC);
+		CheckBox c7 = new CheckBox("Add NIC: Relaxation Therapy", thirdLevelIcon, ADD_NIC);
+		CheckBox c8 = new CheckBox("Add NIC: Guided Imagery", thirdLevelIcon, ADD_NIC);
 		
 		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
 		c2.setIconTooltipImage(IMG_IMPAIRED_GAS_EXCHANGE);
-		c3.setIconTooltipImage(IMG_ENERGY_CONSERVATION);
-		c4.setIconTooltipImage(IMG_COPING);
+		//c3.setIconTooltipImage(IMG_ENERGY_CONSERVATION);
+		//c4.setIconTooltipImage(IMG_COPING);
 		c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
 		c6.setIconTooltipImage(IMG_MASSAGE);
 		c7.setIconTooltipImage(IMG_MASSAGE);
 		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
-		PopUpSection addSection = new PopUpSection("Consider Adding: ");
-		addSection.addAction(c);
-		addSection.addAction(c3);
-		addSection.addAction(c4);
-		addSection.addAction(c5);
-		addSection.addAction(c6);
-		addSection.addAction(c7);
-		addSection.addAction(c8);
-		
-		PopUpSection removeSection = new PopUpSection("Consider Removing: ");
-		removeSection.addAction(c2);
-		
-		PopUpSection prioritizeSection = new PopUpSection("Consider Prioritizing: ");
-		prioritizeSection.addAction(c1);
-		
-		subviews.add(addSection);
-		subviews.add(removeSection);
-		subviews.add(prioritizeSection);
+		// Big information: we present EBI side-by-side with actions
+		if(OPTION_BIG_INFORMATION)
+		{
+			PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
+			//section1.setDescription(MSG_PAIN_POSITIONING);
+			section1.addAction(c);
+			
+			
+			PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
+			//section2.setDescription(MSG_PAIN_GAS_EXCHANGE);
+			section2.addAction(c1);
+			section2.addAction(c2);
+			
+			PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
+			//section3.setDescription(MSG_PAIN_OUTCOME);
+			section3.addAction(c5);
+			section3.addAction(c6);
+			section3.addAction(c7);
+			section3.addAction(c8);
+			
+			subviews.add(section1);
+			subviews.add(section2);
+			subviews.add(section3);
+		}
+		// Little information: just list actions
+		else
+		{
+			PopUpSection section1 = new PopUpSection("");
+			section1.addAction(c);
+			section1.addAction(c1);
+			section1.addAction(c2);
+			section1.addAction(c5);
+			section1.addAction(c6);
+			section1.addAction(c7);
+			section1.addAction(c8);
+			
+			subviews.add(section1);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

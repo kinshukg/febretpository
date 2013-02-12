@@ -9,13 +9,18 @@ class SecondLevelRowView extends View
 	public ArrayList subs ;
 	int indent;
 
+	ColouredRowView parent;
+	
+	// Popups
+	PopUpViewBase actionPopUp;
+	GraphPopUpView graphPopUp;
+	RatingPopUpView ratingPopUp;
+
+	// Buttons
 	Button graphButton, actionButton;
 	Button infoButton;
-
-	PopUpViewBase actionPopUp;
-	
-	GraphPopUpView graphPopUp;
-	ColouredRowView parent;
+	Button expectedRatingButton;
+	Button currentRatingButton;
 	
 	// Cycle 2 stuff
 	StaticText qa1Text;
@@ -70,10 +75,12 @@ class SecondLevelRowView extends View
 				{
 					removeQuickActionButton2();
 					pocManager.addNOC("Immobility Consequences","", pocManager.NANDAImpairedPhysicalMobility, IMG_IMMOBILITY_CONSEQUENCES);
+					
 				}
 				else
 				{
-					removeQuickActionButton2();
+					showPopUp();
+					//removeQuickActionButton2();
 				}
 			}
 		}
@@ -163,8 +170,16 @@ class SecondLevelRowView extends View
 			line(0, 15, w, 15);
 		}
 		
-		if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);
-		if(secondColumn != 0) text(secondColumn, 950, 12); else text("NR", 950, 12);
+		// Draw expected and current rating text only if we are not using current / expected rating buttons for this NOC row.
+		if(currentRatingButton == null)
+		{
+			if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);
+		}
+		
+		if(expectedRatingButton == null)
+		{
+			if(secondColumn != 0) text(secondColumn, 950, 12); else text("NR", 950, 12);
+		}
 
 		if(message != null)
 		{
@@ -210,10 +225,10 @@ class SecondLevelRowView extends View
 		qa2Text.y = -20;
 		subviews.add(qa2Text);
 		cx += qa2Text.w - 10;
-		qa2YesButton = new Button(cx, -22, 24, 24, checkIcon);
+		qa2YesButton = new Button(cx, -24, 24, 24, checkIcon);
 		subviews.add(qa2YesButton);
 		cx += 28;
-		qa2NoButton = new Button(cx, -22, 24, 24, crossIcon);
+		qa2NoButton = new Button(cx, -24, 24, 24, crossIcon);
 		subviews.add(qa2NoButton);
 		cx += 28;
 		
@@ -226,8 +241,8 @@ class SecondLevelRowView extends View
 		qa2NoButton.helpText = "Remove notification";
 
 		qa2IsEBI = ebi;
-		if(ebi)	qa2InfoButton = new Button(cx, -22, 24, 24, IMG_EBI);
-		else qa2InfoButton = new Button(cx, -22, 24, 24, IMG_SUGGESTION);
+		if(ebi)	qa2InfoButton = new Button(cx, -24, 24, 24, IMG_EBI);
+		else qa2InfoButton = new Button(cx, -24, 24, 24, IMG_SUGGESTION);
 		qa2InfoButton.tooltipText = infoText;
 		subviews.add(qa2InfoButton);
 	}
@@ -315,6 +330,31 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void enableCurrentRatingButton()
+	{
+		color buttonColor = 200;
+		color textColor = 0;
+		currentRatingButton = new Button(840, 5, 0, 16, "NR", buttonColor, textColor);
+		subviews.add(this.currentRatingButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void enableExpectedRatingButton()
+	{
+		color buttonColor = 200;
+		color textColor = 0;
+		expectedRatingButton = new Button(940, 5, 0, 16, "NR", buttonColor, textColor);
+		subviews.add(this.expectedRatingButton);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void disableExpectedRatingButton()
+	{
+		subviews.remove(expectedRatingButton);
+		expectedRatingButton = null;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void showPopUp()
 	{
 		if(popUpView == null)
@@ -322,7 +362,7 @@ class SecondLevelRowView extends View
 			mainView.subviews.add(actionPopUp);
 			popUpView = actionPopUp;
 			actionPopUp.x = mouseX + 50;
-			actionPopUp.y = mouseY - 350;
+			actionPopUp.y = mouseY - actionPopUp.h - 160; //350;
 			actionPopUp.arrowX = mouseX;
 			actionPopUp.arrowY = mouseY;
 			if(actionPopUp.y < 50) actionPopUp.y = 50;
@@ -330,67 +370,81 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void showRatingPopUp()
+	{
+		if(popUpView == null)
+		{
+			// If rating popup has not been created, do it now.
+			if(ratingPopUp == null)
+			{
+				ratingPopUp = new RatingPopUpView(this, iconButton.tooltipImage);
+				ratingPopUp.reset();
+			}
+			
+			mainView.subviews.add(ratingPopUp);
+			popUpView = ratingPopUp;
+			ratingPopUp.x = mouseX - 650;
+			ratingPopUp.y = mouseY - 350;
+			ratingPopUp.arrowX = mouseX;
+			ratingPopUp.arrowY = mouseY;
+			if(ratingPopUp.y < 50) ratingPopUp.y = 50;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
-		if(qa1NoButton != null)
+		if(qa1NoButton != null && qa1NoButton.selected)
 		{
-			if(qa1NoButton.selected)
-			{
-				qa1NoButton.selected = false;
-				onQuickActionButtonClicked(1, false);
-				stopBlinking();		
-			}
+			qa1NoButton.selected = false;
+			onQuickActionButtonClicked(1, false);
+			stopBlinking();		
 		}
-		if(qa1YesButton != null)
+		if(qa1YesButton != null && qa1YesButton.selected)
 		{
-			if(qa1YesButton.selected)
-			{
-				qa1YesButton.selected = false;
-				onQuickActionButtonClicked(1, true);
-				stopBlinking();		
-			}
+			qa1YesButton.selected = false;
+			onQuickActionButtonClicked(1, true);
+			stopBlinking();		
 		}
-		if(qa2YesButton != null)
+		if(qa2YesButton != null && qa2YesButton.selected)
 		{
-			if(qa2YesButton.selected)
-			{
-				qa2YesButton.selected = false;
-				onQuickActionButtonClicked(2, true);
-				stopBlinking();		
-			}
+			qa2YesButton.selected = false;
+			onQuickActionButtonClicked(2, true);
+			stopBlinking();		
 		}
-		if(qa2NoButton != null)
+		if(qa2NoButton != null && qa2NoButton.selected)
 		{
-			if(qa2NoButton.selected)
-			{
-				qa2NoButton.selected = false;
-				onQuickActionButtonClicked(2, false);
-				stopBlinking();		
-			}
+			qa2NoButton.selected = false;
+			onQuickActionButtonClicked(2, false);
+			stopBlinking();		
 		}
-		if(actionButton != null)
+		if(actionButton != null && actionButton.selected)
 		{
-			if(actionButton.selected)
-			{
-				showPopUp();
-				actionButton.selected = false;
-			}
+			showPopUp();
+			actionButton.selected = false;
 		}
-		if(graphButton != null)
+		if(graphButton != null && graphButton.selected)
 		{
-			if(graphButton.selected)
+			if(popUpView == null)
 			{
-				if(popUpView == null)
-				{
-					mainView.subviews.add(graphPopUp);
-					popUpView = graphPopUp;
-					graphPopUp.x = mouseX + 20;
-					graphPopUp.y = mouseY - 50;
-					graphPopUp.arrowX = mouseX;
-					graphPopUp.arrowY = mouseY;
-				}
-				graphButton.selected = false;
+				mainView.subviews.add(graphPopUp);
+				popUpView = graphPopUp;
+				graphPopUp.x = mouseX + 20;
+				graphPopUp.y = mouseY - 50;
+				graphPopUp.arrowX = mouseX;
+				graphPopUp.arrowY = mouseY;
 			}
+			graphButton.selected = false;
+		}
+		if(expectedRatingButton != null && expectedRatingButton.selected)
+		{
+			showRatingPopUp();
+			expectedRatingButton.selected = false;
+		}
+		if(currentRatingButton != null && currentRatingButton.selected)
+		{
+			showRatingPopUp();
+			currentRatingButton.selected = false;
 		}
 		return true;
 	}

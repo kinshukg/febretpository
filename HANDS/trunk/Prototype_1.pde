@@ -17,7 +17,7 @@ public boolean OPTION_LONG_ALERT_BUTTON = true;
 public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
-public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
+//public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
 public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 public boolean OPTION_GRAPH_ALERT_BUTTON = false;
@@ -25,6 +25,7 @@ public int OPTION_NNN_ICON_STYLE = 1;
 public int OPTION_NUMBER = 1;
 public int CYCLE2_OPTION_NUMBER = 1;
 public boolean OPTION_TAILORED_MESSAGES = false;
+public boolean OPTION_BIG_INFORMATION = false;
 
 public PImage IMG_LEGEND = null; 
 
@@ -71,14 +72,18 @@ public PImage IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = null;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
 // Pain evidence message for popup screen.
-String MSG_PAIN_EVIDENCE_POPUP = 			
-	"Evidence Suggests That: <l> \n " +
-	"- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
-		"<*> <b> Add NIC Positioning. </b> <s1> \n " +
-	"- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
-		"<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
-	"- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
-		"<*> <b> Additional actions needed. </b> \n ";
+// String MSG_PAIN_EVIDENCE_POPUP = 			
+	// "Evidence Suggests That: <l> \n " +
+	// "- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
+		// "<*> <b> Add NIC Positioning. </b> <s1> \n " +
+	// "- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
+		// "<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
+	// "- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
+		// "<*> <b> Additional actions needed. </b> \n ";
+
+String MSG_PAIN_POSITIONING = "A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level.";
+String MSG_PAIN_GAS_EXCHANGE = "It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems.";
+String MSG_PAIN_OUTCOME = "More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.";
 
 // For the i icon related to Palliative Care Consultation
 String MSG_PALLIATIVE_CARE_INFO =
@@ -94,7 +99,9 @@ String MSG_FAMILY_COPING =
 	"with better acceptance and psychological adjustment for family caregivers.";
 	
 // For the i icon related Immobility Consequences
-String MSG_IMMOBILITY_CONSEQUENCES = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.  These outcomes are more important than improving mobility for some patients.";
+String MSG_IMMOBILITY_CONSEQUENCES_GENERIC = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
+
+String MSG_IMMOBILITY_CONSEQUENCES_TAILORED = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
 
 // Message for info button next to pain graph
 String MSG_PAIN_GRAPH_DESCRIPTION = 
@@ -217,13 +224,13 @@ public void setup()
 	//IMG_LEGEND.resize(0,350);
 	
 	infoIcon = loadImage("information.png");
-	infoIcon.resize(0, 22);
+	//infoIcon.resize(0, 22);
 	IMG_EBI = loadImage("information.png");
-	IMG_EBI.resize(0, 22);
+	//IMG_EBI.resize(0, 22);
 	IMG_SUGGESTION = loadImage("suggestion.png");
-	IMG_SUGGESTION.resize(0, 22);
+	//IMG_SUGGESTION.resize(0, 22);
 	IMG_TUTORIAL = loadImage("tutorial.png");
-	IMG_TUTORIAL.resize(0, 22);
+	//IMG_TUTORIAL.resize(0, 22);
 	
 	emptySmallGraph = loadImage("emptySmallGraph.png");
 	smallGraph1 = loadImage("SmallGraph1.png");
@@ -505,23 +512,33 @@ public void setupPopup()
 	}
 	else if(CYCLE2_OPTION_NUMBER == 2)
 	{
-		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
+		DeathPopUpView dppw = new DeathPopUpView(510, pocManager.anxietySelfControlView);
 		dppw.setupFull();
 		pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
 		pocManager.anxietySelfControlView.actionPopUp = dppw;
 	}
 	
 	// Cycle 3 addition
-	if(CYCLE2_OPTION_NUMBER == 1)
-	{
-		pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES);
-		pocManager.NOCMobility.qa2Text.tooltipImage = IMG_CONSULTATION;
-	}
-	else if(CYCLE2_OPTION_NUMBER == 2)
+	if(OPTION_BIG_INFORMATION)
 	{
 		MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility);
 		mppw.setupFull();
 		pocManager.NOCMobility.setAlertButton(3, "Action required", alertButtonX, null);
+		pocManager.NOCMobility.actionPopUp = mppw;
+	}
+	else
+	{
+		if(OPTION_TAILORED_MESSAGES)
+		{
+			pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_TAILORED);
+		}
+		else
+		{
+			pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_GENERIC);
+		}
+		pocManager.NOCMobility.qa2Text.tooltipImage = IMG_CONSULTATION;
+		MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility);
+		mppw.setupRefuseSection();
 		pocManager.NOCMobility.actionPopUp = mppw;
 	}
 }
@@ -667,11 +684,13 @@ void keyPressed()
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
 			OPTION_ALERT_INFO_BUTTON = true;
-			OPTION_ENABLE_ACTION_INFO_POPUP = true;
+			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_TAILORED_MESSAGES = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 1;
+			OPTION_BIG_INFORMATION = false;
 			reset();
 		}
 		else if(key == '2')
@@ -681,11 +700,13 @@ void keyPressed()
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_TAILORED_MESSAGES = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 1;
+			OPTION_BIG_INFORMATION = true;
 			reset();
 		}
 		if(key == '3')
@@ -695,11 +716,13 @@ void keyPressed()
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
 			OPTION_ALERT_INFO_BUTTON = true;
-			OPTION_ENABLE_ACTION_INFO_POPUP = true;
+			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_TAILORED_MESSAGES = true;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 2;
+			OPTION_BIG_INFORMATION = false;
 			reset();
 		}
 		else if(key == '4')
@@ -709,11 +732,13 @@ void keyPressed()
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_ENABLE_ACTION_INFO_POPUP = false;
+			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
+			OPTION_TAILORED_MESSAGES = true;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 2;
+			OPTION_BIG_INFORMATION = true;
 			reset();
 		}
 		else if(key == '0')
