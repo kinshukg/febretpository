@@ -53,6 +53,8 @@ class PopUpViewBase extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
+		rectMode(CORNERS);
+		strokeWeight(1);
 		int ys = 0;
 		for(int i = 0 ;i<subviews.size();i++)
 		{

@@ -12,6 +12,8 @@ class PopUpSection extends View
 	ArrayList<CheckBox> actionBoxes;
 	
 	PImage img;
+	
+	boolean layoutHorizontal;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PopUpSection(String title)
@@ -25,6 +27,8 @@ class PopUpSection extends View
 		// {
 			// h = 60;
 		// }
+		
+		layoutHorizontal = false;
 		
 		this.title = title;
 		this.titleBox = new StaticText("<b> <h1> " + title);
@@ -71,7 +75,7 @@ class PopUpSection extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setInfoButton(String text)
 	{
-		titleButton = new Button(0, 0, 16, 16, infoIcon);
+		titleButton = new Button(0, 0, 16, 16, IMG_TUTORIAL);
 		titleButton.tooltipText = text;
 		subviews.add(titleButton);
 		//titleButtonMode = 1;
@@ -137,10 +141,18 @@ class PopUpSection extends View
 		// v2.1: place the info icon under the description (will fall next to the graph)
 		if(titleButton != null)
 		{
+			// titleButton.w = 16;
+			// titleButton.h = 16;
+			// titleButton.y = h;
+			// titleButton.x = 600;
 			titleButton.w = 16;
 			titleButton.h = 16;
-			titleButton.y = h;
-			titleButton.x = 600;
+			titleButton.y = -4;
+			titleButton.x = 5;
+			
+			// If we have a title button, move the title box a bit to the left.
+			titleBox.x += 20;
+			titleBox.w -= 20;
 		}
 		if(img != null)
 		{
@@ -158,12 +170,31 @@ class PopUpSection extends View
 		}
 		if(actionBoxes != null)
 		{
-			for(int i = 0; i < actionBoxes.size(); i++)
+			if(layoutHorizontal)
 			{
-				CheckBox cb = actionBoxes.get(i);
-				cb.x = 15;
-				cb.y = h;
-				h += cb.h + 10;
+				int curw = 15;
+				int checkBoxWidth = (int)w / actionBoxes.size();
+				float maxCheckboxHeight = 0;
+				for(int i = 0; i < actionBoxes.size(); i++)
+				{
+					CheckBox cb = actionBoxes.get(i);
+					cb.x = curw;
+					cb.y = h;
+					if(cb.h > maxCheckboxHeight) maxCheckboxHeight = cb.h;
+					curw += checkBoxWidth;
+				}
+				if(w < curw) w = curw;
+				h += maxCheckboxHeight + 10;
+			}
+			else
+			{
+				for(int i = 0; i < actionBoxes.size(); i++)
+				{
+					CheckBox cb = actionBoxes.get(i);
+					cb.x = 15;
+					cb.y = h;
+					h += cb.h + 10;
+				}
 			}
 		}
 		if(separatorStyle != 0)

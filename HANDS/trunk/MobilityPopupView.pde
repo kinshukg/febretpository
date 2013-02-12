@@ -9,6 +9,10 @@ class MobilityPopupView extends PopUpViewBase
 	PopUpSection recommendedActionSection;
 	//PopUpSection actionSection;
 	
+	PopUpSection reasonSection;
+	CheckBox reason1;
+	CheckBox reason2;
+	CheckBox reason3;
 	//boolean consultCheckAdded = false;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,28 +22,81 @@ class MobilityPopupView extends PopUpViewBase
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setupFull()
+	void createRefuseSection()
 	{
-		PopUpSection title = new PopUpSection("<h1> TITLE FOR MOBILITY POPUP");
-		title.setDescription("Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.  These outcomes are more important than improving mobility for some patients.\n");
+		reason1 = new CheckBox("Patient / Family refused", null, 0);
+		reason2 = new CheckBox("Doctor refused", null, 0);
+		reason3 = new CheckBox("", null, 0);
+		
+		reason1.radio = true;
+		reason2.radio = true;
+		reason3.radio = true;
+		reason1.textBoxEnabled = false;
+		reason2.textBoxEnabled = true;
+		reason3.textBoxEnabled = true;
+		reason2.showTextBox();
+		reason2.tb.suggestion = "Enter doctor name";
+		reason3.tb.suggestion = "Other reason";
+		reason3.showTextBox();
+		
+		reason1.selected = true;
+		
+		//reason1.setIconTooltip(DEF_ACUTE_PAIN);
+		//reason2.setIconTooltip(DEF_ENERGY_CONSERVATION);
+		//reason3.setIconTooltip(DEF_COPING);
+		
+		reasonSection = new PopUpSection("Select a reason to dismiss suggestion: ");
+		reasonSection.addAction(reason1);
+		reasonSection.addAction(reason2);
+		reasonSection.addAction(reason3);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setupRefuseSection()
+	{
+		PopUpSection title = new PopUpSection("Adding Immobility Consequences is highly recommended. ");
+		String alertDescription = "";
+		title.setDescription(alertDescription);
 		subviews.add(title);
 		
-		
+		createRefuseSection();
+		subviews.add(reasonSection);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	void setupFull()
+	{
 		immobilityConsequencesCheck = new CheckBox("Add NOC: Immobility Consequences", secondLevelIcon, 0);
 		immobilityConsequencesCheck.textBoxEnabled = false;
 		immobilityConsequencesCheck.owner = this;
 		
-		recommendedActionSection = new PopUpSection("Recommended actions: ");
+		String icmsg = "";
+		if(OPTION_TAILORED_MESSAGES) icmsg = MSG_IMMOBILITY_CONSEQUENCES_TAILORED;
+		else icmsg = MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
+
+		recommendedActionSection = new PopUpSection(icmsg);
 		recommendedActionSection.addAction(immobilityConsequencesCheck);
 		
 		immobilityConsequencesCheck.selected = true;
 		
 		subviews.add(recommendedActionSection);
+		createRefuseSection();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onCheckBoxChanged(CheckBox cb) 
 	{
+		if(cb == immobilityConsequencesCheck)
+		{
+			if(!immobilityConsequencesCheck.selected)
+			{
+				subviews.add(3, reasonSection);
+			}
+			else
+			{
+				subviews.remove(reasonSection);
+			}
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,11 +110,30 @@ class MobilityPopupView extends PopUpViewBase
 			immobilityConsequencesCheck = null;
 			//consultCheckAdded = true;
 		}
+		else
+		{
+			//if(!consultCheckAdded)
+			{
+				if(reason1.selected)
+				{
+					parent.addComment("Dismissed consultation: Family / Patient Refused");
+				}
+				else if(reason2.selected)
+				{
+					parent.addComment("Dismissed consultation: Doctor " + reason2.tb.text + " refused");
+				}
+				else if(reason3.selected)
+				{
+					parent.addComment("Dismissed consultation: " + reason3.tb.text);
+				}
+			}
+			parent.removeQuickActionButton2();
+		}
 		
 		hide();
 		
 		// If we added the action and we are in cycle3 option 2, remove the action button from the POC action bar
-		if(immobilityConsequencesCheck == null && CYCLE2_OPTION_NUMBER == 2)
+		if(immobilityConsequencesCheck == null && OPTION_BIG_INFORMATION)
 		{
 			parent.removeAlertButton();
 		}

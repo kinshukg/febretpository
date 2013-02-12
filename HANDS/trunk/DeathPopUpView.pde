@@ -25,20 +25,28 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupFull()
 	{
-		PopUpSection title = new PopUpSection("<h1> TITLE FOR DEATH POPUP");
-		title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
-		subviews.add(title);
+		// PopUpSection title = new PopUpSection("");
+		// title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
+		// subviews.add(title);
 
-		consultCheck = new CheckBox("Add NIC Consultation: Palliative Care", thirdLevelIcon, 0);
+		if(OPTION_BIG_INFORMATION)
+		{
+			PopUpSection title = new PopUpSection("");
+			title.setImage(anxietySelfControlTrend);
+			title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
+			subviews.add(title);
+		}
+		
+		consultCheck = new CheckBox("Add NIC: Consultation - Palliative Care", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
 		
 		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
 		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
-		recommendedActionSection = new PopUpSection("Recommended actions: ");
+		recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
 		recommendedActionSection.addAction(consultCheck);
 		
-		copingCheck = new CheckBox("Add NANDA: Family coping mini POC", firstLevelIcon, 0);
+		copingCheck = new CheckBox("Add NANDA: Family Coping Mini POC", firstLevelIcon, 0);
 		copingCheck.textBoxEnabled = false;
 		copingCheck.owner = this;
 		
@@ -51,7 +59,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		copingCheck.setIconTooltipImage(IMG_INTERRUPTED_FAMILY_PROCESS);
 		
-		actionSection = new PopUpSection("Also consider: ");
+		actionSection = new PopUpSection(MSG_FAMILY_COPING);
 		actionSection.addAction(copingCheck);
 		
 		consultCheck.selected = true;

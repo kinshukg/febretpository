@@ -102,6 +102,8 @@ class POCManager
 
 		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, 0, 0, nandaInterruptedFamilyProcess);
 		nocFamilyCoping.iconButton.tooltipImage = IMG_FAMILY_COPING;
+		nocFamilyCoping.enableCurrentRatingButton();
+		nocFamilyCoping.enableExpectedRatingButton();
 		
 		nicFamilySupport = new ThirdLevelRowView("Family Support", thirdLevelIcon, nocFamilyCoping);
 		nicFamilySupport.iconButton.tooltipImage = IMG_FAMILY_SUPPORT;
@@ -157,6 +159,11 @@ class POCManager
 		}
 		//mainView.subviews.add(medicationManagementView);
 		//parentNANDA.subs.add(0,temp);
+		
+		// Enable rating buttons
+		temp.enableCurrentRatingButton();
+		temp.enableExpectedRatingButton();
+		
 		return temp;
 	}
 	
@@ -164,6 +171,8 @@ class POCManager
 	void deleteNANDA(ColouredRowView nanda)
 	{
 		nanda.markDeleted();
+		scrollingView.subs.remove(nanda);
+		scrollingView.subs.add(nanda);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
