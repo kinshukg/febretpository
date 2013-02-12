@@ -12,6 +12,7 @@ class PopUpSection extends View
 	ArrayList<CheckBox> actionBoxes;
 	
 	PImage img;
+	boolean centerImage = true;
 	
 	boolean layoutHorizontal;
 
@@ -174,6 +175,7 @@ class PopUpSection extends View
 			{
 				int curw = 15;
 				int checkBoxWidth = (int)w / actionBoxes.size();
+				if(checkBoxWidth > 60) checkBoxWidth = 60;
 				float maxCheckboxHeight = 0;
 				for(int i = 0; i < actionBoxes.size(); i++)
 				{
@@ -218,6 +220,7 @@ class PopUpSection extends View
 				imageY = (int)descriptionBox.y + (int)descriptionBox.h + 10;
 			}
 			int imageX = (int)w / 2 - img.width / 2;
+			if(!centerImage) imageX = 5;
 			if(titleButtonMode == 2)
 			{
 				if(titleButton.selected)

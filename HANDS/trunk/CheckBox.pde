@@ -127,7 +127,14 @@ class CheckBox extends View
 			tb.y = 0;
 		}
 		
-		text.x = 50;
+		if(iconButton != null)
+		{
+			text.x = 50;
+		}
+		else
+		{
+			text.x = 25;
+		}
 		text.y = 2;
 		text.w = w;
 	}

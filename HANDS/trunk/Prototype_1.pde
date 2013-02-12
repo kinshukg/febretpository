@@ -91,6 +91,10 @@ String MSG_PALLIATIVE_CARE_INFO =
 	"and patient/family communication in the presence of a serious, chronic illness. Palliative care services are found " +
 	"to enhance patient outcomes (pain and symptom control), provider satisfaction, caregiver satisfaction, and cost savings.";
 
+String MSG_PALLIATIVE_CARE_INFO_TAILORED =
+	"Palliative care consultations are helpful for patients like Mrs. Taylor by managing her pain and death anxiety, facilitating " +
+	"patient/family communication, and promoting a comfortable death.  These services can create better outcomes for Mrs. Taylor and her family.";
+	
 // For the i icon related to Mini POC for Family Coping
 String MSG_FAMILY_COPING =
 	"Care giving for the EOL CA patient requires family members to provide supportive care while simultaneously " +
@@ -98,10 +102,12 @@ String MSG_FAMILY_COPING =
 	"Use of adaptive coping strategies such as social support, EOL education, and problem solving are associated " +
 	"with better acceptance and psychological adjustment for family caregivers.";
 	
+String MSG_FAMILY_COPING_TAILORED = "The physical and emotional demands of caring for a patient like Mrs. Taylor whose POC includes death anxiety and comfortable death can overwhelm a family.";
+
 // For the i icon related Immobility Consequences
 String MSG_IMMOBILITY_CONSEQUENCES_GENERIC = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
 
-String MSG_IMMOBILITY_CONSEQUENCES_TAILORED = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
+String MSG_IMMOBILITY_CONSEQUENCES_TAILORED = "For patient like Mrs. Taylor who have Death Anxiety and Comfortable Death on their  POC, improving Mobility may not be realistic.  Consider adding <b> Immobility Consequences </b> to include prevention of pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
 
 // Message for info button next to pain graph
 String MSG_PAIN_GRAPH_DESCRIPTION = 
@@ -500,21 +506,31 @@ public void setupPopup()
 	}
 	
 	// Cycle 2 addition
-	if(CYCLE2_OPTION_NUMBER == 1)
+	if(OPTION_BIG_INFORMATION)
 	{
-		DeathPopUpView dppw = new DeathPopUpView(400, pocManager.anxietySelfControlView);
-		dppw.setupConsultRefuse();
-		pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO);
-		pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
-		pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING);
-		pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
-		pocManager.anxietySelfControlView.actionPopUp = dppw;
-	}
-	else if(CYCLE2_OPTION_NUMBER == 2)
-	{
-		DeathPopUpView dppw = new DeathPopUpView(510, pocManager.anxietySelfControlView);
+		DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView);
 		dppw.setupFull();
 		pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
+		pocManager.anxietySelfControlView.actionPopUp = dppw;
+	}
+	else
+	{
+		DeathPopUpView dppw = new DeathPopUpView(500, pocManager.anxietySelfControlView);
+		dppw.setupConsultRefuse();
+		
+		if(OPTION_TAILORED_MESSAGES)
+		{
+			pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO_TAILORED);
+			pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING_TAILORED);
+		}
+		else
+		{
+			pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO);
+			pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING);
+		}
+		
+		pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
+		pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
 		pocManager.anxietySelfControlView.actionPopUp = dppw;
 	}
 	
