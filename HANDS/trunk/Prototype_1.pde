@@ -7,7 +7,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "c2r2";	
+static String VERSION = "c3r1";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -87,9 +87,7 @@ String MSG_PAIN_OUTCOME = "More than 50% of EOL patients do not achieve expected
 
 // For the i icon related to Palliative Care Consultation
 String MSG_PALLIATIVE_CARE_INFO =
-	"Palliative care consultations assist with the management of complex pain, symptom control, comorbidities, " +
-	"and patient/family communication in the presence of a serious, chronic illness. Palliative care services are found " +
-	"to enhance patient outcomes (pain and symptom control), provider satisfaction, caregiver satisfaction, and cost savings.";
+	"Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.";
 
 String MSG_PALLIATIVE_CARE_INFO_TAILORED =
 	"Palliative care consultations are helpful for patients like Mrs. Taylor by managing her pain and death anxiety, facilitating " +
@@ -97,10 +95,7 @@ String MSG_PALLIATIVE_CARE_INFO_TAILORED =
 	
 // For the i icon related to Mini POC for Family Coping
 String MSG_FAMILY_COPING =
-	"Care giving for the EOL CA patient requires family members to provide supportive care while simultaneously " +
-	"coping with their own grief. The physical and emotional demands of care giving can overwhelm the family. " +
-	"Use of adaptive coping strategies such as social support, EOL education, and problem solving are associated " +
-	"with better acceptance and psychological adjustment for family caregivers.";
+	"The physical and emotional demands of care giving can overwhelm the family.";
 	
 String MSG_FAMILY_COPING_TAILORED = "The physical and emotional demands of caring for a patient like Mrs. Taylor whose POC includes death anxiety and comfortable death can overwhelm a family.";
 
