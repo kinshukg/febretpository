@@ -39,7 +39,7 @@ class PopUpViewBase extends View
 			h += v.h;
 			if(v != commit && v != notApplicable && v != close)
 			{
-				v.w = this.w;
+				v.w = this.w - 16;
 			}
 		}
 		

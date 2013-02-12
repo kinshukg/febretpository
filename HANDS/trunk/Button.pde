@@ -141,11 +141,11 @@ class Button extends View
 	{
 		if(tooltipImage != null)
 		{
-			tooltipView = new Tooltip(mouseX + 10, mouseY + 10, 300, 60, tooltipImage);
+			tooltipView = new Tooltip(mouseX + 20, mouseY - 20, 300, 60, tooltipImage);
 		}
 		else
 		{
-			tooltipView = new Tooltip(mouseX + 30, mouseY + 10, 300, 60, tooltipText);
+			tooltipView = new Tooltip(mouseX + 50, mouseY - 50, 400, 60, tooltipText);
 		}
 		
 		tooltipView.arrowX = mouseX;

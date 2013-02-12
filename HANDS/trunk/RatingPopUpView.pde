@@ -12,7 +12,7 @@ class RatingPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	RatingPopUpView(SecondLevelRowView parent, PImage image)
 	{
-		super(image.width, parent);
+		super(image.width > 650 ? image.width +50 : 700, parent);
 		
 		indicatorsImage = image;
 		
@@ -25,14 +25,13 @@ class RatingPopUpView extends PopUpViewBase
 	{
 		PopUpSection title = new PopUpSection("");
 		title.setImage(indicatorsImage);
+		title.centerImage = false;
 		subviews.add(title);
 		
 		// Expected rating checkboxes
 		expectedRatingSection = new PopUpSection("Expected Rating:");
 		expectedRatingSection.layoutHorizontal = true;
-		
-		expectedRatingSection.setInfoButton("here goes the tutorial text");
-		
+	
 		for(int i = 1; i <= 5; i++)
 		{
 			CheckBox ratingCheckbox = new CheckBox(str(i), null, 0);
@@ -47,7 +46,6 @@ class RatingPopUpView extends PopUpViewBase
 		// Current rating checkboxes
 		currentRatingSection = new PopUpSection("Current Rating:");
 		currentRatingSection.layoutHorizontal = true;
-		currentRatingSection.setInfoButton("here goes the tutorial text");
 		for(int i = 1; i <= 5; i++)
 		{
 			CheckBox ratingCheckbox = new CheckBox(str(i), null, 0);
@@ -58,6 +56,29 @@ class RatingPopUpView extends PopUpViewBase
 			currentRatings.add(ratingCheckbox);
 		}
 		subviews.add(currentRatingSection);
+
+		String expectedRatingTutorial =
+			"Setting an Expected NOC Rating: <l> \n " +
+			"1. Review definition of <b> NOC: " + parent.title + " </b> and current patient status. \n " +
+			"2. Identify the patient's expected rating where a rating of 5 is comparable to a healthy patient of similar age, gender, and cognition. \n " +
+			"3. Select a rating (1-5) that best represents patient's expected status at discharge from the unit. \n ";
+			
+		String currentRatingTutorial =
+			"Setting a Current NOC Rating: <l> \n " +
+			"1. Review definition of <b> NOC: " + parent.title + " </b> and current patient status. \n " +
+			"2. Identify the patient's expected rating where a rating of 5 is comparable to a healthy patient of similar age, gender, and cognition. \n " +
+			"3. Select a rating (1-5) that best represents patient's expected status at the end of every shift. \n ";
+		
+		if(OPTION_BIG_INFORMATION)
+		{
+			expectedRatingSection.setDescription(expectedRatingTutorial);
+			currentRatingSection.setDescription(currentRatingTutorial);
+		}
+		else
+		{
+			expectedRatingSection.setInfoButton(expectedRatingTutorial);
+			currentRatingSection.setInfoButton(currentRatingTutorial);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

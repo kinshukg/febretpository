@@ -71,7 +71,7 @@ class StaticText extends View
 		
 		int curX = 0;
 		int curY = 0;
-		int textHeight = (int)textAscent() + (int)textDescent();
+		int textHeight = 16; //(int)textAscent() + (int)textDescent();
 		boolean bullets = false;
 		boolean bold = false;
 		
