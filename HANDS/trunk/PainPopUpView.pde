@@ -87,7 +87,7 @@ class PainPopUpView extends PopUpViewBase
 		//c4.setIconTooltipImage(IMG_COPING);
 		c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
 		c6.setIconTooltipImage(IMG_MASSAGE);
-		c7.setIconTooltipImage(IMG_MASSAGE);
+		c7.setIconTooltipImage(IMG_RELAXATION_THERAPY);
 		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
 		// Big information: we present EBI side-by-side with actions

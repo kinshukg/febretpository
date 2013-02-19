@@ -47,7 +47,7 @@ class DeathPopUpView extends PopUpViewBase
 		else recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
 		recommendedActionSection.addAction(consultCheck);
 		
-		copingCheck = new CheckBox("Add NANDA: Family Coping Mini POC", firstLevelIcon, 0);
+		copingCheck = new CheckBox("Add NANDA: Interrupted Family Process Mini POC", firstLevelIcon, 0);
 		copingCheck.textBoxEnabled = false;
 		copingCheck.owner = this;
 		
@@ -136,7 +136,7 @@ class DeathPopUpView extends PopUpViewBase
 		if(consultCheck != null && consultCheck.selected)
 		{
 			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
-			actionSection.removeAction(consultCheck);
+			recommendedActionSection.removeAction(consultCheck);
 			parent.addComment("");
 			consultCheck = null;
 			consultCheckAdded = true;
@@ -171,7 +171,7 @@ class DeathPopUpView extends PopUpViewBase
 		hide();
 		
 		// If we added both actions and we are in cycle2 option 2, remove the action button from the POC action bar
-		if(copingCheck == null && consultCheck == null && CYCLE2_OPTION_NUMBER == 2)
+		if(copingCheck == null && consultCheck == null && OPTION_BIG_INFORMATION)
 		{
 			parent.removeAlertButton();
 		}

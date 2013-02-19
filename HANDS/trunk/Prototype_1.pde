@@ -50,6 +50,7 @@ public PImage IMG_INTERRUPTED_FAMILY_PROCESS = null;
 public PImage IMG_MASSAGE = null;
 public PImage IMG_PATIENT_CONTROLLED_ANALGESIA = null;
 public PImage IMG_POSITIONING = null;
+public PImage IMG_RELAXATION_THERAPY = null;
 // Cycle 2 Additions
 public PImage IMG_MUSIC_THERAPY = null;
 public PImage IMG_CALMING_TECHNIQUE = null;
@@ -270,6 +271,7 @@ public void setup()
 	IMG_MASSAGE =  loadImage("massage.PNG");
 	IMG_PATIENT_CONTROLLED_ANALGESIA =  loadImage("patientControlledAnalgesia.PNG");
 	IMG_POSITIONING =  loadImage("positioning.png");
+	IMG_RELAXATION_THERAPY =  loadImage("NICRelaxationTherapy.PNG");
 	
 	IMG_MUSIC_THERAPY = loadImage("musicTherapy.PNG");
 	IMG_CALMING_TECHNIQUE = loadImage("calmingTechnique.PNG");
@@ -562,7 +564,7 @@ public void setupPopup()
 		{
 			pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_GENERIC);
 		}
-		pocManager.NOCMobility.qa2Text.tooltipImage = IMG_CONSULTATION;
+		pocManager.NOCMobility.qa2Text.tooltipImage = IMG_IMMOBILITY_CONSEQUENCES;
 		MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility);
 		mppw.setupRefuseSection();
 		pocManager.NOCMobility.actionPopUp = mppw;
