@@ -156,10 +156,21 @@ class PainPopUpView extends PopUpViewBase
 							toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
+  
+                                                    String[] tags = c.tag.split(": ");
+                                                     if(tags.length > 1)
+								pocManager.addNIC(tags[1], c.tb.text, parent, c.iconButton.tooltipImage);
+                                                                else
 								pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == ADD_NOC)
 							{
+                                                      String[] tags = c.tag.split(": ");
+                                                     if(tags.length > 1)
+                                                     
+                                                     pocManager.addNOC(tags[1], c.tb.text, parent.parent, c.iconButton.tooltipImage);
+                                                     else
+                                                     
 								pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == REMOVE_NANDA)
