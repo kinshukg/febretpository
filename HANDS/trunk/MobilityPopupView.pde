@@ -116,20 +116,21 @@ class MobilityPopupView extends PopUpViewBase
 			{
 				if(reason1.selected)
 				{
-					parent.addComment("Dismissed consultation: Family / Patient Refused");
+					parent.addComment("Dismissed Immobility Consequences: Family / Patient Refused");
 				}
 				else if(reason2.selected)
 				{
-					parent.addComment("Dismissed consultation: Doctor " + reason2.tb.text + " refused");
+					parent.addComment("Dismissed Immobility Consequences: Doctor " + reason2.tb.text + " refused");
 				}
 				else if(reason3.selected)
 				{
-					parent.addComment("Dismissed consultation: " + reason3.tb.text);
+					parent.addComment("Dismissed Immobility Consequences: " + reason3.tb.text);
 				}
 			}
 			parent.removeQuickActionButton2();
 		}
 		
+		parent.stopBlinking();
 		hide();
 		
 		// If we added the action and we are in cycle3 option 2, remove the action button from the POC action bar

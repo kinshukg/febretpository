@@ -33,7 +33,7 @@ class DeathPopUpView extends PopUpViewBase
 		{
 			PopUpSection title = new PopUpSection("");
 			title.setImage(anxietySelfControlTrend);
-			title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
+			title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
 			subviews.add(title);
 		}
 		
@@ -167,6 +167,7 @@ class DeathPopUpView extends PopUpViewBase
 			copingCheck = null;
 		}
 		
+		parent.stopBlinking();
 		hide();
 		
 		// If we added both actions and we are in cycle2 option 2, remove the action button from the POC action bar

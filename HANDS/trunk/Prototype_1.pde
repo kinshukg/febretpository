@@ -72,14 +72,11 @@ public PImage IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = null;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
 // Pain evidence message for popup screen.
-// String MSG_PAIN_EVIDENCE_POPUP = 			
-	// "Evidence Suggests That: <l> \n " +
-	// "- A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level. " + 
-		// "<*> <b> Add NIC Positioning. </b> <s1> \n " +
-	// "- It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems. " + 
-		// "<*> <b> Prioritize pain and/or eliminate impaired gas exchange. </b> \n " +
-	// "- More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death. " + 
-		// "<*> <b> Additional actions needed. </b> \n ";
+String MSG_PAIN_EVIDENCE_POPUP = 			
+	"Evidence Suggests That: <l> \n " +
+	"- A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Pain Level. \n " + 
+	"- It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> as problems. \n " + 
+	"- More than 50% of EOL patients do not achieve expected <b> NOC Pain Level </b> by discharge or death.";
 
 String MSG_PAIN_POSITIONING = "A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level.";
 String MSG_PAIN_GAS_EXCHANGE = "It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems.";
@@ -106,8 +103,12 @@ String MSG_IMMOBILITY_CONSEQUENCES_TAILORED = "For patient like Mrs. Taylor who 
 
 // Message for info button next to pain graph
 String MSG_PAIN_GRAPH_DESCRIPTION = 
-	"Graph shows actual Pain NOC levels during first 24hr and projected levels to 72 hours if current actions are continued.";
+	"Graph shows <b> actual Pain NOC levels </b> during first 24hr and projected levels to 72 hours if current actions are continued.";
 
+// Message for info button next to death anxiety graph
+String MSG_DEATH_GRAPH_DESCRIPTION = 
+	"Graph shows <b> actual Comfortable Death NOC levels </b> during first 24hr and projected levels to 72 hours if current actions are continued.";
+	
 // Cycle 2: add family coping message on aciton bar
 String MSG_ACTION_COPING = "Add <nanda> Interrupted Family Process mini POC";	
 
@@ -191,7 +192,7 @@ public PImage emptyTrend;
 
 // Variables holding data of currently showing patient
 public String name = "Ann Taylor";
-public String dob = "03/12/1959",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 3:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
+public String dob = "03/12/1959",gender = "Female", allergies = "None" ,codeStatus = "DNR" ,poc = "09/17/2010", shft= "7:00a - 7:00p", room = "1240", medicalDX = "Malignant Neoplasm of the Pancreas" , mr = "xxx xxx xxx", physician = "Piper";
 public String other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,6 +290,20 @@ public void setup()
 	IMG_MOBILITY = loadImage("NOCMobility.png");
 	IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = loadImage("NOCRespiratoryStatusGasExchange.png");;
 	
+
+	// Make sure initial options correspond to prototype 1
+	OPTION_NO_SUGGESTIONS = false;
+	OPTION_LONG_ALERT_BUTTON = false;
+	OPTION_EXPANDABLE_POPUP_TEXT = false;
+	OPTION_ENABLE_POPUP_TEXT = false;
+	OPTION_ALERT_INFO_BUTTON = true;
+	//OPTION_ENABLE_ACTION_INFO_POPUP = true;
+	OPTION_GRAPH_IN_MAIN_POPUP = false;
+	OPTION_GRAPH_ALERT_BUTTON = false;
+	OPTION_TAILORED_MESSAGES = false;
+	OPTION_NUMBER = 2;
+	CYCLE2_OPTION_NUMBER = 1;
+	OPTION_BIG_INFORMATION = false;	
 	reset();
 }
 
@@ -494,10 +509,10 @@ public void setupPopup()
 	
 	if(OPTION_ALERT_INFO_BUTTON)
 	{
-		pocManager.painLevelView.setInfoButton(645, 
-			"This requires action because analysis of similar patient's data shows: <l> \n " +
-			"* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
-			"* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n");
+		pocManager.painLevelView.setInfoButton(645, MSG_PAIN_EVIDENCE_POPUP);
+			// "This requires action because analysis of similar patient's data shows: <l> \n " +
+			// "* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
+			// "* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n");
 	}
 	
 	// Cycle 2 addition

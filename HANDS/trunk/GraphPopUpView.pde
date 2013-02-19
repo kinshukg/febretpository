@@ -46,6 +46,7 @@ class GraphPopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
+		rectMode(CORNERS);
 		int border = 5;
 		fill(0, 0, 0, 180);
 		noStroke();
