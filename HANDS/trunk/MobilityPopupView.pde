@@ -69,6 +69,7 @@ class MobilityPopupView extends PopUpViewBase
 		immobilityConsequencesCheck = new CheckBox("Add NOC: Immobility Consequences", secondLevelIcon, 0);
 		immobilityConsequencesCheck.textBoxEnabled = false;
 		immobilityConsequencesCheck.owner = this;
+		immobilityConsequencesCheck.setIconTooltipImage(IMG_IMMOBILITY_CONSEQUENCES);
 		
 		String icmsg = "";
 		if(OPTION_TAILORED_MESSAGES) icmsg = MSG_IMMOBILITY_CONSEQUENCES_TAILORED;
