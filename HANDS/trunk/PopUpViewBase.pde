@@ -82,7 +82,7 @@ class PopUpViewBase extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onAbortClicked() 
 	{
-		parent.stopBlinking();		
+		//parent.stopBlinking();		
 		hide();
 	}
 	

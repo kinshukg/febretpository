@@ -8,6 +8,8 @@ class PainPopUpView extends PopUpViewBase
 	
 	Button descriptionButton;
 	
+	int totalActions;
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PainPopUpView(int w_, SecondLevelRowView parent)
 	{
@@ -115,7 +117,7 @@ class PainPopUpView extends PopUpViewBase
 		// Little information: just list actions
 		else
 		{
-			PopUpSection section1 = new PopUpSection("");
+			PopUpSection section1 = new PopUpSection("Recommended Actions");
 			section1.addAction(c);
 			section1.addAction(c1);
 			section1.addAction(c2);
@@ -126,6 +128,7 @@ class PainPopUpView extends PopUpViewBase
 			
 			subviews.add(section1);
 		}
+		totalActions = 7;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,10 +194,19 @@ class PainPopUpView extends PopUpViewBase
 				{
 					v.subviews.remove(toRemove.get(j));
 					pps.actionBoxes.remove(toRemove.get(j));
+					totalActions--;
 				}
 			}
 		}
 		mainView.subviews.remove(this);
 		popUpView = null;
+		
+		print(totalActions);
+		
+		// If all possible actions have been added, remove popup.
+		if(totalActions == 0)
+		{
+			parent.removeAlertButton();
+		}
 	}
 }

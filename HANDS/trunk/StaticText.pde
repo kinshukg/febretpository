@@ -74,6 +74,7 @@ class StaticText extends View
 		int textHeight = 16; //(int)textAscent() + (int)textDescent();
 		boolean bullets = false;
 		boolean bold = false;
+		boolean highlight = false;
 		
 		int curLineWidth = 0;
 		int lineWidth = (int)w;
@@ -85,6 +86,8 @@ class StaticText extends View
 			if(textWords[i].equals("<l>")) { bullets = true; continue; }
 			if(textWords[i].equals("<b>")) { bold = true; continue; }
 			if(textWords[i].equals("</b>")) { bold = false; continue; }
+			if(textWords[i].equals("<h>")) { highlight = true; continue; }
+			if(textWords[i].equals("</h>")) { highlight = false; continue; }
 			if(textWords[i].equals("<h1>")) { textSize(16); continue; }
 			if(textWords[i].equals("<n>")) { textSize(12); continue; }
 			if(textWords[i].equals("<*>")) { curLineWidth = 32000; continue; }
@@ -129,7 +132,9 @@ class StaticText extends View
 				if(curLineWidth > maxTextWidth) maxTextWidth = curLineWidth;
 				if(textWords[i].endsWith("\n"))
 				{
+					if(highlight) { noStroke(); fill(255, 255, 0, 255); rect(curX, curY, curX + wordWidth + 5, curY + textHeight); fill(0); }
 					text(textWords[i], curX, curY);
+					
 					curY += textHeight;
 					if(bullets)	
 					{
@@ -155,7 +160,9 @@ class StaticText extends View
 						curX = 0;
 						curLineWidth = 0;
 					}
+					if(highlight) { noStroke(); fill(255, 255, 0, 255); rect(curX, curY, curX + wordWidth + 5, curY + textHeight); fill(0); }
 					text(textWords[i], curX, curY);
+					
 					curX += wordWidth + 5;
 					curLineWidth = curX;
 				}
@@ -163,7 +170,9 @@ class StaticText extends View
 			}
 			else
 			{
+				if(highlight) { noStroke(); fill(255, 255, 0, 255); rect(curX, curY, curX + wordWidth + 5, curY + textHeight); fill(0); }
 				text(textWords[i], curX, curY);
+				
 				curX += wordWidth + 5;
 				curLineWidth = curX;
 			}
