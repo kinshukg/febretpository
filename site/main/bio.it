@@ -2,76 +2,75 @@
 #include "../etc/header.html"
 
 <div class="item">
-    <h1>Bio</h1><br/>
-    <div class="item"><h3>Why I Do What I Do</h3>
-	    <p>
-		Visualization is playing an increasingly important role in the analysis of complex phenomena and simulations. As a research assistant at the UIC Electronic Visualization Lab (EVL), 
-		my main goals involve building tools that let researchers access and manipulate data in their own domains, using new and more efficient methodologies. This work does not simply involve 
-		the technical knowledge needed to create graphical applications. It also includes the ability to understand users and their own domain. Requirements vary across different people, and these 
-		requirements become more or less important depending on the target of our work: while the computational power of software tools is the main concern of domain experts, offering an engaging 
-		usage experience is the most important issue when building software for a more general audience, i.e. museum visitors. My passion for videogame design and development, along with my 
-		previous experience as a professional game developer, helps me in capturing those different concerns, and creating applications that try to offer not just functionality, but also an enjoyable
-		interaction experience.
-		</p>
-	    <p>
-		In this sense, the Electronic Visualization Lab offers the perfect environment to cultivate my interests. The new, cutting edge technology and software developed here is potentially 
-		targeting a very broad audience: from scientists working in national laboratories to museum visitors, from instructors interested in new learning technologies to casual videogame players.
-		</p>
-    </div>
-    <div class="item"><h3>Academic and Professional Experiences</h3>
-        <ul>
-            <li><b>June 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Research & Developement on the CAVE2 system.</li>
-            </ul></li>
-            <li><b>January 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Works on the HANDS project, in collaboration with the UIC Nursing department.</li>
-            </ul></li>
-            <li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Works as the main developer of omegalib, a multiplatform VR framework used to develop on devices like the OmegaDesk, tiled stereo displays, and NGCave.</li>
-            </ul></li>
+	<h1>Why I Do What I Do</h1><br/>
+	<$img "./pf3278_2656_h.jpg">
+	<p>
+	Visualization is playing an increasingly important role in the analysis of complex phenomena and simulations. As a research assistant at the UIC Electronic Visualization Lab (EVL), 
+	my main goals involve building tools that let researchers access and manipulate data in their own domains, using new and more efficient methodologies. This work does not simply involve 
+	the technical knowledge needed to create graphical applications. It also includes the ability to understand users and their own domain. Requirements vary across different people, and these 
+	requirements become more or less important depending on the target of our work: while the computational power of software tools is the main concern of domain experts, offering an engaging 
+	usage experience is the most important issue when building software for a more general audience, i.e. museum visitors. My passion for videogame design and development, along with my 
+	previous experience as a professional game developer, helps me in capturing those different concerns, and creating applications that try to offer not just functionality, but also an enjoyable
+	interaction experience.
+	</p>
+	<p>
+	In this sense, the Electronic Visualization Lab offers the perfect environment to cultivate my interests. The new, cutting edge technology and software developed here is potentially 
+	targeting a very broad audience: from scientists working in national laboratories to museum visitors, from instructors interested in new learning technologies to casual videogame players.
+	</p>
+</div>
+<div class="item"><h3>Academic and Professional Experiences</h3>
+	<ul>
+		<li><b>June 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Research & Developement on the CAVE2 system.</li>
+		</ul></li>
+		<li><b>January 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Works on the HANDS project, in collaboration with the UIC Nursing department.</li>
+		</ul></li>
+		<li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Works as the main developer of omegalib, a multiplatform VR framework used to develop on devices like the OmegaDesk, tiled stereo displays, and NGCave.</li>
+		</ul></li>
 
-            <li><b>January 2012 - May 2012, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
-                <li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</li>
-            </ul></li>
-            <li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
-                <li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics<a></li>
-            </ul></li>
-            <li><b>July 2010 - July 2012, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Research & Developement on the OmegaDesk.</li>
-            </ul></li>
-            <li><b>January 2009 - June 2011, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Develops the visualization toolset used by researchers to analyze data coming from the ENDURANCE project, a NASA funded exploration of Lake Bonney, Antarctica.</li>
-            </ul></li>
-            <li><b>October 2007 - December 2008, Milestone Games, Italy:</b><ul>
-                <li>Works as a Gameplay Programmer on two titles published worldwide for PC, XBOX360, Playstation 3 and Nintendo Wii: Superbike World Championship 08 (Black Bean) and MotoGP08 (Capcom).</li>
-            </ul></li>
-            <li><b>2007 -  2008, Politecnico di Milano, Italy:</b><ul>
-                <li>Holds a series of lectures on videogame design and development for Industrial Design and Computer Science students.</li>
-            </ul></li>
-            <li><b>August - December 2006, Electronic Visualization Laboratory, UIC:</b><ul>
-                <li>Team leader of the team winning the final competition in the Fall '06 Videogame Design class.</li>
-            </ul></li>
-            <li><b>Fall 2005, Politecnico di Milano, Italy:</b><ul>
-                <li>Teaching Assistant for a Programming Languages class (Computer Science students).</li>
-            </ul></li>
-        </ul>    
-    </div>
-    <div class="item"><h3>Education</h3>
-        <ul>
-            <li><b>2009 - Present, University of Illinois at Chicago:</b><ul>
-                <li>Ph.D. Graduate Student, Computer Science</li>
-            </ul></li>
-            <li><b>2006 - 2008, Politecnico di Milano, Italy:</b><ul>
-                <li>M.S., Computer Science (110/110, Cum Laude)</li>
-            </ul></li>
-            <li><b>2006 - 2008, University of illinois at Chicago (UIC):</b><ul>
-                <li>M.S., Computer Science</li>
-            </ul></li>
-            <li><b>2002 - 2005, Politecnico di Milano, Italy:</b><ul>
-                <li>B.S., Computer Science (104/110, Cum Laude)</li>
-            </ul></li>
-        </ul>    
-    </div>
+		<li><b>January 2012 - May 2012, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
+			<li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</li>
+		</ul></li>
+		<li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
+			<li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics<a></li>
+		</ul></li>
+		<li><b>July 2010 - July 2012, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Research & Developement on the OmegaDesk.</li>
+		</ul></li>
+		<li><b>January 2009 - June 2011, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Develops the visualization toolset used by researchers to analyze data coming from the ENDURANCE project, a NASA funded exploration of Lake Bonney, Antarctica.</li>
+		</ul></li>
+		<li><b>October 2007 - December 2008, Milestone Games, Italy:</b><ul>
+			<li>Works as a Gameplay Programmer on two titles published worldwide for PC, XBOX360, Playstation 3 and Nintendo Wii: Superbike World Championship 08 (Black Bean) and MotoGP08 (Capcom).</li>
+		</ul></li>
+		<li><b>2007 -  2008, Politecnico di Milano, Italy:</b><ul>
+			<li>Holds a series of lectures on videogame design and development for Industrial Design and Computer Science students.</li>
+		</ul></li>
+		<li><b>August - December 2006, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Team leader of the team winning the final competition in the Fall '06 Videogame Design class.</li>
+		</ul></li>
+		<li><b>Fall 2005, Politecnico di Milano, Italy:</b><ul>
+			<li>Teaching Assistant for a Programming Languages class (Computer Science students).</li>
+		</ul></li>
+	</ul>    
+</div>
+<div class="item"><h3>Education</h3>
+	<ul>
+		<li><b>2009 - Present, University of Illinois at Chicago:</b><ul>
+			<li>Ph.D. Graduate Student, Computer Science</li>
+		</ul></li>
+		<li><b>2006 - 2008, Politecnico di Milano, Italy:</b><ul>
+			<li>M.S., Computer Science (110/110, Cum Laude)</li>
+		</ul></li>
+		<li><b>2006 - 2008, University of illinois at Chicago (UIC):</b><ul>
+			<li>M.S., Computer Science</li>
+		</ul></li>
+		<li><b>2002 - 2005, Politecnico di Milano, Italy:</b><ul>
+			<li>B.S., Computer Science (104/110, Cum Laude)</li>
+		</ul></li>
+	</ul>    
 </div>
 
 #include "../etc/footer.html"
