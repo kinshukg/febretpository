@@ -93,17 +93,20 @@ class PainPopUpView extends PopUpViewBase
 		// Big information: we present EBI side-by-side with actions
 		if(OPTION_BIG_INFORMATION)
 		{
-			PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
+			PopUpSection section1 = new PopUpSection(
+				OPTION_TAILORED_MESSAGES ? MSG_PAIN_POSITIONING_TAILORED : MSG_PAIN_POSITIONING_TAILORED);
 			//section1.setDescription(MSG_PAIN_POSITIONING);
 			section1.addAction(c);
 			
 			
-			PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
+			PopUpSection section2 = new PopUpSection(
+				OPTION_TAILORED_MESSAGES ? MSG_PAIN_GAS_EXCHANGE_TAILORED : MSG_PAIN_GAS_EXCHANGE);
 			//section2.setDescription(MSG_PAIN_GAS_EXCHANGE);
 			section2.addAction(c1);
 			section2.addAction(c2);
 			
-			PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
+			PopUpSection section3 = new PopUpSection(
+				OPTION_TAILORED_MESSAGES ? MSG_PAIN_OUTCOME_TAILORED : MSG_PAIN_OUTCOME);
 			//section3.setDescription(MSG_PAIN_OUTCOME);
 			section3.addAction(c5);
 			section3.addAction(c6);

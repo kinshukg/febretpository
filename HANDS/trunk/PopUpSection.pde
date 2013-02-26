@@ -142,18 +142,18 @@ class PopUpSection extends View
 		// v2.1: place the info icon under the description (will fall next to the graph)
 		if(titleButton != null)
 		{
-			// titleButton.w = 16;
-			// titleButton.h = 16;
-			// titleButton.y = h;
-			// titleButton.x = 600;
 			titleButton.w = 16;
 			titleButton.h = 16;
 			titleButton.y = -4;
-			titleButton.x = 5;
+			titleButton.x = 130;
+			// titleButton.w = 16;
+			// titleButton.h = 16;
+			// titleButton.y = -4;
+			// titleButton.x = 5;
 			
 			// If we have a title button, move the title box a bit to the left.
-			titleBox.x += 20;
-			titleBox.w -= 20;
+			//titleBox.x += 20;
+			//titleBox.w -= 20;
 		}
 		if(img != null)
 		{
@@ -167,6 +167,11 @@ class PopUpSection extends View
 			if(titleButtonMode == 0)
 			{
 				h += img.height + 10;
+			}
+			if(titleButton != null)
+			{
+				titleButton.y = 14;
+				titleButton.x = 550;
 			}
 		}
 		if(actionBoxes != null)
