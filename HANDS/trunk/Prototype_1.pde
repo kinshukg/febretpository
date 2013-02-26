@@ -7,7 +7,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "c3r1";	
+static String VERSION = "c3r2-1";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -79,9 +79,18 @@ String MSG_PAIN_EVIDENCE_POPUP =
 	"- It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> as problems. \n " + 
 	"- More than 50% of EOL patients do not achieve expected <b> NOC Pain Level </b> by discharge or death.";
 
+String MSG_PAIN_EVIDENCE_POPUP_TAILORED = 			
+	"Evidence Suggests That: <l> \n " +
+	"- A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> will have the most positive impact on Mrs. Taylor's Pain Level. \n " + 
+	"- It is more difficult to control pain for an EOL patient like Mrs. Taylor who has both <b> Pain </b> and </b> Impaired Gas Exchange </b> as problems. \n " + 
+	"- More than 50% of EOL patients like Mrs. Taylor do not achieve expected <b> NOC Pain Level </b> by discharge or death.";
+
 String MSG_PAIN_POSITIONING = "A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level.";
 String MSG_PAIN_GAS_EXCHANGE = "It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems.";
 String MSG_PAIN_OUTCOME = "More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.";
+String MSG_PAIN_POSITIONING_TAILORED = "A combination of Medication Management, Positioning and Pain Management will have the most positive impact on Mrs. Taylor's Pain Level.";
+String MSG_PAIN_GAS_EXCHANGE_TAILORED = "It is more difficult to control pain for an EOL patient like Mrs. Taylor who has both Pain and Impaired Gas Exchange as problems.";
+String MSG_PAIN_OUTCOME_TAILORED = "More than 50% of EOL patients like Mrs. Taylor do not achieve expected NOC Pain Level by discharge or death.";
 
 // For the i icon related to Palliative Care Consultation
 String MSG_PALLIATIVE_CARE_INFO =
@@ -511,10 +520,8 @@ public void setupPopup()
 	
 	if(OPTION_ALERT_INFO_BUTTON)
 	{
-		pocManager.painLevelView.setInfoButton(645, MSG_PAIN_EVIDENCE_POPUP);
-			// "This requires action because analysis of similar patient's data shows: <l> \n " +
-			// "* It is difficult to control Pain in EOL patients who also have impaired Gas Exchange \n " + 
-			// "* >50% of EOL patients do not achieve expected NOC Pain Rating by discharge or death\n");
+		pocManager.painLevelView.setInfoButton(645, 
+			OPTION_TAILORED_MESSAGES ? MSG_PAIN_EVIDENCE_POPUP_TAILORED : MSG_PAIN_EVIDENCE_POPUP);
 	}
 	
 	// Cycle 2 addition
