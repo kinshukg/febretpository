@@ -86,7 +86,7 @@ The OmegaDesk prototype is a hybrid, 2D/3D work desk that enables users to work 
 <img src="../images/omegalib-white.png" width="" style="float: left"/>
 <div class="subitem">
 <p>
-<b>omegalib</b>, a C++ library that is being designed to ease the development of applications on virtual-reality and immersive systems. Its main features are: support for hybrid systems, presenting 2D and 3D content on the same display surface; display system scalability; seamless integration of a wide range of input peripherals (controllers, 3D head- and hand-tracking, motion capture [mocap] systems, touch surfaces); and, integration with third-party high-level toolkits, such as Unity3d, Processing, VTK, Open Scene Graph, and Qt.
+<b>omegalib</b> is a runtime environment and application toolkit for tiled displays and immersive and hybrid reality systems. Its main features are: support for cluster rendering; display system scalability; seamless integration of a wide range of input peripherals; integration with third-party high-level toolkits, such as VTK and Open Scene Graph. Omegalib applications can be developed in <b>C++ or Python</b>, and can run on eterogeneous systems, from a laptop, to the <a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=416">OmegaDesk</a> to <a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=424">CAVE2</a>.
 </p>
 <p>
 <b>The omicron SDK</b> is a library providing access to a variety of input devices, mostly used in immersive installations and stereo display systems. Some of the devices currently supported by omicron are:
