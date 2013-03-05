@@ -1,7 +1,7 @@
 #include "../etc/febretpository.ih"
 #include "../etc/header.html"
 
-<$item "Welcome!" img="../images/me.jpg" imgwidth="250">
+<$item "Welcome!" img="../images/me2.jpg" imgwidth="500">
 	<p><b>Welcome!</b> I'm Alessandro Febretti. I'm a Research Assistant and Ph.D. Student at the <a href="evl.uic.edu">Electronic Visualization Lab</a> of the University of Illinois at Chicago.</p>
 	
 	<p>This website is a repository of all the projects I'm currently working on or I did in the past, together with my publications, class projects, presentations and stuff I do for fun.</p>

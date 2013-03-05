@@ -3,7 +3,7 @@
 
 <div class="item">
 	<h1>Why I Do What I Do</h1><br/>
-	<$img "./pf3278_2656_h.jpg">
+	<$img "./pf3278_2656_h.jpg" width="1000">
 	<p>
 	Visualization is playing an increasingly important role in the analysis of complex phenomena and simulations. As a research assistant at the UIC Electronic Visualization Lab (EVL), 
 	my main goals involve building tools that let researchers access and manipulate data in their own domains, using new and more efficient methodologies. This work does not simply involve 
