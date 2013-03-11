@@ -37,6 +37,19 @@
 <!-- AddThis Button END -->
 <div class="section"><h2>Publications</h2>
 <div class="item" style="text-align: justify">
+<h3>A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces</h3>
+<img src="./HANDSHCI.PNG" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D.</p>
+<p><i>HCI International, 2013.</i></p>
+<p>
+In this paper we present our experience in designing and applying an evaluation protocol for assessing usability of a clinical decision support (CDS) system. The protocol is based on component-based usability testing, cognitive interviewing, and a rigorous coding scheme cross-referenced to a component library.
+</p>
+<p>
+We applied this protocol to evaluate alternate designs of a CDS interface for a nursing plan of care tool. The protocol allowed us to aggregate and ana-lyze usability data at various granularity levels, supporting both validation of existing components and providing guidance for targeted redesign.
+</p>
+</div></div>
+<div class="item" style="text-align: justify">
 <h3>CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis</h3>
 <img src="./EVL-Mars-Curiosity_LJL6719.jpg" width="250" style="float: left"/>
 <div class="subitem">

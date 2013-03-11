@@ -2,6 +2,17 @@
 #include "../etc/header.html"
 
 <$section "Publications">
+	<$item title="A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces" img="./HANDSHCI.PNG" imgwidth="250">
+		<p><b>Authors:</b> <b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D.</p>
+		<p><i>HCI International, 2013.</i></p>
+		
+		<p>
+		In this paper we present our experience in designing and applying an evaluation protocol for assessing usability of a clinical decision support (CDS) system. The protocol is based on component-based usability testing, cognitive interviewing, and a rigorous coding scheme cross-referenced to a component library.
+		</p>
+		<p>
+		We applied this protocol to evaluate alternate designs of a CDS interface for a nursing plan of care tool. The protocol allowed us to aggregate and ana-lyze usability data at various granularity levels, supporting both validation of existing components and providing guidance for targeted redesign.
+		</p>
+	<$end-item>
 	<$item title="CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis" img="./EVL-Mars-Curiosity_LJL6719.jpg" imgwidth="250">
 		<p><b>Authors:</b> <b>Febretti, A.</b>, Nishimoto, A., Thigpen, T., Talandis, J., Long, L., Pirtle, J., Peterka, T., Verlo, A., Brown, M., Plepys, D., Sandin, D., Renambot, L., Johnson, A., Leigh, J.</p>
 		<p><i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013.</i></p>
