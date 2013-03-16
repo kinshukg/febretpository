@@ -1,0 +1,370 @@
+.fmt-0{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:15.96pt;}
+
+.fmt-1{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-2{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:14.04pt;}
+
+.fmt-3{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:12pt;}
+
+@font-face {
+	font-family: 'Symbol_Type0_0';
+	src: local('Symbol_Type0_0');
+	src: url('Symbol_Type0_0.otf') format('opentype');
+}
+
+.fmt-4{font-style:normal;font-weight:normal;font-family:Symbol_Type0_0,Symbol,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-5{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:6.48pt;}
+
+.fmt-6{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9pt;}
+
+@font-face {
+	font-family: 'Times_New_Roman_Type0_1';
+	src: local('Times_New_Roman_Type0_1');
+	src: url('Times_New_Roman_Type0_1.otf') format('opentype');
+}
+
+.fmt-7{font-style:normal;font-weight:normal;font-family:Times_New_Roman_Type0_1,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+@font-face {
+	font-family: 'Courier_New_TrueType_2';
+	src: local('Courier_New_TrueType_2');
+	src: url('Courier_New_TrueType_2.ttf') format('truetype');
+}
+
+.fmt-8{font-style:normal;font-weight:normal;font-family:Courier_New_TrueType_2,Courier New,serif;color:#000000;font-size:8.04pt;}
+
+@font-face {
+	font-family: 'Courier_New_TrueType_3';
+	src: local('Courier_New_TrueType_3');
+	src: url('Courier_New_TrueType_3.ttf') format('truetype');
+}
+
+.fmt-9{font-style:normal;font-weight:bold;font-family:Courier_New_TrueType_3,Courier New,serif;color:#000000;font-size:8.04pt;}
+
+@font-face {
+	font-family: 'Courier_New_Type0_4';
+	src: local('Courier_New_Type0_4');
+	src: url('Courier_New_Type0_4.otf') format('opentype');
+}
+
+.fmt-10{font-style:normal;font-weight:normal;font-family:Courier_New_Type0_4,Courier New,serif;color:#000000;font-size:8.04pt;}
+
+.fmt-11{font-style:normal;font-weight:normal;font-family:Courier_New_TrueType_2,Courier New,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-12{font-style:normal;font-weight:bold;font-family:Courier_New_TrueType_3,Courier New,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-13{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-14{font-style:normal;font-weight:normal;font-family:Courier_New_TrueType_2,Courier New,serif;color:#000000;font-size:8.04pt;}
+
+.fmt-15{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#ffffff;font-size:9.96pt;}
+
+.fmt-16{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#ffffff;font-size:9.96pt;}
+
+.fmt-17{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#ffffff;font-size:9.96pt;}
+
+.fmt-18{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#ffffff;font-size:9.96pt;}
+
+.fmt-19{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#ffffff;font-size:9.96pt;}
+
+.fmt-20{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-21{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-22{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-23{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-24{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-25{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-26{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-27{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-28{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-29{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-30{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-31{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-32{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-33{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-34{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-35{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-36{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-37{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-38{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-39{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-40{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-41{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-42{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-43{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-44{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-45{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-46{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-47{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-48{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-49{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-50{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-51{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-52{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-53{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-54{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-55{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-56{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-57{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-58{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-59{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-60{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-61{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-62{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-63{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-64{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-65{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-66{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-67{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-68{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-69{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-70{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-71{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-72{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-73{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-74{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-75{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-76{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-77{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-78{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-79{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-80{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-81{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-82{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-83{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-84{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-85{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-86{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-87{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-88{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-89{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-90{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-91{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-92{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-93{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-94{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-95{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-96{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-97{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-98{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-99{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-100{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-101{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-102{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-103{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-104{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-105{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-106{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-107{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-108{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-109{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-110{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-111{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-112{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-113{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-114{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-115{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-116{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-117{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-118{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-119{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-120{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-121{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-122{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-123{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-124{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-125{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-126{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-127{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-128{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-129{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-130{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-131{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-132{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-133{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-134{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-135{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-136{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-137{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-138{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-139{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-140{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-141{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-142{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-143{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-144{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-145{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-146{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-147{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-148{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-149{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-150{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-151{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-152{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-153{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-154{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-155{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-156{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-157{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-158{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-159{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-160{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-161{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-162{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-163{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-164{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-165{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-166{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-167{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-168{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
+.fmt-169{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:9.96pt;}
+
