@@ -31,10 +31,10 @@
 		</ul></li>
 
 		<li><b>January 2012 - May 2012, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
-			<li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</li>
+			<li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</i></li>
 		</ul></li>
 		<li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
-			<li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics<a></li>
+			<li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics</a></li>
 		</ul></li>
 		<li><b>July 2010 - July 2012, Electronic Visualization Laboratory, UIC:</b><ul>
 			<li>Research & Developement on the OmegaDesk.</li>
@@ -71,6 +71,94 @@
 			<li>B.S., Computer Science (104/110, Cum Laude)</li>
 		</ul></li>
 	</ul>    
+</div>
+<a name="Publications"></a>
+<div class="item"><h3>Publications</h3>
+	<p><b>Journals</b>
+		<ol>
+			<li>Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.
+			"Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments".
+			<i>To Appear in IEEE Computer Graphics and Applications</i></li>
+		</ol>
+	</p>
+	<p><b>Conference Papers</b>
+		<ol>
+			<li><b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D. 
+			"A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces".
+			<i>HCI International, 2013.</i></li>
+			
+			<li><b>Febretti, A.</b>, Nishimoto, A., Thigpen, T., Talandis, J., Long, L., Pirtle, J., Peterka, T., Verlo, A., Brown, M., Plepys, D., Sandin, D., Renambot, L., Johnson, A., Leigh, J. "CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis"
+			<i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013.</i>
+			[<a href="../publication/SPIE13Paper-final.pdf">Pdf</a>]
+			</li>
+			
+			<li><b>Febretti, A.</b>, Richmond, K., Gulati, S., Flesher, C., Hogan, B.P., Johnson, A., Stone, W.C., Priscu, J., Doran, P. 
+			"Poisson reconstruction of extreme submersed environments: The ENDURANCE exploration of an under-ice Antarctic Lake"
+			<i>8th International Symposium on Visual Computing (ISVC12), Crete, Greece, Springer-Verlag, Lecture Notes in Computer Science, 07/16/2012 - 07/18/2012</i>
+			[<a href="../publications/ENDURANCE-ISVC12.pdf">Pdf</a>]
+			</li>
+			
+			<li><b>Febretti, A.</b>, Mateevitsi, V.A., Chau, D., Nishimoto, A., McGinnis, B., Misterka, J., Johnson, A., Leigh, J. 
+			"The OmegaDesk: Towards A Hybrid 2D & 3D Work Desk"
+			<i>7th International Symposium on Visual Computing (ISVC11), Las Vegas, Nevada, 09/26/2011 - 09/28/2011</i>
+			[<a href="../publications/OmegaDesk-final.pdf">Pdf</a>]
+			</li>
+			
+			<li>Richmon, K., <b>Febretti, A.</b>, Gulati, S., Flesher, C., Hogan, B.P., Murarka, A., Kuhlman, G., Sridharan, M, Johnson, A., Stone, W.C., Priscu, J., Doran, P.
+			"Sub-Ice Exploration of an Antarctic Lake: Results from the ENDURANCE Project"
+			<i>17th International Symposium on Unmanned Untethered Submersible Technology (UUST11), Portsmouth, NH, US, 08/21/2011 - 08/24/2011</i>
+			[<a href="../publications/SubIceExploration_UUST11.pdf">Pdf</a>]
+			</li>
+			
+			<li><b>Febretti, A.</b>, Garzotto, F.
+			"Usability, Playability, and Long-Term Engagement in Computer Games"
+			<i>CHI 2009 Work In Progress, Boston, MA, ACM SIGCHI, 04/04/2009 - 04/09/2009</i>
+			[<a href="../publications/EngageComputerGames_febrettiCHI09.pdf">Pdf</a>]
+			</li>
+		</ol>
+	</p>
+	<p><b>Posters</b>
+		<ol>
+			<li>Stifter, J., Lopez, K., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.
+			"Identifying Nurse Preferences for Presentation of Evidence Based End of Life Pain Management Information in Clinical Decision Support Systems"
+			<i>37th Midwest Nursing Research Society Conference, 2013</i>
+			</li>
+		</ol>
+	<p>
+	<p><b>Thesis</b>
+		<ol>
+			<li><b>Febretti, A.</b>
+			"Evaluating the Flash Platform for Web-based Collaborative Data Visualization"
+			<i>M.S. Thesis, Politecnico di Milano and University of Illinois at Chicago, 2006</i>
+			</li>
+		</ol>
+	</p>
+	<p><b>Non-Refereed Whitepapers and Articles</b>
+		<ol>
+			<li><b>Authors:</b> <b>Febretti, A.</b>, Frossi, A.
+			"Template Choice and Template Hierarchy Graph construction during the Partition Phase in reconfigurable environments" 
+			<i>Laboratory of Microarchitectures, Politecnico di Milano, 2006</i>
+			[<a href="../publications/HPPS_FebrettiFrossi.pdf">Pdf</a>]</li>
+			
+			<li><b>Authors:</b> <b>Febretti, A.</b>
+			"Fast late-bound invocation through Dynamic Method delegates"
+			<i>Codeproject, 2005</i>
+			[<a href="../publications/flb.pdf">Pdf</a>][<a href="http://www.codeproject.com/Articles/10951/Fast-late-bound-invocation-through-DynamicMethod-d">Web</a>]</li>
+		</ol>
+	<p>
+	<p><b>Other</b>
+		<ol>
+			<li>Doran, P.T., Stone, W., Priscu, J.C., Obryk, M., <b>Febretti, A.</b>
+			"The ENDURANCE Autonomous Underwater Vehicle"
+			<i>Keynote, 31st Science Week, Scientific Committee on Antarctic Research</i>
+			</li>
+		
+			<li><b>Febretti, A.</b>
+			"...For Science! Building Visualizations, Managing Dynamic Workflows and Coding Without Swearing too Much"
+			<i>Talk, UIC Computer Science Graduate Student Association, 2012</i>
+			[<a href="../publications/ScienceLecture.pdf">Pdf</a>]</li>
+		</ol>
+	<p>
 </div>
 
 #include "../etc/footer.html"
