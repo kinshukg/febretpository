@@ -2,10 +2,20 @@
 #include "../etc/header.html"
 
 <$section "Publications">
+	This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.html#Publications">About Me Page</a>.
+	<$item title="Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments" img="./_LJL6623.jpg" imgwidth="250">
+		<p><b>Authors:</b> Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.</p>
+		<p><i>To Appear in IEEE Computer Graphics and Applications.</i></p>
+		<p>
+		Scientists today are grappling with complex scientific phenomena that require the concentrated effort of interdisciplinary teams of scientists from different backgrounds whose work involves large, heterogeneous data sources. To uncover hidden relationships and make insights, related elements from these distinct datasets must be visualized and analyzed collectively, at the same time. Constructing integrative visualizations that simultaneously cater to a variety of data types is challenging. 
+		</p>
+		<p>
+		Hybrid Reality environments represent a new kind of visualization spaces that blurs the line between virtual environments and tiled display walls. These hybrid environments provide high-resolution, stereoscopic display surfaces to juxtapose a variety of datasets while providing a range of naturalistic interaction schemes. Hybrid Reality environments thus empower designers to construct integrative visualizations that are more effective at mashing up 2D, 3D, temporal, and multivariate datasets. We describe the benefits of these systems and illustrate their power with several real-world science applications.
+		</p>
+	<$end-item>
 	<$item title="A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces" img="./HANDSHCI.PNG" imgwidth="250">
 		<p><b>Authors:</b> <b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D.</p>
 		<p><i>HCI International, 2013.</i></p>
-		
 		<p>
 		In this paper we present our experience in designing and applying an evaluation protocol for assessing usability of a clinical decision support (CDS) system. The protocol is based on component-based usability testing, cognitive interviewing, and a rigorous coding scheme cross-referenced to a component library.
 		</p>

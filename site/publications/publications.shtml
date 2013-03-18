@@ -25,6 +25,7 @@
 <li><a href="../main/bio.shtml">About Me</a></li>
 <li><a href="../main/pastProjects.shtml">Past Projects</a></li>
 <li><a href="../publications/publications.shtml">Publications</a></li>
+<li><a href="../main/press.shtml">Press</a></li>
 <li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">EVL</a></li>
 </ul>
 </div>
@@ -36,6 +37,20 @@
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
 <!-- AddThis Button END -->
 <div class="section"><h2>Publications</h2>
+This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.html#Publications">About Me Page</a>.
+<div class="item" style="text-align: justify">
+<h3>Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments</h3>
+<img src="./_LJL6623.jpg" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.</p>
+<p><i>To Appear in IEEE Computer Graphics and Applications.</i></p>
+<p>
+Scientists today are grappling with complex scientific phenomena that require the concentrated effort of interdisciplinary teams of scientists from different backgrounds whose work involves large, heterogeneous data sources. To uncover hidden relationships and make insights, related elements from these distinct datasets must be visualized and analyzed collectively, at the same time. Constructing integrative visualizations that simultaneously cater to a variety of data types is challenging.
+</p>
+<p>
+Hybrid Reality environments represent a new kind of visualization spaces that blurs the line between virtual environments and tiled display walls. These hybrid environments provide high-resolution, stereoscopic display surfaces to juxtapose a variety of datasets while providing a range of naturalistic interaction schemes. Hybrid Reality environments thus empower designers to construct integrative visualizations that are more effective at mashing up 2D, 3D, temporal, and multivariate datasets. We describe the benefits of these systems and illustrate their power with several real-world science applications.
+</p>
+</div></div>
 <div class="item" style="text-align: justify">
 <h3>A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces</h3>
 <img src="./HANDSHCI.PNG" width="250" style="float: left"/>

@@ -1,0 +1,48 @@
+#include "../etc/febretpository.ih"
+#include "../etc/header.html"
+
+<$section "Press">
+	<$item title="CAVE2">
+		CAVE2 has been features in more than 500 media outlets. This is a selection articles and reviews about this system.
+		<ol>
+			<li>State-of-the-Art Virtual Reality System Is Key to Medical Discovery, <i>National Science Foundation</i> [<a href="http://www.nsf.gov/news/news_summ.jsp?cntn_id=126209">Read Article</a>]</li>
+			
+			<li>Mechdyne Corporation Licenses CAVE2 Hybrid Reality Environment, <i>Mechdyne Press Release</i> [<a href="http://www.hpcwire.com/hpcwire/2013-03-06/mechdyne_licenses_cave2_hybrid_reality_environment.html">Read Article</a>]</li>
+			
+			<li>How researchers use real-life 3-D holodecks to explore virtual frontiers, <i>NBC News</i> [<a href="http://science.nbcnews.com/_news/2013/02/20/17036221-how-researchers-use-real-life-3-d-holodecks-to-explore-virtual-frontiers?lite">Read Article</a>]</li>
+			
+			<li>University of Illinois CAVE2 Project Redefines Immersive Video, <i>Commercial Integrator</i> [<a href="http://www.commercialintegrator.com/article/university_of_illinois_cave2_project_redefines_immersive_video">Read Article</a>]</li>
+
+			<li>CAVE2 is the most advanced visualization environment (Yet), <i>Winextra</i> [<a href="http://www.winextra.com/tech/hardware/cave2-is-the-most-advanced-visualization-environments-yet-video/">Read Article</a>]</li>
+			
+			<li>Chicago Ideas Week, <i>ABC7 News</i> [<a href="http://abclocal.go.com/wls/story?section=news/local&id=8839408">Read Article</a>]</li>
+			
+			<li>Star Trek-style holodeck becomes reality as scientists invent 3D vitual reality system, <i>The Telegraph</i> [<a href="http://www.telegraph.co.uk/science/science-video/9882646/Star-Trek-style-holodeck-becomes-reality-as-scientists-invent-3D-vitual-reality-system.html">Read Article</a>]</li>
+			
+			<li>University of Illinois at Chicago: Virtual Reality’s CAVE Pioneer, <i>EDTech Magazine</i> [<a href="http://www.edtechmagazine.com/higher/article/2013/01/university-illinois-chicago-virtual-realitys-cave-pioneer">Read Article</a>]</li>
+			
+			<li>Using 3D Worlds to Visualize Data, <i>TIME</i> [<a href="http://science.time.com/2013/02/20/using-3d-worlds-to-visualize-data/">Read Article</a>]</li>
+			
+			<li>CAVE2: Not a Star Trek Holodeck Yet, but Getting Closer, <i>TIME</i> [<a href="http://techland.time.com/2013/02/25/cave2-not-a-star-trek-holodeck-yet-but-getting-closer/">Read Article</a>]</li>
+			
+			<li>I'd Kill to Play Games on This 72-Screen, 36-Computer Virtual Reality System, <i>Kotaku</i> [<a href="http://kotaku.com/cave2/">Read Article</a>]</li>
+		</ol>
+	<$end-item>
+	<$item title="OmegaDesk">
+		<ol>
+			<li>Not Your Usual Desk Job, <i>Medhill Reports</i> [<a href="http://news.medill.northwestern.edu/chicago/news.aspx?id=186022">Read Article</a>]</li>
+			<li>The Omega Desk: Workspace of the future, <i>Medhill Reports</i> [<a href="http://news.medill.northwestern.edu/chicago/news.aspx?id=179093">Read Article</a>]</li>
+		</ol>
+	<$end-item>
+	<$item title="ENDURANCE">
+		<ol>
+			<li>Exploring Beneath Antarctic Ice, <i>Astrobiology Magazine</i> [<a href="http://www.astrobio.net/index.php?option=com_expedition&task=detail&id=3457">Read Article</a>]</li>
+			
+			<li>Europa Here We Come: NASA Tests Under-Ice Sub with Eye Toward Jupiter, <i>Scientific American</i> [<a href="http://www.scientificamerican.com/article.cfm?id=europa-nasa-endurance">Read Article</a>]</li>
+			
+			<li>Antarctic diving robot practices for Europa, <i>NBC News</i> [<a href="http://www.today.com/id/36322469#.USqUCDA265g">Read Article</a>]</li>
+		</ol>
+	<$end-item>
+<$end-section>
+
+#include "../etc/footer.html"
