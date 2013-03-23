@@ -2,7 +2,7 @@
 #include "../etc/header.html"
 
 <$section "Publications">
-	This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.html#Publications">About Me Page</a>.
+	This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.shtml#Publications">About Me Page</a>.
 	<$item title="Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments" img="./_LJL6623.jpg" imgwidth="250">
 		<p><b>Authors:</b> Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.</p>
 		<p><i>To Appear in IEEE Computer Graphics and Applications.</i></p>
