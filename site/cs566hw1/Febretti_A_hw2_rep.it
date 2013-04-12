@@ -1,7 +1,7 @@
 #include "../etc/febretpository.ih"
 #include "../etc/header.html"
 
-<iframe src="./Febretti_A_hw2_rep.htm"></iframe>
+<iframe height="6500" width="100%" src="./Febretti_A_hw2_rep.htm" seamless></iframe>
 
 #include "../etc/footer.html"
 
