@@ -374,7 +374,8 @@ p.CodeBlock, li.CodeBlock, div.CodeBlock
 	mso-style-link:"Code Block Char";
 	margin:0in;
 	margin-bottom:.0001pt;
-	page-break-after:avoid;
+	text-align:justify;
+	text-justify:inter-ideograph;
 	background:#D9D9D9;
 	border:none;
 	padding:0in;
@@ -385,6 +386,8 @@ span.CodeBlockChar
 	mso-style-link:"Code Block";
 	font-family:"Courier New";
 	background:#D9D9D9;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
 .MsoPapDefault
 	{margin-bottom:12.0pt;
 	text-indent:.25in;
@@ -408,9 +411,7 @@ ul
 
 <div class=WordSection1>
 
-<p class=MsoTitle>CS 566 Homework 2</p>
-
-<p class=MsoSubtitle>Alessandro Febretti</p>
+<p class=MsoTitle>MPI Parallel Sum</p>
 
 <h1>Introduction</h1>
 
@@ -477,7 +478,7 @@ or actually be more time consuming than the corresponding sequential
 computation.</p>
 
 <p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
-width=361 height=325 id="Picture 3" src="Febretti_A_hw2_rep_files/image002.png"></p>
+width=338 height=303 id="Picture 3" src="Febretti_A_hw2_rep_files/image002.png"></p>
 
 <p class=MsoCaption align=left style='text-align:left'>Figure 2 . Example of negative speedup (computed using formula described above) x = Nodes, y=speedup.
 If the cost of sequential reduction is the same as cost of transmitting one
@@ -485,96 +486,68 @@ message, speedup is negative.</p>
 
 <p class=MsoNormal>What follows is the pseudocode for the algorithm:</p>
 
-<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
-background:#D9D9D9'>
+<div>
 
-<p class=CodeBlock>N = total data</p>
-
-<p class=CodeBlock>P = total nodes</p>
-
-<p class=CodeBlock>p = this node index [0, P]</p>
-
-<p class=CodeBlock>(MW, MH) = the mesh width and height</p>
-
-<p class=CodeBlock>(pi, pj) = this node index in the mesh ([0, MW], [0, MH])</p>
-
-<p class=CodeBlock>&nbsp;</p>
-
-<p class=CodeBlock>data = data array (N elements)</p>
-
-<p class=CodeBlock>&nbsp;</p>
-
-<p class=CodeBlock><b>// Compute local sum</b></p>
-
-<p class=CodeBlock>Sum = sum N/P elements of data, starting from index N/P*p</p>
-
-<p class=CodeBlock>&nbsp;</p>
-
-<p class=CodeBlock>// Row reduction</p>
-
-<p class=CodeBlock>rounds = log2(MW)</p>
-
-<p class=CodeBlock>For k in [1: rounds]</p>
-
-<p class=CodeBlock>        <b>// Interval between nodes involved in this round</b></p>
-
-<p class=CodeBlock>        I = 2^(k – 1)</p>
-
-<p class=CodeBlock>        <b>// if pi is divisible by interval, we take part
-in this round</b></p>
-
-<p class=CodeBlock>        If(mod(pi, I) = 0)            </p>
-
-<p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'>               <b>//
-Check if pi is divisible by next round interval</b></p>
-
-<p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
-// If it is, this node is involved in next round of reduction</b></p>
-
-<p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
-// This means this node should be a RECEIVING node this round</b></p>
-
-<p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
-// Since sending nodes will not take part in next computation round</b></p>
-
-<p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
-// due to recursive halving.</b></p>
-
-<p class=CodeBlock>                      If(mod(pi, I*2) = 0) Sum += receive
-sum from node(pi + I, pj)</p>
-
-<p class=CodeBlock>                      Else send my sum to node(pi – I,
-pj)             </p>
-
-<p class=CodeBlock>&nbsp;</p>
-
-<p class=CodeBlock><b>// Column reduction on first column only</b></p>
-
-<p class=CodeBlock>If(pi = 0)</p>
-
-<p class=CodeBlock>    <b>// This computation follows same principle as row
-reduction, but acts on column indices</b></p>
-
-<p class=CodeBlock>    Rounds = log2(MH)</p>
-
-<p class=CodeBlock>    For k in [1:rounds]</p>
-
-<p class=CodeBlock>        I = 2^(k – 1)</p>
-
-<p class=CodeBlock>        If(mod(pj, I) = 0)</p>
-
-<p class=CodeBlock>             If(mod(pj, I*2) = 0) Sum += receive sum from
-node(pi, pj + I)</p>
-
-<p class=CodeBlock>             Else send my sum to node(pi, pj - I)</p>
-
-<p class=CodeBlock>&nbsp;</p>
-
-<p class=CodeBlock><b>// If we are node(0, 0) print the final result.</b></p>
-
-<p class=CodeBlock>If(pi = 0 and pj = 0)</p>
-
-<p class=CodeBlock>   Print Sum</p>
+<table cellspacing=0 cellpadding=0 hspace=0 vspace=0>
+ <tr>
+  <td valign=top align=left style='padding-top:0in;padding-right:0in;
+  padding-bottom:0in;padding-left:0in'>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  background:#D9D9D9'>
+  <p class=CodeBlock>N = total data</p>
+  <p class=CodeBlock>P = total nodes</p>
+  <p class=CodeBlock>p = this node index [0, P]</p>
+  <p class=CodeBlock>(MW, MH) = the mesh width and height</p>
+  <p class=CodeBlock>(pi, pj) = this node index in the mesh ([0, MW], [0, MH])</p>
+  <p class=CodeBlock>&nbsp;</p>
+  <p class=CodeBlock>data = data array (N elements)</p>
+  <p class=CodeBlock>&nbsp;</p>
+  <p class=CodeBlock><b>// Compute local sum</b></p>
+  <p class=CodeBlock>Sum = sum N/P elements of data, starting from index N/P*p</p>
+  <p class=CodeBlock>&nbsp;</p>
+  <p class=CodeBlock>// Row reduction</p>
+  <p class=CodeBlock>rounds = log2(MW)</p>
+  <p class=CodeBlock>For k in [1: rounds]</p>
+  <p class=CodeBlock>        <b>// Interval between nodes involved in this
+  round</b></p>
+  <p class=CodeBlock>        I = 2^(k – 1)</p>
+  <p class=CodeBlock>        <b>// if pi is divisible by interval, we take part
+  in this round</b></p>
+  <p class=CodeBlock>        If(mod(pi, I) = 0)            </p>
+  <p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'>               <b>//
+  Check if pi is divisible by next round interval</b></p>
+  <p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
+  // If it is, this node is involved in next round of reduction</b></p>
+  <p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
+  // This means this node should be a RECEIVING node this round</b></p>
+  <p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
+  // Since sending nodes will not take part in next computation round</b></p>
+  <p class=CodeBlock style='text-indent:.5in;background:#D9D9D9'><b>              
+  // due to recursive halving.</b></p>
+  <p class=CodeBlock>                      If(mod(pi, I*2) = 0) Sum += receive
+  sum from node(pi + I, pj)</p>
+  <p class=CodeBlock>                      Else send my sum to node(pi – I,
+  pj)             </p>
+  <p class=CodeBlock>&nbsp;</p>
+  <p class=CodeBlock><b>// Column reduction on first column only</b></p>
+  <p class=CodeBlock>If(pi = 0)</p>
+  <p class=CodeBlock>    <b>// This computation follows same principle as row
+  reduction, but acts on column indices</b></p>
+  <p class=CodeBlock>    Rounds = log2(MH)</p>
+  <p class=CodeBlock>    For k in [1:rounds]</p>
+  <p class=CodeBlock>        I = 2^(k – 1)</p>
+  <p class=CodeBlock>        If(mod(pj, I) = 0)</p>
+  <p class=CodeBlock>             If(mod(pj, I*2) = 0) Sum += receive sum from
+  node(pi, pj + I)</p>
+  <p class=CodeBlock>             Else send my sum to node(pi, pj - I)</p>
+  <p class=CodeBlock>&nbsp;</p>
+  <p class=CodeBlock><b>// If we are node(0, 0) print the final result.</b></p>
+  <p class=CodeBlock>If(pi = 0 and pj = 0)</p>
+  <p class=CodeBlock>   Print Sum</p>
+  </div>
+  </td>
+ </tr>
+</table>
 
 </div>
 
@@ -591,10 +564,19 @@ nodes and for N=2<sup>16</sup>, 2<sup>18</sup>, 2<sup>20</sup>. </p>
 </b></span>This convenience script queues multiple versions of the computation
 on the cluster. For instance, running</p>
 
-<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
-background:#D9D9D9'>
+<div>
 
-<p class=CodeBlock>./run_all 18 </p>
+<table cellspacing=0 cellpadding=0 hspace=0 vspace=0>
+ <tr>
+  <td valign=top align=left style='padding-top:0in;padding-right:0in;
+  padding-bottom:0in;padding-left:0in'>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  background:#D9D9D9;margin-left:.25in;margin-right:0in'>
+  <p class=CodeBlock>./run_all 18 </p>
+  </div>
+  </td>
+ </tr>
+</table>
 
 </div>
 
