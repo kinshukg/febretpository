@@ -1,0 +1,10 @@
+#!/bin/bash
+#PBS -l walltime=1:00
+#PBS -l cput=1:00
+#PBS -q student_medium
+#PBS -l nodes=4:ppn=4
+#PBS -o parallel_GE_alessandro_out.txt
+#PBS -e parallel_GE_alessandro_err.txt
+cd ~afebre2/gaussianator
+/usr/common/mpich2/bin/mpiexec ./parallel_GE_alessandro 1 64 1024 matrix_1024_0.txt 1
+
