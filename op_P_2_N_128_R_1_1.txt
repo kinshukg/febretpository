@@ -1,0 +1,28 @@
+P = 2, distributed_read = 1, N = 128, R = 1, input = matrix_128_0.txt
+Checksum1(X) =  3.0604e+01,    Checksum2(X) = -1.9211e+01,    Checksum1(U) =  5.8111e+03,    Checksum2(U) =  7.1886e+03
+-------------------------------------------------------------------------------------------------------------
+Sequential Time w/DD+BS     : 19.273(ms)
+Sequential Time DD only     : 10.398(ms)
+Sequential Time BS only     : 1.374(ms)
+Sequential Time PV only     : 0.838(ms)
+Sequential Time w/oDD+BS    : 7.501(ms)
+Sequential Time w/oDD+BS+PV : 6.663(ms)
+
+Parallel Time w/DD+BS  : 65.018(ms)
+Speedup       w/DD+BS  : 0.296
+
+Parallel Time DD only     : 8.450(ms)
+Speedup       DD only     : 1.231
+
+Parallel Time BS only     : 41.330(ms)
+Speedup       BS only     : 0.033
+
+Parallel Time PV only     : 10.862(ms)
+Speedup       PV only     : 0.077
+
+Parallel Time w/oDD+BS    : 15.238(ms)
+Speedup       w/oDD+BS    : 0.492
+Parallel Time w/oDD+BS+PV    : 4.376(ms)
+Speedup       w/oDD+BS+PV    : 1.523
+-------------------------------------------------------------------------------------------------------------
+

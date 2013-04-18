@@ -1,0 +1,28 @@
+P = 16, distributed_read = 1, N = 1024, R = 64, input = matrix_1024_0.txt
+Checksum1(X) = -3.0428e+01,    Checksum2(X) = -4.9344e+01,    Checksum1(U) = -1.8532e+06,    Checksum2(U) =  3.7279e+05
+-------------------------------------------------------------------------------------------------------------
+Sequential Time w/DD+BS     : 5034.544(ms)
+Sequential Time DD only     : 574.597(ms)
+Sequential Time BS only     : 72.501(ms)
+Sequential Time PV only     : 192.373(ms)
+Sequential Time w/oDD+BS    : 4387.446(ms)
+Sequential Time w/oDD+BS+PV : 4195.072(ms)
+
+Parallel Time w/DD+BS  : 3680.432(ms)
+Speedup       w/DD+BS  : 1.368
+
+Parallel Time DD only     : 63.574(ms)
+Speedup       DD only     : 9.038
+
+Parallel Time BS only     : 86.259(ms)
+Speedup       BS only     : 0.841
+
+Parallel Time PV only     : 1026.245(ms)
+Speedup       PV only     : 0.187
+
+Parallel Time w/oDD+BS    : 3530.599(ms)
+Speedup       w/oDD+BS    : 1.243
+Parallel Time w/oDD+BS+PV    : 2504.354(ms)
+Speedup       w/oDD+BS+PV    : 1.675
+-------------------------------------------------------------------------------------------------------------
+

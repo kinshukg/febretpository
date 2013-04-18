@@ -1,0 +1,28 @@
+P = 8, distributed_read = 0, N = 256, R = 8, input = matrix_256_0.txt
+Checksum1(X) = -1.2684e+01,    Checksum2(X) =  1.0095e+01,    Checksum1(U) =  2.5550e+05,    Checksum2(U) = -3.3122e+05
+-------------------------------------------------------------------------------------------------------------
+Sequential Time w/DD+BS     : 100.575(ms)
+Sequential Time DD only     : 37.807(ms)
+Sequential Time BS only     : 4.704(ms)
+Sequential Time PV only     : 4.477(ms)
+Sequential Time w/oDD+BS    : 58.064(ms)
+Sequential Time w/oDD+BS+PV : 53.587(ms)
+
+Parallel Time w/DD+BS  : 2779.560(ms)
+Speedup       w/DD+BS  : 0.036
+
+Parallel Time DD only     : 44.021(ms)
+Speedup       DD only     : 0.859
+
+Parallel Time BS only     : 2540.893(ms)
+Speedup       BS only     : 0.002
+
+Parallel Time PV only     : 91.086(ms)
+Speedup       PV only     : 0.049
+
+Parallel Time w/oDD+BS    : 194.646(ms)
+Speedup       w/oDD+BS    : 0.298
+Parallel Time w/oDD+BS+PV    : 103.560(ms)
+Speedup       w/oDD+BS+PV    : 0.517
+-------------------------------------------------------------------------------------------------------------
+
