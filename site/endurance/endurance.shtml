@@ -38,7 +38,7 @@
 <!-- AddThis Button END -->
 <div class="section"><h2>The NASA ENDURANCE Project</h2>
 <div class="item" style="text-align: justify">
-<img src="./lake_bonney.jpg" width="" style="float: left"/>
+<img src="./lake_bonney.jpg" width="350" style="float: left"/>
 <div class="subitem">
 <p>NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting <b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. ENDURANCE is designed to swim untethered under ice, in order to create three-dimensional maps of the underwater environment, and to collect data and samples of microbial life.</p>
 <p>In preparation for a future mission to Europa, a series of field tests in Lake Mendota on the campus of the University of Wisconsin at Madison, and Lake Bonney, Antarctica have been conducted to prove that ENDURANCE is suited to operating in a cold environment. One successful mission to Antarctica was conducted in last fall 2008 with another scheduled fall 2009. Additional missions are anticipated with significant planning before a Europa mission will take place likely a couple of decades from now.</p>
@@ -52,7 +52,7 @@ three-dimensional images, maps and data renderings of the lake for analysis.</p>
 <div class="section"><h2>Subprojects</h2>
 <div class="item" style="text-align: justify">
 <h3>Looking Glass</h3>
-<img src="../LookingGlass/endurance.png" width="" style="float: left"/>
+<img src="../LookingGlass/endurance.png" width="350" style="float: left"/>
 <div class="subitem">
 Looking Glass is a hydrographic visualization application, developed to analyze data coming from the ENDURANCE project exploration of ice-covered Lake Bonney, Antarctica.
 <ul>
@@ -65,7 +65,7 @@ Looking Glass is a hydrographic visualization application, developed to analyze 
 </div></div>
 <div class="item" style="text-align: justify">
 <h3>Sediment Visualization on LambdaWall</h3>
-<img src="./lambda.jpg" width="" style="float: left"/>
+<img src="./lambda.jpg" width="350" style="float: left"/>
 <div class="subitem">
 This visualization application allows researchers to visualize and compare geo-referenced images of the ice sheet covering lake Bonney. At present, the total dataset consists of more than 100,000 images, well suited for display on EVL’s high-resolution tiled display - LambdaVision. The tiled display allows scientists to simultaneously display hundreds of images from the acquired dataset in full resolution.
 <p><b>Links:</b>
@@ -74,10 +74,12 @@ This visualization application allows researchers to visualize and compare geo-r
 </div></div>
 <div class="item" style="text-align: justify">
 <h3>Sonar-based bathymetry reconstruction of Lake Bonney</h3>
+<img src="./_LJL3411.jpg" width="350" style="float: left"/>
 <div class="subitem">
 <p>The sonar data gathered by the ENDURANCE AUV has been used to recontruct a 3d model of West Lake Bonney. A customized set of tools has been developed for this purpose. The tools are able to decimate and clean up the source sonar range, perform raytracing using water sound velocity profiles, and extract a surface from the filtered points using Poisson Surface Reconstruction. The resulting bathymetry has been rendered and animated inside Paraview.</p>
 <p><b>Links:</b>
 <a href="http://febretpository.hopto.org/svn/BigWhoop/ENDURANCE/dttools/">ENDURANCE DeltaT processing tools (dttools)</a>
+<a href="http://febretpository.blogspot.com/2013/05/parallel-beam-tracing-and-visualization.html">Parallel Beam Tracing and Visualization of 200 Million Sonar Points</a>
 </p>
 <h4 align="center"><object width="640" height="385">
 <param name="movie" value="http://www.youtube.com/v/SF1DSzVzQ-g?fs=1&amp;hl=en_US"></param>
