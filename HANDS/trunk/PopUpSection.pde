@@ -145,7 +145,8 @@ class PopUpSection extends View
 			titleButton.w = 16;
 			titleButton.h = 16;
 			titleButton.y = -4;
-			titleButton.x = 130;
+			titleButton.x = 120;
+			//titleButton.x = 0;
 			// titleButton.w = 16;
 			// titleButton.h = 16;
 			// titleButton.y = -4;
@@ -171,7 +172,7 @@ class PopUpSection extends View
 			if(titleButton != null)
 			{
 				titleButton.y = 14;
-				titleButton.x = 550;
+				titleButton.x = 490;
 			}
 		}
 		if(actionBoxes != null)
