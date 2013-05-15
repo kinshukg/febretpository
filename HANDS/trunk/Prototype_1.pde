@@ -7,7 +7,7 @@ static int SCREEN_HEIGHT = 900;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "c3r2-1";	
+static String VERSION = "c3r3";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
