@@ -97,6 +97,12 @@ class StaticText extends View
 				curX += 20;
 				continue; 
 			}
+			if(textWords[i].equals("<bl>")) 
+			{ 
+				image(bulletIcon,curX,curY + 3); 
+				curX += 20;
+				continue; 
+			}
 			if(textWords[i].equals("<nanda>")) 
 			{ 
 				image(firstLevelIcon,curX,curY); 

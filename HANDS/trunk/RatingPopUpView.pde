@@ -84,15 +84,18 @@ class RatingPopUpView extends PopUpViewBase
 			"3. Select NOC rating (1-5) expected of patient at discharge from your unit <s1> \n " +
 			"<s1> Consider <b> 5 </b> to be the rating that one would assign to a comparable healthy person (e.g. same age, mental capacity, gender) and <b> 1 </b> to be the lowest. \n ";
 			
-		if(OPTION_BIG_INFORMATION)
+		if(!OPTION_NO_SUGGESTIONS)
 		{
-			expectedRatingSection.setDescription(expectedRatingTutorial);
-			currentRatingSection.setDescription(currentRatingTutorial);
-		}
-		else
-		{
-			expectedRatingSection.setInfoButton(expectedRatingTutorial);
-			currentRatingSection.setInfoButton(currentRatingTutorial);
+			if(OPTION_BIG_INFORMATION)
+			{
+				expectedRatingSection.setDescription(expectedRatingTutorial);
+				currentRatingSection.setDescription(currentRatingTutorial);
+			}
+			else
+			{
+				expectedRatingSection.setInfoButton(expectedRatingTutorial);
+				currentRatingSection.setInfoButton(currentRatingTutorial);
+			}
 		}
 	}
 	
