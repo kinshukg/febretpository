@@ -94,7 +94,7 @@ class PainPopUpView extends PopUpViewBase
 		if(OPTION_BIG_INFORMATION)
 		{
 			PopUpSection section1 = new PopUpSection(
-				OPTION_TAILORED_MESSAGES ? MSG_PAIN_POSITIONING_TAILORED : MSG_PAIN_POSITIONING_TAILORED);
+				OPTION_TAILORED_MESSAGES ? MSG_PAIN_POSITIONING_TAILORED : MSG_PAIN_POSITIONING);
 			//section1.setDescription(MSG_PAIN_POSITIONING);
 			section1.addAction(c);
 			

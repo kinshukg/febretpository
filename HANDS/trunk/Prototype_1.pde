@@ -74,23 +74,32 @@ public PImage IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = null;
 // Message library
 // Pain evidence message for popup screen.
 String MSG_PAIN_EVIDENCE_POPUP = 			
-	"Evidence Suggests That: <l> \n " +
-	"- A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Pain Level. \n " + 
-	"- It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> as problems. \n " + 
-	"- More than 50% of EOL patients do not achieve expected <b> NOC Pain Level </b> by discharge or death.";
+	"<b> Evidence Suggests That: </b> \n \n " +
+	"A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b> \n \n " + 
+	"It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
+	"All pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
+	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
 String MSG_PAIN_EVIDENCE_POPUP_TAILORED = 			
-	"Evidence Suggests That: <l> \n " +
-	"- A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> will have the most positive impact on Mrs. Taylor's Pain Level. \n " + 
-	"- It is more difficult to control pain for an EOL patient like Mrs. Taylor who has both <b> Pain </b> and </b> Impaired Gas Exchange </b> as problems. \n " + 
-	"- More than 50% of EOL patients like Mrs. Taylor do not achieve expected <b> NOC Pain Level </b> by discharge or death.";
+	"<b> Evidence Suggests That: </b> \n \n " +
+	"A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b> \n \n " + 
+	"It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
+	"All of Mrs. Taylor's pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
+	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
-String MSG_PAIN_POSITIONING = "A combination of Medication Management, Positioning and Pain Management has the most positive impact on Pain Level.";
-String MSG_PAIN_GAS_EXCHANGE = "It is more difficult to control pain when EOL patient has both Pain and Impaired Gas Exchange as problems.";
-String MSG_PAIN_OUTCOME = "More than 50% of EOL patients do not achieve expected NOC Pain Level by discharge or death.";
-String MSG_PAIN_POSITIONING_TAILORED = "A combination of Medication Management, Positioning and Pain Management will have the most positive impact on Mrs. Taylor's Pain Level.";
-String MSG_PAIN_GAS_EXCHANGE_TAILORED = "It is more difficult to control pain for an EOL patient like Mrs. Taylor who has both Pain and Impaired Gas Exchange as problems.";
-String MSG_PAIN_OUTCOME_TAILORED = "More than 50% of EOL patients like Mrs. Taylor do not achieve expected NOC Pain Level by discharge or death.";
+String MSG_PAIN_POSITIONING = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>";
+String MSG_PAIN_GAS_EXCHANGE = "</b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
+String MSG_PAIN_OUTCOME = "</b> All pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
+	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
+	
+String MSG_PAIN_POSITIONING_TAILORED = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b>";
+String MSG_PAIN_GAS_EXCHANGE_TAILORED = "</b> It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
+String MSG_PAIN_OUTCOME_TAILORED = "</b> All of Mrs. Taylor's pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
+	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
 // For the i icon related to Palliative Care Consultation
 String MSG_PALLIATIVE_CARE_INFO =
@@ -184,7 +193,7 @@ public String minusIconString = "delete.png";
 // Variables holding Images
 public PImage handIcon,firstLevelIcon,secondLevelIcon,thirdLevelIcon;
 public PImage firstLevelIconLegend, secondLevelIconLegend,thirdLevelIconLegend;
-public PImage plusIcon, minusIcon, prioritizeIcon, starIcon, checkIcon, crossIcon;
+public PImage plusIcon, minusIcon, prioritizeIcon, starIcon, checkIcon, crossIcon, bulletIcon;
 public PImage infoIcon;
 public PImage IMG_EBI;
 public PImage IMG_SUGGESTION;
@@ -253,6 +262,7 @@ public void setup()
 	smallGraph3.resize(0, 15);
 	emptySmallGraph.resize(0, 15);
 	
+	bulletIcon = loadImage("bullet.png");
 	starIcon = loadImage("star.png");
 	checkIcon = loadImage("accept.png");
 	checkIcon.resize(0, 22);
@@ -302,8 +312,8 @@ public void setup()
 	IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = loadImage("NOCRespiratoryStatusGasExchange.png");;
 	
 
-	// Make sure initial options correspond to prototype 1
-	OPTION_NO_SUGGESTIONS = false;
+	// Make sure initial options correspond to no suggestion version
+	OPTION_NO_SUGGESTIONS = true;
 	OPTION_LONG_ALERT_BUTTON = false;
 	OPTION_EXPANDABLE_POPUP_TEXT = false;
 	OPTION_ENABLE_POPUP_TEXT = false;
@@ -624,7 +634,7 @@ void drawStaticViewElements()
 {
 	int footerY = 500;
 	int footerX = 1020;
-	image(IMG_LEGEND, footerX, footerY + 10);
+	if(!OPTION_NO_SUGGESTIONS) image(IMG_LEGEND, footerX, footerY + 10);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -774,6 +784,11 @@ void keyPressed()
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 2;
 			OPTION_BIG_INFORMATION = true;
+			reset();
+		}
+		else if(key == '5')
+		{
+			OPTION_NO_SUGGESTIONS = true;
 			reset();
 		}
 		else if(key == '0')

@@ -317,16 +317,19 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
-		color buttonColor = 200;
-		if(level == 1) buttonColor = alertLowColor;
-		if(level == 2) buttonColor = alertMidColor;
-		if(level == 3) buttonColor = alertHighColor;
-		graphButton = new Button(x, 5, 40, 16, graphIcon);
-		graphButton.transparent = false;
-		graphButton.buttonColor = buttonColor;
-		subviews.add(this.graphButton);
-		if(level == 3) graphButton.blinking = true;
-		this.graphPopUp = p;
+		if(!OPTION_NO_SUGGESTIONS)
+		{
+			color buttonColor = 200;
+			if(level == 1) buttonColor = alertLowColor;
+			if(level == 2) buttonColor = alertMidColor;
+			if(level == 3) buttonColor = alertHighColor;
+			graphButton = new Button(x, 5, 40, 16, graphIcon);
+			graphButton.transparent = false;
+			graphButton.buttonColor = buttonColor;
+			subviews.add(this.graphButton);
+			if(level == 3) graphButton.blinking = true;
+			this.graphPopUp = p;
+		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
