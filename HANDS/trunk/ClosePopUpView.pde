@@ -24,11 +24,14 @@ class ClosePopUpView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
-		if(popUpView != null)
+		if(lx > w - 120)
 		{
-			popUpView.hide();
+			if(popUpView != null)
+			{
+				popUpView.hide();
+			}
+			pressed = true;
 		}
-		pressed = true;
 		return true;
 	}
 	
