@@ -77,7 +77,7 @@ String MSG_PAIN_EVIDENCE_POPUP =
 	"<b> Evidence Suggests That: </b> \n \n " +
 	"A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b> \n \n " + 
 	"It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
-	"All pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"All pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
@@ -85,19 +85,19 @@ String MSG_PAIN_EVIDENCE_POPUP_TAILORED =
 	"<b> Evidence Suggests That: </b> \n \n " +
 	"A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b> \n \n " + 
 	"It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
-	"All of Mrs. Taylor's pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+	"All of Mrs. Taylor's pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
 String MSG_PAIN_POSITIONING = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>";
 String MSG_PAIN_GAS_EXCHANGE = "</b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
-String MSG_PAIN_OUTCOME = "</b> All pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+String MSG_PAIN_OUTCOME = "</b> All pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 	
 String MSG_PAIN_POSITIONING_TAILORED = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b>";
 String MSG_PAIN_GAS_EXCHANGE_TAILORED = "</b> It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
-String MSG_PAIN_OUTCOME_TAILORED = "</b> All of Mrs. Taylor's pain can be relieved, however achieving pain control withi the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
+String MSG_PAIN_OUTCOME_TAILORED = "</b> All of Mrs. Taylor's pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
@@ -325,6 +325,8 @@ public void setup()
 	OPTION_NUMBER = 2;
 	CYCLE2_OPTION_NUMBER = 1;
 	OPTION_BIG_INFORMATION = false;	
+
+	frame.setTitle("Prototype No Suggestions");
 	reset();
 }
 
@@ -645,6 +647,15 @@ void hideHelpText(String text)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseReleased()
 {
+	// Kinda hack: if a tooltip window is enabled, a click closes it regardless of where the user clicks.
+	if(tooltipView != null)
+	{
+		tooltipView = null;
+		return;
+	}
+	
+	mainView.mouseClicked(mouseX, mouseY);
+	
 	if(popUpView != null)
 	{
 		if(popUpView.moving) popUpView.moving = false;
@@ -681,14 +692,6 @@ void mousePressed()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void mouseClicked()
 {
-	// Kinda hack: if a tooltip window is enabled, a click closes it regardless of where the user clicks.
-	if(tooltipView != null)
-	{
-		tooltipView = null;
-		return;
-	}
-	
-	mainView.mouseClicked(mouseX, mouseY);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -724,6 +727,7 @@ void keyPressed()
 		// }
 		if(key == '1')
 		{
+			frame.setTitle("Prototype Variant 1");
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
@@ -740,6 +744,7 @@ void keyPressed()
 		}
 		else if(key == '2')
 		{
+			frame.setTitle("Prototype Variant 2");
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = true;
 			OPTION_ALERT_INFO_BUTTON = false;
@@ -756,6 +761,7 @@ void keyPressed()
 		}
 		if(key == '3')
 		{
+			frame.setTitle("Prototype Variant 3");
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
@@ -772,6 +778,7 @@ void keyPressed()
 		}
 		else if(key == '4')
 		{
+			frame.setTitle("Prototype Variant 4");
 			OPTION_NO_SUGGESTIONS = false;
 			OPTION_LONG_ALERT_BUTTON = true;
 			OPTION_ALERT_INFO_BUTTON = false;
@@ -788,6 +795,7 @@ void keyPressed()
 		}
 		else if(key == '5')
 		{
+			frame.setTitle("Prototype No Suggestions");
 			OPTION_NO_SUGGESTIONS = true;
 			reset();
 		}
