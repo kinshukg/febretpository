@@ -377,6 +377,7 @@ void loadNNNIcons()
 void reset()
 {
 	popUpView = null;
+	tooltipView = null;
 	
 	loadNNNIcons();
 	
