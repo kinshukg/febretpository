@@ -20,20 +20,23 @@
 </div>
 <div class="item"><h3>Academic and Professional Experiences</h3>
 	<ul>
+		<li><b>September 2013 - December 2013, Electronic Visualization Laboratory, UIC:</b><ul>
+			<li>Volunteers as a mentor for the SPARK program</li>
+		</ul></li>
 		<li><b>June 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Research & Developement on the CAVE2 system.</li>
+			<li>Research & Developement on the CAVE2 system. Works on several applications for the system. Gives application development tutorials and support to students and EVL members. </li>
 		</ul></li>
 		<li><b>January 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
 			<li>Works on the HANDS project, in collaboration with the UIC Nursing department.</li>
 		</ul></li>
 		<li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Works as the main developer of omegalib, a multiplatform VR framework used to develop on devices like the OmegaDesk, tiled stereo displays, and NGCave.</li>
+			<li>Works as the lead developer of omegalib, a multiplatform VR framework used to create application for large-scale 2D/3D environments like CAVE2.</li>
 		</ul></li>
 
 		<li><b>January 2012 - May 2012, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
 			<li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</i></li>
 		</ul></li>
-		<li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
+		<li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC</b><ul>
 			<li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics</a></li>
 		</ul></li>
 		<li><b>July 2010 - July 2012, Electronic Visualization Laboratory, UIC:</b><ul>
