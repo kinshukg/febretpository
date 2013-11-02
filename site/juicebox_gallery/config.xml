@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<juiceboxgallery 
+
+	galleryTitle="Omegalib"
+
+>
+  <image imageURL="images/Capture2.jpg"
+	thumbURL="thumbs/Capture2.jpg"
+	linkURL="images/Capture2.jpg"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 5.0\Capture2.PNG">
+    <title><![CDATA[Multi shadow support]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/osx3.jpg"
+	thumbURL="thumbs/osx3.jpg"
+	linkURL="images/osx3.jpg"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 5.0\osx3.PNG">
+    <title><![CDATA[osx3]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/intro.png"
+	thumbURL="thumbs/intro.jpg"
+	linkURL="images/intro.png"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 5.0\intro.png">
+    <title><![CDATA[intro]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/ohelloWidgets.PNG"
+	thumbURL="thumbs/ohelloWidgets.jpg"
+	linkURL="images/ohelloWidgets.PNG"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 4.2\ohelloWidgets.PNG">
+    <title><![CDATA[ohelloWidgets]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/S2PLOT.jpg"
+	thumbURL="thumbs/S2PLOT.jpg"
+	linkURL="images/S2PLOT.jpg"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 4.2\S2PLOT.png">
+    <title><![CDATA[S2PLOT]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image imageURL="images/modelView.jpg"
+	thumbURL="thumbs/modelView.jpg"
+	linkURL="images/modelView.jpg"
+	linkTarget="_blank"
+	sourcePath="D:\Workspace\omegalib\etc\media\omegalib 3.7\modelView.png">
+    <title><![CDATA[modelView]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+</juiceboxgallery>
