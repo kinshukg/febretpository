@@ -59,8 +59,8 @@
 			omicron abstracts input using modular event services, each providing access to a specific input device. Events can be easily streamed over the network using the omicron connector API. Also, Event services can be chained together to provide advanced functionality. In addition to event services, omicron provides additional utility APIs to simplify the developement of the non-graphics part of VR applications.
 		</p>
         <p><b>Links:</b><ul>
-			<li><a href="https://code.google.com/p/omegalib/">Omegalib on Google Code</a></li>
-			<li><a href="https://code.google.com/p/omicron-sdk/">Omicron SDK on Google Code</a></li>
+			<li><a href="https://github.com/uic-evl/omegalib">Omegalib on Github</a></li>
+			<li><a href="https://github.com/uic-evl/omicron">Omicron SDK on Github
 		</ul></p>
 	<$end-item>
 	
