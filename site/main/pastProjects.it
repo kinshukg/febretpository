@@ -2,7 +2,23 @@
 #include "../etc/header.html"
 
 <$section "Past Projects">
-	<$item title="24H Games" img="../tfhgames/tfhglogo2.png" url="../tfhgames/index.shtml">
+	<$item title="NASA ENDURANCE (January 2009 - August 2012)" img="../images/DSC_0017.jpg">
+        <p>NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting <b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. As part of the first field test in Antarctica, collected data was relayed back to EVL to generate three-dimensional images, maps and data renderings of the lake for analysis.</p>
+        <p><b>Links:</b>
+			<li><a href="../endurance/endurance.shtml">ENDURANCE Subprojects</a></li>
+			<li><a href="http://www.evl.uic.edu/endurance/">ENDURANCE EVL page</a></li>
+			</ul>
+		</ul></p>
+	<$end-item>
+    
+	<$item title="Omegadesk (January 2010 - January 2012)" img="../images/omegadesk.jpg">
+		The OmegaDesk prototype is a hybrid, 2D/3D work desk that enables users to work seamlessly with 2D content (such as text documents and web browsers), as well as 3D content (such as 3D geometry and volume visualizations), and integrates multi-touch-sensitive surfaces so that users can intuitively point, write, touch and manipulate the information displayed, and communicate and share this information with remote colleagues.
+        <p><b>Links:</b><ul>
+			<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=416">OmegaDesk EVL page</a></li>
+		</ul></p>
+	<$end-item>
+
+	<$item title="24H Games (2010)" img="../tfhgames/tfhglogo2.png" url="../tfhgames/index.shtml">
         The 24H Games project is an experiment in gameplay design and developement. Its main objective is
         the creation of simple web-based games in <b>a single day</b>. Each of the presented games has
         been built by a single developer (that is, me ^-^) in just 24 hours. Each game is presented along with
@@ -10,26 +26,26 @@
         and things that didn't. 
 	<$end-item>
 	
-	<$item title="CS525 - GPU Programming" img="../images/cs525.png" url="../cs525/index.shtml">
+	<$item title="CS525 - GPU Programming (2011)" img="../images/cs525.png" url="../cs525/index.shtml">
         This section contains the projects I worked on for the GPU Programming class, Spring 2010.
 	<$end-item>
 	
-	<$item title="FlowViz" img="../flowviz/Logo.png" url="../flowviz/index.shtml">
+	<$item title="FlowViz (2010)" img="../flowviz/Logo.png" url="../flowviz/index.shtml">
         FlowViz is a generic 3D flow visualization for Omega Desk, a multitouch + stereo
         3D display system developed at EVL. The application has been built using Processing, and has been designed
         to be easily portable to other devices offering a subset of the capabilities of Omega Desk, a stereo, multi touch
         display system prototype.
 	<$end-item>
     
-	<$item title="CS491 - Visualization and Visual Analytics" img="../images/cs491.png" url="../cs491/index.shtml">
+	<$item title="CS491 - Visualization and Visual Analytics (2010)" img="../images/cs491.png" url="../cs491/index.shtml">
         This section contains the projects I worked on for the Visualization and Visual Analytics class, Fall 2009.
 	<$end-item>
     
-	<$item title="Computer Graphics 2 - Scientific Visualization" img="../images/cg2.png" url="../cg2/cg2.shtml">
+	<$item title="Computer Graphics 2 - Scientific Visualization (2009)" img="../images/cg2.png" url="../cg2/cg2.shtml">
         This section contains projects and presentations for CS526 - Spring 2009.
 	<$end-item>
     
-	<$item title="Usability in Games" img="../images/chi09.png">
+	<$item title="Usability in Games (2008)" img="../images/chi09.png">
         We are investigating how interface usability influences user engagement in long-term computer games, and 
         working to assess the relevance of usability versus playability factors on the overall experience engagement.
         A preliminary paper on this topic has been accepted at the Engagement By Design workshop, which is part of the 
@@ -44,66 +60,66 @@
 		</p>
 	<$end-item>
     
-	<$item title="Game Design Seminar 2008" img="../images/id09.png">
+	<$item title="Game Design Seminar (2008)" img="../images/id09.png">
 		Material from the game design seminar held for Interaction Design students, Politecnico di Milano, Fall 08.
 		<p><b>Downloads:</b> 
 			<a href="../InteractionDesign09/VideogameDesign.pdf">Lecture material (Italian)</a></br>
 		</p>
 	<$end-item>
     
-	<$item title="MotoGP 08" img="../images/motogp.jpg">
+	<$item title="MotoGP 08 (2008)" img="../images/motogp.jpg">
 		The official game of the 2008 season, MotoGP 08 features all the riders, bikes and tracks providing the definitive 2 wheeled racing experience. MotoGP 08 puts the player at the centre of the MotoGP experience by letting them join a team and compete alongside their sporting heroes in all three race classes: 125cc, 250cc and MotoGP. MotoGP 08 will mark the debut of the series on both the PlayStation 3 and Wii plus see the inclusion of the all new Indianapolis track plus the spectacle of night racing at the Qatar circuit. The game will also offer online play for PlayStation 3, Xbox 360 and PC owners.
 		<p><b>Links:</b> 
 			<a href="http://febretpository.blogspot.com/search/label/MotoGP08">Blog Entries</a>
 		</p>
 	<$end-item>
     
-	<$item title="QbViz" img="../images/qbviz.png" url="./qbviz.shtml">
+	<$item title="QbViz (2008)" img="../images/qbviz.png" url="./qbviz.shtml">
         QbViz is a lightweight actionscript library aimed at collaborative data visualization. Its main purpose is to simplify the creation of web applications capable of accessing fairly complex data sources, render them as interactive 3d visualizations, and share the created views between a set of remote users connected to the same virtual workspace.
 		<p><b>Downloads:</b> 
 			<a href="./qbviz/software/QbViz 0.3.zip">Software package 0.3</a>
 		</p>
 	<$end-item>
     
-	<$item title="Hydroviz" img="../images/hydroviz.png" url="./hydroviz.shtml">
+	<$item title="Hydroviz (2008)" img="../images/hydroviz.png" url="./hydroviz.shtml">
 		Hydroviz is a web application that gives the users access to salinity and currents data of Corpus Christi Bay, Texas. Various layers of data can be attached on top of a 3d reproduction of the bay, and their variation over time and depth can be explored interactively. Users can also access a common <b>virtual workspace</b> in which they can share created views, and modify them in cooperation. Hydroviz client-side component has been developed in flash, and makes use of <a href="./qbviz.shtml">QbViz</a> to leverage its data visualization and collaborative features.
 	<$end-item>
     
-	<$item title="Edanarion" img="../images/screen2.png" url="../edanarion/edanarion.shtml">
-        Edanarion is a multiplayer RPG game written in ActionScript 3 and C#. It can be played directly from a browser window. One of the main objectives of this project is to create a browser game in which users can actually build parts of the playable world. This project server is not currently published or active due to lack of time to actively maintain it.
-	<$end-item>
-    
-	<$item title="SBK08 - Superbike World Championship" img="../images/sbk.png">
+	<$item title="SBK08 - Superbike World Championship (2008)" img="../images/sbk.png">
 		This is the game I worked on as a Game Programmer at Milestone. SBK 08 is the official videogame of the Superbike World Championship. It has been released for XBOX360, PS3, PS2, PSP, WII and PC.
 		<p><b>Links:</b> 
 			<a href="http://www.sbkthegame.com">SBK08 Official Site</a>
 		</p>
 	<$end-item>
 	
-	<$item title="Computer Animation Projects" img="../images/mike.png" url="../ComputerAnimation/index.html">
-		This site contains all the projects I did for my Computer Animation class at UIC. These projects were voted by my fellow classmates to choose the best ones in each category (rendered animation, flocking, motion capture), and they all won first place, so I'm pretty proud of them :)
+	<$item title="Edanarion (2007)" img="../images/screen2.png" url="../edanarion/edanarion.shtml">
+        Edanarion is a multiplayer RPG game written in ActionScript 3 and C#. It can be played directly from a browser window. One of the main objectives of this project is to create a browser game in which users can actually build parts of the playable world. This project server is not currently published or active due to lack of time to actively maintain it.
 	<$end-item>
     
-	<$item title="Inner Battlefield" img="../images/ibf.png" url="./ibf.shtml">
-		Inner Battlefield is a serious game that will educate the player regarding the working of the human immune system, the different kinds of disease causing pathogens, 
-		and the effects of antibiotics on the human body. Inner Battlefield won first prize at the game development competition held at UIC VideoGame Design Class 8th of December, 2006.
-	<$end-item>
-    
-	<$item title="FlowTest" img="../FlowTest/img.png">
-		This is a small program I did as a proof-of-concept for an idea I had for the <a href="./ibf.shtml">Inner Battlefield</a> game. The first concept of the game involved the dynamic creation and destruction of blood vessels. The FlowTest application was a test for an algorythm that was able to reroute the blood flow dynamically from blood sources to drains inside the gameplay area. The algorythm is extremely simple: it involves a recursive recalculation of 'pressure' levels for each cell inside the game area each time a cell changes from obstructed to non-abstructed (or vice-versa). Then, blood 'particles' move inside the unobstructed paths, always directed towards cells with lower 'pressure' than their current one. The blood source cells are set to a specified maximum pressure level and the drain cells always have zero pressure. After launching the application, you can click on areas of the window to obstruct-unobstruct cells and see how the blood flow behaves.
-		<p><b>Downloads:</b> 
-			<a href="../FlowTest/FlowTest.zip">Application souce (C#) and binaries</a>
-		</p>
-	<$end-item>
-    
-	<$item title="Videogame design seminar" img="../images/gd.png">
+	<$item title="Videogame design seminar (2007)" img="../images/gd.png">
 		Material from a seminar on Videogame design I held during the Spring 2007 Human-Computer Interaction class (Politecnico di Milano).
 		<p><b>Downloads:</b> 
 			<a href="../hci/VideogameDesign.pdf">Presentation PDF (italian)</a>
 		</p>
 	<$end-item>
     
-	<$item title="YAMO - Yet Another Music Organizer" img="../images/Yamo.png">
+	<$item title="Computer Animation Projects (2006)" img="../images/mike.png" url="../ComputerAnimation/index.html">
+		This site contains all the projects I did for my Computer Animation class at UIC. These projects were voted by my fellow classmates to choose the best ones in each category (rendered animation, flocking, motion capture), and they all won first place, so I'm pretty proud of them :)
+	<$end-item>
+    
+	<$item title="Inner Battlefield (2006)" img="../images/ibf.png" url="./ibf.shtml">
+		Inner Battlefield is a serious game that will educate the player regarding the working of the human immune system, the different kinds of disease causing pathogens, 
+		and the effects of antibiotics on the human body. Inner Battlefield won first prize at the game development competition held at UIC VideoGame Design Class 8th of December, 2006.
+	<$end-item>
+    
+	<$item title="FlowTest (2006)" img="../FlowTest/img.png">
+		This is a small program I did as a proof-of-concept for an idea I had for the <a href="./ibf.shtml">Inner Battlefield</a> game. The first concept of the game involved the dynamic creation and destruction of blood vessels. The FlowTest application was a test for an algorythm that was able to reroute the blood flow dynamically from blood sources to drains inside the gameplay area. The algorythm is extremely simple: it involves a recursive recalculation of 'pressure' levels for each cell inside the game area each time a cell changes from obstructed to non-abstructed (or vice-versa). Then, blood 'particles' move inside the unobstructed paths, always directed towards cells with lower 'pressure' than their current one. The blood source cells are set to a specified maximum pressure level and the drain cells always have zero pressure. After launching the application, you can click on areas of the window to obstruct-unobstruct cells and see how the blood flow behaves.
+		<p><b>Downloads:</b> 
+			<a href="../FlowTest/FlowTest.zip">Application souce (C#) and binaries</a>
+		</p>
+	<$end-item>
+    
+	<$item title="YAMO - Yet Another Music Organizer (2005)" img="../images/Yamo.png">
 		Yamo (Yet another music organizer), manages a music library, moving and renaming song files based on a set of options specified by the user. Yamo is composed of a dynamic library that implements the library manager engine, and a wizard application that allows easy access to the Yamo engine services. Both the library and the wizard are written in C#. Being a library, the Yamo engine can be used even inside third party applications.
 		<p><b>Links:</b> 
 			<a href="http://www.codeproject.com/KB/audio-video/yamo.aspx">Original CodeProject Article And Downloads</a>
