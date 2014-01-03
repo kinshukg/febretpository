@@ -46,7 +46,7 @@
 </div></div>
 <div class="section"><h2>Current Projects</h2>
 <div class="item" style="text-align: justify">
-<h3>CAVE2</h3>
+<h3>CAVE2 (October 2012 - Present)</h3>
 <img src="../images/cave2.jpg" width="" style="float: left"/>
 <div class="subitem">
 CAVE2, the next-generation large-scale virtual-reality environment, is a hybrid system that combines the benefits of both scalable-resolution display walls and virtual-reality systems to create a seamless 2D/3D environment that supports both information-rich analysis as well as virtual-reality simulation exploration at a resolution matching human visual acuity.
@@ -55,7 +55,7 @@ CAVE2, the next-generation large-scale virtual-reality environment, is a hybrid 
 </ul></p>
 </div></div>
 <div class="item" style="text-align: justify">
-<h3>Porthole</h3>
+<h3>Porthole (January 2013 - Present)</h3>
 <img src="../images/porthole.jpg" width="250" style="float: left"/>
 <div class="subitem">
 <p>
@@ -66,22 +66,13 @@ Porthole addresses earlier work limitations by proposing a novel Human-Computer 
 </p>
 </div></div>
 <div class="item" style="text-align: justify">
-<h3>HANDS</h3>
+<h3>HANDS (January 2012 - Present)</h3>
 <img src="../images/HANDS.png" width="" style="float: left"/>
 <div class="subitem">
 <p>The Hands-on Automated Nursing Data System (HANDS) is a standardized plan of care method in which the patient's plan is updated at every nurse hand-off allowing the interdisciplinary team to track the story about care and progress toward desired outcomes in a standardized format across time and units.</p>
 <p>
 EVL is collaborating with UIC's College of Nursing and College of Engineering on the visual component of the HANDS system. Current goals include: - improving the original HANDS user interface for more potential users such as doctors and therapists. - investigating and understanding the needs of prospective users, and adding additional functionality to HANDS to address the needs of those users. - adding visualization to HANDS existing reports in an effort to empower current and future users to do more data exploration and visual analytics.
 </p>
-</div></div>
-<div class="item" style="text-align: justify">
-<h3>Omegadesk</h3>
-<img src="../images/omegadesk.jpg" width="" style="float: left"/>
-<div class="subitem">
-The OmegaDesk prototype is a hybrid, 2D/3D work desk that enables users to work seamlessly with 2D content (such as text documents and web browsers), as well as 3D content (such as 3D geometry and volume visualizations), and integrates multi-touch-sensitive surfaces so that users can intuitively point, write, touch and manipulate the information displayed, and communicate and share this information with remote colleagues.
-<p><b>Links:</b><ul>
-<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=416">OmegaDesk EVL page</a></li>
-</ul></p>
 </div></div>
 <div class="item" style="text-align: justify">
 <h3>Omegalib and the Omicron SDK</h3>
@@ -108,18 +99,7 @@ omicron abstracts input using modular event services, each providing access to a
 <li><a href="https://github.com/uic-evl/omicron">Omicron SDK on Github
 </ul></p>
 </div></div>
-<div class="item" style="text-align: justify">
-<h3>NASA ENDURANCE</h3>
-<img src="../images/DSC_0017.jpg" width="" style="float: left"/>
-<div class="subitem">
-NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting
-<b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. As part of the first field test in Antarctica, collected data was relayed back to EVL to generate three-dimensional images, maps and data renderings of the lake for analysis.
-<p><b>Links:</b>
-<li><a href="../endurance/endurance.shtml">ENDURANCE Subprojects</a></li>
-<li><a href="http://www.evl.uic.edu/endurance/">ENDURANCE EVL page</a></li>
-</ul>
-</ul></p>
-</div></div>
+<a href="pastProjects.shtml"> See Past Projects Here</a>
 </div>
 <div style="clear: both;">&nbsp;</div>
 </div>

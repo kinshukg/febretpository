@@ -10,14 +10,14 @@
 <$end-item>
 
 <$section "Current Projects">
-	<$item title="CAVE2" img="../images/cave2.jpg">
+	<$item title="CAVE2 (October 2012 - Present)" img="../images/cave2.jpg">
 		CAVE2, the next-generation large-scale virtual-reality environment, is a hybrid system that combines the benefits of both scalable-resolution display walls and virtual-reality systems to create a seamless 2D/3D environment that supports both information-rich analysis as well as virtual-reality simulation exploration at a resolution matching human visual acuity.
         <p><b>Links:</b><ul>
 			<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=424">CAVE2 EVL page</a></li>
 		</ul></p>
 	<$end-item>
 	
-	<$item title="Porthole" img="../images/porthole.jpg" imgwidth="250">
+	<$item title="Porthole (January 2013 - Present)" img="../images/porthole.jpg" imgwidth="250">
 		<p>
 		Porthole is a framework that helps Virtual Environment applications developers to generate decoupled HTML5 interfaces. The goal is to ease the interaction between VE systems and smartphones, tablets, laptops or desktop computers, without the need of ad-hoc client applications. For instance, CAVE2 developers now can use handheld devices to interact and manage their VE applications, just by providing a XML Interfaces Description (XID) File (and, optionally, a Cascading Style Sheets (CSS) File for changing client interface style). Clients can connect to CAVE2 using an HTML5 enabled browser, receive a tailored Graphical User Interface, and manage VE application cameras and parameters. Connection, messaging and streaming management is, hence, transparent to VE applications developers.
 		</p>
@@ -27,18 +27,11 @@
 		</p>	
 	<$end-item>
 	
-	<$item title="HANDS" img="../images/HANDS.png">
+	<$item title="HANDS (January 2012 - Present)" img="../images/HANDS.png">
 		<p>The Hands-on Automated Nursing Data System (HANDS) is a standardized plan of care method in which the patient's plan is updated at every nurse hand-off allowing the interdisciplinary team to track the story about care and progress toward desired outcomes in a standardized format across time and units.</p>
 		<p>
 		EVL is collaborating with UIC's College of Nursing and College of Engineering on the visual component of the HANDS system. Current goals include: - improving the original HANDS user interface for more potential users such as doctors and therapists. - investigating and understanding the needs of prospective users, and adding additional functionality to HANDS to address the needs of those users. - adding visualization to HANDS existing reports in an effort to empower current and future users to do more data exploration and visual analytics.
 		</p>
-	<$end-item>
-	
-	<$item title="Omegadesk" img="../images/omegadesk.jpg">
-		The OmegaDesk prototype is a hybrid, 2D/3D work desk that enables users to work seamlessly with 2D content (such as text documents and web browsers), as well as 3D content (such as 3D geometry and volume visualizations), and integrates multi-touch-sensitive surfaces so that users can intuitively point, write, touch and manipulate the information displayed, and communicate and share this information with remote colleagues.
-        <p><b>Links:</b><ul>
-			<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=1&indi=416">OmegaDesk EVL page</a></li>
-		</ul></p>
 	<$end-item>
 	
 	<$item title="Omegalib and the Omicron SDK" img="../images/omegalib-white.png">
@@ -63,16 +56,8 @@
 			<li><a href="https://github.com/uic-evl/omicron">Omicron SDK on Github
 		</ul></p>
 	<$end-item>
-	
-	<$item title="NASA ENDURANCE" img="../images/DSC_0017.jpg">
-        NASA's Astrobiology Science and Technology for Exploring Planets (ASTEP) Program is supporting 
-        <b>ENDURANCE</b> - the Environmentally Non-Disturbing Under-ice Robotic ANtarctic Explorer - to demonstrate concepts for exploring the ice-covered ocean on Jupiter's moon Europa. As part of the first field test in Antarctica, collected data was relayed back to EVL to generate three-dimensional images, maps and data renderings of the lake for analysis.
-        <p><b>Links:</b>
-			<li><a href="../endurance/endurance.shtml">ENDURANCE Subprojects</a></li>
-			<li><a href="http://www.evl.uic.edu/endurance/">ENDURANCE EVL page</a></li>
-			</ul>
-		</ul></p>
-	<$end-item>
+    
+    <a href="pastProjects.shtml"> See Past Projects Here</a>
 <$end-section>
 
 #include "../etc/footer.html"
