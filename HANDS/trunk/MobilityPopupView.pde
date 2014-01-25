@@ -1,6 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class MobilityPopupView extends PopUpViewBase
 {
+    POCManager pocManager;
 	Button descriptionButton;
 	
 	CheckBox immobilityConsequencesCheck;
@@ -16,9 +17,10 @@ class MobilityPopupView extends PopUpViewBase
 	//boolean consultCheckAdded = false;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	MobilityPopupView(int w_, SecondLevelRowView parent)
+	MobilityPopupView(int w_, SecondLevelRowView parent, POCManager poc)
 	{
 		super(w_, parent);
+        pocManager = poc;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
