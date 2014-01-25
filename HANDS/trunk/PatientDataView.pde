@@ -3,11 +3,10 @@ class PatientDataView extends View
 	String title, entry;
   
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	PatientDataView(float x_, float y_,float w_,float h_,String title, String entry)
+	PatientDataView(float x_, float y_,float w_,float h_,String title)
 	{
 		super(x_, y_,w_ ,h_);
 		this.title = title;
-		this.entry = entry;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

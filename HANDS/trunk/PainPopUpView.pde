@@ -1,6 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class PainPopUpView extends PopUpViewBase
 {
+    POCManager pocManager;
 	int ADD_NIC = 0;
 	int ADD_NOC = 1;
 	int REMOVE_NANDA = 2;
@@ -11,41 +12,15 @@ class PainPopUpView extends PopUpViewBase
 	int totalActions;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	PainPopUpView(int w_, SecondLevelRowView parent)
+	PainPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
 	{
 		super(w_, parent);
+        pocManager = poc;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupPainTitleSection()
 	{
-		// PopUpSection title = new PopUpSection("<h1> Mrs. Taylor's Pain Level is not controlled");
-		// String alertDescription = MSG_PAIN_EVIDENCE_POPUP;
-		
-		// if(OPTION_ENABLE_POPUP_TEXT)
-		// {
-			// if(OPTION_GRAPH_ALERT_BUTTON)
-			// {
-				// descriptionButton = new Button(
-					// 322, 75, 0, 20, "Action required!", alertHighColor, 0);
-				// descriptionButton.tooltipText = alertDescription;
-				// descriptionButton.blinking = true;
-				// title.subviews.add(descriptionButton);
-			// }
-			// else
-			// {
-				// //title.setDescription(alertDescription);
-			// }
-			// title.separatorStyle = 1;
-			// if(OPTION_EXPANDABLE_POPUP_TEXT) title.enableExpandableDescription();
-			// // v2.1: graph has info button (we hack the infobutton from popup section)
-			// if(OPTION_GRAPH_IN_MAIN_POPUP)
-			// {
-				// title.setImage(painLevelTrend);
-				// title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
-			// }
-		// }
-		
 		if(OPTION_BIG_INFORMATION)
 		{
 			PopUpSection title = new PopUpSection("");
@@ -58,20 +33,9 @@ class PainPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupPainActionSections()
 	{
-		// v2.1: on option 2 we do not use the star icon.
-		// String positioningText = "Positioning <b> (Recommended) </b> <s1>";
-		// if(OPTION_NUMBER == 2)
-		// {
-			// positioningText = "Positioning <b> (Recommended) </b>";
-		// }
-		
 		CheckBox c = new CheckBox("Add NIC: Positioning", "Positioning", thirdLevelIcon, ADD_NIC);
 		c.setIconTooltipImage(IMG_POSITIONING);
-		// if(OPTION_ENABLE_ACTION_INFO_POPUP)
-		// {
-			// c.setInfoButton("Analysis of similar patient's data shows: <l> \n " +
-							// "A combination of Medication Management, Positioning and Pain Management has most positive impact on Pain Level.\n");
-		// }
+        
 		CheckBox c1 = new CheckBox("Prioritize NANDA: Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
 		CheckBox c2 = new CheckBox("Remove NANDA: Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
 		//CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
@@ -162,22 +126,27 @@ class PainPopUpView extends PopUpViewBase
 							toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
-  
-                                                    String[] tags = c.tag.split(": ");
-                                                     if(tags.length > 1)
-								pocManager.addNIC(tags[1], c.tb.text, parent, c.iconButton.tooltipImage);
-                                                                else
-								pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
+                                String[] tags = c.tag.split(": ");
+                                if(tags.length > 1)
+                                {
+                                    pocManager.addNIC(tags[1], c.tb.text, parent, c.iconButton.tooltipImage);
+                                }
+                                else
+                                {
+                                    pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
+                                }
 							}
 							if(c.id == ADD_NOC)
 							{
-                                                      String[] tags = c.tag.split(": ");
-                                                     if(tags.length > 1)
-                                                     
-                                                     pocManager.addNOC(tags[1], c.tb.text, parent.parent, c.iconButton.tooltipImage);
-                                                     else
-                                                     
-								pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
+                                String[] tags = c.tag.split(": ");
+                                if(tags.length > 1)
+                                {
+                                    pocManager.addNOC(tags[1], c.tb.text, parent.parent, c.iconButton.tooltipImage);
+                                }
+                                else
+                                {
+                                    pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
+                                }
 							}
 							if(c.id == REMOVE_NANDA)
 							{

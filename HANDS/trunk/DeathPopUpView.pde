@@ -1,6 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class DeathPopUpView extends PopUpViewBase
 {
+    POCManager pocManager;
 	Button descriptionButton;
 	
 	CheckBox consultCheck;
@@ -17,9 +18,10 @@ class DeathPopUpView extends PopUpViewBase
 	boolean consultCheckAdded = false;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	DeathPopUpView(int w_, SecondLevelRowView parent)
+	DeathPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
 	{
 		super(w_, parent);
+        pocManager = poc;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

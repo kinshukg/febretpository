@@ -1,6 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 class SecondLevelRowView extends View 
 {
+    POCManager pocManager;
 	String title;
 	String message;
 	Button iconButton;
@@ -87,9 +88,10 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent)
+	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent, POCManager poc)
 	{
 		super(0, 0,width,25);
+        pocManager = poc;
 		this.title = title;
 		iconButton = new Button(0, 0, 16, 16, logo);
 		subviews.add(iconButton);
