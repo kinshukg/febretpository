@@ -31,13 +31,10 @@ class DeathPopUpView extends PopUpViewBase
 		// title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
 		// subviews.add(title);
 
-		if(OPTION_BIG_INFORMATION)
-		{
-			PopUpSection title = new PopUpSection("");
-			title.setImage(anxietySelfControlTrend);
-			title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
-			subviews.add(title);
-		}
+        PopUpSection title = new PopUpSection("");
+        title.setImage(anxietySelfControlTrend);
+        title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
+        subviews.add(title);
 		
 		consultCheck = new CheckBox("Add NIC: Consultation - Palliative Care", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
@@ -171,7 +168,7 @@ class DeathPopUpView extends PopUpViewBase
 		hide();
 		
 		// If we added both actions and we are in cycle2 option 2, remove the action button from the POC action bar
-		if(copingCheck == null && consultCheck == null && OPTION_BIG_INFORMATION)
+		if(copingCheck == null && consultCheck == null)
 		{
 			parent.removeAlertButton();
 		}

@@ -114,42 +114,16 @@ class Patient
         }
         
         // Cycle 2 addition
-        if(OPTION_BIG_INFORMATION)
-        {
-            DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView, pocManager);
-            dppw.setupFull();
-            pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
-            pocManager.anxietySelfControlView.actionPopUp = dppw;
-        }
-        else
-        {
-            DeathPopUpView dppw = new DeathPopUpView(500, pocManager.anxietySelfControlView, pocManager);
-            dppw.setupConsultRefuse();
-            
-            pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO);
-            pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING);
-            
-            pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
-            pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
-            pocManager.anxietySelfControlView.actionPopUp = dppw;
-        }
+        DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView, pocManager);
+        dppw.setupFull();
+        pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
+        pocManager.anxietySelfControlView.actionPopUp = dppw;
         
         // Cycle 3 addition
-        if(OPTION_BIG_INFORMATION)
-        {
-            MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility, pocManager);
-            mppw.setupFull();
-            pocManager.NOCMobility.setAlertButton(3, "Action required", alertButtonX, null);
-            pocManager.NOCMobility.actionPopUp = mppw;
-        }
-        else
-        {
-            pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_GENERIC);
-            pocManager.NOCMobility.qa2Text.tooltipImage = IMG_IMMOBILITY_CONSEQUENCES;
-            MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility, pocManager);
-            mppw.setupRefuseSection();
-            pocManager.NOCMobility.actionPopUp = mppw;
-        }
+        MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility, pocManager);
+        mppw.setupFull();
+        pocManager.NOCMobility.setAlertButton(3, "Action required", alertButtonX, null);
+        pocManager.NOCMobility.actionPopUp = mppw;
     }
 }
 

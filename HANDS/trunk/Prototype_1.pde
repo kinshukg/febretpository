@@ -22,7 +22,6 @@ public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
 public int OPTION_NUMBER = 1;
 public int CYCLE2_OPTION_NUMBER = 1;
-public boolean OPTION_BIG_INFORMATION = false;
 
 public PImage IMG_LEGEND = null; 
 
@@ -298,7 +297,6 @@ public void setup()
 	OPTION_GRAPH_ALERT_BUTTON = false;
 	OPTION_NUMBER = 2;
 	CYCLE2_OPTION_NUMBER = 1;
-	OPTION_BIG_INFORMATION = false;	
 
 	frame.setTitle("Prototype No Suggestions");
 	reset();
@@ -610,7 +608,6 @@ void keyPressed()
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 1;
-			OPTION_BIG_INFORMATION = false;
 			reset();
 		}
 		else if(key == '2')
@@ -626,7 +623,6 @@ void keyPressed()
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 1;
-			OPTION_BIG_INFORMATION = true;
 			reset();
 		}
 		if(key == '3')
@@ -642,7 +638,6 @@ void keyPressed()
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 2;
-			OPTION_BIG_INFORMATION = false;
 			reset();
 		}
 		else if(key == '4')
@@ -658,7 +653,6 @@ void keyPressed()
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 2;
-			OPTION_BIG_INFORMATION = true;
 			reset();
 		}
 		else if(key == '5')

@@ -136,7 +136,7 @@ class MobilityPopupView extends PopUpViewBase
 		hide();
 		
 		// If we added the action and we are in cycle3 option 2, remove the action button from the POC action bar
-		if(immobilityConsequencesCheck == null && OPTION_BIG_INFORMATION)
+		if(immobilityConsequencesCheck == null)
 		{
 			parent.removeAlertButton();
 		}
