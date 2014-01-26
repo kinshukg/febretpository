@@ -146,9 +146,6 @@ class POCManager
 	{
 		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA, this);
 		temp.iconButton.tooltipImage = tooltip;
-		GraphPopUpView gp = new GraphPopUpView(500, temp);
-		gp.reset(emptyTrend);
-		temp.setGraphButton(0, emptySmallGraph, gp, 750); 
 		
 		if(comment.length() != 0) temp.addComment(comment);
 					

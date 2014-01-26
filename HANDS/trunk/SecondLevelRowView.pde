@@ -14,7 +14,6 @@ class SecondLevelRowView extends View
 	
 	// Popups
 	PopUpViewBase actionPopUp;
-	GraphPopUpView graphPopUp;
 	RatingPopUpView ratingPopUp;
 
 	// Buttons
@@ -317,24 +316,6 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
-	{
-		if(!OPTION_NATIVE)
-		{
-			color buttonColor = 200;
-			if(level == 1) buttonColor = alertLowColor;
-			if(level == 2) buttonColor = alertMidColor;
-			if(level == 3) buttonColor = alertHighColor;
-			graphButton = new Button(x, 5, 40, 16, graphIcon);
-			graphButton.transparent = false;
-			graphButton.buttonColor = buttonColor;
-			subviews.add(this.graphButton);
-			if(level == 3) graphButton.blinking = true;
-			this.graphPopUp = p;
-		}
-	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////
 	void enableCurrentRatingButton()
 	{
 		color buttonColor = 200;
@@ -430,15 +411,6 @@ class SecondLevelRowView extends View
 		}
 		if(graphButton != null && graphButton.selected)
 		{
-			if(popUpView == null)
-			{
-				mainView.subviews.add(graphPopUp);
-				popUpView = graphPopUp;
-				graphPopUp.x = mouseX + 20;
-				graphPopUp.y = mouseY - 50;
-				graphPopUp.arrowX = mouseX;
-				graphPopUp.arrowY = mouseY;
-			}
 			graphButton.selected = false;
 		}
 		if(expectedRatingButton != null && expectedRatingButton.selected)
