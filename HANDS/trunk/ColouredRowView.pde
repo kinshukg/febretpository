@@ -8,6 +8,11 @@ class ColouredRowView extends View
 	
 	Button iconButton;
 	
+    // Native HANDS buttons
+	Button addButton;
+	Button removeButton;
+	Button prioritizeButton;
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ColouredRowView(String title,PImage logo)
 	{
@@ -19,6 +24,16 @@ class ColouredRowView extends View
 		subviews.add(iconButton);
 		
 		indent = 10;
+        
+        int cx = 320;
+        
+        addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
+        removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
+        prioritizeButton = new Button(cx += 28, 1, 24, 24, checkIcon); prioritizeButton.helpText = "Prioritize NOC";
+        
+        subviews.add(addButton);
+        subviews.add(removeButton);
+        subviews.add(prioritizeButton);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

@@ -6,6 +6,9 @@ class ThirdLevelRowView extends View
 	int indent;
 	StaticText commentBox;
   
+    // Native HANDS buttons
+	Button removeButton;
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView(String title,PImage logo, SecondLevelRowView parent_)
 	{
@@ -18,6 +21,11 @@ class ThirdLevelRowView extends View
 		parent = parent_;
 		parent.subs.add(this);  
 		indent = 70;
+        
+        int cx = 320;
+        removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
+        
+        subviews.add(removeButton);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////

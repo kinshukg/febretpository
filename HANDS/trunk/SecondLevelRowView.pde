@@ -24,7 +24,6 @@ class SecondLevelRowView extends View
     // Native HANDS buttons
 	Button addButton;
 	Button removeButton;
-	Button prioritizeButton;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent, POCManager poc)
@@ -45,11 +44,9 @@ class SecondLevelRowView extends View
         
         addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
         removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
-        prioritizeButton = new Button(cx += 28, 1, 24, 24, checkIcon); prioritizeButton.helpText = "Prioritize NOC";
         
         subviews.add(addButton);
         subviews.add(removeButton);
-        subviews.add(prioritizeButton);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
