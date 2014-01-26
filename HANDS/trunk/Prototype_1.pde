@@ -10,7 +10,7 @@ static String VERSION = "c3r3";
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
 // Variables used to keep track of the prototype state
-public boolean OPTION_NO_SUGGESTIONS = false;
+public boolean OPTION_NATIVE = false;
 public boolean OPTION_LONG_ALERT_BUTTON = true;
 public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
 public boolean OPTION_ALERT_INFO_BUTTON = false;
@@ -311,7 +311,7 @@ public void setup()
 	
 
 	// Make sure initial options correspond to no suggestion version
-	OPTION_NO_SUGGESTIONS = true;
+	OPTION_NATIVE = true;
 	OPTION_LONG_ALERT_BUTTON = false;
 	OPTION_EXPANDABLE_POPUP_TEXT = false;
 	OPTION_ENABLE_POPUP_TEXT = false;
@@ -466,9 +466,24 @@ public void setupPatients()
     patient1.mr = "xxx xxx xxx";
     patient1.physician = "Piper";
     patient1.other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
-    
     patient1.reset();
 
+    patient2 = new Patient();
+    patient2.id = 1;
+    patient2.name = "Ciccio Pasticcio";
+    patient2.dob = "03/12/1821";
+    patient2.gender = "Male";
+    patient2.allergies = "None";
+    patient2.codeStatus = "DNR";
+    patient2.poc = "09/17/2010";
+    patient2.shft= "7:00a - 7:00p";
+    patient2.room = "1240";
+    patient2.medicalDX = "Broken Head";
+    patient2.mr = "xxx xxx xxx";
+    patient2.physician = "Piper";
+    patient2.other = "Nobody likes him.";
+    patient2.reset();
+    
     setActivePatient(patient1);
     
 }
@@ -543,7 +558,7 @@ void drawStaticViewElements()
 {
 	int footerY = 500;
 	int footerX = 1020;
-	if(!OPTION_NO_SUGGESTIONS) image(IMG_LEGEND, footerX, footerY + 10);
+	if(!OPTION_NATIVE) image(IMG_LEGEND, footerX, footerY + 10);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -606,36 +621,10 @@ void keyPressed()
 {
 	if(!filterKeyInput)
 	{
-		// if(key == '1')
-		// {
-			// OPTION_NO_SUGGESTIONS = false;
-			// OPTION_LONG_ALERT_BUTTON = true;
-			// OPTION_ALERT_INFO_BUTTON = false;
-			// OPTION_EXPANDABLE_POPUP_TEXT = false;
-			// OPTION_ENABLE_POPUP_TEXT = true;
-			// OPTION_GRAPH_IN_MAIN_POPUP = false;
-			// OPTION_ENABLE_ACTION_INFO_POPUP = false;
-			// OPTION_GRAPH_ALERT_BUTTON = false;
-			// OPTION_NUMBER = 1;
-			// reset();
-		// }
-		// else if(key == '3')
-		// {
-			// OPTION_NO_SUGGESTIONS = false;
-			// OPTION_LONG_ALERT_BUTTON = true;
-			// OPTION_ALERT_INFO_BUTTON = false;
-			// OPTION_EXPANDABLE_POPUP_TEXT = false;
-			// OPTION_ENABLE_POPUP_TEXT = true;
-			// OPTION_GRAPH_IN_MAIN_POPUP = true;
-			// OPTION_ENABLE_ACTION_INFO_POPUP = false;
-			// OPTION_GRAPH_ALERT_BUTTON = false;
-			// OPTION_NUMBER = 3;
-			// reset();
-		// }
 		if(key == '1')
 		{
 			frame.setTitle("Prototype Variant 1");
-			OPTION_NO_SUGGESTIONS = false;
+			OPTION_NATIVE = false;
 			OPTION_LONG_ALERT_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
@@ -652,7 +641,7 @@ void keyPressed()
 		else if(key == '2')
 		{
 			frame.setTitle("Prototype Variant 2");
-			OPTION_NO_SUGGESTIONS = false;
+			OPTION_NATIVE = false;
 			OPTION_LONG_ALERT_BUTTON = true;
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
@@ -669,7 +658,7 @@ void keyPressed()
 		if(key == '3')
 		{
 			frame.setTitle("Prototype Variant 3");
-			OPTION_NO_SUGGESTIONS = false;
+			OPTION_NATIVE = false;
 			OPTION_LONG_ALERT_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
@@ -686,7 +675,7 @@ void keyPressed()
 		else if(key == '4')
 		{
 			frame.setTitle("Prototype Variant 4");
-			OPTION_NO_SUGGESTIONS = false;
+			OPTION_NATIVE = false;
 			OPTION_LONG_ALERT_BUTTON = true;
 			OPTION_ALERT_INFO_BUTTON = false;
 			OPTION_EXPANDABLE_POPUP_TEXT = false;
@@ -703,12 +692,20 @@ void keyPressed()
 		else if(key == '5')
 		{
 			frame.setTitle("Prototype No Suggestions");
-			OPTION_NO_SUGGESTIONS = true;
+			OPTION_NATIVE = true;
 			reset();
 		}
 		else if(key == '0')
 		{
 			saveFrame("HANDS-"+VERSION+"-####.png");
+		}
+		else if(key == '9')
+		{
+			setActivePatient(patient1);
+		}
+		else if(key == '8')
+		{
+			setActivePatient(patient2);
 		}
 	}
 	if(activeTextBox != null)
