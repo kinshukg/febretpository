@@ -74,8 +74,7 @@ class MobilityPopupView extends PopUpViewBase
 		immobilityConsequencesCheck.setIconTooltipImage(IMG_IMMOBILITY_CONSEQUENCES);
 		
 		String icmsg = "";
-		if(OPTION_TAILORED_MESSAGES) icmsg = MSG_IMMOBILITY_CONSEQUENCES_TAILORED;
-		else icmsg = MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
+		icmsg = MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
 
 		recommendedActionSection = new PopUpSection(icmsg);
 		recommendedActionSection.addAction(immobilityConsequencesCheck);

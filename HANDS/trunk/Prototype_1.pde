@@ -22,7 +22,6 @@ public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
 public int OPTION_NUMBER = 1;
 public int CYCLE2_OPTION_NUMBER = 1;
-public boolean OPTION_TAILORED_MESSAGES = false;
 public boolean OPTION_BIG_INFORMATION = false;
 
 public PImage IMG_LEGEND = null; 
@@ -79,44 +78,22 @@ String MSG_PAIN_EVIDENCE_POPUP =
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 
-String MSG_PAIN_EVIDENCE_POPUP_TAILORED = 			
-	"<b> Evidence Suggests That: </b> \n \n " +
-	"A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b> \n \n " + 
-	"It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
-	"All of Mrs. Taylor's pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
-	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
-	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
-
 String MSG_PAIN_POSITIONING = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>";
 String MSG_PAIN_GAS_EXCHANGE = "</b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
 String MSG_PAIN_OUTCOME = "</b> All pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 	
-String MSG_PAIN_POSITIONING_TAILORED = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on Mrs. Taylor's <b> Pain Level. </b>";
-String MSG_PAIN_GAS_EXCHANGE_TAILORED = "</b> It is more difficult to control pain when Mrs. Taylor has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
-String MSG_PAIN_OUTCOME_TAILORED = "</b> All of Mrs. Taylor's pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
-	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients like Mrs. Taylor. \n " +
-	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
-
 // For the i icon related to Palliative Care Consultation
 String MSG_PALLIATIVE_CARE_INFO =
 	"Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.";
 
-String MSG_PALLIATIVE_CARE_INFO_TAILORED =
-	"Palliative care consultations are helpful for patients like Mrs. Taylor by managing her pain and death anxiety, facilitating " +
-	"patient/family communication, and promoting a comfortable death.  These services can create better outcomes for Mrs. Taylor and her family.";
-	
 // For the i icon related to Mini POC for Family Coping
 String MSG_FAMILY_COPING =
 	"The physical and emotional demands of care giving can overwhelm the family.";
 	
-String MSG_FAMILY_COPING_TAILORED = "The physical and emotional demands of caring for a patient like Mrs. Taylor whose POC includes death anxiety and comfortable death can overwhelm a family.";
-
 // For the i icon related Immobility Consequences
 String MSG_IMMOBILITY_CONSEQUENCES_GENERIC = "Consequences of immobility include pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
-
-String MSG_IMMOBILITY_CONSEQUENCES_TAILORED = "For patient like Mrs. Taylor who have Death Anxiety and Comfortable Death on their  POC, improving Mobility may not be realistic.  Consider adding <b> Immobility Consequences </b> to include prevention of pneumonia, pressure ulcers, contractures, constipation, and venous thrombosis.";
 
 // Message for info button next to pain graph
 String MSG_PAIN_GRAPH_DESCRIPTION = 
@@ -319,7 +296,6 @@ public void setup()
 	//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 	OPTION_GRAPH_IN_MAIN_POPUP = false;
 	OPTION_GRAPH_ALERT_BUTTON = false;
-	OPTION_TAILORED_MESSAGES = false;
 	OPTION_NUMBER = 2;
 	CYCLE2_OPTION_NUMBER = 1;
 	OPTION_BIG_INFORMATION = false;	
@@ -632,7 +608,6 @@ void keyPressed()
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_TAILORED_MESSAGES = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 1;
 			OPTION_BIG_INFORMATION = false;
@@ -649,7 +624,6 @@ void keyPressed()
 			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_TAILORED_MESSAGES = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 1;
 			OPTION_BIG_INFORMATION = true;
@@ -666,7 +640,6 @@ void keyPressed()
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_TAILORED_MESSAGES = true;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 2;
 			OPTION_BIG_INFORMATION = false;
@@ -683,7 +656,6 @@ void keyPressed()
 			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_TAILORED_MESSAGES = true;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 2;
 			OPTION_BIG_INFORMATION = true;

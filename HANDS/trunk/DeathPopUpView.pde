@@ -45,8 +45,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
 		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
-		if(OPTION_TAILORED_MESSAGES) recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO_TAILORED);
-		else recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
+		recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
 		recommendedActionSection.addAction(consultCheck);
 		
 		copingCheck = new CheckBox("Add NANDA: Interrupted Family Process Mini POC", firstLevelIcon, 0);
@@ -62,8 +61,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		copingCheck.setIconTooltipImage(IMG_INTERRUPTED_FAMILY_PROCESS);
 		
-		if(OPTION_TAILORED_MESSAGES) actionSection = new PopUpSection(MSG_FAMILY_COPING_TAILORED);
-		else actionSection = new PopUpSection(MSG_FAMILY_COPING);
+		actionSection = new PopUpSection(MSG_FAMILY_COPING);
 		actionSection.addAction(copingCheck);
 		
 		consultCheck.selected = true;
