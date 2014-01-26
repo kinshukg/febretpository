@@ -110,8 +110,7 @@ class Patient
         
         if(OPTION_ALERT_INFO_BUTTON)
         {
-            pocManager.painLevelView.setInfoButton(645, 
-                OPTION_TAILORED_MESSAGES ? MSG_PAIN_EVIDENCE_POPUP_TAILORED : MSG_PAIN_EVIDENCE_POPUP);
+            pocManager.painLevelView.setInfoButton(645, MSG_PAIN_EVIDENCE_POPUP);
         }
         
         // Cycle 2 addition
@@ -127,16 +126,8 @@ class Patient
             DeathPopUpView dppw = new DeathPopUpView(500, pocManager.anxietySelfControlView, pocManager);
             dppw.setupConsultRefuse();
             
-            if(OPTION_TAILORED_MESSAGES)
-            {
-                pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO_TAILORED);
-                pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING_TAILORED);
-            }
-            else
-            {
-                pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO);
-                pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING);
-            }
+            pocManager.anxietySelfControlView.enableQuickActionButton1(300, 300, MSG_ACTION_CONSULTATION, true, MSG_PALLIATIVE_CARE_INFO);
+            pocManager.anxietySelfControlView.enableQuickActionButton2(300, 300, MSG_ACTION_COPING, false, MSG_FAMILY_COPING);
             
             pocManager.anxietySelfControlView.qa1Text.tooltipImage = IMG_CONSULTATION;
             pocManager.anxietySelfControlView.qa2Text.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
@@ -153,14 +144,7 @@ class Patient
         }
         else
         {
-            if(OPTION_TAILORED_MESSAGES)
-            {
-                pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_TAILORED);
-            }
-            else
-            {
-                pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_GENERIC);
-            }
+            pocManager.NOCMobility.enableQuickActionButton2(300, 300, MSG_ACTION_IMMOBILITY_CONSEQUENCES, false, MSG_IMMOBILITY_CONSEQUENCES_GENERIC);
             pocManager.NOCMobility.qa2Text.tooltipImage = IMG_IMMOBILITY_CONSEQUENCES;
             MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility, pocManager);
             mppw.setupRefuseSection();
