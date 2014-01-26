@@ -39,7 +39,6 @@ class Patient
     {
         int ppwidth = 570;
         if(OPTION_GRAPH_IN_MAIN_POPUP) ppwidth = 705;
-        if(OPTION_ALERT_INFO_BUTTON) ppwidth = 570;
         
         PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView, pocManager);
         ppw.reset();
@@ -71,22 +70,8 @@ class Patient
 
         // alert button position, used for inter-row button alignment
         int alertButtonX;
-        if(OPTION_LONG_ALERT_BUTTON)
-        {
-            alertButtonX = 360;
-            pocManager.painLevelView.setAlertButton(3, "Mrs. Taylor's Pain Level is not controlled.", alertButtonX, painLevelActionButtonImage);
-        }
-        else 
-        {
-            alertButtonX = 575;
-            pocManager.painLevelView.setAlertButton(3, "Actions", alertButtonX, painLevelActionButtonImage);
-            pocManager.painLevelView.message = "Mrs. Taylor's Pain Level is not controlled.";
-        }
-        
-        if(OPTION_ALERT_INFO_BUTTON)
-        {
-            pocManager.painLevelView.setInfoButton(645, MSG_PAIN_EVIDENCE_POPUP);
-        }
+        alertButtonX = 360;
+        pocManager.painLevelView.setAlertButton(3, "Mrs. Taylor's Pain Level is not controlled.", alertButtonX, painLevelActionButtonImage);
         
         // Cycle 2 addition
         DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView, pocManager);

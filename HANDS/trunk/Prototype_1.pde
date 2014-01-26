@@ -11,9 +11,6 @@ static color STYLE_DELETED_ROW_BACK_COLOR = #888888;
 
 // Variables used to keep track of the prototype state
 public boolean OPTION_NATIVE = false;
-public boolean OPTION_LONG_ALERT_BUTTON = true;
-public boolean OPTION_EXPANDABLE_POPUP_TEXT = false;
-public boolean OPTION_ALERT_INFO_BUTTON = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
 //public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
@@ -288,11 +285,6 @@ public void setup()
 
 	// Make sure initial options correspond to no suggestion version
 	OPTION_NATIVE = true;
-	OPTION_LONG_ALERT_BUTTON = false;
-	OPTION_EXPANDABLE_POPUP_TEXT = false;
-	OPTION_ENABLE_POPUP_TEXT = false;
-	OPTION_ALERT_INFO_BUTTON = true;
-	//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 	OPTION_GRAPH_IN_MAIN_POPUP = false;
 	OPTION_GRAPH_ALERT_BUTTON = false;
 	OPTION_NUMBER = 2;
@@ -599,10 +591,6 @@ void keyPressed()
 		{
 			frame.setTitle("Prototype Variant 1");
 			OPTION_NATIVE = false;
-			OPTION_LONG_ALERT_BUTTON = false;
-			OPTION_EXPANDABLE_POPUP_TEXT = false;
-			OPTION_ENABLE_POPUP_TEXT = false;
-			OPTION_ALERT_INFO_BUTTON = true;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
@@ -614,9 +602,6 @@ void keyPressed()
 		{
 			frame.setTitle("Prototype Variant 2");
 			OPTION_NATIVE = false;
-			OPTION_LONG_ALERT_BUTTON = true;
-			OPTION_ALERT_INFO_BUTTON = false;
-			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
@@ -629,10 +614,7 @@ void keyPressed()
 		{
 			frame.setTitle("Prototype Variant 3");
 			OPTION_NATIVE = false;
-			OPTION_LONG_ALERT_BUTTON = false;
-			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
-			OPTION_ALERT_INFO_BUTTON = true;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
 			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
@@ -644,11 +626,7 @@ void keyPressed()
 		{
 			frame.setTitle("Prototype Variant 4");
 			OPTION_NATIVE = false;
-			OPTION_LONG_ALERT_BUTTON = true;
-			OPTION_ALERT_INFO_BUTTON = false;
-			OPTION_EXPANDABLE_POPUP_TEXT = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
-			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
 			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 4;
