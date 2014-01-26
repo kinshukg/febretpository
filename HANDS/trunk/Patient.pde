@@ -37,8 +37,7 @@ class Patient
     ///////////////////////////////////////////////////////////////////////////////////////////////
     public void setupPopup()
     {
-        int ppwidth = 570;
-        if(OPTION_GRAPH_IN_MAIN_POPUP) ppwidth = 705;
+        int ppwidth = 705;
         
         PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView, pocManager);
         ppw.reset();
@@ -46,27 +45,8 @@ class Patient
         // Tis is the image that appears in the long access bar button.
         PImage painLevelActionButtonImage = null;
         
-        if(OPTION_GRAPH_IN_MAIN_POPUP)
-        {
-            if( OPTION_NUMBER != 3 &&  OPTION_NUMBER !=4)
-            {
-                int graphButtonX = 750;
-                //painLevelActionButtonImage = smallGraph3;
-                pocManager.painLevelView.actionPopUp = ppw;
-            }
-            else
-            {
-                int graphButtonX = 750;
-                //painLevelActionButtonImage = smallGraph3;
-                pocManager.painLevelView.actionPopUp = ppw;
-            }
-        }
-        else
-        {
-            // Default
-            int graphButtonX = 750;
-            pocManager.painLevelView.actionPopUp = ppw;
-        }
+        int graphButtonX = 750;
+        pocManager.painLevelView.actionPopUp = ppw;
 
         // alert button position, used for inter-row button alignment
         int alertButtonX;
