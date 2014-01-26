@@ -319,7 +319,7 @@ class SecondLevelRowView extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setGraphButton(int level, PImage graphIcon, GraphPopUpView p, int x)
 	{
-		if(!OPTION_NO_SUGGESTIONS)
+		if(!OPTION_NATIVE)
 		{
 			color buttonColor = 200;
 			if(level == 1) buttonColor = alertLowColor;

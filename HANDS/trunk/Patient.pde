@@ -14,7 +14,7 @@ class Patient
     {
         pocManager = new POCManager();
         pocManager.reset();
-        if(!OPTION_NO_SUGGESTIONS) setupPopup();
+        if(!OPTION_NATIVE) setupPopup();
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////
