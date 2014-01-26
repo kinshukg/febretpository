@@ -50,8 +50,8 @@ class Patient
 
         // alert button position, used for inter-row button alignment
         int alertButtonX;
-        alertButtonX = 360;
-        pocManager.painLevelView.setAlertButton(3, "Mrs. Taylor's Pain Level is not controlled.", alertButtonX, painLevelActionButtonImage);
+        alertButtonX = 460;
+        pocManager.painLevelView.setAlertButton(3, "Action required", alertButtonX, painLevelActionButtonImage);
         
         // Cycle 2 addition
         DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView, pocManager);
