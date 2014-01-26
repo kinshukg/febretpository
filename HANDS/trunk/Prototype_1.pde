@@ -182,6 +182,7 @@ public PImage emptyTrend;
 Patient patient1;
 Patient patient2;
 Patient curPatient;
+int currentShift = 1;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -423,7 +424,7 @@ public void setupPatients()
     patient1.gender = "Female";
     patient1.allergies = "None";
     patient1.codeStatus = "DNR";
-    patient1.poc = "09/17/2010";
+    patient1.poc = "09/17/2013";
     patient1.shft= "7:00a - 7:00p";
     patient1.room = "1240";
     patient1.medicalDX = "Malignant Neoplasm of the Pancreas";
@@ -439,7 +440,7 @@ public void setupPatients()
     patient2.gender = "Male";
     patient2.allergies = "None";
     patient2.codeStatus = "DNR";
-    patient2.poc = "09/17/2010";
+    patient2.poc = "09/17/2013";
     patient2.shft= "7:00a - 7:00p";
     patient2.room = "1240";
     patient2.medicalDX = "Broken Head";
@@ -450,6 +451,27 @@ public void setupPatients()
     
     setActivePatient(patient1);
     
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+public void nextShift()
+{
+    currentShift++;
+    if(currentShift == 2)
+    {
+        // update POC dates.
+        patient1.poc = "09/19/2013";
+        patient2.poc = "09/19/2013";
+    }
+    else if(currentShift == 3)
+    {
+        // update POC dates.
+        patient1.poc = "09/23/2013";
+        patient2.poc = "09/23/2013";
+    }
+    
+    // When switching to another shift, always go back to patient 1.
+    setActivePatient(patient1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -644,6 +666,10 @@ void keyPressed()
 		else if(key == '8')
 		{
 			setActivePatient(patient2);
+		}
+		else if(key == '7')
+		{
+			nextShift();
 		}
 	}
 	if(activeTextBox != null)
