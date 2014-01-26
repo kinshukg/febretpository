@@ -16,9 +16,8 @@ class SecondLevelRowView extends View
 	PopUpViewBase actionPopUp;
 	RatingPopUpView ratingPopUp;
 
-	// Buttons
+	// CDS and rating Buttons
 	Button actionButton;
-	Button infoButton;
 	Button expectedRatingButton;
 	Button currentRatingButton;
     
@@ -134,15 +133,7 @@ class SecondLevelRowView extends View
 			text(message, 300, 12);
 		}
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setInfoButton(int bx, String text)
-	{
-		infoButton = new Button(bx, 1, 24, 24, infoIcon);
-		infoButton.tooltipText = text;
-		subviews.add(infoButton);
-	}
-	
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setAlertButton(int level, String text, int bx, PImage graph)
 	{
@@ -159,11 +150,6 @@ class SecondLevelRowView extends View
 		{
 			this.actionButton.icon = graph;
 		}
-		
-		//this.actionButton.tooltipText = "Tooltip text, bla bla bla ba bla blag askdj sfjwev fweic";
-		//this.actionButton.tooltipMode = 1;
-
-		//this.actionPopUp = p;   
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
