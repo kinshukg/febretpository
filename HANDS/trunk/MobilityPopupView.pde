@@ -129,7 +129,6 @@ class MobilityPopupView extends PopUpViewBase
 					parent.addComment("Dismissed Immobility Consequences: " + reason3.tb.text);
 				}
 			}
-			parent.removeQuickActionButton2();
 		}
 		
 		parent.stopBlinking();

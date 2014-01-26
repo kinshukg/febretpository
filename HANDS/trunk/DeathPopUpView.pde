@@ -155,7 +155,6 @@ class DeathPopUpView extends PopUpViewBase
 					parent.addComment("Dismissed consultation: " + reason3.tb.text);
 				}
 			}
-			parent.removeQuickActionButton1();
 		}
 		if(copingCheck != null && copingCheck.selected)
 		{
