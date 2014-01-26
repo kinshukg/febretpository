@@ -21,13 +21,10 @@ class PainPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void setupPainTitleSection()
 	{
-		if(OPTION_BIG_INFORMATION)
-		{
-			PopUpSection title = new PopUpSection("");
-			title.setImage(painLevelTrend);
-			title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
-			subviews.add(title);
-		}
+        PopUpSection title = new PopUpSection("");
+        title.setImage(painLevelTrend);
+        title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
+        subviews.add(title);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,43 +52,26 @@ class PainPopUpView extends PopUpViewBase
 		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
 		// Big information: we present EBI side-by-side with actions
-		if(OPTION_BIG_INFORMATION)
-		{
-			PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
-			//section1.setDescription(MSG_PAIN_POSITIONING);
-			section1.addAction(c);
-			
-			
-			PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
-			//section2.setDescription(MSG_PAIN_GAS_EXCHANGE);
-			section2.addAction(c1);
-			section2.addAction(c2);
-			
-			PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
-			//section3.setDescription(MSG_PAIN_OUTCOME);
-			section3.addAction(c5);
-			section3.addAction(c6);
-			section3.addAction(c7);
-			section3.addAction(c8);
-			
-			subviews.add(section1);
-			subviews.add(section2);
-			subviews.add(section3);
-		}
-		// Little information: just list actions
-		else
-		{
-			PopUpSection section1 = new PopUpSection("Recommended Actions");
-			section1.addAction(c);
-			section1.addAction(c1);
-			section1.addAction(c2);
-			section1.addAction(c5);
-			section1.addAction(c6);
-			section1.addAction(c7);
-			section1.addAction(c8);
-			
-			subviews.add(section1);
-		}
+        PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
+        //section1.setDescription(MSG_PAIN_POSITIONING);
+        section1.addAction(c);
+        
+        
+        PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
+        //section2.setDescription(MSG_PAIN_GAS_EXCHANGE);
+        section2.addAction(c1);
+        section2.addAction(c2);
+        
+        PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
+        //section3.setDescription(MSG_PAIN_OUTCOME);
+        section3.addAction(c5);
+        section3.addAction(c6);
+        section3.addAction(c7);
+        section3.addAction(c8);
+        
+        subviews.add(section1);
+        subviews.add(section2);
+        subviews.add(section3);
 		totalActions = 7;
 	}
 	

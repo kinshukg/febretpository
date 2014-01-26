@@ -86,16 +86,8 @@ class RatingPopUpView extends PopUpViewBase
 			
 		if(!OPTION_NATIVE)
 		{
-			if(OPTION_BIG_INFORMATION)
-			{
-				expectedRatingSection.setDescription(expectedRatingTutorial);
-				currentRatingSection.setDescription(currentRatingTutorial);
-			}
-			else
-			{
-				expectedRatingSection.setInfoButton(expectedRatingTutorial);
-				currentRatingSection.setInfoButton(currentRatingTutorial);
-			}
+            expectedRatingSection.setDescription(expectedRatingTutorial);
+            currentRatingSection.setDescription(currentRatingTutorial);
 		}
 	}
 	
