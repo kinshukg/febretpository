@@ -14,7 +14,6 @@ public boolean OPTION_NATIVE = false;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
 //public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
-public boolean OPTION_GRAPH_IN_MAIN_POPUP = false;
 public boolean OPTION_GRAPH_ALERT_BUTTON = false;
 public int OPTION_NNN_ICON_STYLE = 1;
 public int OPTION_NUMBER = 1;
@@ -285,7 +284,6 @@ public void setup()
 
 	// Make sure initial options correspond to no suggestion version
 	OPTION_NATIVE = true;
-	OPTION_GRAPH_IN_MAIN_POPUP = false;
 	OPTION_GRAPH_ALERT_BUTTON = false;
 	OPTION_NUMBER = 2;
 	CYCLE2_OPTION_NUMBER = 1;
@@ -592,7 +590,6 @@ void keyPressed()
 			frame.setTitle("Prototype Variant 1");
 			OPTION_NATIVE = false;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
-			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 1;
@@ -604,7 +601,6 @@ void keyPressed()
 			OPTION_NATIVE = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
-			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 1;
@@ -616,7 +612,6 @@ void keyPressed()
 			OPTION_NATIVE = false;
 			OPTION_ENABLE_POPUP_TEXT = false;
 			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
-			OPTION_GRAPH_IN_MAIN_POPUP = false;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 2;
 			CYCLE2_OPTION_NUMBER = 2;
@@ -627,7 +622,6 @@ void keyPressed()
 			frame.setTitle("Prototype Variant 4");
 			OPTION_NATIVE = false;
 			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_GRAPH_IN_MAIN_POPUP = true;
 			OPTION_GRAPH_ALERT_BUTTON = false;
 			OPTION_NUMBER = 4;
 			CYCLE2_OPTION_NUMBER = 2;
