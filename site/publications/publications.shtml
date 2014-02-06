@@ -37,14 +37,30 @@
 </div><br/>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
 <!-- AddThis Button END -->
-<div class="section"><h2>Publications</h2>
+<div class="section"><h2>Selected Publications</h2>
 This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.shtml#Publications">About Me Page</a>.
+<div class="item" style="text-align: justify">
+<h3>Omegalib: a Multi- View Application Framework for Hybrid Reality Environments</h3>
+<img src="./omegalib-layers.png" width="250" style="float: left"/>
+<div class="subitem">
+<p><b>Authors:</b> <b>Febretti, A.</b> Nishimoto, A., Mateevitsi, V., Renambot, L., Johnson, A., Leigh, J.</b></p>
+<p><i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></p>
+<p>
+In the domain of large-scale visualization instruments, hybrid reality environments (HREs) are a recent innovation that combines the best-in-class capabilities of immersive environments, with the best-in-class capabilities of ultra-high-resolution display walls. HREs create a seamless 2D/3D environment that supports both information-rich analysis as well as virtual reality simulation exploration at a resolution matching human visual acuity. Co-located research groups in HREs tend to work on a variety of tasks during a research session (sometimes in parallel), and these tasks require 2D data views, 3D views, linking between them and the ability to bring in (or hide) data quickly as needed.
+</p>
+<p>
+In this paper we present Omegalib, a software framework that facilitates application development on HREs. Omegalib is designed to support dynamic reconfigurability of the display environment, so that areas of the display can be interactively allocated to 2D or 3D workspaces as needed. Compared to existing frameworks and toolkits, Omegalib makes it possible to have multiple immersive applications running on a cluster-controlled display system, have different input sources dynamically routed to applications, and have rendering results optionally redirected to a distributed compositing manager. Omegalib supports pluggable front-ends, to simplify the integration of third-party libraries like OpenGL, OpenSceneGraph, and the Visualization Toolkit (VTK).
+</p>
+<p>
+We present examples of applications developed with Omegalib for the 74-megapixel, 72-tile CAVE2™ system, and show how a Hybrid Reality Environment proved effective in supporting work for a co-located research group in the environmental sciences.
+</p>
+</div></div>
 <div class="item" style="text-align: justify">
 <h3>Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments</h3>
 <img src="./_LJL6623.jpg" width="250" style="float: left"/>
 <div class="subitem">
 <p><b>Authors:</b> Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.</p>
-<p><i>To Appear in IEEE Computer Graphics and Applications.</i></p>
+<p><i>IEEE Computer Graphics and Applications, Vol. 33.4 (July-August 2013), pp. 38-48.</i></p>
 <p>
 Scientists today are grappling with complex scientific phenomena that require the concentrated effort of interdisciplinary teams of scientists from different backgrounds whose work involves large, heterogeneous data sources. To uncover hidden relationships and make insights, related elements from these distinct datasets must be visualized and analyzed collectively, at the same time. Constructing integrative visualizations that simultaneously cater to a variety of data types is challenging.
 </p>

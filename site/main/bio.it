@@ -84,8 +84,16 @@
 			<i>IEEE Computer Graphics and Applications, Vol. 33.4 (July-August 2013), pp. 38-48</i></li>
 		</ol>
 	</p>
-	<p><b>Conference Papers</b>
+	<p><b>Conference Proceedings</b>
 		<ol>
+            <li><b>Febretti, A.</b>, Nishimoto, A., Mateevitsi, V., Renambot, L., Johnson, A., Leigh, J.,
+            "Omegalib: a Multi- View Application Framework for Hybrid Reality Environments".
+            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></li>        
+            
+            <li><b>Febretti, A.</b>
+            "Supporting Multi-View Immersion on Hybrid Reality Environments".
+            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014) Doctoral Consortium, Minneapolis, MN, March 29 - April 2, 2014.</i></li>        
+            
             <li>Reda, K., Aurisano, J., <b>Febretti, A.</b>, Leigh, J. Johnson, A., 
             "Visualization Design Patterns for Ultra-Resolution Display Environments".
             <i>VISTech Workshop: Visualization Infrastructure and Systems Technology (VISTech 2013), 2013.</i></li>        
@@ -134,18 +142,33 @@
 			"Clinical decision support alerts forms: Nurse preferences and relationships with nurse characteristics."
 			American Medical Informatics Association, Annual Symposium, Washington, DC., 2013 		
 			</li>
+            <li>
+            Dunn-Lopez, K., Stifter, J., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G., 
+            "Improving Usability of Evidence Based Information in Clinical Decision Support", 
+            Midwest Nursing Research Society 37th Annual Research Conference, Chicago, IL, March 7-13, 2013.
+            </li>
 		</ol>
 	<p>
-	<p><b>Posters</b>
+	<p><b>Posters and Videos</b>
 		<ol>
+            <li>
+            Leigh, J., Johnson, A., Renambot, L., Long, L., Sandin, D., Tolandis, J., <b>Febretti, A.</b>, Nishimoto, A., 
+            "CAVE2 Documentary"
+            <i>Video in IEEE VR 2014 and IEEE VR 2014 YouTube channel, Minneapolis, Minnesota, March 29, 2014</i>
+            </li>
 			<li>Stifter, J., Lopez, K., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.
 			"Identifying Nurse Preferences for Presentation of Evidence Based End of Life Pain Management Information in Clinical Decision Support Systems"
 			<i>37th Midwest Nursing Research Society Conference, 2013</i>
 			</li>
 		</ol>
 	<p>
-	<p><b>Thesis</b>
+	<p><b>Scolarly Work</b>
 		<ol>
+			<li><b>Febretti, A.</b>
+			"A Multi-View Software Infrastructure for Hybrid Immersive Environments"
+			<i>Ph.D. Proposal, Electronic Visualization Lab, University of Illinois at Chicago, 2014</i>
+			[<a href="../publications/Preliminary-full-febretti.pdf">Pdf</a>]</li>
+            
 			<li><b>Febretti, A.</b>
 			"Evaluating the Flash Platform for Web-based Collaborative Data Visualization"
 			<i>M.S. Thesis, Politecnico di Milano and University of Illinois at Chicago, 2006</i>
