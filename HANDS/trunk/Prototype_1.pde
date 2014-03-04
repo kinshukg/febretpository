@@ -166,6 +166,12 @@ public PImage infoIcon;
 public PImage IMG_EBI;
 public PImage IMG_SUGGESTION;
 public PImage IMG_TUTORIAL;
+// Images related to trend plot
+public PImage IMG_PLOT_BASE;
+public PImage IMG_RED_DOT;
+public PImage IMG_GREEN_DOT;
+public PImage IMG_BLACK_DOT;
+public PImage IMG_NOW_MARKER;
 
 public PImage emptySmallGraph;
 public PImage smallGraph1;
@@ -174,7 +180,6 @@ public PImage smallGraph3;
 
 public PImage anxietyLevelTrend;
 public PImage anxietySelfControlTrend;
-public PImage painLevelTrend;
 public PImage emptyTrend;
 
 // Cycle 4: List of patients (substitutes POCManager instance, now there is one POCManager
@@ -183,6 +188,8 @@ Patient patient1;
 Patient patient2;
 Patient curPatient;
 int currentShift = 1;
+// When set to true, display a black screen between shifts.
+boolean shiftIntermission = false;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -223,6 +230,12 @@ public void setup()
 	//IMG_SUGGESTION.resize(0, 22);
 	IMG_TUTORIAL = loadImage("tutorial.png");
 	//IMG_TUTORIAL.resize(0, 22);
+    
+    IMG_PLOT_BASE = loadImage("plotBase.PNG");
+    IMG_RED_DOT = loadImage("redDot.png");
+    IMG_GREEN_DOT = loadImage("greenDot.png");
+    IMG_BLACK_DOT = loadImage("blackDot.png");
+    IMG_NOW_MARKER = loadImage("nowMarker.png");
 	
 	emptySmallGraph = loadImage("emptySmallGraph.png");
 	smallGraph1 = loadImage("SmallGraph1.png");
@@ -330,8 +343,6 @@ void loadNNNIcons()
 	anxietyLevelTrend.resize(500, 0);
 	anxietySelfControlTrend = loadImage("anxietySelfControlTrend2.png");
 	anxietySelfControlTrend.resize(500, 0);
-	painLevelTrend = loadImage("painLevelTrend.png");
-	painLevelTrend.resize(500, 0);
 	emptyTrend = loadImage("emptyTrend.png");
 	emptyTrend.resize(500, 0);
 }
@@ -431,7 +442,27 @@ public void setupPatients()
     patient1.mr = "xxx xxx xxx";
     patient1.physician = "Piper";
     patient1.other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
+    
+    // Setup patient 1 pain trends
+    patient1.painTrendView = new TrendGraph(0, 0);
+    TrendView tw = patient1.painTrendView;
+    
+    tw.now = 3;
+    tw.pastTrend[0] = 3;    
+    tw.pastTrend[1] = 2;    
+    tw.pastTrend[2] = 2;    
+    tw.projectionGood[3] = 1;    
+    tw.projectionGood[4] = 3;    
+    tw.projectionGood[5] = 5;    
+    tw.projectionGood[6] = 5;    
+    tw.projectionBad[3] = 1;    
+    tw.projectionBad[4] = 2;    
+    tw.projectionBad[5] = 1;    
+    tw.projectionBad[6] = 1;    
+
     patient1.reset();
+    
+    ///////// Patient 2
 
     patient2 = new Patient();
     patient2.id = 1;
@@ -447,6 +478,24 @@ public void setupPatients()
     patient2.mr = "xxx xxx xxx";
     patient2.physician = "Piper";
     patient2.other = "Nobody likes him.";
+    
+    // Setup patient 1 pain trends
+    patient2.painTrendView = new TrendGraph(0, 0);
+    tw = patient2.painTrendView;
+    
+    tw.now = 3;
+    tw.pastTrend[0] = 3;    
+    tw.pastTrend[1] = 2;    
+    tw.pastTrend[2] = 2;    
+    tw.projectionGood[3] = 1;    
+    tw.projectionGood[4] = 3;    
+    tw.projectionGood[5] = 5;    
+    tw.projectionGood[6] = 5;    
+    tw.projectionBad[3] = 1;    
+    tw.projectionBad[4] = 2;    
+    tw.projectionBad[5] = 1;    
+    tw.projectionBad[6] = 1;    
+    
     patient2.reset();
     
     setActivePatient(patient1);
@@ -470,9 +519,51 @@ public void nextShift()
         patient2.poc = "09/23/2013";
     }
     
+    updatePatientStatus(patient1);
+    updatePatientStatus(patient2);
+    
     // When switching to another shift, always go back to patient 1.
     setActivePatient(patient1);
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+public void updatePatientStatus(Patient patient)
+{
+    // Update pain status based on user actions
+    TrendView tw = patient.painTrendView;
+    // current value;
+    int c = tw.pastTrend[tw.now - 1];
+    // now index
+    tw.now = tw.now + 1;
+    int i = tw.now - 1;
+    POCManager poc = patient.pocManager;
+    // If user added positioning, pain score always goes up by 1
+    if(poc.achPositioningAdded)
+    {
+        // If all three suggestions have been applied, pain goes up by 2.
+        if(poc.achPainPrioritized && poc.achPalliativeConsultAdded)
+        {
+            tw.pastTrend[i] = 4;
+        }
+        else
+        {
+            tw.pastTrend[i] = 3;
+        }
+    }
+    // If both the other suggestions have been considered, pain goes up by 1 
+    else if(poc.achPainPrioritized && poc.achPalliativeConsultAdded)
+    {
+        tw.pastTrend[i] = 3;
+    }
+    // If no suggstion has been followed, pain goes down by 1.
+    else if(!poc.achPainPrioritized && !poc.achPalliativeConsultAdded)
+    {
+        tw.pastTrend[i] = 1;
+    }
+    // Update the current pain level score to mach value from the trend view
+    poc.painLevelView.firstColumn = tw.pastTrend[i];
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setActivePatient(Patient p)
@@ -501,6 +592,17 @@ public void setActivePatient(Patient p)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void draw()
 {
+    // Do we need to show the intermission screen betwen shifts?
+    if(shiftIntermission)
+    {
+        background(0); 
+		fill(255);
+		textFont(font);
+		textSize(24);
+		text("Shift Ended. Press 6 To Continue To Next Shift",10,10);
+        return;
+    }
+    
 	background(backgroundColor); 
 	// Draw static view elements
 	drawStaticViewElements();
@@ -605,6 +707,11 @@ void mouseClicked()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void keyPressed() 
 {
+    if(shiftIntermission && key == '6')
+    {
+        shiftIntermission = false;
+        nextShift();
+    }
 	if(!filterKeyInput)
 	{
 		if(key == '1')
@@ -669,7 +776,7 @@ void keyPressed()
 		}
 		else if(key == '7')
 		{
-			nextShift();
+            shiftIntermission = true;
 		}
 	}
 	if(activeTextBox != null)
