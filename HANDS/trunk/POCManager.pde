@@ -40,6 +40,14 @@ class POCManager
 	ThirdLevelRowView NICEnergyConservation;
 	
 	SecondLevelRowView NOCImmobilityConsequences;
+    
+    // Cycle 4
+    // These variables keep track of the user 'achievements'
+    // that is, the desired actions takes on the patient plan of care.
+    boolean achPositioningAdded = false;
+    boolean achPainPrioritized = false;
+    boolean achPalliativeConsultAdded = false;
+    
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
@@ -84,7 +92,7 @@ class POCManager
 		acutePainView.iconButton.tooltipImage = IMG_ACUTE_PAIN;
 		scrollingView.subs.add(acutePainView);
 
-		painLevelView = new SecondLevelRowView("Pain Level",secondLevelIcon,1,5,acutePainView, this);
+		painLevelView = new SecondLevelRowView("Pain Level",secondLevelIcon,2,5,acutePainView, this);
 		painLevelView.iconButton.tooltipImage = IMG_PAIN_LEVEL;
 		//acutePainView.subs.add(painLevelView);
 		
@@ -127,6 +135,10 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
+        // check achievements
+        if(text.equals("Positioning")) achPositioningAdded = true;
+        else if(text.equals("Palliative Care Consult")) achPalliativeConsultAdded = true;
+        
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
 		temp.iconButton.tooltipImage = tooltip;
 		if(comment.length() != 0) temp.addComment(comment);
@@ -175,6 +187,9 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void prioritizeNANDA(ColouredRowView nanda)
 	{
+        // check achievements
+        if(nanda.title.equals("Acute Pain")) achPainPrioritized = true;
+        
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(0, nanda);
 	}

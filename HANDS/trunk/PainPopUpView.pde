@@ -10,6 +10,8 @@ class PainPopUpView extends PopUpViewBase
 	Button descriptionButton;
 	
 	int totalActions;
+    
+    TrendView trendView;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PainPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
@@ -22,7 +24,7 @@ class PainPopUpView extends PopUpViewBase
 	void setupPainTitleSection()
 	{
         PopUpSection title = new PopUpSection("");
-        title.setImage(painLevelTrend);
+        if(trendView != null) title.addTrendView(trendView);
         title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
         subviews.add(title);
 	}
@@ -34,22 +36,23 @@ class PainPopUpView extends PopUpViewBase
 		c.setIconTooltipImage(IMG_POSITIONING);
         
 		CheckBox c1 = new CheckBox("Prioritize NANDA: Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
-		CheckBox c2 = new CheckBox("Remove NANDA: Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
+		CheckBox c2 = new CheckBox("Add NIC: Palliative Care Consult", "Palliative Care Consult", thirdLevelIcon, ADD_NIC);
+		//CheckBox c2 = new CheckBox("Remove NANDA: Impaired Gas Exchange", firstLevelIcon, REMOVE_NANDA);
 		//CheckBox c3 = new CheckBox("Energy Conservation", secondLevelIcon, ADD_NOC);
 		//CheckBox c4 = new CheckBox("Coping", secondLevelIcon, ADD_NOC);
-		CheckBox c5 = new CheckBox("Add NIC: Patient controlled analgesia", thirdLevelIcon, ADD_NIC);
-		CheckBox c6 = new CheckBox("Add NIC: Massage", thirdLevelIcon, ADD_NIC);
-		CheckBox c7 = new CheckBox("Add NIC: Relaxation Therapy", thirdLevelIcon, ADD_NIC);
-		CheckBox c8 = new CheckBox("Add NIC: Guided Imagery", thirdLevelIcon, ADD_NIC);
+		//CheckBox c5 = new CheckBox("Add NIC: Patient controlled analgesia", thirdLevelIcon, ADD_NIC);
+		//CheckBox c6 = new CheckBox("Add NIC: Massage", thirdLevelIcon, ADD_NIC);
+		//CheckBox c7 = new CheckBox("Add NIC: Relaxation Therapy", thirdLevelIcon, ADD_NIC);
+		//CheckBox c8 = new CheckBox("Add NIC: Guided Imagery", thirdLevelIcon, ADD_NIC);
 		
 		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
-		c2.setIconTooltipImage(IMG_IMPAIRED_GAS_EXCHANGE);
+		c2.setIconTooltipImage(IMG_CONSULTATION);
 		//c3.setIconTooltipImage(IMG_ENERGY_CONSERVATION);
 		//c4.setIconTooltipImage(IMG_COPING);
-		c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
-		c6.setIconTooltipImage(IMG_MASSAGE);
-		c7.setIconTooltipImage(IMG_RELAXATION_THERAPY);
-		c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
+		//c5.setIconTooltipImage(IMG_PATIENT_CONTROLLED_ANALGESIA);
+		//c6.setIconTooltipImage(IMG_MASSAGE);
+		//c7.setIconTooltipImage(IMG_RELAXATION_THERAPY);
+		//c8.setIconTooltipImage(IMG_GUIDED_IMAGERY);
 		
 		// Big information: we present EBI side-by-side with actions
         PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
@@ -57,22 +60,22 @@ class PainPopUpView extends PopUpViewBase
         section1.addAction(c);
         
         
-        PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
+        //PopUpSection section2 = new PopUpSection(MSG_PAIN_GAS_EXCHANGE);
         //section2.setDescription(MSG_PAIN_GAS_EXCHANGE);
-        section2.addAction(c1);
-        section2.addAction(c2);
         
         PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
+        section3.addAction(c1);
+        section3.addAction(c2);
         //section3.setDescription(MSG_PAIN_OUTCOME);
-        section3.addAction(c5);
-        section3.addAction(c6);
-        section3.addAction(c7);
-        section3.addAction(c8);
+        //section3.addAction(c5);
+        //section3.addAction(c6);
+        //section3.addAction(c7);
+        //section3.addAction(c8);
         
         subviews.add(section1);
-        subviews.add(section2);
         subviews.add(section3);
-		totalActions = 7;
+        //subviews.add(section3);
+		totalActions = 3;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,7 @@ class Patient
     String name, dob, gender, allergies, codeStatus, poc, shft, room, medicalDX, mr, physician, other;
 
     POCManager pocManager;
+    TrendView painTrendView;
     
     ///////////////////////////////////////////////////////////////////////////////////////////////
     void reset()
@@ -40,6 +41,7 @@ class Patient
         int ppwidth = 705;
         
         PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView, pocManager);
+        ppw.trendView = painTrendView;
         ppw.reset();
         
         // Tis is the image that appears in the long access bar button.
