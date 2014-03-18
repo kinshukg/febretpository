@@ -15,6 +15,31 @@ class Patient
     {
         pocManager = new POCManager();
         pocManager.reset();
+        
+        if(id == 1)
+        {
+            // NANDA Constipation
+            ColouredRowView NANDAConstipation = pocManager.addNANDA("Constipation", IMG_PLACEHOLDER);
+            SecondLevelRowView NOCBowelElimination = pocManager.addNOC("Bowel Elimination", "", NANDAConstipation, IMG_PLACEHOLDER);
+            NOCBowelElimination.setScores(2, 4);
+            pocManager.addNIC("Bowel Management", "", NOCBowelElimination, IMG_PLACEHOLDER);
+            pocManager.addNIC("Self-Care Assistance: Toileting", "", NOCBowelElimination, IMG_PLACEHOLDER);
+            
+            // NANDA Acute Pain section
+            ColouredRowView NANDAAcutePain = pocManager.addNANDA("Acute Pain", IMG_ACUTE_PAIN);
+            SecondLevelRowView NOCPainLevel = pocManager.addNOC("Pain Level", "", NANDAAcutePain, IMG_PAIN_LEVEL);
+            NOCPainLevel.setScores(2, 4);
+            pocManager.addNIC("Medication Management", "", NOCPainLevel, IMG_MEDICATION_MANAGEMENT);
+            pocManager.addNIC("Pain Management", "", NOCPainLevel, IMG_PAIN_MANAGEMENT);
+            
+            // NANDA Death anxiety
+            ColouredRowView NANDADeathAnxiety = pocManager.addNANDA("Death Anxiety", IMG_DEATH_ANXIETY);
+            SecondLevelRowView NOCComfortableDeath = pocManager.addNOC("Comfortable Death", "", NANDADeathAnxiety, IMG_COMFORTABLE_DEATH);
+            NOCComfortableDeath.setScores(3, 5);
+            pocManager.addNIC("Calming Technique", "", NOCComfortableDeath, IMG_CALMING_TECHNIQUE);
+            pocManager.addNIC("Spiritual Support", "Family Priest to Visit 2am", NOCComfortableDeath, IMG_SPIRITUAL_SUPPORT);
+        }
+        
         if(!OPTION_NATIVE) setupPopup();
     }
     
@@ -38,34 +63,15 @@ class Patient
     ///////////////////////////////////////////////////////////////////////////////////////////////
     public void setupPopup()
     {
-        int ppwidth = 705;
-        
-        PainPopUpView ppw = new PainPopUpView(ppwidth, pocManager.painLevelView, pocManager);
+        // Acute Pain CDS
+        SecondLevelRowView painLevel = pocManager.getNOC("Acute Pain", "Pain Level");
+        PainPopUpView ppw = new PainPopUpView(705, painLevel, pocManager);
         ppw.trendView = painTrendView;
         ppw.reset();
         
-        // Tis is the image that appears in the long access bar button.
-        PImage painLevelActionButtonImage = null;
-        
-        int graphButtonX = 750;
-        pocManager.painLevelView.actionPopUp = ppw;
-
-        // alert button position, used for inter-row button alignment
-        int alertButtonX;
-        alertButtonX = 460;
-        pocManager.painLevelView.setAlertButton(3, "Action required", alertButtonX, painLevelActionButtonImage);
-        
-        // Cycle 2 addition
-        DeathPopUpView dppw = new DeathPopUpView(600, pocManager.anxietySelfControlView, pocManager);
-        dppw.setupFull();
-        pocManager.anxietySelfControlView.setAlertButton(3, "Action required", alertButtonX, null);
-        pocManager.anxietySelfControlView.actionPopUp = dppw;
-        
-        // Cycle 3 addition
-        MobilityPopupView mppw = new MobilityPopupView(400, pocManager.NOCMobility, pocManager);
-        mppw.setupFull();
-        pocManager.NOCMobility.setAlertButton(3, "Action required", alertButtonX, null);
-        pocManager.NOCMobility.actionPopUp = mppw;
+        // Death Anxiety CDS
+        SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
+        DeathPopUpView dppw = new DeathPopUpView(600, comfortableDeath, pocManager);
     }
 }
 

@@ -22,6 +22,7 @@ public int CYCLE2_OPTION_NUMBER = 1;
 public PImage IMG_LEGEND = null; 
 
 // NNN definition images
+public PImage IMG_PLACEHOLDER = null; 
 public PImage IMG_IMP_GAS_EXC = null; 
 public PImage IMG_ACUTE_PAIN = null;
 public PImage IMG_DEATH_ANXIETY = null;
@@ -253,6 +254,8 @@ public void setup()
 	crossIcon = loadImage("cross.png");
 	crossIcon.resize(0, 22);
 	
+	IMG_PLACEHOLDER = loadImage("tooltipPlaceholder.PNG");
+    
 	IMG_IMP_GAS_EXC = loadImage("impairedgasExchange.png");
 	IMG_ACUTE_PAIN = loadImage("acutePain.png");
 	IMG_DEATH_ANXIETY = loadImage("deathAnxiety.png");
@@ -561,7 +564,7 @@ public void updatePatientStatus(Patient patient)
         tw.pastTrend[i] = 1;
     }
     // Update the current pain level score to mach value from the trend view
-    poc.painLevelView.firstColumn = tw.pastTrend[i];
+    poc.getNOC("Acute Pain", "Pain Level").firstColumn = tw.pastTrend[i];
 }
 
 

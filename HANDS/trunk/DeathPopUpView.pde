@@ -22,6 +22,12 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		super(w_, parent);
         pocManager = poc;
+        int alertButtonX = 460;
+        // Tis is the image that appears in the long access bar button.
+        PImage actionButtonImage = null;
+        parent.setAlertButton(3, "Action required", alertButtonX, actionButtonImage);
+        parent.actionPopUp = this;
+        setupFull();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,7 +138,8 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		if(consultCheck != null && consultCheck.selected)
 		{
-			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
+            SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
+			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", comfortableDeath, IMG_CONSULTATION);
 			recommendedActionSection.removeAction(consultCheck);
 			parent.addComment("");
 			consultCheck = null;
@@ -158,7 +165,7 @@ class DeathPopUpView extends PopUpViewBase
 		}
 		if(copingCheck != null && copingCheck.selected)
 		{
-			pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
+			pocManager.addNANDA("Interrupted Family Processes", IMG_INTERRUPTED_FAMILY_PROCESS);
 			actionSection.removeAction(copingCheck);
 			copingCheck = null;
 		}

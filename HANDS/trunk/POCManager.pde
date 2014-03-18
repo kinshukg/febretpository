@@ -2,44 +2,32 @@
 class POCManager
 {
 	// Impaired Gas Exchange Section
-	ColouredRowView impairedGasExchange;
-	SecondLevelRowView respiratoryStatusView;
-	ThirdLevelRowView acidBaseView;
-	ThirdLevelRowView bedsideLaboratoryView;
-	ThirdLevelRowView airwayManagementView;
+	// ColouredRowView impairedGasExchange;
+	// SecondLevelRowView respiratoryStatusView;
+	// ThirdLevelRowView acidBaseView;
+	// ThirdLevelRowView bedsideLaboratoryView;
+	// ThirdLevelRowView airwayManagementView;
 	
-	// NANDA lines
-	ColouredRowView deathAnxietyView;
-	ColouredRowView acutePainView;
-	
-	// NOC Lines
-	SecondLevelRowView anxietySelfControlView;
-	SecondLevelRowView painLevelView; 
-	
-	ThirdLevelRowView calmingTechniqueView_2; 
-	ThirdLevelRowView spiritualSupportView;
-	ThirdLevelRowView medicationManagementView;
-	ThirdLevelRowView painManagementView;
 	ScrollingView scrollingView;
 	
 	// Cycle 2
 	
 	// Family coping stuff
-	ColouredRowView nandaInterruptedFamilyProcess;
-	SecondLevelRowView nocFamilyCoping;
-	ThirdLevelRowView nicFamilySupport;
-	ThirdLevelRowView nicFamilyIntegrityPromotion;
-	ThirdLevelRowView nicEducationEOL;
+	// ColouredRowView nandaInterruptedFamilyProcess;
+	// SecondLevelRowView nocFamilyCoping;
+	// ThirdLevelRowView nicFamilySupport;
+	// ThirdLevelRowView nicFamilyIntegrityPromotion;
+	// ThirdLevelRowView nicEducationEOL;
 	
 	// Cycle 3
 	
 	// Impaired Physical Mobility Section
-	ColouredRowView NANDAImpairedPhysicalMobility;
-	SecondLevelRowView NOCMobility;
-	ThirdLevelRowView NICFallPrevention;
-	ThirdLevelRowView NICEnergyConservation;
+	// ColouredRowView NANDAImpairedPhysicalMobility;
+	// SecondLevelRowView NOCMobility;
+	// ThirdLevelRowView NICFallPrevention;
+	// ThirdLevelRowView NICEnergyConservation;
 	
-	SecondLevelRowView NOCImmobilityConsequences;
+	// SecondLevelRowView NOCImmobilityConsequences;
     
     // Cycle 4
     // These variables keep track of the user 'achievements'
@@ -56,82 +44,59 @@ class POCManager
 		//mainView.subviews.add(scrollingView);
 
 		// Impaired Gas Exchange Section
-		impairedGasExchange = new ColouredRowView("Impaired Gas Exchange",firstLevelIcon);
-		impairedGasExchange.iconButton.tooltipImage = IMG_IMP_GAS_EXC;
-		scrollingView.subs.add(impairedGasExchange);
+		// impairedGasExchange = new ColouredRowView("Impaired Gas Exchange",firstLevelIcon);
+		// impairedGasExchange.iconButton.tooltipImage = IMG_IMP_GAS_EXC;
+		// scrollingView.subs.add(impairedGasExchange);
 		
-		respiratoryStatusView = new SecondLevelRowView("Respiratory Status: Gas Exchange",secondLevelIcon,2,3,impairedGasExchange, this);
-		respiratoryStatusView.iconButton.tooltipImage = IMG_RESPIRATORY_STATUS_GAS_EXCHANGE;
+		// respiratoryStatusView = new SecondLevelRowView("Respiratory Status: Gas Exchange",secondLevelIcon,2,3,impairedGasExchange, this);
+		// respiratoryStatusView.iconButton.tooltipImage = IMG_RESPIRATORY_STATUS_GAS_EXCHANGE;
 
-		acidBaseView = new ThirdLevelRowView("Acid-Base Monitoring", thirdLevelIcon,respiratoryStatusView);
-		acidBaseView.iconButton.tooltipImage = IMG_ACID_BASE_MONITORING;
+		// acidBaseView = new ThirdLevelRowView("Acid-Base Monitoring", thirdLevelIcon,respiratoryStatusView);
+		// acidBaseView.iconButton.tooltipImage = IMG_ACID_BASE_MONITORING;
 
-		bedsideLaboratoryView = new ThirdLevelRowView("Bedside Laboratory Testing",thirdLevelIcon,respiratoryStatusView);
-		bedsideLaboratoryView.iconButton.tooltipImage = IMG_BEDSIDE_LABORATORY_TESTING;
+		// bedsideLaboratoryView = new ThirdLevelRowView("Bedside Laboratory Testing",thirdLevelIcon,respiratoryStatusView);
+		// bedsideLaboratoryView.iconButton.tooltipImage = IMG_BEDSIDE_LABORATORY_TESTING;
 
-		airwayManagementView = new ThirdLevelRowView("Airway Management",thirdLevelIcon,respiratoryStatusView);
-		airwayManagementView.iconButton.tooltipImage = IMG_AIRWAY_MANAGEMENT;
-		
-		// Death Anxiety Section
-		deathAnxietyView = new ColouredRowView("Death Anxiety",firstLevelIcon);
-		deathAnxietyView.iconButton.tooltipImage = IMG_DEATH_ANXIETY;
-		scrollingView.subs.add(deathAnxietyView);
-
-		anxietySelfControlView = new SecondLevelRowView("Comfortable Death",secondLevelIcon,2,5,deathAnxietyView, this);
-		anxietySelfControlView.iconButton.tooltipImage = IMG_COMFORTABLE_DEATH;
-
-		calmingTechniqueView_2 = new ThirdLevelRowView("Calming Technique",thirdLevelIcon,anxietySelfControlView);
-		calmingTechniqueView_2.iconButton.tooltipImage = IMG_CALMING_TECHNIQUE;
-
-		spiritualSupportView = new ThirdLevelRowView("Spiritual Support",thirdLevelIcon,anxietySelfControlView);
-		spiritualSupportView.iconButton.tooltipImage = IMG_SPIRITUAL_SUPPORT;
-
-		spiritualSupportView.addComment("Family Priest to Visit 2am");
-
-		acutePainView = new ColouredRowView("Acute Pain",firstLevelIcon);
-		acutePainView.iconButton.tooltipImage = IMG_ACUTE_PAIN;
-		scrollingView.subs.add(acutePainView);
-
-		painLevelView = new SecondLevelRowView("Pain Level",secondLevelIcon,2,5,acutePainView, this);
-		painLevelView.iconButton.tooltipImage = IMG_PAIN_LEVEL;
-		//acutePainView.subs.add(painLevelView);
-		
-		medicationManagementView = new ThirdLevelRowView("Medication Management",thirdLevelIcon,painLevelView);
-		medicationManagementView.iconButton.tooltipImage = IMG_MEDICATION_MANAGEMENT;
-		//painLevelView.subs.add(medicationManagementView);
-
-		painManagementView = new ThirdLevelRowView("Pain Management",thirdLevelIcon,painLevelView);
-		painManagementView.iconButton.tooltipImage = IMG_PAIN_MANAGEMENT;
-		//painLevelView.subs.add(painManagementView);
+		// airwayManagementView = new ThirdLevelRowView("Airway Management",thirdLevelIcon,respiratoryStatusView);
+		// airwayManagementView.iconButton.tooltipImage = IMG_AIRWAY_MANAGEMENT;
 		
 		// Cycle 2 stuff
-		nandaInterruptedFamilyProcess = new ColouredRowView("Interrupted Family Processes", firstLevelIcon);
-		nandaInterruptedFamilyProcess.iconButton.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
+		// nandaInterruptedFamilyProcess = new ColouredRowView("Interrupted Family Processes", firstLevelIcon);
+		// nandaInterruptedFamilyProcess.iconButton.tooltipImage = IMG_INTERRUPTED_FAMILY_PROCESS;
 
-		nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, 0, 0, nandaInterruptedFamilyProcess, this);
-		nocFamilyCoping.iconButton.tooltipImage = IMG_FAMILY_COPING;
-		nocFamilyCoping.enableCurrentRatingButton();
-		nocFamilyCoping.enableExpectedRatingButton();
+		// nocFamilyCoping = new SecondLevelRowView("Family Coping", secondLevelIcon, 0, 0, nandaInterruptedFamilyProcess, this);
+		// nocFamilyCoping.iconButton.tooltipImage = IMG_FAMILY_COPING;
+		// nocFamilyCoping.enableCurrentRatingButton();
+		// nocFamilyCoping.enableExpectedRatingButton();
 		
-		nicFamilySupport = new ThirdLevelRowView("Family Support", thirdLevelIcon, nocFamilyCoping);
-		nicFamilySupport.iconButton.tooltipImage = IMG_FAMILY_SUPPORT;
+		// nicFamilySupport = new ThirdLevelRowView("Family Support", thirdLevelIcon, nocFamilyCoping);
+		// nicFamilySupport.iconButton.tooltipImage = IMG_FAMILY_SUPPORT;
 		
-		nicFamilyIntegrityPromotion = new ThirdLevelRowView("Family Integrity Promotion", thirdLevelIcon, nocFamilyCoping);
-		nicFamilyIntegrityPromotion.iconButton.tooltipImage = IMG_FAMILY_INTEGRITY_PROMOTION;
+		// nicFamilyIntegrityPromotion = new ThirdLevelRowView("Family Integrity Promotion", thirdLevelIcon, nocFamilyCoping);
+		// nicFamilyIntegrityPromotion.iconButton.tooltipImage = IMG_FAMILY_INTEGRITY_PROMOTION;
 		
-		nicEducationEOL = new ThirdLevelRowView("Health Education: End Of Life Process", thirdLevelIcon, nocFamilyCoping);
-		nicEducationEOL.iconButton.tooltipImage = IMG_HEALTH_EDUCATION;
+		// nicEducationEOL = new ThirdLevelRowView("Health Education: End Of Life Process", thirdLevelIcon, nocFamilyCoping);
+		// nicEducationEOL.iconButton.tooltipImage = IMG_HEALTH_EDUCATION;
 		
 		// Cycle 3 stuff
-		NANDAImpairedPhysicalMobility =  new ColouredRowView("Impaired Physical Mobility", firstLevelIcon);
-		NANDAImpairedPhysicalMobility.iconButton.tooltipImage = IMG_IMPAIRED_PHYSICAL_MOBILITY;
-		scrollingView.subs.add(NANDAImpairedPhysicalMobility);
+		// NANDAImpairedPhysicalMobility =  new ColouredRowView("Impaired Physical Mobility", firstLevelIcon);
+		// NANDAImpairedPhysicalMobility.iconButton.tooltipImage = IMG_IMPAIRED_PHYSICAL_MOBILITY;
+		// scrollingView.subs.add(NANDAImpairedPhysicalMobility);
 
-		NOCMobility = addNOC("Mobility", "", NANDAImpairedPhysicalMobility, IMG_MOBILITY);
-		NICFallPrevention = addNIC("Fall Prevention", "", NOCMobility, IMG_FALL_PREVENTION);
-		NICEnergyConservation = addNIC("Energy Conservation", "", NOCMobility, IMG_ENERGY_CONSERVATION);
+		// NOCMobility = addNOC("Mobility", "", NANDAImpairedPhysicalMobility, IMG_MOBILITY);
+		// NICFallPrevention = addNIC("Fall Prevention", "", NOCMobility, IMG_FALL_PREVENTION);
+		// NICEnergyConservation = addNIC("Energy Conservation", "", NOCMobility, IMG_ENERGY_CONSERVATION);
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	ColouredRowView addNANDA(String title, PImage tooltip)
+	{
+        ColouredRowView row = new ColouredRowView(title,firstLevelIcon);
+        row.iconButton.tooltipImage = tooltip;
+        addNANDA(row);
+        return row;
+    }
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
@@ -200,6 +165,36 @@ class POCManager
 		scrollingView.subs.add(nanda);
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	ColouredRowView getNANDA(String title)
+	{
+		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
+            if(tempRow.title.equals(title)) return tempRow;
+        }
+        print("POCManager::getNANDA - could not find NANDA row titled " + title);
+        return null;
+	}
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    SecondLevelRowView getNOC(String NANDATitle, String NOCTitle)
+	{
+        ColouredRowView nanda = getNANDA(NANDATitle);
+        if(nanda != null)
+        {
+            //print("NANDA subs: " + nanda.subs.size());
+            for (int i = 0; i < nanda.subs.size(); i++ ) 
+            {
+                SecondLevelRowView tempRow = (SecondLevelRowView) nanda.subs.get(i);
+                //print("NANDA subs: " + tempRow.title);
+                if(tempRow.title.equals(NOCTitle)) return tempRow;
+            }
+        }
+        print("POCManager::getNOC - could not find NOC row titled " + NOCTitle);
+        return null;
+	}
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	int getBottom()
 	{

@@ -18,6 +18,11 @@ class PainPopUpView extends PopUpViewBase
 	{
 		super(w_, parent);
         pocManager = poc;
+        parent.actionPopUp = this;
+        int alertButtonX = 460;
+        // Tis is the image that appears in the long access bar button.
+        PImage painLevelActionButtonImage = null;
+        parent.setAlertButton(3, "Action required", alertButtonX, painLevelActionButtonImage);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,11 +133,11 @@ class PainPopUpView extends PopUpViewBase
                                     pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
                                 }
 							}
-							if(c.id == REMOVE_NANDA)
-							{
-								pocManager.deleteNANDA(pocManager.impairedGasExchange);
-								if(c.tb.text.length() != 0) pocManager.impairedGasExchange.addComment(c.tb.text);
-							}
+							// if(c.id == REMOVE_NANDA)
+							// {
+								// pocManager.deleteNANDA(pocManager.impairedGasExchange);
+								// if(c.tb.text.length() != 0) pocManager.impairedGasExchange.addComment(c.tb.text);
+							// }
 							if(c.id == PRIORITIZE_NANDA)
 							{
 								pocManager.prioritizeNANDA(parent.parent);
