@@ -106,7 +106,9 @@ class MobilityPopupView extends PopUpViewBase
 	{
 		if(immobilityConsequencesCheck != null && immobilityConsequencesCheck.selected)
 		{
-			pocManager.addNOC("Immobility Consequences","", pocManager.NANDAImpairedPhysicalMobility, IMG_IMMOBILITY_CONSEQUENCES);
+            ColouredRowView nanda = pocManager.getNANDA("Impaired Physical Mobility");
+            
+			pocManager.addNOC("Immobility Consequences","", nanda, IMG_IMMOBILITY_CONSEQUENCES);
 			recommendedActionSection.removeAction(immobilityConsequencesCheck);
 			parent.addComment("");
 			immobilityConsequencesCheck = null;

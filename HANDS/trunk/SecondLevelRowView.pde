@@ -50,6 +50,16 @@ class SecondLevelRowView extends View
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
+    void setScores(int current, int expected)
+    {
+        disableExpectedRatingButton();
+        currentRatingButton.t = str(current);
+        //currentRatingButton = null;
+        firstColumn = current;
+        secondColumn = expected;
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
 		if(comment == "")
