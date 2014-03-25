@@ -2,6 +2,7 @@
 class CheckBox extends View 
 {
 	boolean selected;
+    boolean enabled = true;
 	StaticText text;
 	TextBox tb;
 	Button iconButton;
@@ -56,6 +57,27 @@ class CheckBox extends View
 		if(icon1 != null)
 		{
 			iconButton = new Button(25, 2, 22, 22, icon1);
+			subviews.add(iconButton);
+		}
+		
+		this.selected = selected;
+		tb = new TextBox(20,30);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	CheckBox(String t, String tag, PImage icon1, int id, PImage tooltipImage)
+	{
+		super(0, 0,250,20); 
+		this.id = id;
+		selected = false;
+		this.tag = tag;
+		text = new StaticText(t);
+		subviews.add(text);
+		interactive = true;
+		if(icon1 != null)
+		{
+			iconButton = new Button(25, 2, 22, 22, icon1);
+            iconButton.tooltipImage = tooltipImage;
 			subviews.add(iconButton);
 		}
 		
@@ -154,42 +176,50 @@ class CheckBox extends View
 		//fill(#ffffee);
 		//rect(0, 0, w, h);
 		
-		if(radio)
-		{
-			checkX = 2;
-			checkY = 2;
-			checkW = 16;
-			checkH = 16;
-			
-			stroke(0);
-			noFill();
-			ellipseMode(CORNER);
-			ellipse(checkX, checkY, checkW, checkH);
-			if(selected)
-			{
-				checkX += 4;
-				checkY += 4;
-				checkW -= 8;
-				checkH -= 8;
-				fill(checkColor, 255);
-				ellipse(checkX, checkY, checkW, checkH);
-			}
-		}
-		else
-		{
-			gu.drawBox(checkX, checkY, checkW, checkH, 1, 0, 255);
-			gu.drawBox(checkX, checkY, checkW, checkH, 2, 0, 60);
-			if(selected)
-			{
-				checkX += 4;
-				checkY += 4;
-				checkW -= 8;
-				checkH -= 8;
-				gu.drawBox(checkX, checkY, checkW, checkH, 1, checkColor, 180);
-				fill(checkColor, 255);
-				rect(checkX, checkY, checkX + checkW, checkY + checkH + 1);
-			}
-		}
+        if(enabled)
+        {
+            text.textColor = color(0);
+            if(radio)
+            {
+                checkX = 2;
+                checkY = 2;
+                checkW = 16;
+                checkH = 16;
+                
+                stroke(0);
+                noFill();
+                ellipseMode(CORNER);
+                ellipse(checkX, checkY, checkW, checkH);
+                if(selected)
+                {
+                    checkX += 4;
+                    checkY += 4;
+                    checkW -= 8;
+                    checkH -= 8;
+                    fill(checkColor, 255);
+                    ellipse(checkX, checkY, checkW, checkH);
+                }
+            }
+            else
+            {
+                gu.drawBox(checkX, checkY, checkW, checkH, 1, 0, 255);
+                gu.drawBox(checkX, checkY, checkW, checkH, 2, 0, 60);
+                if(selected)
+                {
+                    checkX += 4;
+                    checkY += 4;
+                    checkW -= 8;
+                    checkH -= 8;
+                    gu.drawBox(checkX, checkY, checkW, checkH, 1, checkColor, 180);
+                    fill(checkColor, 255);
+                    rect(checkX, checkY, checkX + checkW, checkY + checkH + 1);
+                }
+            }
+        }
+        else
+        {
+            text.textColor = color(128);
+        }
 		
 		fill(0);
 	}
@@ -197,6 +227,8 @@ class CheckBox extends View
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
+        if(!enabled) return false;
+        
 		int margin = 4;
 		if(lx > checkX - margin && lx < checkX + checkW + margin &&
 			ly > checkY - margin && ly < checkY + checkH + margin)
@@ -206,7 +238,9 @@ class CheckBox extends View
 			if(radio && ownerSection != null) ownerSection.onRadioButtonChanged(this);
 			//if(selected) tb.activate();
 			//else tb.deactivate();
-			if(!textBoxAlwaysVisible)
+            
+            // Cycle 4 Commented: disabled comment feature for dry run.
+			/*if(!textBoxAlwaysVisible)
 			{
 				if(selected)
 				{
@@ -218,7 +252,7 @@ class CheckBox extends View
 					if(textBoxEnabled) this.subviews.remove(tb);
 					//this.h = 20; 
 				}
-			}
+			}*/
 		}
 		return true;
 	}

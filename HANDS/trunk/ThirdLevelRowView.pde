@@ -23,7 +23,7 @@ class ThirdLevelRowView extends View
 		indent = 70;
         
         int cx = 320;
-        removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
+        removeButton = new Button(cx += 28, 1, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(removeButton);
 	}
@@ -74,4 +74,15 @@ class ThirdLevelRowView extends View
 			line(0, 15, w, 15);
 		}
 	}
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentClicked(float lx, float ly)
+	{
+		if(removeButton != null && removeButton.selected)
+		{
+			parent.pocManager.removeNIC(this);
+			removeButton.selected = false;
+		}
+        return true;
+    }
 }

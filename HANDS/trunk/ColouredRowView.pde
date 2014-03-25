@@ -1,5 +1,6 @@
 class ColouredRowView extends View 
 {
+    POCManager poc;
 	String title;
 	public ArrayList subs;  
 	boolean deleted = false;
@@ -9,7 +10,7 @@ class ColouredRowView extends View
 	Button iconButton;
 	
     // Native HANDS buttons
-	Button addButton;
+	//Button addButton;
 	Button removeButton;
 	Button prioritizeButton;
     
@@ -27,12 +28,12 @@ class ColouredRowView extends View
         
         int cx = 320;
         
-        addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
-        removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
-        prioritizeButton = new Button(cx += 28, 1, 24, 24, checkIcon); prioritizeButton.helpText = "Prioritize NOC";
+        //addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
+        //removeButton = new Button(cx += 28, 1, 24, 24, crossIcon); removeButton.helpText = "Remove NANDA";
+        prioritizeButton = new Button(cx += 28, 1, 24, 24, prioritizeIcon); prioritizeButton.helpText = "Prioritize NANDA";
         
-        subviews.add(addButton);
-        subviews.add(removeButton);
+        //subviews.add(addButton);
+        //subviews.add(removeButton);
         subviews.add(prioritizeButton);
 	}
 
@@ -50,6 +51,22 @@ class ColouredRowView extends View
 		subviews.add(commentBox);
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	boolean contentClicked(float lx, float ly)
+	{
+		if(prioritizeButton != null && prioritizeButton.selected)
+		{
+            poc.prioritizeNANDA(this);
+			prioritizeButton.selected = false;
+		}
+        else if(removeButton != null && removeButton.selected)
+        {
+            poc.deleteNANDA(this);
+			removeButton.selected = false;
+        }
+		return true;
+    }
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
