@@ -10,7 +10,7 @@ static String VERSION = "c3r3";
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
 // Variables used to keep track of the prototype state
-public boolean OPTION_NATIVE = false;
+public boolean OPTION_NATIVE = true;
 public boolean OPTION_ENABLE_POPUP_TEXT = true;
 //public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
 public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
@@ -111,6 +111,11 @@ String NIC_CONSULTATION_TEXT = "Consultation: Palliative Care";
 // Cycle 3: add immobility consequences msg on action bar.
 String MSG_ACTION_IMMOBILITY_CONSEQUENCES = "Add <noc> Immobility Consequences";
 
+int ADD_NIC = 0;
+int ADD_NOC = 1;
+int REMOVE_NANDA = 2;
+int PRIORITIZE_NANDA = 3;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Globl variables
 public int prototypeState = 0;
@@ -186,9 +191,9 @@ public PImage emptyTrend;
 // Cycle 4: List of patients (substitutes POCManager instance, now there is one POCManager
 // instance per patient)
 Patient patient1;
-Patient patient2;
+//Patient patient2;
 Patient curPatient;
-int currentShift = 1;
+int currentShift = 0;
 // When set to true, display a black screen between shifts.
 boolean shiftIntermission = false;
 
@@ -212,13 +217,13 @@ public void setup()
 	handIcon.resize(0,25);
 
 	plusIcon = loadImage(plusIconString);
-	plusIcon.resize(0,15);
+	plusIcon.resize(0,23);
  
 	minusIcon = loadImage(minusIconString);
 	minusIcon.resize(0,15);
 
 	prioritizeIcon = loadImage("arrow_up.png");
-	prioritizeIcon.resize(0,15);
+	prioritizeIcon.resize(0,23);
 	
 	IMG_LEGEND = loadImage("legend.png");
 	//IMG_LEGEND.resize(0,350);
@@ -299,8 +304,6 @@ public void setup()
 	IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = loadImage("NOCRespiratoryStatusGasExchange.png");;
 	
 
-	// Make sure initial options correspond to no suggestion version
-	OPTION_NATIVE = true;
 	OPTION_GRAPH_ALERT_BUTTON = false;
 	OPTION_NUMBER = 2;
 	CYCLE2_OPTION_NUMBER = 1;
@@ -447,83 +450,68 @@ public void setupPatients()
     patient1.other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
     
     // Setup patient 1 pain trends
-    patient1.painTrendView = new TrendGraph(0, 0);
-    TrendView tw = patient1.painTrendView;
+    TrendView tw = new TrendGraph(0, 0);
+    tw.title = "Pain Level";
+    patient1.trends.add(tw);
     
-    tw.now = 3;
-    tw.pastTrend[0] = 3;    
+    tw.now = 2;
+    tw.pastTrend[0] = 2;    
     tw.pastTrend[1] = 2;    
-    tw.pastTrend[2] = 2;    
-    tw.projectionGood[3] = 1;    
-    tw.projectionGood[4] = 3;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[3] = 1;    
-    tw.projectionBad[4] = 2;    
-    tw.projectionBad[5] = 1;    
+    tw.projectionGood[2] = 2;    
+    tw.projectionGood[3] = 3;    
+    tw.projectionGood[4] = 4;    
+    tw.projectionGood[5] = 4;    
+    tw.projectionGood[6] = 4;    
+    tw.projectionBad[2] = 2;    
+    tw.projectionBad[3] = 2;    
+    tw.projectionBad[4] = 1;    
+    tw.projectionBad[5] = 2;    
     tw.projectionBad[6] = 1;    
 
+    tw = new TrendGraph(0, 0);
+    tw.title = "Comfortable Death";
+    patient1.trends.add(tw);
+    
+    tw.now = 2;
+    tw.pastTrend[0] = 0;    
+    tw.pastTrend[1] = 3;    
+    tw.projectionGood[2] = 3;    
+    tw.projectionGood[3] = 4;    
+    tw.projectionGood[4] = 4;    
+    tw.projectionGood[5] = 5;    
+    tw.projectionGood[6] = 5;    
+    tw.projectionBad[2] = 3;    
+    tw.projectionBad[3] = 4;    
+    tw.projectionBad[4] = 3;    
+    tw.projectionBad[5] = 3;    
+    tw.projectionBad[6] = 2;    
+    
     patient1.reset();
     
-    ///////// Patient 2
-
-    patient2 = new Patient();
-    patient2.id = 1;
-    patient2.name = "Ciccio Pasticcio";
-    patient2.dob = "03/12/1821";
-    patient2.gender = "Male";
-    patient2.allergies = "None";
-    patient2.codeStatus = "DNR";
-    patient2.poc = "09/17/2013";
-    patient2.shft= "7:00a - 7:00p";
-    patient2.room = "1240";
-    patient2.medicalDX = "Broken Head";
-    patient2.mr = "xxx xxx xxx";
-    patient2.physician = "Piper";
-    patient2.other = "Nobody likes him.";
-    
-    // Setup patient 1 pain trends
-    patient2.painTrendView = new TrendGraph(0, 0);
-    tw = patient2.painTrendView;
-    
-    tw.now = 3;
-    tw.pastTrend[0] = 3;    
-    tw.pastTrend[1] = 2;    
-    tw.pastTrend[2] = 2;    
-    tw.projectionGood[3] = 1;    
-    tw.projectionGood[4] = 3;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[3] = 1;    
-    tw.projectionBad[4] = 2;    
-    tw.projectionBad[5] = 1;    
-    tw.projectionBad[6] = 1;    
-    
-    patient2.reset();
-    
     setActivePatient(patient1);
-    
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void nextShift()
 {
     currentShift++;
+    if(currentShift == 1)
+    {
+        // update POC dates.
+        patient1.poc = "03/24/2013";
+    }
     if(currentShift == 2)
     {
         // update POC dates.
-        patient1.poc = "09/19/2013";
-        patient2.poc = "09/19/2013";
+        patient1.poc = "03/25/2013";
     }
     else if(currentShift == 3)
     {
         // update POC dates.
-        patient1.poc = "09/23/2013";
-        patient2.poc = "09/23/2013";
+        patient1.poc = "03/26/2013";
     }
     
     updatePatientStatus(patient1);
-    updatePatientStatus(patient2);
     
     // When switching to another shift, always go back to patient 1.
     setActivePatient(patient1);
@@ -532,10 +520,18 @@ public void nextShift()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void updatePatientStatus(Patient patient)
 {
+    // No changes on first shift
+    if(currentShift == 1)
+    {
+        OPTION_NATIVE = false;
+        patient1.reset();
+        return;
+    }
+    
     // Update pain status based on user actions
-    TrendView tw = patient.painTrendView;
+    TrendView tw = patient.getTrend("Pain Level");
     // current value;
-    int c = tw.pastTrend[tw.now - 1];
+    //int c = tw.pastTrend[tw.now - 1];
     // now index
     tw.now = tw.now + 1;
     int i = tw.now - 1;
@@ -563,8 +559,30 @@ public void updatePatientStatus(Patient patient)
     {
         tw.pastTrend[i] = 1;
     }
+    else
+    {
+        tw.pastTrend[i] = tw.pastTrend[i - 1];
+    }
     // Update the current pain level score to mach value from the trend view
     poc.getNOC("Acute Pain", "Pain Level").firstColumn = tw.pastTrend[i];
+    
+    // Update comfortable death status
+    tw = patient.getTrend("Comfortable Death");
+    tw.now = tw.now + 1;
+    // current value;
+    //c = tw.pastTrend[tw.now - 1];
+    // now index
+    // If both the other suggestions have been considered, pain goes up by 1 
+    if(poc.achFamilyCopingAdded)
+    {
+        tw.pastTrend[i] = 4;
+    }
+    else
+    {
+        tw.pastTrend[i] = 3;
+    }
+    // Update the current pain level score to mach value from the trend view
+    poc.getNOC("Death Anxiety", "Comfortable Death").firstColumn = tw.pastTrend[i];
 }
 
 
@@ -775,7 +793,7 @@ void keyPressed()
 		}
 		else if(key == '8')
 		{
-			setActivePatient(patient2);
+			//setActivePatient(patient2);
 		}
 		else if(key == '7')
 		{

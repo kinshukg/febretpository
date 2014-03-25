@@ -12,6 +12,8 @@ class SecondLevelRowView extends View
 
 	ColouredRowView parent;
 	
+	PopUpViewBase nativeActionPopUp;
+    
 	// Popups
 	PopUpViewBase actionPopUp;
 	RatingPopUpView ratingPopUp;
@@ -23,7 +25,7 @@ class SecondLevelRowView extends View
     
     // Native HANDS buttons
 	Button addButton;
-	Button removeButton;
+	//Button removeButton;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent, POCManager poc)
@@ -42,18 +44,21 @@ class SecondLevelRowView extends View
         
         int cx = 320;
         
-        addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
-        removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
+        addButton = new Button(cx += 28, 1, 24, 24, plusIcon); addButton.helpText = "Add NIC";
+        //removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(addButton);
-        subviews.add(removeButton);
+        //subviews.add(removeButton);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
     void setScores(int current, int expected)
     {
         disableExpectedRatingButton();
-        currentRatingButton.t = str(current);
+        if(currentRatingButton != null)
+        {
+            currentRatingButton.t = str(current);
+        }
         //currentRatingButton = null;
         firstColumn = current;
         secondColumn = expected;
@@ -210,6 +215,21 @@ class SecondLevelRowView extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void showNativeActionsPopUp()
+	{
+		if(popUpView == null)
+		{
+			mainView.subviews.add(nativeActionPopUp);
+			popUpView = nativeActionPopUp;
+			nativeActionPopUp.x = mouseX + 50;
+			nativeActionPopUp.y = mouseY - nativeActionPopUp.h - 160; //350;
+			nativeActionPopUp.arrowX = mouseX;
+			nativeActionPopUp.arrowY = mouseY;
+			if(nativeActionPopUp.y < 50) nativeActionPopUp.y = 50;
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void showRatingPopUp()
 	{
 		if(popUpView == null)
@@ -239,6 +259,11 @@ class SecondLevelRowView extends View
 			showPopUp();
 			actionButton.selected = false;
 		}
+		if(addButton != null && addButton.selected)
+		{
+			showNativeActionsPopUp();
+			addButton.selected = false;
+		}
 		if(expectedRatingButton != null && expectedRatingButton.selected)
 		{
 			showRatingPopUp();
@@ -257,4 +282,29 @@ class SecondLevelRowView extends View
 	{
 		if(actionButton != null) actionButton.blinking = false;
 	}
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICAdded(ThirdLevelRowView nic)
+    {
+        if(nativeActionPopUp != null)
+        {
+            nativeActionPopUp.onNICAdded(nic);
+        }
+        if(actionPopUp != null)
+        {
+            actionPopUp.onNICAdded(nic);
+        }
+    }
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICRemoved(ThirdLevelRowView nic)
+    {
+        if(nativeActionPopUp != null)
+        {
+            nativeActionPopUp.onNICRemoved(nic);
+        }
+        if(actionPopUp != null)
+        {
+            actionPopUp.onNICRemoved(nic);
+        }
+    }
 }

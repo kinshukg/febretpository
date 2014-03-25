@@ -5,7 +5,7 @@ class DeathPopUpView extends PopUpViewBase
 	Button descriptionButton;
 	
 	CheckBox consultCheck;
-	CheckBox copingCheck;
+	//CheckBox copingCheck;
 
 	PopUpSection reasonSection;
 	PopUpSection recommendedActionSection;
@@ -17,32 +17,35 @@ class DeathPopUpView extends PopUpViewBase
 	
 	boolean consultCheckAdded = false;
 	
+    TrendView trendView;
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	DeathPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
 	{
 		super(w_, parent);
+        cds = true;
         pocManager = poc;
         int alertButtonX = 460;
         // Tis is the image that appears in the long access bar button.
         PImage actionButtonImage = null;
         parent.setAlertButton(3, "Action required", alertButtonX, actionButtonImage);
         parent.actionPopUp = this;
-        setupFull();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setupFull()
+	void reset()
 	{
 		// PopUpSection title = new PopUpSection("");
 		// title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
 		// subviews.add(title);
 
         PopUpSection title = new PopUpSection("");
-        title.setImage(anxietySelfControlTrend);
-        title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
+        if(trendView != null) title.addTrendView(trendView);
+        //title.setImage(anxietySelfControlTrend);
+        //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
         subviews.add(title);
 		
-		consultCheck = new CheckBox("Add NIC: Consultation - Palliative Care", thirdLevelIcon, 0);
+		consultCheck = new CheckBox("Add NIC: Family Coping", "Family Coping", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
 		
@@ -51,28 +54,11 @@ class DeathPopUpView extends PopUpViewBase
 		recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
 		recommendedActionSection.addAction(consultCheck);
 		
-		copingCheck = new CheckBox("Add NANDA: Interrupted Family Process Mini POC", firstLevelIcon, 0);
-		copingCheck.textBoxEnabled = false;
-		copingCheck.owner = this;
-		
-		// copingCheck.setIconTooltip("Adds a NANDA section with: <l> \n " +
-			// "<*> <nanda> Interrupted Family Processes \n " +
-			// "<*>   <noc> Family Coping \n " +
-			// "<*>     <nic> Family Support \n " +
-			// "<*>     <nic> Family Integrity Promotion \n " +
-			// "<*>     <nic> Health Education: End Of Life Process \n ");
-		
-		copingCheck.setIconTooltipImage(IMG_INTERRUPTED_FAMILY_PROCESS);
-		
-		actionSection = new PopUpSection(MSG_FAMILY_COPING);
-		actionSection.addAction(copingCheck);
-		
-		consultCheck.selected = true;
-		copingCheck.selected = true;
+		consultCheck.selected = false;
 		
 		subviews.add(recommendedActionSection);
-		subviews.add(actionSection);
 		createConsultRefuseSection();
+        subviews.add(5, reasonSection);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,11 +81,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		reason1.selected = true;
 		
-		//reason1.setIconTooltip(DEF_ACUTE_PAIN);
-		//reason2.setIconTooltip(DEF_ENERGY_CONSERVATION);
-		//reason3.setIconTooltip(DEF_COPING);
-		
-		reasonSection = new PopUpSection("Select a reason to dismiss Consultation suggestion: ");
+		reasonSection = new PopUpSection("Adding family coping is highly recommended. If you choose not to add it, please specify a reason.");
 		reasonSection.addAction(reason1);
 		reasonSection.addAction(reason2);
 		reasonSection.addAction(reason3);
@@ -122,13 +104,10 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		if(cb == consultCheck)
 		{
+            subviews.remove(reasonSection);
 			if(!consultCheck.selected)
 			{
 				subviews.add(5, reasonSection);
-			}
-			else
-			{
-				subviews.remove(reasonSection);
 			}
 		}
 	}
@@ -138,45 +117,57 @@ class DeathPopUpView extends PopUpViewBase
 	{
 		if(consultCheck != null && consultCheck.selected)
 		{
+            consultCheck.enabled = false;
+            consultCheck.selected = false;
             SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
-			pocManager.addNIC(NIC_CONSULTATION_TEXT, "", comfortableDeath, IMG_CONSULTATION);
-			recommendedActionSection.removeAction(consultCheck);
+			pocManager.addNIC("Family Coping", "", comfortableDeath, IMG_CONSULTATION);
+			//recommendedActionSection.removeAction(consultCheck);
 			parent.addComment("");
-			consultCheck = null;
-			consultCheckAdded = true;
+			//consultCheck = null;
+			//consultCheckAdded = true;
 		}
 		else
 		{
-			if(!consultCheckAdded)
+			//if(!consultCheckAdded)
 			{
 				if(reason1.selected)
 				{
-					parent.addComment("Dismissed consultation: Family / Patient Refused");
+					parent.addComment("Dismissed Family Coping: Family / Patient Refused");
 				}
 				else if(reason2.selected)
 				{
-					parent.addComment("Dismissed consultation: Doctor " + reason2.tb.text + " refused");
+					parent.addComment("Dismissed Family Coping: Doctor " + reason2.tb.text + " refused");
 				}
 				else if(reason3.selected)
 				{
-					parent.addComment("Dismissed consultation: " + reason3.tb.text);
+					parent.addComment("Dismissed Family Coping: " + reason3.tb.text);
 				}
 			}
-		}
-		if(copingCheck != null && copingCheck.selected)
-		{
-			pocManager.addNANDA("Interrupted Family Processes", IMG_INTERRUPTED_FAMILY_PROCESS);
-			actionSection.removeAction(copingCheck);
-			copingCheck = null;
 		}
 		
 		parent.stopBlinking();
 		hide();
-		
-		// If we added both actions and we are in cycle2 option 2, remove the action button from the POC action bar
-		if(copingCheck == null && consultCheck == null)
-		{
-			parent.removeAlertButton();
-		}
 	}
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICAdded(ThirdLevelRowView nic)
+    {
+        super.onNICAdded(nic);
+        // Hide/show the consult refuse section when family coping is added or removed from the POC
+        if(nic.title.equals(consultCheck.tag))
+        {
+            onCheckBoxChanged(consultCheck);
+        }
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICRemoved(ThirdLevelRowView nic)
+    {
+        super.onNICRemoved(nic);
+        // Hide/show the consult refuse section when family coping is added or removed from the POC
+        if(nic.title.equals(consultCheck.tag))
+        {
+            onCheckBoxChanged(consultCheck);
+        }
+    }
 }

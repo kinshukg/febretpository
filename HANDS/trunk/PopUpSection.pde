@@ -62,6 +62,17 @@ class PopUpSection extends View
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
+	CheckBox addAction(String t, String tag, PImage icon1, int id, PImage tooltipImage)
+	{
+        CheckBox action = new CheckBox(t, tag, icon1, id, tooltipImage);
+		if(actionBoxes == null) actionBoxes = new ArrayList<CheckBox>();
+		actionBoxes.add(action);
+		subviews.add(action);
+		action.ownerSection = this;
+        return action;
+	}
+    
+	///////////////////////////////////////////////////////////////////////////
 	void removeAction(CheckBox action)
 	{
 		actionBoxes.remove(action);

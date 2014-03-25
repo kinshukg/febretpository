@@ -5,6 +5,10 @@ class PopUpViewBase extends View
 	Button commit, notApplicable;
 	SecondLevelRowView parent;
 	ClosePopUpView close;
+    
+    // If this popup is a CDS popup, it will be removed (together with its action button)
+    // from a NOC line.
+    boolean cds = false;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	PopUpViewBase(float w_, SecondLevelRowView parent)
@@ -119,4 +123,118 @@ class PopUpViewBase extends View
 		}
 		return true;
 	}
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    CheckBox findAction(String tag)
+    {
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    if(c.tag.equals(tag)) return c;
+                }
+            }
+        }
+        return null;
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICAdded(ThirdLevelRowView nic)
+    {
+        // If a NIC has been added, check the nic list in this popup and disable the relative
+        // checkbox if you find it.
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio)
+                    {
+                        if(c.enabled && c.tag.equals(nic.title))
+                        {
+                            c.enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+        checkCDSEnabled(true);
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNICRemoved(ThirdLevelRowView nic)
+    {
+        // If a NIC has been removed, check the nic list in this popup and enable the relative
+        // checkbox if you find it.
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio)
+                    {
+                        if(!c.enabled && c.tag.equals(nic.title))
+                        {
+                            c.enabled = true;
+                            c.selected = false;
+                        }
+                    }
+                }
+            }
+        }
+        checkCDSEnabled(false);
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void checkCDSEnabled(boolean adding)
+    {
+        if(!cds) return;
+        
+        boolean anyEnabled = false;
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio) anyEnabled |= c.enabled;
+                }
+            }
+        }
+        if(!adding && anyEnabled && parent.actionButton == null)
+        {
+            //parent.actionPopUp = this;
+            int alertButtonX = 460;
+            // Tis is the image that appears in the long access bar button.
+            PImage painLevelActionButtonImage = null;
+            parent.setAlertButton(3, "Action required", alertButtonX, painLevelActionButtonImage);
+        }
+        else if(adding && !anyEnabled && parent.actionButton != null)
+        {
+			parent.removeAlertButton();
+        }
+    }
 }
