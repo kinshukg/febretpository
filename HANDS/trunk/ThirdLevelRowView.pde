@@ -9,7 +9,7 @@ class ThirdLevelRowView extends View
     // Native HANDS buttons
 	Button removeButton;
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView(String title,PImage logo, SecondLevelRowView parent_)
 	{
 		super(0, 0,width,25);
@@ -22,13 +22,13 @@ class ThirdLevelRowView extends View
 		parent.subs.add(this);  
 		indent = 70;
         
-        int cx = 320;
-        removeButton = new Button(cx += 28, 1, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
+        int cx = 348;
+        removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(removeButton);
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
 		h = 25;
@@ -42,7 +42,7 @@ class ThirdLevelRowView extends View
 		iconButton.y = 4;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
 		commentBox = new StaticText(comment);
@@ -50,7 +50,41 @@ class ThirdLevelRowView extends View
 		subviews.add(commentBox);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+    void draw()
+    {
+        super.draw(!parent.parent.deleted);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mousePressed(float px, float py)
+    {
+        if(!parent.parent.deleted) return super.mousePressed(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseMoved(float px, float py)
+    {
+        if(!parent.parent.deleted) return super.mouseMoved(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseReleased(float px, float py)
+    {
+        if(!parent.parent.deleted) return super.mouseReleased(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseClicked(float px, float py)
+    {
+        if(!parent.parent.deleted) return super.mouseClicked(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
 		stroke(0);
@@ -69,13 +103,13 @@ class ThirdLevelRowView extends View
 		textAlign(LEFT,CENTER);
 		text(title, indent +  35,12);
 		
-		if(parent.parent.deleted)
-		{
-			line(0, 15, w, 15);
-		}
+		// if(parent.parent.deleted)
+		// {
+			// line(0, 15, w, 15);
+		// }
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
 		if(removeButton != null && removeButton.selected)

@@ -1,7 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
 class POCManager
 {
 	ScrollingView scrollingView;
+    
+    // Native interface pick list popups.
+    NANDAPickList NANDAPopup;
+    NOCPickList NOCPopup;
+    NICPickList NICPopup;
+    
+    // Stashed NOCs that have CDS popups (so we don't really delete them.)
+    HashMap<String, SecondLevelRowView> stashedNOCS;
 	
     // Cycle 4
     // These variables keep track of the user 'achievements'
@@ -11,11 +18,15 @@ class POCManager
     boolean achPalliativeConsultAdded = false;
     boolean achFamilyCopingAdded = false;
     
-	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
+        stashedNOCS = new HashMap<String, SecondLevelRowView>();
+        
 		scrollingView = new ScrollingView(0, 80, SCREEN_WIDTH - 400, SCREEN_HEIGHT - 100);
+        NANDAPopup = new NANDAPickList(this);
+        NOCPopup = new NOCPickList(this);
+        NICPopup = new NICPickList(this);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,10 +42,15 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
+        print(text);
         // check achievements
         if(text.equals("Positioning")) achPositioningAdded = true;
-        else if(text.equals("Palliative Care Consult")) achPalliativeConsultAdded = true;
-        else if(text.equals("Family Coping")) achFamilyCopingAdded = true;
+        else if(text.equals("Consultation: Palliative Care"))
+        {
+            print("SDDSD");
+            achPalliativeConsultAdded = true;
+        }
+        //else if(text.equals("Family Coping")) achFamilyCopingAdded = true;
         
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
 		temp.iconButton.tooltipImage = tooltip;
@@ -47,13 +63,14 @@ class POCManager
 		}
         
         parentNOC.onNICAdded(temp);
+        NICPopup.onNICAdded(temp);
         
 		return temp;
 		//mainView.subviews.add(medicationManagementView);
 		//parentNOC.subs.add(temp);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void removeNIC(ThirdLevelRowView nic)
 	{
         // check achievements
@@ -62,28 +79,63 @@ class POCManager
         else if(nic.title.equals("Family Coping")) achFamilyCopingAdded = false;
         
         nic.parent.subs.remove(nic);
+        
         nic.parent.onNICRemoved(nic);
+        NICPopup.onNICRemoved(nic);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+	void removeNOC(SecondLevelRowView noc)
+	{
+        ArrayList tmpsubs = (ArrayList)noc.subs.clone();
+        // Remove all the NICs in this NOC
+        for (int j = 0; j < tmpsubs.size(); j++) 
+        {
+            ThirdLevelRowView nic = (ThirdLevelRowView)tmpsubs.get(j);
+            print("removing " + nic.title);
+            removeNIC(nic);
+        }
+        
+        noc.parent.subs.remove(noc);
+        
+        // If this NOC had a CDS action popup, don't really delete it..
+        // stash it so it can be restored later.
+        if(noc.actionPopUp != null)
+        {
+            stashedNOCS.put(noc.title, noc);
+        }
+        
+        //nic.parent.onNICRemoved(nic);
+        NOCPopup.onNOCRemoved(noc);
     }
     
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
-		SecondLevelRowView temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA, this);
-		temp.iconButton.tooltipImage = tooltip;
-		
-		if(comment.length() != 0) temp.addComment(comment);
-					
-		for(int k =0 ; k < parentNANDA.subs.size();k++)
-		{
-			SecondLevelRowView tempo = (SecondLevelRowView)parentNANDA.subs.get(k);
+        SecondLevelRowView temp = null;
+        // If we have a stashed NOC with this name, just restore it.
+        if(stashedNOCS.containsKey(text))
+        {
+            temp = stashedNOCS.get(text);
+            stashedNOCS.remove(temp);
+            parentNANDA.subs.add(temp);
+        }
+        else
+        {
+            temp = new SecondLevelRowView(text, secondLevelIcon, 0, 0, parentNANDA, this);
+            temp.iconButton.tooltipImage = tooltip;
+            if(comment.length() != 0) temp.addComment(comment);
+            //mainView.subviews.add(medicationManagementView);
+            //parentNANDA.subs.add(0,temp);
+            // Enable rating buttons
+            //temp.enableCurrentRatingButton();
+            temp.enableExpectedRatingButton();
+        }
+        for(int k =0 ; k < parentNANDA.subs.size();k++)
+        {
+            SecondLevelRowView tempo = (SecondLevelRowView)parentNANDA.subs.get(k);
                        tempo.y = temp.y+((k+1)*temp.h);
-		}
-		//mainView.subviews.add(medicationManagementView);
-		//parentNANDA.subs.add(0,temp);
-		
-		// Enable rating buttons
-		//temp.enableCurrentRatingButton();
-		//temp.enableExpectedRatingButton();
+        }
 		
 		return temp;
 	}

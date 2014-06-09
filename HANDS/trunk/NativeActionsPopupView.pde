@@ -1,17 +1,18 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
 class NativeActionsPopUpView extends PopUpViewBase
 {
     POCManager pocManager;
+    
+    ColouredRowView NANDAParent;
+    SecondLevelRowView NOCParent;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	NativeActionsPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
+	////////////////////////////////////////////////////////////////////////////
+	NativeActionsPopUpView(int w_, POCManager poc)
 	{
-		super(w_, parent);
+		super(w_, null);
         pocManager = poc;
-        parent.nativeActionPopUp = this;
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
     PopUpSection addSection(String label)
     {
         PopUpSection section = new PopUpSection(label);
@@ -19,17 +20,16 @@ class NativeActionsPopUpView extends PopUpViewBase
         return section;
     }
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
 		//setupPainTitleSection();
 		//setupPainActionSections();
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
-		parent.stopBlinking();		
 		for(int i = 0; i < subviews.size(); i++)
 		{
 			View v = (View)subviews.get(i);
@@ -49,27 +49,15 @@ class NativeActionsPopUpView extends PopUpViewBase
 							//toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
-                                String[] tags = c.tag.split(": ");
-                                if(tags.length > 1)
-                                {
-                                    pocManager.addNIC(tags[1], c.tb.text, parent, c.iconButton.tooltipImage);
-                                }
-                                else
-                                {
-                                    pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
-                                }
+                                pocManager.addNIC(c.tag, c.tb.text, NOCParent, c.iconButton.tooltipImage);
+							}
+							if(c.id == ADD_NANDA)
+							{
+                                pocManager.addNANDA(c.tag, c.iconButton.tooltipImage);
 							}
 							if(c.id == ADD_NOC)
 							{
-                                String[] tags = c.tag.split(": ");
-                                if(tags.length > 1)
-                                {
-                                    pocManager.addNOC(tags[1], c.tb.text, parent.parent, c.iconButton.tooltipImage);
-                                }
-                                else
-                                {
-                                    pocManager.addNOC(c.tag, c.tb.text, parent.parent, c.iconButton.tooltipImage);
-                                }
+                                pocManager.addNOC(c.tag, c.tb.text, NANDAParent, c.iconButton.tooltipImage);
 							}
 							// if(c.id == REMOVE_NANDA)
 							// {
@@ -78,8 +66,8 @@ class NativeActionsPopUpView extends PopUpViewBase
 							// }
 							if(c.id == PRIORITIZE_NANDA)
 							{
-								pocManager.prioritizeNANDA(parent.parent);
-								if(c.tb.text.length() != 0) parent.parent.addComment(c.tb.text);
+								pocManager.prioritizeNANDA(NANDAParent);
+								if(c.tb.text.length() != 0) NANDAParent.addComment(c.tb.text);
 							}
 						}
 					}

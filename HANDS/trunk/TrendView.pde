@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 class TrendView extends View 
 {
+    SecondLevelRowView noc;
     String title;
     int now;
-    int goal;
     int[] pastTrend = new int[8];
     int[] projectionGood = new int[8];
     int[] projectionBad = new int[8];

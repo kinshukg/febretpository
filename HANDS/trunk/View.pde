@@ -29,6 +29,11 @@ class View
   
   void draw()
   {
+    draw(true);
+  }
+  
+  void draw(boolean drawChildren)
+  {
 	if(visible)
 	{
 		layout();
@@ -36,10 +41,14 @@ class View
 		translate(x, y);
 		// draw out content, then our subviews on top
 		drawContent();
-		for (int i = 0; i < subviews.size(); i++) {
-		  View v = (View)subviews.get(i);
-		  v.draw();
-		}
+        if(drawChildren)
+        {
+            for (int i = 0; i < subviews.size(); i++) 
+            {
+                View v = (View)subviews.get(i);
+                v.draw();
+            }
+        }
 		
 		popMatrix();
 	}

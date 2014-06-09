@@ -1,4 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
 class TrendGraph extends TrendView 
 {
 	///////////////////////////////////////////////////////////////////////////
@@ -75,7 +74,7 @@ class TrendGraph extends TrendView
         }
 		fill(0,116,52);
 		textSize(14);
-		text("If treated\naggressively", curX + 10, curY - 20);
+		text("With improved\ntreatment", curX + 10, curY - 20);
 
         // Bad projection line
         curY = ty - (pastTrend[now - 1] - 1)  * ph;
@@ -97,13 +96,28 @@ class TrendGraph extends TrendView
         }
 		fill(192,0,0);
 		textSize(14);
-		text("If no plan\nchanges", curX + 10, curY - 20);
+		text("If current\ncare continues", curX + 10, curY - 20);
         
         // NOW marker
         imageMode(CORNER);
         image(IMG_NOW_MARKER, projX - 28, iy + 6);
 		fill(0);
 		textSize(12);
-		text("Actual   Projected", projX - 46, iy + 16);
+		text("Actual   Projected", projX - 46, iy + 10);
+        
+        if(noc != null)
+        {
+            int goal = noc.secondColumn;
+            // Expected rating line
+            curY = ty - (goal - 1) * ph;
+            fill(0);
+            stroke(0);
+            strokeWeight(6);
+            text("Expected", 65, curY - 19);
+            for(int xx = 90; xx < 460; xx += 30)
+            {
+                line(xx, curY, xx+10, curY); 
+            }
+        }
 	}
 }
