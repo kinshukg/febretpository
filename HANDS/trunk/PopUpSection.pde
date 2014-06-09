@@ -73,6 +73,31 @@ class PopUpSection extends View
 	}
     
 	///////////////////////////////////////////////////////////////////////////
+    // Shortcut for adding an add NANDA action
+	CheckBox addNANDA(String tag, String imageFile)
+	{
+        PImage img = loadImage(imageFile);
+        return addAction("Add NANDA: " + tag, tag, firstLevelIcon, ADD_NANDA, img); 
+	}
+    
+	///////////////////////////////////////////////////////////////////////////
+    // Shortcut for adding an add NOC action
+	CheckBox addNOC(String tag, String imageFile)
+	{
+        PImage img = loadImage(imageFile);
+        if(img == null) img = IMG_PLACEHOLDER;
+        return addAction("Add NOC: " + tag, tag, secondLevelIcon, ADD_NOC, img); 
+	}
+    
+	///////////////////////////////////////////////////////////////////////////
+    // Shortcut for adding an add NIC action
+	CheckBox addNIC(String tag, String imageFile)
+	{
+        PImage img = loadImage(imageFile);
+        return addAction("Add NIC: " + tag, tag, thirdLevelIcon, ADD_NIC, img); 
+	}
+    
+	///////////////////////////////////////////////////////////////////////////
 	void removeAction(CheckBox action)
 	{
 		actionBoxes.remove(action);
@@ -206,7 +231,7 @@ class PopUpSection extends View
 			{
 				int curw = 15;
 				int checkBoxWidth = (int)w / actionBoxes.size();
-				if(checkBoxWidth > 60) checkBoxWidth = 60;
+				if(checkBoxWidth > 150) checkBoxWidth = 150;
 				float maxCheckboxHeight = 0;
 				for(int i = 0; i < actionBoxes.size(); i++)
 				{

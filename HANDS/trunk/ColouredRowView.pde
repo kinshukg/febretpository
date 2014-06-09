@@ -10,11 +10,11 @@ class ColouredRowView extends View
 	Button iconButton;
 	
     // Native HANDS buttons
-	//Button addButton;
+	Button addButton;
 	Button removeButton;
 	Button prioritizeButton;
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	ColouredRowView(String title,PImage logo)
 	{
 		super(0, 0,width,25);
@@ -26,24 +26,24 @@ class ColouredRowView extends View
 		
 		indent = 10;
         
-        int cx = 320;
+        int cx = 328;
         
-        //addButton = new Button(cx += 28, 1, 24, 24, checkIcon); addButton.helpText = "Add NIC";
-        //removeButton = new Button(cx += 28, 1, 24, 24, crossIcon); removeButton.helpText = "Remove NANDA";
-        prioritizeButton = new Button(cx += 28, 1, 24, 24, prioritizeIcon); prioritizeButton.helpText = "Prioritize NANDA";
+        addButton = new Button(cx += 20, 4, 24, 24, plusIcon); addButton.helpText = "Add NOC";
+        removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NANDA";
+        prioritizeButton = new Button(cx += 20, 4, 24, 24, prioritizeIcon); prioritizeButton.helpText = "Prioritize NANDA";
         
-        //subviews.add(addButton);
-        //subviews.add(removeButton);
+        subviews.add(addButton);
+        subviews.add(removeButton);
         subviews.add(prioritizeButton);
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void markDeleted()
 	{
 		deleted = true;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
 		commentBox = new StaticText(comment);
@@ -51,7 +51,7 @@ class ColouredRowView extends View
 		subviews.add(commentBox);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
 		if(prioritizeButton != null && prioritizeButton.selected)
@@ -64,10 +64,16 @@ class ColouredRowView extends View
             poc.deleteNANDA(this);
 			removeButton.selected = false;
         }
+        else if(addButton != null && addButton.selected)
+        {
+            poc.NOCPopup.NANDAParent = this;
+            poc.NOCPopup.show();
+			addButton.selected = false;
+        }
 		return true;
     }
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
 		h = 25;
@@ -81,7 +87,47 @@ class ColouredRowView extends View
 		iconButton.y = 4;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+    void draw()
+    {
+        super.draw(!deleted);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mousePressed(float px, float py)
+    {
+        if(!deleted) return super.mousePressed(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseMoved(float px, float py)
+    {
+        if(!deleted) return super.mouseMoved(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseReleased(float px, float py)
+    {
+        if(!deleted) return super.mouseReleased(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseClicked(float px, float py)
+    {
+        if(!deleted) return super.mouseClicked(px, py);
+        if (ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush))
+        {        
+            // If line was deleted, clickin on it restores it.
+            deleted = false;
+            return true;
+        }
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
 		stroke(0);
@@ -103,7 +149,8 @@ class ColouredRowView extends View
 		
 		if(deleted)
 		{
-			line(0, 15, w, 15);
+            fill(0);
+            text("Click here to restore deleted NANDA", indent + 350, 12);
 		}
 	}
 }

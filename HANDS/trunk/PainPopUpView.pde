@@ -42,17 +42,19 @@ class PainPopUpView extends PopUpViewBase
 		c.setIconTooltipImage(IMG_POSITIONING);
         
 		CheckBox c1 = new CheckBox("Prioritize NANDA: Acute Pain", "Prioritize Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
-		CheckBox c2 = new CheckBox("Add NIC: Palliative Care Consult", "Palliative Care Consult", thirdLevelIcon, ADD_NIC);
+		CheckBox c2 = new CheckBox("Add NIC: Consultation: Palliative Care", "Consultation: Palliative Care", thirdLevelIcon, ADD_NIC);
 		
 		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
 		c2.setIconTooltipImage(IMG_CONSULTATION);
 		
 		// Big information: we present EBI side-by-side with actions
-        PopUpSection section1 = new PopUpSection(MSG_PAIN_POSITIONING);
+        PopUpSection section1 = new PopUpSection(
+            "<info> </b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>");
         //section1.setDescription(MSG_PAIN_POSITIONING);
         section1.addAction(c);
         
-        PopUpSection section3 = new PopUpSection(MSG_PAIN_OUTCOME);
+        PopUpSection section3 = new PopUpSection(
+            "<info> </b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.");            
         section3.addAction(c1);
         section3.addAction(c2);
         
@@ -90,15 +92,7 @@ class PainPopUpView extends PopUpViewBase
                             c.enabled = false;
 							if(c.id == ADD_NIC)
 							{
-                                String[] tags = c.tag.split(": ");
-                                if(tags.length > 1)
-                                {
-                                    pocManager.addNIC(tags[1], c.tb.text, parent, c.iconButton.tooltipImage);
-                                }
-                                else
-                                {
-                                    pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
-                                }
+                                pocManager.addNIC(c.tag, c.tb.text, parent, c.iconButton.tooltipImage);
 							}
 							if(c.id == ADD_NOC)
 							{

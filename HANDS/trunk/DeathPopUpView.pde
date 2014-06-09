@@ -45,13 +45,14 @@ class DeathPopUpView extends PopUpViewBase
         //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
         subviews.add(title);
 		
-		consultCheck = new CheckBox("Add NIC: Family Coping", "Family Coping", thirdLevelIcon, 0);
+		consultCheck = new CheckBox("Add NIC: Consultation: Palliative Care", "Consultation: Palliative Care", thirdLevelIcon, 0);
 		consultCheck.textBoxEnabled = false;
 		consultCheck.owner = this;
 		
 		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
 		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
-		recommendedActionSection = new PopUpSection(MSG_PALLIATIVE_CARE_INFO);
+		recommendedActionSection = new PopUpSection(
+            "<info> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
 		recommendedActionSection.addAction(consultCheck);
 		
 		consultCheck.selected = false;
@@ -81,7 +82,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		reason1.selected = true;
 		
-		reasonSection = new PopUpSection("Adding family coping is highly recommended. If you choose not to add it, please specify a reason.");
+		reasonSection = new PopUpSection("Adding palliative care consultation is highly recommended. If you choose not to add it, please specify a reason.");
 		reasonSection.addAction(reason1);
 		reasonSection.addAction(reason2);
 		reasonSection.addAction(reason3);
@@ -120,7 +121,7 @@ class DeathPopUpView extends PopUpViewBase
             consultCheck.enabled = false;
             consultCheck.selected = false;
             SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
-			pocManager.addNIC("Family Coping", "", comfortableDeath, IMG_CONSULTATION);
+			pocManager.addNIC("Consultation: Palliative Care", "", comfortableDeath, IMG_CONSULTATION);
 			//recommendedActionSection.removeAction(consultCheck);
 			parent.addComment("");
 			//consultCheck = null;
@@ -132,15 +133,15 @@ class DeathPopUpView extends PopUpViewBase
 			{
 				if(reason1.selected)
 				{
-					parent.addComment("Dismissed Family Coping: Family / Patient Refused");
+					parent.addComment("Dismissed Palliative Care Consultation: Family / Patient Refused");
 				}
 				else if(reason2.selected)
 				{
-					parent.addComment("Dismissed Family Coping: Doctor " + reason2.tb.text + " refused");
+					parent.addComment("Dismissed Palliative Care Consultation: Doctor " + reason2.tb.text + " refused");
 				}
 				else if(reason3.selected)
 				{
-					parent.addComment("Dismissed Family Coping: " + reason3.tb.text);
+					parent.addComment("Dismissed Palliative Care Consultation: " + reason3.tb.text);
 				}
 			}
 		}

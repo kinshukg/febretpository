@@ -20,27 +20,16 @@ class Patient
         
         // Variables used to populate the native HANDS action popup.
         NativeActionsPopUpView popup = null;
-        PopUpSection actions = null;
+        //PopUpSection actions = null;
         
         if(id == 1)
         {
             // NANDA Constipation
             ColouredRowView NANDAConstipation = pocManager.addNANDA("Constipation", IMG_PLACEHOLDER);
             SecondLevelRowView NOCBowelElimination = pocManager.addNOC("Bowel Elimination", "", NANDAConstipation, IMG_PLACEHOLDER);
-            NOCBowelElimination.setScores(2, 4);
+            NOCBowelElimination.setScores(3, 4);
             pocManager.addNIC("Bowel Management", "", NOCBowelElimination, IMG_PLACEHOLDER);
             pocManager.addNIC("Self-Care Assistance: Toileting", "", NOCBowelElimination, IMG_PLACEHOLDER);
-            // NATIVE HANDS actions for NOC Bowel Elimination
-            popup = new NativeActionsPopUpView(505, NOCBowelElimination, pocManager);
-            actions = popup.addSection("Add NICS for NOC Bowel Elimination");
-            actions.addAction("Add NIC: Constipation/Impaction Management", "Constipation/Impaction Management", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Fluid Management", "Fluid Management", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Bowel Training", "Bowel Training", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Medication Management", "Medication Management", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Bowel Management", "Bowel Management", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Self-Care Assistance: Toileting", "Self-Care Assistance: Toileting", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Self-Care Assistance: Toileting", "Self-Care Assistance: Toileting", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            
             
             // NANDA Acute Pain section
             ColouredRowView NANDAAcutePain = pocManager.addNANDA("Acute Pain", IMG_ACUTE_PAIN);
@@ -48,16 +37,6 @@ class Patient
             NOCPainLevel.setScores(2, 4);
             pocManager.addNIC("Medication Management", "", NOCPainLevel, IMG_MEDICATION_MANAGEMENT);
             pocManager.addNIC("Pain Management", "", NOCPainLevel, IMG_PAIN_MANAGEMENT);
-            // NATIVE HANDS actions for NOC Pain Level
-            popup = new NativeActionsPopUpView(505, NOCPainLevel, pocManager);
-            actions = popup.addSection("Add NICS for NOC Pain Level");
-            actions.addAction("Add NIC: Positioning", "Positioning", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Energy Conservation", "Energy Conservation", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Palliative Care Consult", "Palliative Care Consult", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Patient Controlled Analgesia", "Patient Controlled Analgesia", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Massage", "Massage", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Relaxation Therapy", "Relaxation Therapy", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-            actions.addAction("Add NIC: Guided Imagery", "Guided Imagery", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
 
             // We add the death anxiety section after the first shift.
             if(currentShift == 1)
@@ -67,16 +46,40 @@ class Patient
                 SecondLevelRowView NOCComfortableDeath = pocManager.addNOC("Comfortable Death", "", NANDADeathAnxiety, IMG_COMFORTABLE_DEATH);
                 NOCComfortableDeath.setScores(3, 5);
                 pocManager.addNIC("Calming Technique", "", NOCComfortableDeath, IMG_CALMING_TECHNIQUE);
-                pocManager.addNIC("Spiritual Support", "Family Priest to Visit 2am", NOCComfortableDeath, IMG_SPIRITUAL_SUPPORT);
-                // NATIVE HANDS actions for NANDA Death Anxiety
-                popup = new NativeActionsPopUpView(505, NOCComfortableDeath, pocManager);
-                actions = popup.addSection("Add NICS for NOC Comfortable Death");
-                actions.addAction("Add NIC: Anxiety Reduction", "Anxiety Reduction", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-                actions.addAction("Add NIC: Caregiver Support", "Caregiver Support", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-                actions.addAction("Add NIC: Grief Work Facilitation", "Grief Work Facilitation", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-                actions.addAction("Add NIC: Active Listening", "Active Listening", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
-                actions.addAction("Add NIC: Family Coping", "Family Coping", thirdLevelIcon, ADD_NIC, IMG_POSITIONING);
+                pocManager.addNIC("Spiritual Support", "", NOCComfortableDeath, IMG_SPIRITUAL_SUPPORT);
             }
+        }
+        else if(id == 2)
+        {
+            // NANDA Impaired Gas Exchange
+            ColouredRowView NANDAImpairedGasExchange = pocManager.addNANDA("Impaired Gas Exchange", IMG_PLACEHOLDER);
+            SecondLevelRowView NOCRespiratoryStatus = pocManager.addNOC("Respiratory Status: Gas Exhange", "", NANDAImpairedGasExchange, IMG_PLACEHOLDER);
+            NOCRespiratoryStatus.setScores(2, 4);
+            pocManager.addNIC("Acid Base Monitoring", "", NOCRespiratoryStatus, IMG_PLACEHOLDER);
+            pocManager.addNIC("Bedside Laboratory Testing", "", NOCRespiratoryStatus, IMG_PLACEHOLDER);
+            pocManager.addNIC("Airway Management", "", NOCRespiratoryStatus, IMG_PLACEHOLDER);
+
+            // NANDA Death Anxiety
+            ColouredRowView NANDADeath = pocManager.addNANDA("Death Anxiety", IMG_PLACEHOLDER);
+            SecondLevelRowView NOCDeath = pocManager.addNOC("Comfortable Death", "", NANDADeath, IMG_PLACEHOLDER);
+            NOCDeath.setScores(2, 5);
+            pocManager.addNIC("Calming Technique", "", NOCDeath, IMG_PLACEHOLDER);
+            pocManager.addNIC("Spritual Support", "", NOCDeath, IMG_PLACEHOLDER);
+            
+            // NANDA Impaired Physical Mobility
+            ColouredRowView NANDAPhysMob = pocManager.addNANDA("Impaired Physical Mobility", IMG_PLACEHOLDER);
+            SecondLevelRowView NOCMobility = pocManager.addNOC("Mobility", "", NANDAPhysMob, IMG_PLACEHOLDER);
+            NOCMobility.setScores(1, 3);
+            pocManager.addNIC("Fall Prevention", "", NOCMobility, IMG_PLACEHOLDER);
+            pocManager.addNIC("Energy Conservation", "", NOCMobility, IMG_PLACEHOLDER);
+            
+            // NANDA Acute Pain
+            ColouredRowView NANDAPain = pocManager.addNANDA("Acute Pain", IMG_PLACEHOLDER);
+            SecondLevelRowView NOCPainLevel = pocManager.addNOC("Pain Level", "", NANDAPain, IMG_PLACEHOLDER);
+            NOCPainLevel.setScores(4, 5);
+            pocManager.addNIC("Pain Management", "", NOCPainLevel, IMG_PLACEHOLDER);
+            pocManager.addNIC("Medication Management", "", NOCPainLevel, IMG_PLACEHOLDER);
+            pocManager.addNIC("Positioning", "", NOCPainLevel, IMG_PLACEHOLDER);
         }
         
         if(!OPTION_NATIVE) setupPopup();
@@ -98,6 +101,7 @@ class Patient
     void show()
     {
 		mainView.subviews.add(pocManager.scrollingView);
+        
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,17 +118,37 @@ class Patient
     ///////////////////////////////////////////////////////////////////////////////////////////////
     public void setupPopup()
     {
-        // Acute Pain CDS
-        SecondLevelRowView painLevel = pocManager.getNOC("Acute Pain", "Pain Level");
-        PainPopUpView ppw = new PainPopUpView(705, painLevel, pocManager);
-        ppw.trendView = getTrend(painLevel.title);
-        ppw.reset();
-        
-        // Death Anxiety CDS
-        SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
-        DeathPopUpView dppw = new DeathPopUpView(600, comfortableDeath, pocManager);
-        dppw.trendView = getTrend(comfortableDeath.title);
-        dppw.reset();
+        if(id == 1)
+        {
+            // Acute Pain CDS
+            SecondLevelRowView painLevel = pocManager.getNOC("Acute Pain", "Pain Level");
+            PainPopUpView ppw = new PainPopUpView(705, painLevel, pocManager);
+            ppw.trendView = getTrend(painLevel.title);
+            ppw.trendView.noc = painLevel;
+            ppw.reset();
+            
+            // Death Anxiety CDS
+            SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
+            DeathPopUpView dppw = new DeathPopUpView(600, comfortableDeath, pocManager);
+            dppw.trendView = getTrend(comfortableDeath.title);
+            dppw.trendView.noc = comfortableDeath;
+            dppw.reset();
+        }
+        else if(id == 2)
+        {
+            // Death Anxiety CDS
+            SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
+            DeathPopUpView dppw = new DeathPopUpView(600, comfortableDeath, pocManager);
+            dppw.trendView = getTrend(comfortableDeath.title);
+            dppw.trendView.noc = comfortableDeath;
+            dppw.reset();
+            
+            // Mobility CDS
+            //SecondLevelRowView mob = pocManager.getNOC("Impaired Physical Mobility", "Mobility");
+            //MobilityPopupView mpw = new MobilityPopupView(600, mob, pocManager);
+            //mpw.trendView = getTrend(mpw.title);
+            //mpw.reset();
+        }
     }
 }
 

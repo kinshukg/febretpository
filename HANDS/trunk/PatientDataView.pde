@@ -13,6 +13,7 @@ class PatientDataView extends View
 	void drawContent()
 	{
 		noStroke();
+        textAlign(LEFT,CENTER);
 		// textLeading(fbold);
 		fill(0);
 		textSize(12);

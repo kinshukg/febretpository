@@ -1,4 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
 class RatingPopUpView extends PopUpViewBase
 {
 	PImage indicatorsImage;
@@ -9,7 +8,7 @@ class RatingPopUpView extends PopUpViewBase
 	ArrayList<CheckBox> currentRatings;
 	ArrayList<CheckBox> expectedRatings;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	RatingPopUpView(SecondLevelRowView parent, PImage image)
 	{
 		super(image.width > 650 ? image.width +50 : 700, parent);
@@ -20,7 +19,7 @@ class RatingPopUpView extends PopUpViewBase
 		expectedRatings = new ArrayList<CheckBox>();
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
 		PopUpSection title = new PopUpSection("");
@@ -31,14 +30,22 @@ class RatingPopUpView extends PopUpViewBase
 		// Expected rating checkboxes
 		expectedRatingSection = new PopUpSection("Expected Rating:");
 		expectedRatingSection.layoutHorizontal = true;
-	
+        //expectedRatingSection.w = 600;
+        
 		for(int i = 1; i <= 5; i++)
 		{
-			CheckBox ratingCheckbox = new CheckBox(str(i), null, 0);
+            String name = str(i) + ": ";
+            if(i == 1) name = name + "severe";
+            else if(i == 2) name = name + "substantial";
+            else if(i == 3) name = name + "moderate";
+            else if(i == 4) name = name + "mild";
+            else if(i == 5) name = name + "none";
+            
+			CheckBox ratingCheckbox = new CheckBox(name, null, 0);
 			expectedRatingSection.addAction(ratingCheckbox);
 			ratingCheckbox.radio = true;
 			ratingCheckbox.textBoxEnabled = false;
-			ratingCheckbox.w = 20;
+			ratingCheckbox.w = 80;
 			expectedRatings.add(ratingCheckbox);
 		}
 		subviews.add(expectedRatingSection);
@@ -48,7 +55,14 @@ class RatingPopUpView extends PopUpViewBase
 		currentRatingSection.layoutHorizontal = true;
 		for(int i = 1; i <= 5; i++)
 		{
-			CheckBox ratingCheckbox = new CheckBox(str(i), null, 0);
+            String name = str(i) + ": ";
+            if(i == 1) name = name + "severe";
+            else if(i == 2) name = name + "substantial";
+            else if(i == 3) name = name + "moderate";
+            else if(i == 4) name = name + "mild";
+            else if(i == 5) name = name + "none";
+            
+			CheckBox ratingCheckbox = new CheckBox(name, null, 0);
 			currentRatingSection.addAction(ratingCheckbox);
 			ratingCheckbox.radio = true;
 			ratingCheckbox.textBoxEnabled = false;
@@ -86,8 +100,10 @@ class RatingPopUpView extends PopUpViewBase
 			
 		if(!OPTION_NATIVE)
 		{
-            expectedRatingSection.setDescription(expectedRatingTutorial);
-            currentRatingSection.setDescription(currentRatingTutorial);
+            //expectedRatingSection.setDescription(expectedRatingTutorial);
+            //currentRatingSection.setDescription(currentRatingTutorial);
+            expectedRatingSection.setInfoButton(expectedRatingTutorial);
+            currentRatingSection.setInfoButton(currentRatingTutorial);
 		}
 	}
 	
@@ -114,41 +130,6 @@ class RatingPopUpView extends PopUpViewBase
 				break;
 			}
 		}
-		
-		// if(consultCheck != null && consultCheck.selected)
-		// {
-			// pocManager.addNIC(NIC_CONSULTATION_TEXT, "", pocManager.anxietySelfControlView, IMG_CONSULTATION);
-			// actionSection.removeAction(consultCheck);
-			// parent.addComment("");
-			// consultCheck = null;
-			// consultCheckAdded = true;
-		// }
-		// else
-		// {
-			// if(!consultCheckAdded)
-			// {
-				// if(reason1.selected)
-				// {
-					// parent.addComment("Dismissed consultation: Family / Patient Refused");
-				// }
-				// else if(reason2.selected)
-				// {
-					// parent.addComment("Dismissed consultation: Doctor " + reason2.tb.text + " refused");
-				// }
-				// else if(reason3.selected)
-				// {
-					// parent.addComment("Dismissed consultation: " + reason3.tb.text);
-				// }
-			// }
-			// parent.removeQuickActionButton1();
-		// }
-		// if(copingCheck != null && copingCheck.selected)
-		// {
-			// pocManager.addNANDA(pocManager.nandaInterruptedFamilyProcess);
-			// actionSection.removeAction(copingCheck);
-			// copingCheck = null;
-		// }
-		
 		hide();
 	}
 }

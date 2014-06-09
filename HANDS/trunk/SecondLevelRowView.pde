@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 class SecondLevelRowView extends View 
 {
     POCManager pocManager;
@@ -25,9 +25,9 @@ class SecondLevelRowView extends View
     
     // Native HANDS buttons
 	Button addButton;
-	//Button removeButton;
+	Button removeButton;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView(String title,PImage logo, int firstColumn, int secondColumn, ColouredRowView parent, POCManager poc)
 	{
 		super(0, 0,width,25);
@@ -42,16 +42,16 @@ class SecondLevelRowView extends View
 		parent.subs.add(this);
 		indent = 40;
         
-        int cx = 320;
+        int cx = 328;
         
-        addButton = new Button(cx += 28, 1, 24, 24, plusIcon); addButton.helpText = "Add NIC";
-        //removeButton = new Button(cx += 28, 1, 24, 24, checkIcon); removeButton.helpText = "Remove NOC";
+        addButton = new Button(cx += 20, 4, 24, 24, plusIcon); addButton.helpText = "Add NIC";
+        removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(addButton);
-        //subviews.add(removeButton);
+        subviews.add(removeButton);
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
     void setScores(int current, int expected)
     {
         disableExpectedRatingButton();
@@ -64,7 +64,7 @@ class SecondLevelRowView extends View
         secondColumn = expected;
     }
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void addComment(String comment)
 	{
 		if(comment == "")
@@ -90,7 +90,7 @@ class SecondLevelRowView extends View
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
 		h = 25;
@@ -103,7 +103,43 @@ class SecondLevelRowView extends View
 		iconButton.x = indent;
 		iconButton.y = 4;
 	}
-	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////
+    void draw()
+    {
+        super.draw(!parent.deleted);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mousePressed(float px, float py)
+    {
+        if(!parent.deleted) return super.mousePressed(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseMoved(float px, float py)
+    {
+        if(!parent.deleted) return super.mouseMoved(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseReleased(float px, float py)
+    {
+        if(!parent.deleted) return super.mouseReleased(px, py);
+        return false;
+    }
+    
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean mouseClicked(float px, float py)
+    {
+        if(!parent.deleted) return super.mouseClicked(px, py);
+        return false;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
 	void drawContent()
 	{
 		stroke(0);
@@ -123,10 +159,10 @@ class SecondLevelRowView extends View
 		textSize(12);
 		text(title, indent + 35,12);
 		
-		if(parent.deleted)
-		{
-			line(0, 15, w, 15);
-		}
+		// if(parent.deleted)
+		// {
+			// line(0, 15, w, 15);
+		// }
 		
 		// Draw expected and current rating text only if we are not using current / expected rating buttons for this NOC row.
 		if(currentRatingButton == null)
@@ -146,7 +182,7 @@ class SecondLevelRowView extends View
 		}
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void setAlertButton(int level, String text, int bx, PImage graph)
 	{
 		color buttonColor = 0;
@@ -164,7 +200,7 @@ class SecondLevelRowView extends View
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void removeAlertButton()
 	{
 		if(actionButton != null)
@@ -174,7 +210,7 @@ class SecondLevelRowView extends View
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void enableCurrentRatingButton()
 	{
 		color buttonColor = 200;
@@ -183,7 +219,7 @@ class SecondLevelRowView extends View
 		subviews.add(this.currentRatingButton);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void enableExpectedRatingButton()
 	{
 		color buttonColor = 200;
@@ -192,14 +228,14 @@ class SecondLevelRowView extends View
 		subviews.add(this.expectedRatingButton);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void disableExpectedRatingButton()
 	{
 		subviews.remove(expectedRatingButton);
 		expectedRatingButton = null;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void showPopUp()
 	{
 		if(popUpView == null)
@@ -214,22 +250,17 @@ class SecondLevelRowView extends View
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void showNativeActionsPopUp()
 	{
 		if(popUpView == null)
 		{
-			mainView.subviews.add(nativeActionPopUp);
-			popUpView = nativeActionPopUp;
-			nativeActionPopUp.x = mouseX + 50;
-			nativeActionPopUp.y = mouseY - nativeActionPopUp.h - 160; //350;
-			nativeActionPopUp.arrowX = mouseX;
-			nativeActionPopUp.arrowY = mouseY;
-			if(nativeActionPopUp.y < 50) nativeActionPopUp.y = 50;
+            pocManager.NICPopup.NOCParent = this;
+            pocManager.NICPopup.show();
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void showRatingPopUp()
 	{
 		if(popUpView == null)
@@ -251,7 +282,7 @@ class SecondLevelRowView extends View
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	boolean contentClicked(float lx, float ly)
 	{
 		if(actionButton != null && actionButton.selected)
@@ -263,6 +294,11 @@ class SecondLevelRowView extends View
 		{
 			showNativeActionsPopUp();
 			addButton.selected = false;
+		}
+		if(removeButton != null && removeButton.selected)
+		{
+            pocManager.removeNOC(this);
+			removeButton.selected = false;
 		}
 		if(expectedRatingButton != null && expectedRatingButton.selected)
 		{
@@ -277,13 +313,19 @@ class SecondLevelRowView extends View
 		return true;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void stopBlinking()
 	{
 		if(actionButton != null) actionButton.blinking = false;
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	void startBlinking()
+	{
+		if(actionButton != null) actionButton.blinking = true;
+	}
+    
+	////////////////////////////////////////////////////////////////////////////
     void onNICAdded(ThirdLevelRowView nic)
     {
         if(nativeActionPopUp != null)
@@ -295,7 +337,7 @@ class SecondLevelRowView extends View
             actionPopUp.onNICAdded(nic);
         }
     }
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
     void onNICRemoved(ThirdLevelRowView nic)
     {
         if(nativeActionPopUp != null)
