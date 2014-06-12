@@ -22,7 +22,7 @@ class TrendGraph extends TrendView
 		fill(0);
 		textFont(fbold);
 		textSize(22);
-		text(title,80,20);
+		text(title,80,10);
         
         image(IMG_PLOT_BASE, 0, iy);
         
@@ -94,9 +94,17 @@ class TrendGraph extends TrendView
                 image(IMG_BLACK_DOT, lastX, lastY);
             }
         }
+        
 		fill(192,0,0);
 		textSize(14);
-		text("If current\ncare continues", curX + 10, curY - 20);
+        if(projectionBad[6] == projectionGood[6])
+        {
+            text("If current\ncare continues", curX + 10, curY - 60);
+        }
+        else
+        {
+            text("If current\ncare continues", curX + 10, curY - 20);
+        }
         
         // NOW marker
         imageMode(CORNER);
@@ -113,7 +121,7 @@ class TrendGraph extends TrendView
             fill(0);
             stroke(0);
             strokeWeight(6);
-            text("Expected", 65, curY - 19);
+            text("Expected", -6, curY - 10);
             for(int xx = 90; xx < 460; xx += 30)
             {
                 line(xx, curY, xx+10, curY); 

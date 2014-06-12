@@ -1,4 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
 class MobilityPopupView extends PopUpViewBase
 {
     POCManager pocManager;
@@ -7,67 +6,43 @@ class MobilityPopupView extends PopUpViewBase
 	CheckBox immobilityConsequencesCheck;
 
 	//PopUpSection reasonSection;
-	PopUpSection recommendedActionSection;
+	PopUpSection immobilityNICS;
 	//PopUpSection actionSection;
 	
-	PopUpSection reasonSection;
-	CheckBox reason1;
-	CheckBox reason2;
-	CheckBox reason3;
+	PopUpSection recommendedActionSection;
+	CheckBox fallPreventionCheck;
+	CheckBox energyConservationCheck;
+	//CheckBox reason2;
+	//CheckBox reason3;
 	//boolean consultCheckAdded = false;
 	
+    TrendView trendView;
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	MobilityPopupView(int w_, SecondLevelRowView parent, POCManager poc)
 	{
 		super(w_, parent);
+        cds = true;
         pocManager = poc;
+        int alertButtonX = 460;
+        // Tis is the image that appears in the long access bar button.
+        PImage actionButtonImage = null;
+        parent.setAlertButton(3, "Action required", alertButtonX, actionButtonImage);
+        parent.actionPopUp = this;
+        
+        NANDAParent = parent.parent;
+        NOCParent = parent;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	void createRefuseSection()
+	void reset()
 	{
-		reason1 = new CheckBox("Patient / Family refused", null, 0);
-		reason2 = new CheckBox("Doctor refused", null, 0);
-		reason3 = new CheckBox("", null, 0);
-		
-		reason1.radio = true;
-		reason2.radio = true;
-		reason3.radio = true;
-		reason1.textBoxEnabled = false;
-		reason2.textBoxEnabled = true;
-		reason3.textBoxEnabled = true;
-		reason2.showTextBox();
-		reason2.tb.suggestion = "Enter doctor name";
-		reason3.tb.suggestion = "Other reason";
-		reason3.showTextBox();
-		
-		reason1.selected = true;
-		
-		//reason1.setIconTooltip(DEF_ACUTE_PAIN);
-		//reason2.setIconTooltip(DEF_ENERGY_CONSERVATION);
-		//reason3.setIconTooltip(DEF_COPING);
-		
-		reasonSection = new PopUpSection("Select a reason to dismiss suggestion: ");
-		reasonSection.addAction(reason1);
-		reasonSection.addAction(reason2);
-		reasonSection.addAction(reason3);
-	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setupRefuseSection()
-	{
-		PopUpSection title = new PopUpSection("Adding Immobility Consequences is highly recommended. ");
-		String alertDescription = "";
-		title.setDescription(alertDescription);
-		subviews.add(title);
-		
-		createRefuseSection();
-		subviews.add(reasonSection);
-	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	void setupFull()
-	{
+        PopUpSection title = new PopUpSection("");
+        if(trendView != null) title.addTrendView(trendView);
+        //title.setImage(anxietySelfControlTrend);
+        //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
+        subviews.add(title);
+        
 		immobilityConsequencesCheck = new CheckBox("Add NOC: Immobility Consequences", secondLevelIcon, 0);
 		immobilityConsequencesCheck.textBoxEnabled = false;
 		immobilityConsequencesCheck.owner = this;
@@ -78,11 +53,14 @@ class MobilityPopupView extends PopUpViewBase
 
 		recommendedActionSection = new PopUpSection(icmsg);
 		recommendedActionSection.addAction(immobilityConsequencesCheck);
-		
-		immobilityConsequencesCheck.selected = true;
+		//immobilityConsequencesCheck.selected = true;
+        
+        // Create section with additional actions that can be added under NOC Immobility Consequences
+		immobilityNICS = new PopUpSection("Recommended NICs for Immobility Consequences NOC");
+        fallPreventionCheck = immobilityNICS.addNIC("Pressure Ulcer Prevention", "");
+		energyConservationCheck = immobilityNICS.addNIC("Skin Surveillance", "");
 		
 		subviews.add(recommendedActionSection);
-		createRefuseSection();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,13 +68,13 @@ class MobilityPopupView extends PopUpViewBase
 	{
 		if(cb == immobilityConsequencesCheck)
 		{
-			if(!immobilityConsequencesCheck.selected)
+			if(immobilityConsequencesCheck.selected)
 			{
-				subviews.add(3, reasonSection);
+				subviews.add(5, immobilityNICS);
 			}
 			else
 			{
-				subviews.remove(reasonSection);
+				subviews.remove(immobilityNICS);
 			}
 		}
 	}
@@ -104,42 +82,39 @@ class MobilityPopupView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
+        ColouredRowView nanda = pocManager.getNANDA("Impaired Physical Mobility");
 		if(immobilityConsequencesCheck != null && immobilityConsequencesCheck.selected)
 		{
-            ColouredRowView nanda = pocManager.getNANDA("Impaired Physical Mobility");
-            
 			pocManager.addNOC("Immobility Consequences","", nanda, IMG_IMMOBILITY_CONSEQUENCES);
 			recommendedActionSection.removeAction(immobilityConsequencesCheck);
 			parent.addComment("");
 			immobilityConsequencesCheck = null;
 			//consultCheckAdded = true;
 		}
-		else
+		if(fallPreventionCheck != null && fallPreventionCheck.selected)
 		{
-			//if(!consultCheckAdded)
-			{
-				if(reason1.selected)
-				{
-					parent.addComment("Dismissed Immobility Consequences: Family / Patient Refused");
-				}
-				else if(reason2.selected)
-				{
-					parent.addComment("Dismissed Immobility Consequences: Doctor " + reason2.tb.text + " refused");
-				}
-				else if(reason3.selected)
-				{
-					parent.addComment("Dismissed Immobility Consequences: " + reason3.tb.text);
-				}
-			}
-		}
+            SecondLevelRowView noc = pocManager.getNOC("Impaired Physical Mobility", "Immobility Consequences");
+            if(noc != null)
+            {
+                pocManager.addNIC("Pressure Ulcer Prevention", "", noc, loadImage("pressureUlcerPrevention.png"));
+            }
+        }
+		if(energyConservationCheck != null && energyConservationCheck.selected)
+		{
+            SecondLevelRowView noc = pocManager.getNOC("Impaired Physical Mobility", "Immobility Consequences");
+            if(noc != null)
+            {
+                pocManager.addNIC("Skin Surveillance", "", noc, loadImage("surveillance.png"));
+            }
+        }
 		
 		parent.stopBlinking();
 		hide();
 		
 		// If we added the action and we are in cycle3 option 2, remove the action button from the POC action bar
-		if(immobilityConsequencesCheck == null)
-		{
-			parent.removeAlertButton();
-		}
+		// if(immobilityConsequencesCheck == null)
+		// {
+			// parent.removeAlertButton();
+		// }
 	}
 }

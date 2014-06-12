@@ -7,7 +7,7 @@ class SecondLevelRowView extends View
 	Button iconButton;
 	StaticText commentBox;
 	int firstColumn,secondColumn;
-	public ArrayList subs ;
+	public ArrayList subs;
 	int indent;
 
 	ColouredRowView parent;
@@ -183,6 +183,15 @@ class SecondLevelRowView extends View
 	}
     
 	////////////////////////////////////////////////////////////////////////////
+    void addCDSPopup(NativeActionsPopUpView popup)
+    {
+        setAlertButton(3, "Action required", 460, null);
+        actionPopUp = popup;
+        actionPopUp.NOCParent = this;
+        actionPopUp.NANDAParent = this.parent;
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
 	void setAlertButton(int level, String text, int bx, PImage graph)
 	{
 		color buttonColor = 0;
@@ -241,6 +250,7 @@ class SecondLevelRowView extends View
 		if(popUpView == null)
 		{
 			mainView.subviews.add(actionPopUp);
+            actionPopUp.NOCParent = this;
 			popUpView = actionPopUp;
 			actionPopUp.x = mouseX + 50;
 			actionPopUp.y = mouseY - actionPopUp.h - 160; //350;

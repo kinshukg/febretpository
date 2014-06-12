@@ -15,8 +15,10 @@ class POCManager
     // that is, the desired actions takes on the patient plan of care.
     boolean achPositioningAdded = false;
     boolean achPainPrioritized = false;
-    boolean achPalliativeConsultAdded = false;
+    boolean achDeathAnxietyPrioritized = false;
     boolean achFamilyCopingAdded = false;
+    boolean achPalliativeConsultAdded = false;
+    boolean achRespiratoryMonitoringAdded = false;
     
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
@@ -45,12 +47,9 @@ class POCManager
         print(text);
         // check achievements
         if(text.equals("Positioning")) achPositioningAdded = true;
-        else if(text.equals("Consultation: Palliative Care"))
-        {
-            print("SDDSD");
-            achPalliativeConsultAdded = true;
-        }
-        //else if(text.equals("Family Coping")) achFamilyCopingAdded = true;
+        else if(text.equals("Consultation: Palliative Care")) achPalliativeConsultAdded = true;
+        else if(text.equals("Respiratory Monitoring")) achRespiratoryMonitoringAdded = true;
+        else if(text.equals("Family Coping")) achFamilyCopingAdded = true;
         
 		ThirdLevelRowView temp = new ThirdLevelRowView(text,thirdLevelIcon,parentNOC);
 		temp.iconButton.tooltipImage = tooltip;
@@ -77,6 +76,7 @@ class POCManager
         if(nic.title.equals("Positioning")) achPositioningAdded = false;
         else if(nic.title.equals("Palliative Care Consult")) achPalliativeConsultAdded = false;
         else if(nic.title.equals("Family Coping")) achFamilyCopingAdded = false;
+        else if(nic.title.equals("Respiratory Monitoring")) achRespiratoryMonitoringAdded = false;
         
         nic.parent.subs.remove(nic);
         
@@ -151,26 +151,60 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void prioritizeNANDA(ColouredRowView nanda)
 	{
-        PopUpViewBase popup = getNOC("Acute Pain", "Pain Level").actionPopUp;
-        CheckBox prioritizePainAction = popup.findAction("Prioritize Acute Pain");
         // check achievements
         if(nanda.title.equals("Acute Pain"))
         {        
             achPainPrioritized = true;
-            prioritizePainAction.enabled = false;
-            prioritizePainAction.selected = false;
-            // We are removing an actionable item from CDS. Should we hide the CDS?
-            popup.checkCDSEnabled(true);
+            achDeathAnxietyPrioritized = false;
+        }
+        else if(nanda.title.equals("Death Anxiety"))
+        {    
+            achDeathAnxietyPrioritized = true;
+            achPainPrioritized = false;
         }
         else
         {
-            // If we prioritized anything else, Acute Pain is not prioritized anymore.
+            achDeathAnxietyPrioritized = false;
             achPainPrioritized = false;
-            prioritizePainAction.enabled = true;
-            prioritizePainAction.selected = false;
-            // We are adding an actionable item to the CDS. Should we hide the CDS?
-            popup.checkCDSEnabled(false);
         }
+        
+        PopUpViewBase popup = getNOC("Acute Pain", "Pain Level").actionPopUp;
+        if(popup != null)
+        {
+            CheckBox prioritizePainAction = popup.findAction("Prioritize Acute Pain");
+            if(prioritizePainAction != null)
+            {
+                // check achievements
+                if(nanda.title.equals("Acute Pain"))
+                {        
+                    prioritizePainAction.enabled = false;
+                    prioritizePainAction.selected = false;
+                    // We are removing an actionable item from CDS. Should we hide the CDS?
+                    popup.checkCDSEnabled(true);
+                }
+                else
+                {
+                    // If we prioritized anything else, Acute Pain is not prioritized anymore.
+                    prioritizePainAction.enabled = true;
+                    prioritizePainAction.selected = false;
+                    // We are adding an actionable item to the CDS. Should we hide the CDS?
+                    popup.checkCDSEnabled(false);
+                }
+            }
+        }
+        popup = getNOC("Death Anxiety", "Comfortable Death").actionPopUp;
+        if(popup != null)
+        {
+            // check achievements
+            if(nanda.title.equals("Death Anxiety"))
+            {        
+                popup.checkCDSEnabled(true);
+            }
+            else
+            {
+                popup.checkCDSEnabled(false);
+            }
+        }        
         
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(0, nanda);
@@ -180,6 +214,7 @@ class POCManager
 	void addNANDA(ColouredRowView nanda)
 	{
 		scrollingView.subs.add(nanda);
+        if(nanda.title.equals("Dysfunctional Family Processes")) achFamilyCopingAdded = true;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
