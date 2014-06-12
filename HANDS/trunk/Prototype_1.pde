@@ -11,13 +11,6 @@ static color STYLE_DELETED_ROW_BACK_COLOR = #888888;
 
 // Variables used to keep track of the prototype state
 public boolean OPTION_NATIVE = true;
-public boolean OPTION_ENABLE_POPUP_TEXT = true;
-//public boolean OPTION_ENABLE_ACTION_INFO_POPUP = false;
-public boolean OPTION_TOOLTIP_AUTO_OPEN = false;
-public boolean OPTION_GRAPH_ALERT_BUTTON = false;
-public int OPTION_NNN_ICON_STYLE = 1;
-public int OPTION_NUMBER = 1;
-public int CYCLE2_OPTION_NUMBER = 1;
 
 public PImage IMG_LEGEND = null; 
 
@@ -65,25 +58,10 @@ public PImage IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = null;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
-// Pain evidence message for popup screen.
-// String MSG_PAIN_EVIDENCE_POPUP = 			
-	// "<b> Evidence Suggests That: </b> \n \n " +
-	// "A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b> \n \n " + 
-	// "It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems. \n \n " + 
-	// "All pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
-	// "<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
-	// "<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
-
-//String MSG_PAIN_POSITIONING = "</b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>";
-//String MSG_PAIN_GAS_EXCHANGE = "<info> </b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.";
 String MSG_PAIN_OUTCOME = "</b> All pain can be relieved, however achieving pain control within the first 24 hours is critical to achieving pain goals throughout the hospitalization. <l> \n " +
 	"<bl> Simple interventions control pain for <b> 90% </b> of EOL patients. \n " +
 	"<bl> Palliative care and aggressive interventions are needed for the remaining <b> 10%. </b>";
 	
-// For the i icon related to Palliative Care Consultation
-// String MSG_PALLIATIVE_CARE_INFO =
-	// "Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.";
-
 // For the i icon related to Mini POC for Family Coping
 String MSG_FAMILY_COPING =
 	"The physical and emotional demands of care giving can overwhelm the family.";
@@ -117,7 +95,17 @@ int REMOVE_NANDA = 2;
 int PRIORITIZE_NANDA = 3;
 int ADD_NANDA = 4;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// SETTINGS
+// CDS Type: 
+//   0 = None (Native) 
+//   1 = Text only
+//   2 = Graph
+//   3 = Table
+int OPTION_CDS_TYPE = 0;
+
+
+////////////////////////////////////////////////////////////////////////////////
 // Globl variables
 public int prototypeState = 0;
 
@@ -207,6 +195,11 @@ boolean shiftIntermission = false;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setup()
 {
+    // Load config
+    JSONObject json;
+    json = loadJSONObject("config.cfg");
+    OPTION_CDS_TYPE = json.getInt("cds");
+    
 	size(SCREEN_WIDTH, SCREEN_HEIGHT);
 	frameRate(20);
 	smooth();
@@ -275,7 +268,7 @@ public void setup()
 	IMG_FAMILY_INTEGRITY_PROMOTION = loadImage("familyIntegrityPromotion.PNG");
 	IMG_COMFORTABLE_DEATH = loadImage("comfortableDeath.PNG");
 	IMG_CONSULTATION =  loadImage("consultation.PNG");
-	IMG_COPING =  loadImage("coping.PNG");
+	IMG_COPING =  loadImage("coping.png");
 	IMG_ENERGY_CONSERVATION =  loadImage("energyConservation.PNG");
 	IMG_ENVIRONMENTAL_MANAGEMENT =  loadImage("environmentalManagement.PNG");
 	IMG_FAMILY_COPING =  loadImage("familyCoping.PNG");
@@ -310,9 +303,9 @@ public void setup()
 	IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = loadImage("NOCRespiratoryStatusGasExchange.png");;
 	
 
-	OPTION_GRAPH_ALERT_BUTTON = false;
-	OPTION_NUMBER = 2;
-	CYCLE2_OPTION_NUMBER = 1;
+	//OPTION_GRAPH_ALERT_BUTTON = false;
+	//OPTION_NUMBER = 2;
+	//CYCLE2_OPTION_NUMBER = 1;
 
 	frame.setTitle("Prototype No Suggestions");
 	reset();
@@ -321,35 +314,19 @@ public void setup()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void loadNNNIcons()
 {
-	if(OPTION_NNN_ICON_STYLE == 0)
-	{
-		firstLevelIcon = loadImage("black_square.png");
-		secondLevelIcon  = loadImage("black_circle.png");
-		thirdLevelIcon = loadImage("black_triangle.png");
+    firstLevelIcon = loadImage("NANDA.png");
+    secondLevelIcon  = loadImage("NOC.png");
+    thirdLevelIcon = loadImage("NIC.png");
+    firstLevelIcon.resize(0,15);
+    secondLevelIcon.resize(0,15);
+    thirdLevelIcon.resize(0,15);
 
-		firstLevelIconLegend = loadImage("black_square.png");
-		secondLevelIconLegend  = loadImage("black_circle.png");
-		thirdLevelIconLegend = loadImage("black_triangle.png");
-		firstLevelIconLegend.resize(0,25);
-		secondLevelIconLegend.resize(0,25);
-		thirdLevelIconLegend.resize(0,25);
-	}
-	else if(OPTION_NNN_ICON_STYLE == 1)
-	{
-		firstLevelIcon = loadImage("NANDA.png");
-		secondLevelIcon  = loadImage("NOC.png");
-		thirdLevelIcon = loadImage("NIC.png");
-		firstLevelIcon.resize(0,15);
-		secondLevelIcon.resize(0,15);
-		thirdLevelIcon.resize(0,15);
-
-		firstLevelIconLegend = loadImage("NANDA.png");
-		secondLevelIconLegend  = loadImage("NOC.png");
-		thirdLevelIconLegend = loadImage("NIC.png");
-		firstLevelIconLegend.resize(0,32);
-		secondLevelIconLegend.resize(0,32);
-		thirdLevelIconLegend.resize(0,32);
-	}
+    firstLevelIconLegend = loadImage("NANDA.png");
+    secondLevelIconLegend  = loadImage("NOC.png");
+    thirdLevelIconLegend = loadImage("NIC.png");
+    firstLevelIconLegend.resize(0,32);
+    secondLevelIconLegend.resize(0,32);
+    thirdLevelIconLegend.resize(0,32);
 	
 	anxietyLevelTrend = loadImage("anxietyLevelTrend.png");
 	anxietyLevelTrend.resize(500, 0);
@@ -449,161 +426,6 @@ public void setupPatientInfoView()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-public void setupPatients()
-{
-	//pocManager = new POCManager();
-	//pocManager.reset();
-
-    // Patient 1 ---------------------------------------------------------------
-    patient1 = new Patient();
-    patient1.id = 1;
-    patient1.name = "Ann Taylor";
-    patient1.dob = "03/12/1959";
-    patient1.gender = "Female";
-    patient1.allergies = "None";
-    patient1.codeStatus = "DNR";
-    patient1.poc = "09/17/2013";
-    patient1.shft= "7:00a - 7:00p";
-    patient1.room = "1240";
-    patient1.medicalDX = "Malignant Neoplasm of the Pancreas";
-    patient1.mr = "xxx xxx xxx";
-    patient1.physician = "Piper";
-    patient1.other = "Husband to be called ANYTIME \n at patient's request \n 776-894-1010";
-    
-    // Setup patient 1 pain trends
-    TrendView tw = new TrendGraph(0, 0);
-    tw.title = "Pain Level";
-    patient1.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 2;    
-    tw.pastTrend[1] = 2;    
-    tw.projectionGood[2] = 2;    
-    tw.projectionGood[3] = 3;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 4;    
-    tw.projectionGood[6] = 4;    
-    tw.projectionBad[2] = 2;    
-    tw.projectionBad[3] = 2;    
-    tw.projectionBad[4] = 1;    
-    tw.projectionBad[5] = 2;    
-    tw.projectionBad[6] = 1;    
-
-    tw = new TrendGraph(0, 0);
-    tw.title = "Comfortable Death";
-    patient1.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 0;    
-    tw.pastTrend[1] = 3;    
-    tw.projectionGood[2] = 3;    
-    tw.projectionGood[3] = 4;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[2] = 3;    
-    tw.projectionBad[3] = 4;    
-    tw.projectionBad[4] = 3;    
-    tw.projectionBad[5] = 3;    
-    tw.projectionBad[6] = 2;    
-    
-    patient1.reset();
-
-    // Patient 2 ---------------------------------------------------------------
-    patient2 = new Patient();
-    patient2.id = 2;
-    patient2.name = "Charlene Schwab";
-    patient2.dob = "10/16/1928";
-    patient2.gender = "Female";
-    patient2.allergies = "None";
-    patient2.codeStatus = "DNR";
-    patient2.poc = "09/17/2013";
-    patient2.shft= "7:00a - 7:00p";
-    patient2.room = "1240";
-    patient2.medicalDX = "End Stage COPD";
-    patient2.mr = "xxx xxx xxx";
-    patient2.physician = "Allen Goldberg";
-    patient2.other = "";
-    
-    tw = new TrendGraph(0, 0);
-    tw.title = "Respiratory Status: Gas Exchange";
-    patient2.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 2;    
-    tw.pastTrend[1] = 2;    
-    tw.projectionGood[2] = 2;    
-    tw.projectionGood[3] = 3;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 4;    
-    tw.projectionGood[6] = 4;    
-    tw.projectionBad[2] = 2;    
-    tw.projectionBad[3] = 2;    
-    tw.projectionBad[4] = 1;    
-    tw.projectionBad[5] = 2;    
-    tw.projectionBad[6] = 1;    
-
-    tw = new TrendGraph(0, 0);
-    tw.title = "Comfortable Death";
-    patient2.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 0;    
-    tw.pastTrend[1] = 3;    
-    tw.projectionGood[2] = 3;    
-    tw.projectionGood[3] = 4;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[2] = 3;    
-    tw.projectionBad[3] = 4;    
-    tw.projectionBad[4] = 3;    
-    tw.projectionBad[5] = 3;    
-    tw.projectionBad[6] = 2;    
-    
-    tw = new TrendGraph(0, 0);
-    tw.title = "Mobility";
-    patient2.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 0;    
-    tw.pastTrend[1] = 3;    
-    tw.projectionGood[2] = 3;    
-    tw.projectionGood[3] = 4;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[2] = 3;    
-    tw.projectionBad[3] = 4;    
-    tw.projectionBad[4] = 3;    
-    tw.projectionBad[5] = 3;    
-    tw.projectionBad[6] = 2;    
-    
-    tw = new TrendGraph(0, 0);
-    tw.title = "Pain Level";
-    patient2.trends.add(tw);
-    
-    tw.now = 2;
-    tw.pastTrend[0] = 0;    
-    tw.pastTrend[1] = 3;    
-    tw.projectionGood[2] = 3;    
-    tw.projectionGood[3] = 4;    
-    tw.projectionGood[4] = 4;    
-    tw.projectionGood[5] = 5;    
-    tw.projectionGood[6] = 5;    
-    tw.projectionBad[2] = 3;    
-    tw.projectionBad[3] = 4;    
-    tw.projectionBad[4] = 3;    
-    tw.projectionBad[5] = 3;    
-    tw.projectionBad[6] = 2;    
-    
-    //--------------------------------------------------------------------------
-    patient1.reset();
-    patient2.reset();
-    setActivePatient(patient1);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 public void nextShift()
 {
     currentShift++;
@@ -629,102 +451,6 @@ public void nextShift()
     // When switching to another shift, always go back to patient 1.
     setActivePatient(patient1);
 }
-
-////////////////////////////////////////////////////////////////////////////////
-public void updatePatientStatus(Patient patient)
-{
-    // No changes on first shift
-    if(currentShift == 1)
-    {
-        OPTION_NATIVE = false;
-        patient1.reset();
-        patient2.reset();
-        return;
-    }
-    
-    // PATIENT 1 ---------------------------------------------------------------
-    
-    // Update pain status based on user actions
-    TrendView tw = patient.getTrend("Pain Level");
-    // current value;
-    //int c = tw.pastTrend[tw.now - 1];
-    // now index
-    tw.now = tw.now + 1;
-    int i = tw.now - 1;
-    POCManager poc = patient.pocManager;
-    // If user added positioning, pain score always goes up by 1
-    if(poc.achPositioningAdded)
-    {
-        // If all three suggestions have been applied, pain goes up by 2.
-        if(poc.achPainPrioritized && poc.achPalliativeConsultAdded)
-        {
-            tw.pastTrend[i] = 4;
-        }
-        else
-        {
-            tw.pastTrend[i] = 3;
-        }
-    }
-    // If both the other suggestions have been considered, pain goes up by 1 
-    else if(poc.achPainPrioritized && poc.achPalliativeConsultAdded)
-    {
-        tw.pastTrend[i] = 3;
-    }
-    // If no suggstion has been followed, pain goes down by 1.
-    else if(!poc.achPainPrioritized && !poc.achPalliativeConsultAdded)
-    {
-        tw.pastTrend[i] = 1;
-    }
-    else
-    {
-        tw.pastTrend[i] = tw.pastTrend[i - 1];
-    }
-    
-    // If any action has been takes, no action pain trend from now on
-    // just follows the current value.
-    if(poc.achPainPrioritized || 
-        poc.achPalliativeConsultAdded || 
-        poc.achPositioningAdded)
-    {
-        for(int j = i; j < 8; j++) tw.projectionBad[j] = tw.pastTrend[i];
-    }
-    
-    // Update the current pain level score to mach value from the trend view
-    SecondLevelRowView noc = poc.getNOC("Acute Pain", "Pain Level");
-    noc.startBlinking();
-    if(noc != null) noc.firstColumn = tw.pastTrend[i];
-    
-    // Update comfortable death status
-    tw = patient.getTrend("Comfortable Death");
-    tw.now = tw.now + 1;
-    // current value;
-    //c = tw.pastTrend[tw.now - 1];
-    // now index
-
-    if(poc.achPalliativeConsultAdded)
-    {
-        tw.pastTrend[i] = 4;
-    }
-    else
-    {
-        tw.pastTrend[i] = 3;
-    }
-    // If action has been takes, death anxiety score no act projection 
-    // stays constant
-    if(poc.achPalliativeConsultAdded)
-    {
-        for(int j = i; j < 8; j++) tw.projectionBad[j] = tw.pastTrend[i];
-    }
-    
-    
-    // Update the current pain level score to mach value from the trend view
-    noc = poc.getNOC("Death Anxiety", "Comfortable Death");
-    noc.startBlinking();
-    if(noc != null) noc.firstColumn = tw.pastTrend[i];
-
-    // PATIENT 2 ---------------------------------------------------------------
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 public void setActivePatient(Patient p)
@@ -914,59 +640,9 @@ void keyPressed()
     
 	if(!filterKeyInput)
 	{
-		if(key == '1')
-		{
-			frame.setTitle("Prototype Variant 1");
-			OPTION_NATIVE = false;
-			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
-			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 2;
-			CYCLE2_OPTION_NUMBER = 1;
-			reset();
-		}
-		else if(key == '2')
-		{
-			frame.setTitle("Prototype Variant 2");
-			OPTION_NATIVE = false;
-			OPTION_ENABLE_POPUP_TEXT = true;
-			//OPTION_ENABLE_ACTION_INFO_POPUP = false;
-			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 4;
-			CYCLE2_OPTION_NUMBER = 1;
-			reset();
-		}
-		if(key == '3')
-		{
-			frame.setTitle("Prototype Variant 3");
-			OPTION_NATIVE = false;
-			OPTION_ENABLE_POPUP_TEXT = false;
-			//OPTION_ENABLE_ACTION_INFO_POPUP = true;
-			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 2;
-			CYCLE2_OPTION_NUMBER = 2;
-			reset();
-		}
-		else if(key == '4')
-		{
-			frame.setTitle("Prototype Variant 4");
-			OPTION_NATIVE = false;
-			OPTION_ENABLE_POPUP_TEXT = true;
-			OPTION_GRAPH_ALERT_BUTTON = false;
-			OPTION_NUMBER = 4;
-			CYCLE2_OPTION_NUMBER = 2;
-			reset();
-		}
-		else if(key == '0')
+		if(key == '0')
 		{
 			saveFrame("HANDS-"+VERSION+"-####.png");
-		}
-		else if(key == '9')
-		{
-			setActivePatient(patient1);
-		}
-		else if(key == '8')
-		{
-			setActivePatient(patient2);
 		}
 	}
 	if(activeTextBox != null)

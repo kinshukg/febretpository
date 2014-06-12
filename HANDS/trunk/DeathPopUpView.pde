@@ -5,7 +5,8 @@ class DeathPopUpView extends PopUpViewBase
 	Button descriptionButton;
 	
 	CheckBox consultCheck;
-	//CheckBox copingCheck;
+	CheckBox prioritizeAnxietyCheck;
+	CheckBox copingCheck;
 
 	PopUpSection reasonSection;
 	PopUpSection recommendedActionSection;
@@ -30,6 +31,9 @@ class DeathPopUpView extends PopUpViewBase
         PImage actionButtonImage = null;
         parent.setAlertButton(3, "Action required", alertButtonX, actionButtonImage);
         parent.actionPopUp = this;
+        
+        NANDAParent = parent.parent;
+        NOCParent = parent;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,22 +48,40 @@ class DeathPopUpView extends PopUpViewBase
         //title.setImage(anxietySelfControlTrend);
         //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
         subviews.add(title);
-		
-		consultCheck = new CheckBox("Add NIC: Consultation: Palliative Care", "Consultation: Palliative Care", thirdLevelIcon, 0);
-		consultCheck.textBoxEnabled = false;
-		consultCheck.owner = this;
-		
-		//consultCheck.setIconTooltip("Adds consultation to the current NOC");
-		consultCheck.setIconTooltipImage(IMG_CONSULTATION);
-		recommendedActionSection = new PopUpSection(
-            "<info> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
-		recommendedActionSection.addAction(consultCheck);
-		
-		consultCheck.selected = false;
-		
-		subviews.add(recommendedActionSection);
-		createConsultRefuseSection();
-        subviews.add(5, reasonSection);
+        
+        // Setup death axiety popup differently for patient 1 and 2.
+        if(pocManager == patient1.pocManager)
+        {
+            consultCheck = new CheckBox("Add NIC: Consultation: Palliative Care", "Consultation: Palliative Care", thirdLevelIcon, 0);
+            consultCheck.textBoxEnabled = false;
+            consultCheck.owner = this;
+            
+            //consultCheck.setIconTooltip("Adds consultation to the current NOC");
+            consultCheck.setIconTooltipImage(IMG_CONSULTATION);
+            recommendedActionSection = new PopUpSection(
+                "<info> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
+            recommendedActionSection.addAction(consultCheck);
+            
+            consultCheck.selected = false;
+            
+            subviews.add(recommendedActionSection);
+            createConsultRefuseSection();
+            subviews.add(5, reasonSection);
+        }
+        else
+        {
+            recommendedActionSection = new PopUpSection(
+                "<info> The physical and emotional demands of caregiving can overwelm the family.");
+            prioritizeAnxietyCheck = recommendedActionSection.prioritizeNANDA("Death Anxiety", "");
+            
+            copingCheck = new CheckBox("Add mini care plan: Family Coping", "Family Coping", firstLevelIcon, 0);
+            copingCheck.textBoxEnabled = false;
+            copingCheck.owner = this;
+            
+            recommendedActionSection.addAction(copingCheck);
+            
+            subviews.add(recommendedActionSection);
+        }
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,35 +138,55 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
-		if(consultCheck != null && consultCheck.selected)
-		{
-            consultCheck.enabled = false;
-            consultCheck.selected = false;
-            SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
-			pocManager.addNIC("Consultation: Palliative Care", "", comfortableDeath, IMG_CONSULTATION);
-			//recommendedActionSection.removeAction(consultCheck);
-			parent.addComment("");
-			//consultCheck = null;
-			//consultCheckAdded = true;
-		}
-		else
-		{
-			//if(!consultCheckAdded)
-			{
-				if(reason1.selected)
-				{
-					parent.addComment("Dismissed Palliative Care Consultation: Family / Patient Refused");
-				}
-				else if(reason2.selected)
-				{
-					parent.addComment("Dismissed Palliative Care Consultation: Doctor " + reason2.tb.text + " refused");
-				}
-				else if(reason3.selected)
-				{
-					parent.addComment("Dismissed Palliative Care Consultation: " + reason3.tb.text);
-				}
-			}
-		}
+        if(consultCheck != null)
+        {
+            if(consultCheck.selected)
+            {
+                consultCheck.enabled = false;
+                consultCheck.selected = false;
+                SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
+                pocManager.addNIC("Consultation: Palliative Care", "", comfortableDeath, IMG_CONSULTATION);
+                //recommendedActionSection.removeAction(consultCheck);
+                parent.addComment("");
+                //consultCheck = null;
+                //consultCheckAdded = true;
+            }
+            else
+            {
+                //if(!consultCheckAdded)
+                {
+                    if(reason1.selected)
+                    {
+                        parent.addComment("Dismissed Palliative Care Consultation: Family / Patient Refused");
+                    }
+                    else if(reason2.selected)
+                    {
+                        parent.addComment("Dismissed Palliative Care Consultation: Doctor " + reason2.tb.text + " refused");
+                    }
+                    else if(reason3.selected)
+                    {
+                        parent.addComment("Dismissed Palliative Care Consultation: " + reason3.tb.text);
+                    }
+                }
+            }
+        }
+        
+        if(prioritizeAnxietyCheck != null && prioritizeAnxietyCheck.selected)
+        {
+            prioritizeAnxietyCheck.selected = false;
+            prioritizeAnxietyCheck.enabled = false;
+            pocManager.prioritizeNANDA(NANDAParent);
+        }
+        if(copingCheck != null && copingCheck.selected)
+        {
+            copingCheck.selected = false;
+            copingCheck.enabled = false;
+            ColouredRowView nanda = pocManager.addNANDA("Dysfunctional Family Processes", loadImage("dysfunctionalFamilyProcesses.png"));
+            SecondLevelRowView noc = pocManager.addNOC("Family Coping", "", nanda, loadImage("familyCoping.PNG"));
+            pocManager.addNIC("Family Support", "", noc, loadImage("familySupport.PNG"));
+            pocManager.addNIC("Family Integrity Promotion", "", noc, loadImage("familyIntegrityPromotion.PNG"));
+            pocManager.addNIC("Health Education: End of Life Process", "", noc, loadImage("healthEducation.PNG"));
+        }
 		
 		parent.stopBlinking();
 		hide();

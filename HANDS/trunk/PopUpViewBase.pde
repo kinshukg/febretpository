@@ -6,6 +6,9 @@ class PopUpViewBase extends View
 	SecondLevelRowView parent;
 	ClosePopUpView close;
     
+    ColouredRowView NANDAParent;
+    SecondLevelRowView NOCParent;
+    
     // If this popup is a CDS popup, it will be removed (together with its action button)
     // from a NOC line.
     boolean cds = false;

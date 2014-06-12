@@ -81,6 +81,13 @@ class PopUpSection extends View
 	}
     
 	///////////////////////////////////////////////////////////////////////////
+	CheckBox prioritizeNANDA(String tag, String imageFile)
+	{
+        PImage img = loadImage(imageFile);
+        return addAction("Prioritize NANDA: " + tag, tag, firstLevelIcon, PRIORITIZE_NANDA, img); 
+	}
+    
+	///////////////////////////////////////////////////////////////////////////
     // Shortcut for adding an add NOC action
 	CheckBox addNOC(String tag, String imageFile)
 	{

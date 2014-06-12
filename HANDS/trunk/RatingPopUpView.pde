@@ -22,10 +22,13 @@ class RatingPopUpView extends PopUpViewBase
 	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		PopUpSection title = new PopUpSection("");
-		title.setImage(indicatorsImage);
-		title.centerImage = false;
-		subviews.add(title);
+		if(!OPTION_NATIVE)
+		{
+            PopUpSection title = new PopUpSection("");
+            title.setImage(indicatorsImage);
+            title.centerImage = false;
+            subviews.add(title);
+        }
 		
 		// Expected rating checkboxes
 		expectedRatingSection = new PopUpSection("Expected Rating:");
@@ -100,10 +103,10 @@ class RatingPopUpView extends PopUpViewBase
 			
 		if(!OPTION_NATIVE)
 		{
-            //expectedRatingSection.setDescription(expectedRatingTutorial);
-            //currentRatingSection.setDescription(currentRatingTutorial);
-            expectedRatingSection.setInfoButton(expectedRatingTutorial);
-            currentRatingSection.setInfoButton(currentRatingTutorial);
+            expectedRatingSection.setDescription(expectedRatingTutorial);
+            currentRatingSection.setDescription(currentRatingTutorial);
+            //expectedRatingSection.setInfoButton(expectedRatingTutorial);
+            //currentRatingSection.setInfoButton(currentRatingTutorial);
 		}
 	}
 	
@@ -115,7 +118,14 @@ class RatingPopUpView extends PopUpViewBase
 			CheckBox cb = currentRatings.get(i - 1);
 			if(cb.selected)
 			{
-				parent.currentRatingButton.t = str(i);
+                if(parent.currentRatingButton != null)
+                {
+                    parent.currentRatingButton.t = str(i);
+                }
+                else
+                {
+                    parent.firstColumn = i;
+                }
 				break;
 			}
 		}

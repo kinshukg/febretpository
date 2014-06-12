@@ -2,9 +2,6 @@ class NativeActionsPopUpView extends PopUpViewBase
 {
     POCManager pocManager;
     
-    ColouredRowView NANDAParent;
-    SecondLevelRowView NOCParent;
-	
 	////////////////////////////////////////////////////////////////////////////
 	NativeActionsPopUpView(int w_, POCManager poc)
 	{
