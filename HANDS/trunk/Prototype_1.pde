@@ -450,6 +450,7 @@ public void nextShift()
     
     // When switching to another shift, always go back to patient 1.
     setActivePatient(patient1);
+    patientIndexView.entry = "1 of 2";
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
