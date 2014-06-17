@@ -1,4 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
 class DeathPopUpView extends PopUpViewBase
 {
     POCManager pocManager;
@@ -39,14 +38,8 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		// PopUpSection title = new PopUpSection("");
-		// title.setDescription("<l> \n - " + MSG_PALLIATIVE_CARE_INFO + " \n \n - " + MSG_FAMILY_COPING + " \n \n");
-		// subviews.add(title);
-
         PopUpSection title = new PopUpSection("");
         if(trendView != null) title.addTrendView(trendView);
-        //title.setImage(anxietySelfControlTrend);
-        //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
         subviews.add(title);
         
         // Setup death axiety popup differently for patient 1 and 2.
@@ -186,6 +179,12 @@ class DeathPopUpView extends PopUpViewBase
             pocManager.addNIC("Family Support", "", noc, loadImage("familySupport.PNG"));
             pocManager.addNIC("Family Integrity Promotion", "", noc, loadImage("familyIntegrityPromotion.PNG"));
             pocManager.addNIC("Health Education: End of Life Process", "", noc, loadImage("healthEducation.PNG"));
+        }
+        
+        if(copingCheck != null && !copingCheck.enabled && 
+            prioritizeAnxietyCheck != null && !prioritizeAnxietyCheck.enabled)
+        {
+            parent.removeAlertButton();
         }
 		
 		parent.stopBlinking();

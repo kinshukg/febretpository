@@ -1,20 +1,14 @@
 class MobilityPopupView extends PopUpViewBase
 {
     POCManager pocManager;
-	Button descriptionButton;
-	
-	CheckBox immobilityConsequencesCheck;
-
-	//PopUpSection reasonSection;
-	PopUpSection immobilityNICS;
-	//PopUpSection actionSection;
+	//Button descriptionButton;
 	
 	PopUpSection recommendedActionSection;
+	CheckBox immobilityConsequencesCheck;
+
+	PopUpSection immobilityNICS;
 	CheckBox fallPreventionCheck;
 	CheckBox energyConservationCheck;
-	//CheckBox reason2;
-	//CheckBox reason3;
-	//boolean consultCheckAdded = false;
 	
     TrendView trendView;
     
@@ -83,24 +77,28 @@ class MobilityPopupView extends PopUpViewBase
 	void onOkClicked()
 	{
         ColouredRowView nanda = pocManager.getNANDA("Impaired Physical Mobility");
-		if(immobilityConsequencesCheck != null && immobilityConsequencesCheck.selected)
+		if(immobilityConsequencesCheck.selected)
 		{
+            immobilityConsequencesCheck.selected = false;
+            immobilityConsequencesCheck.enabled = false;
 			pocManager.addNOC("Immobility Consequences","", nanda, IMG_IMMOBILITY_CONSEQUENCES);
 			recommendedActionSection.removeAction(immobilityConsequencesCheck);
 			parent.addComment("");
-			immobilityConsequencesCheck = null;
-			//consultCheckAdded = true;
 		}
-		if(fallPreventionCheck != null && fallPreventionCheck.selected)
+		if(fallPreventionCheck.selected)
 		{
+            fallPreventionCheck.selected = false;
+            fallPreventionCheck.enabled = false;
             SecondLevelRowView noc = pocManager.getNOC("Impaired Physical Mobility", "Immobility Consequences");
             if(noc != null)
             {
                 pocManager.addNIC("Pressure Ulcer Prevention", "", noc, loadImage("pressureUlcerPrevention.png"));
             }
         }
-		if(energyConservationCheck != null && energyConservationCheck.selected)
+		if(energyConservationCheck.selected)
 		{
+            energyConservationCheck.selected = false;
+            energyConservationCheck.enabled = false;
             SecondLevelRowView noc = pocManager.getNOC("Impaired Physical Mobility", "Immobility Consequences");
             if(noc != null)
             {
@@ -112,9 +110,9 @@ class MobilityPopupView extends PopUpViewBase
 		hide();
 		
 		// If we added the action and we are in cycle3 option 2, remove the action button from the POC action bar
-		// if(immobilityConsequencesCheck == null)
-		// {
-			// parent.removeAlertButton();
-		// }
+		if(!immobilityConsequencesCheck.enabled && !fallPreventionCheck.enabled && !energyConservationCheck.enabled)
+		{
+			parent.removeAlertButton();
+		}
 	}
 }

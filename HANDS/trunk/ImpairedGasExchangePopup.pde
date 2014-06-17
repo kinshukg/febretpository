@@ -52,14 +52,14 @@ class ImpairedGasExchangePopup extends PopUpViewBase
 	////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
-        if(gasExchangeCheck != null && gasExchangeCheck.selected)
+        if(gasExchangeCheck.selected)
         {
             gasExchangeCheck.selected = false;
             gasExchangeCheck.enabled = false;
             pocManager.deleteNANDA(NANDAParent);
             //pocManager.prioritizeNANDA(NANDAParent);
         }
-        if(respiratoryMonitoringCheck != null && respiratoryMonitoringCheck.selected)
+        if(respiratoryMonitoringCheck.selected)
         {
             respiratoryMonitoringCheck.selected = false;
             respiratoryMonitoringCheck.enabled = false;
@@ -69,6 +69,12 @@ class ImpairedGasExchangePopup extends PopUpViewBase
         
 		parent.stopBlinking();
 		hide();
+        
+        // If both actions are disabled, hide the popup.
+        if(!gasExchangeCheck.enabled && !respiratoryMonitoringCheck.enabled)
+        {
+            parent.removeAlertButton();
+        }
 	}
     
 	////////////////////////////////////////////////////////////////////////////
