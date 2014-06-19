@@ -40,7 +40,7 @@ class MobilityPopupView extends PopUpViewBase
 		immobilityConsequencesCheck = new CheckBox("Add NOC: Immobility Consequences", secondLevelIcon, 0);
 		immobilityConsequencesCheck.textBoxEnabled = false;
 		immobilityConsequencesCheck.owner = this;
-		immobilityConsequencesCheck.setIconTooltipImage(IMG_IMMOBILITY_CONSEQUENCES);
+		immobilityConsequencesCheck.setIconTooltipImage(loadImage("NOCImmobilityConsequences.png"));
 		
 		String icmsg = "";
 		icmsg = MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
@@ -81,7 +81,7 @@ class MobilityPopupView extends PopUpViewBase
 		{
             immobilityConsequencesCheck.selected = false;
             immobilityConsequencesCheck.enabled = false;
-			pocManager.addNOC("Immobility Consequences","", nanda, IMG_IMMOBILITY_CONSEQUENCES);
+			pocManager.addNOC("Immobility Consequences","", nanda, loadImage("NOCImmobilityConsequences.png"));
 			recommendedActionSection.removeAction(immobilityConsequencesCheck);
 			parent.addComment("");
 		}

@@ -50,7 +50,7 @@ class DeathPopUpView extends PopUpViewBase
             consultCheck.owner = this;
             
             //consultCheck.setIconTooltip("Adds consultation to the current NOC");
-            consultCheck.setIconTooltipImage(IMG_CONSULTATION);
+            consultCheck.setIconTooltipImage(loadImage("consultation.PNG"));
             recommendedActionSection = new PopUpSection(
                 "<info> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
             recommendedActionSection.addAction(consultCheck);
@@ -138,7 +138,7 @@ class DeathPopUpView extends PopUpViewBase
                 consultCheck.enabled = false;
                 consultCheck.selected = false;
                 SecondLevelRowView comfortableDeath = pocManager.getNOC("Death Anxiety", "Comfortable Death");
-                pocManager.addNIC("Consultation: Palliative Care", "", comfortableDeath, IMG_CONSULTATION);
+                pocManager.addNIC("Consultation: Palliative Care", "", comfortableDeath, loadImage("consultation.PNG"));
                 //recommendedActionSection.removeAction(consultCheck);
                 parent.addComment("");
                 //consultCheck = null;

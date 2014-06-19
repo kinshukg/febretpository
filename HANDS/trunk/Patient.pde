@@ -11,10 +11,14 @@ class Patient
     
     // List of trends 
     ArrayList trends = new ArrayList();;
+
+    // The number of seconds spent working on this patient for the current shift.
+    int time;
     
     ///////////////////////////////////////////////////////////////////////////////////////////////
     void reset()
     {
+        time = 0;
         pocManager = new POCManager();
         pocManager.reset();
         
@@ -33,20 +37,20 @@ class Patient
             
             // NANDA Acute Pain section
             ColouredRowView NANDAAcutePain = pocManager.addNANDA("Acute Pain", loadImage("acutePain.png"));
-            SecondLevelRowView NOCPainLevel = pocManager.addNOC("Pain Level", "", NANDAAcutePain, IMG_PAIN_LEVEL);
+            SecondLevelRowView NOCPainLevel = pocManager.addNOC("Pain Level", "", NANDAAcutePain, loadImage("painLevel.PNG"));
             NOCPainLevel.setScores(2, 4);
-            pocManager.addNIC("Medication Management", "", NOCPainLevel, IMG_MEDICATION_MANAGEMENT);
-            pocManager.addNIC("Pain Management", "", NOCPainLevel, IMG_PAIN_MANAGEMENT);
+            pocManager.addNIC("Medication Management", "", NOCPainLevel, loadImage("medicationManagement.PNG"));
+            pocManager.addNIC("Pain Management", "", NOCPainLevel, loadImage("painManagement.PNG"));
 
             // We add the death anxiety section after the first shift.
             if(currentShift == 1)
             {
                 // NANDA Death anxiety
-                ColouredRowView NANDADeathAnxiety = pocManager.addNANDA("Death Anxiety", IMG_DEATH_ANXIETY);
-                SecondLevelRowView NOCComfortableDeath = pocManager.addNOC("Comfortable Death", "", NANDADeathAnxiety, IMG_COMFORTABLE_DEATH);
+                ColouredRowView NANDADeathAnxiety = pocManager.addNANDA("Death Anxiety", loadImage("deathAnxiety.png"));
+                SecondLevelRowView NOCComfortableDeath = pocManager.addNOC("Comfortable Death", "", NANDADeathAnxiety, loadImage("comfortableDeath.PNG"));
                 NOCComfortableDeath.setScores(3, 5);
-                pocManager.addNIC("Calming Technique", "", NOCComfortableDeath, IMG_CALMING_TECHNIQUE);
-                pocManager.addNIC("Spiritual Support", "", NOCComfortableDeath, IMG_SPIRITUAL_SUPPORT);
+                pocManager.addNIC("Calming Technique", "", NOCComfortableDeath, loadImage("calmingTechnique.PNG"));
+                pocManager.addNIC("Spiritual Support", "", NOCComfortableDeath, loadImage("spiritualSupport.PNG"));
             }
         }
         else if(id == 2)

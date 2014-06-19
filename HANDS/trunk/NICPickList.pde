@@ -34,5 +34,8 @@ class NICPickList extends NativeActionsPopUpView
         actions.addNIC("Self-Care Assistance: Toileting", "tooltipPlaceholder.PNG");
         actions.addNIC("Surveillance", "surveillance.png");
         actions.addNIC("Urinary Elimination Management", "urinaryEliminationManagement.png");
+        CheckBox oth = actions.addNIC("Other", "tooltipPlaceholder.PNG");
+        oth.showTextBox();
+        oth.tb.suggestion = "Enter NIC Name";
     }
 }

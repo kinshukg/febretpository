@@ -39,13 +39,13 @@ class PainPopUpView extends PopUpViewBase
 	void setupPainActionSections()
 	{
 		CheckBox c = new CheckBox("Add NIC: Positioning", "Positioning", thirdLevelIcon, ADD_NIC);
-		c.setIconTooltipImage(IMG_POSITIONING);
+		c.setIconTooltipImage(loadImage("positioning.png"));
         
 		CheckBox c1 = new CheckBox("Prioritize NANDA: Acute Pain", "Prioritize Acute Pain", firstLevelIcon, PRIORITIZE_NANDA);
 		CheckBox c2 = new CheckBox("Add NIC: Consultation: Palliative Care", "Consultation: Palliative Care", thirdLevelIcon, ADD_NIC);
 		
-		c1.setIconTooltipImage(IMG_ACUTE_PAIN);
-		c2.setIconTooltipImage(IMG_CONSULTATION);
+		c1.setIconTooltipImage(loadImage("acutePain.png"));
+		c2.setIconTooltipImage(loadImage("consultation.PNG"));
 		
 		// Big information: we present EBI side-by-side with actions
         PopUpSection section1 = new PopUpSection(
