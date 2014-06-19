@@ -28,5 +28,14 @@ class TitleView extends View {
     textSize(12);
     fill(subtitleColor);
     text(subtitle,logo.width+title.length()*15,11);
+    
+    textSize(11);
+    int xx = 1130;
+    int yy = 11;
+    fill(0);
+    text("USRID:" + str(USER_ID), xx, yy);
+    text("CDS:" + str(OPTION_CDS_TYPE), xx += 80, yy);
+    text("SHIFT:" + str(currentShift), xx += 60, yy);
+    text("PTID:" + str(curPatient.id), xx += 80, yy);
   }
 }

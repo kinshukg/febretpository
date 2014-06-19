@@ -58,12 +58,12 @@ class PopUpViewBase extends View
 	////////////////////////////////////////////////////////////////////////////
 	void layout()
 	{
-		h = 0;
+        h = 0;
 		for(int i = 0; i < subviews.size();i++)
 		{
 			View v = (View)popUpView.subviews.get(i);
-			v.y = h;
-			h += v.h;
+            v.y = h;
+            h += v.h;
 			if(v != commit && v != notApplicable && v != close)
 			{
 				v.w = this.w - 16;

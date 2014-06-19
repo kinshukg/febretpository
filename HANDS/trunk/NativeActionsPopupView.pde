@@ -46,15 +46,42 @@ class NativeActionsPopUpView extends PopUpViewBase
 							//toRemove.add(c);
 							if(c.id == ADD_NIC)
 							{
-                                pocManager.addNIC(c.tag, c.tb.text, NOCParent, c.iconButton.tooltipImage);
+                                // If NIC tag is "Other", use comment as NIC name.
+                                if(c.tag.equals("Other"))
+                                {
+                                    pocManager.addNIC(c.tb.text, "", NOCParent, c.iconButton.tooltipImage);
+                                    c.enabled = true;
+                                }
+                                else
+                                {
+                                    pocManager.addNIC(c.tag, c.tb.text, NOCParent, c.iconButton.tooltipImage);
+                                }
 							}
 							if(c.id == ADD_NANDA)
 							{
-                                pocManager.addNANDA(c.tag, c.iconButton.tooltipImage);
+                                // If NANDA tag is "Other", use comment as NANDA name.
+                                if(c.tag.equals("Other"))
+                                {
+                                    pocManager.addNANDA(c.tb.text, c.iconButton.tooltipImage);
+                                    c.enabled = true;
+                                }
+                                else
+                                {
+                                    pocManager.addNANDA(c.tag, c.iconButton.tooltipImage);
+                                }
 							}
 							if(c.id == ADD_NOC)
 							{
-                                pocManager.addNOC(c.tag, c.tb.text, NANDAParent, c.iconButton.tooltipImage);
+                                // If NOC tag is "Other", use comment as NOC name.
+                                if(c.tag.equals("Other"))
+                                {
+                                    pocManager.addNOC(c.tb.text, "", NANDAParent, c.iconButton.tooltipImage);
+                                    c.enabled = true;
+                                }
+                                else
+                                {
+                                    pocManager.addNOC(c.tag, c.tb.text, NANDAParent, c.iconButton.tooltipImage);
+                                }
 							}
 							// if(c.id == REMOVE_NANDA)
 							// {

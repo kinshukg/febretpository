@@ -92,7 +92,7 @@ class TrendTable extends TrendView
             }
             
             // Shift entries.
-            text(str(i * 12) + "hrs", curX - 20, curY + ph * 2);
+            text(str(i * 12) + " hrs", curX - 20, curY + ph * 2);
             
             if(i == now)
             {

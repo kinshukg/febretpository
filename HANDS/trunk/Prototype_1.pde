@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Global constants
 static int SCREEN_WIDTH = 1400;
-static int SCREEN_HEIGHT = 900;
+static int SCREEN_HEIGHT = 1000;
 
 static int POPUP_WIDTH = 400;
 
@@ -16,45 +16,6 @@ public PImage IMG_LEGEND = null;
 
 // NNN definition images
 public PImage IMG_PLACEHOLDER = null; 
-public PImage IMG_IMP_GAS_EXC = null; 
-public PImage IMG_ACUTE_PAIN = null;
-public PImage IMG_DEATH_ANXIETY = null;
-public PImage IMG_COMFORTABLE_DEATH = null;
-public PImage IMG_CONSULTATION = null;
-public PImage IMG_COPING = null;
-public PImage IMG_ENERGY_CONSERVATION = null;
-public PImage IMG_ENVIRONMENTAL_MANAGEMENT = null;
-public PImage IMG_FAMILY_COPING = null;
-public PImage IMG_FAMILY_INTEGRITY_PROMOTION = null;
-public PImage IMG_FAMILY_SUPPORT = null;
-public PImage IMG_FAMILY_THERAPY = null;
-public PImage IMG_GRIEVING = null;
-public PImage IMG_GUIDED_IMAGERY = null;
-public PImage IMG_HEALTH_EDUCATION = null;
-public PImage IMG_IMPAIRED_GAS_EXCHANGE = null;
-public PImage IMG_INTERRUPTED_FAMILY_PROCESS = null;
-public PImage IMG_MASSAGE = null;
-public PImage IMG_PATIENT_CONTROLLED_ANALGESIA = null;
-public PImage IMG_POSITIONING = null;
-public PImage IMG_RELAXATION_THERAPY = null;
-// Cycle 2 Additions
-public PImage IMG_MUSIC_THERAPY = null;
-public PImage IMG_CALMING_TECHNIQUE = null;
-public PImage IMG_SPIRITUAL_SUPPORT = null;
-public PImage IMG_MEDICATION_MANAGEMENT = null;
-public PImage IMG_PAIN_MANAGEMENT = null;
-public PImage IMG_ANXIETY_LEVEL = null;
-public PImage IMG_PAIN_LEVEL = null;
-// Cycle 3 Additions
-public PImage IMG_IMPAIRED_PHYSICAL_MOBILITY = null;
-public PImage IMG_ACID_BASE_MONITORING = null;
-public PImage IMG_AIRWAY_MANAGEMENT = null;
-public PImage IMG_BEDSIDE_LABORATORY_TESTING = null;
-public PImage IMG_ENERGY_MANAGEMENT = null;
-public PImage IMG_FALL_PREVENTION = null;
-public PImage IMG_IMMOBILITY_CONSEQUENCES = null;
-public PImage IMG_MOBILITY = null;
-public PImage IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = null;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Message library
@@ -103,7 +64,7 @@ int ADD_NANDA = 4;
 //   2 = Graph
 //   3 = Table
 int OPTION_CDS_TYPE = 0;
-
+int USER_ID = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Globl variables
@@ -186,19 +147,36 @@ public PImage emptyTrend;
 // instance per patient)
 Patient patient1;
 Patient patient2;
+int curPatientStartMillis;
 Patient curPatient;
 int currentShift = 0;
 // When set to true, display a black screen between shifts.
 boolean shiftIntermission = false;
+int endShiftScreenshot = -1;
 
+// This table will store the plan of care for all patients and all shifts of this
+// user.
+Table poclog;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 public void setup()
 {
+    poclog = new Table();
+    poclog.addColumn("UserID");
+    poclog.addColumn("CDS");
+    poclog.addColumn("Shift");
+    poclog.addColumn("PatientID");
+    poclog.addColumn("Name");
+    poclog.addColumn("Parent");
+    poclog.addColumn("ExpectedRating");
+    poclog.addColumn("Value");
+    
+    
     // Load config
     JSONObject json;
     json = loadJSONObject("config.cfg");
     OPTION_CDS_TYPE = json.getInt("cds");
+    USER_ID = json.getInt("user-id");
     
 	size(SCREEN_WIDTH, SCREEN_HEIGHT);
 	frameRate(20);
@@ -260,58 +238,11 @@ public void setup()
 	
 	IMG_PLACEHOLDER = loadImage("tooltipPlaceholder.PNG");
     
-	IMG_IMP_GAS_EXC = loadImage("impairedgasExchange.png");
-	IMG_ACUTE_PAIN = loadImage("acutePain.png");
-	IMG_DEATH_ANXIETY = loadImage("deathAnxiety.png");
-	IMG_INTERRUPTED_FAMILY_PROCESS = loadImage("interruptedFamilyProcess.PNG");
-	
-	IMG_FAMILY_INTEGRITY_PROMOTION = loadImage("familyIntegrityPromotion.PNG");
-	IMG_COMFORTABLE_DEATH = loadImage("comfortableDeath.PNG");
-	IMG_CONSULTATION =  loadImage("consultation.PNG");
-	IMG_COPING =  loadImage("coping.png");
-	IMG_ENERGY_CONSERVATION =  loadImage("energyConservation.PNG");
-	IMG_ENVIRONMENTAL_MANAGEMENT =  loadImage("environmentalManagement.PNG");
-	IMG_FAMILY_COPING =  loadImage("familyCoping.PNG");
-	IMG_FAMILY_INTEGRITY_PROMOTION =  loadImage("familyIntegrityPromotion.PNG");
-	IMG_FAMILY_SUPPORT =  loadImage("familySupport.PNG");
-	IMG_FAMILY_THERAPY =  loadImage("familyTherapy.PNG");
-	IMG_GRIEVING =  loadImage("grieving.PNG");
-	IMG_GUIDED_IMAGERY =  loadImage("guidedImagery.PNG");
-	IMG_HEALTH_EDUCATION =  loadImage("healthEducation.PNG");
-	IMG_MASSAGE =  loadImage("massage.PNG");
-	IMG_PATIENT_CONTROLLED_ANALGESIA =  loadImage("patientControlledAnalgesia.PNG");
-	IMG_POSITIONING =  loadImage("positioning.png");
-	IMG_RELAXATION_THERAPY =  loadImage("NICRelaxationTherapy.PNG");
-	
-	IMG_MUSIC_THERAPY = loadImage("musicTherapy.PNG");
-	IMG_CALMING_TECHNIQUE = loadImage("calmingTechnique.PNG");
-	IMG_SPIRITUAL_SUPPORT = loadImage("spiritualSupport.PNG");
-	IMG_MEDICATION_MANAGEMENT = loadImage("medicationManagement.PNG");
-	IMG_PAIN_MANAGEMENT = loadImage("painManagement.PNG");
-	IMG_ANXIETY_LEVEL = loadImage("anxietyLevel.PNG");
-	IMG_PAIN_LEVEL = loadImage("painLevel.PNG");
-	
-	// Cycle 3
-	IMG_IMPAIRED_PHYSICAL_MOBILITY = loadImage("NANDAImpairedPhysicalMobility.png");
-	IMG_ACID_BASE_MONITORING = loadImage("NICAcidBaseMonitoring.png");
-	IMG_AIRWAY_MANAGEMENT = loadImage("NICAirwayManagement.png");
-	IMG_BEDSIDE_LABORATORY_TESTING = loadImage("NICBedsideLaboratoryTesting.png");
-	IMG_ENERGY_MANAGEMENT = loadImage("NICEnergyManagement.png");
-	IMG_FALL_PREVENTION = loadImage("NICFallPrevention.PNG");
-	IMG_IMMOBILITY_CONSEQUENCES = loadImage("NOCImmobilityConsequences.png");
-	IMG_MOBILITY = loadImage("NOCMobility.png");
-	IMG_RESPIRATORY_STATUS_GAS_EXCHANGE = loadImage("NOCRespiratoryStatusGasExchange.png");;
-	
-
-	//OPTION_GRAPH_ALERT_BUTTON = false;
-	//OPTION_NUMBER = 2;
-	//CYCLE2_OPTION_NUMBER = 1;
-
 	frame.setTitle("Prototype No Suggestions");
 	reset();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void loadNNNIcons()
 {
     firstLevelIcon = loadImage("NANDA.png");
@@ -336,7 +267,7 @@ void loadNNNIcons()
 	emptyTrend.resize(500, 0);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void reset()
 {
 	popUpView = null;
@@ -352,19 +283,19 @@ void reset()
 	titleView = new TitleView(0,0,width,handIcon,"HANDS","- Hands-On Automated Nursing Data System",titleBackgroundColor, titleColor,subtitleColor);
 	mainView.subviews.add(titleView); 
 
-    endShiftButton = new Button(1025, 760, 340, 120, "END SHIFT", color(200,200,200), color(0));
+    endShiftButton = new Button(1025, 860, 340, 120, "LOG OFF", color(200,200,200), color(0));
 	mainView.subviews.add(endShiftButton); 
     
-    prevPatientButton = new Button(1040, 410, 54, 54, "Prev.", color(200,200,200), color(0));
+    prevPatientButton = new Button(1040, 780, 54, 54, "Prev.", color(200,200,200), color(0));
 	mainView.subviews.add(prevPatientButton); 
-    nextPatientButton = new Button(1280, 410, 54, 54, "Next", color(200,200,200), color(0));
+    nextPatientButton = new Button(1280, 780, 54, 54, "Next", color(200,200,200), color(0));
 	mainView.subviews.add(nextPatientButton); 
     
 	setupPatientInfoView();
 	setupPatients();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 public void setupPatientInfoView()
 {
 	float cx = width - 380;
@@ -420,12 +351,12 @@ public void setupPatientInfoView()
 	mainView.subviews.add(otherView);
 	cy += 25;
 
-	patientIndexView = new PatientDataView(1100, 420, 100, 54, "Current Patient:");
+	patientIndexView = new PatientDataView(1100, 790, 100, 54, "Current Patient:");
 	mainView.subviews.add(patientIndexView);
     patientIndexView.entry = "1 of 2";
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 public void nextShift()
 {
     currentShift++;
@@ -451,15 +382,24 @@ public void nextShift()
     // When switching to another shift, always go back to patient 1.
     setActivePatient(patient1);
     patientIndexView.entry = "1 of 2";
+    
+    patient1.time = 0;
+    patient2.time = 0;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 public void setActivePatient(Patient p)
 {
+    // Log time spent on previous patient.
+    if(curPatient != null)
+    {
+        curPatient.time = (millis() - curPatientStartMillis) / 1000;
+    }
     // Hide all patients
     patient1.hide();
     patient2.hide();
     
+    curPatientStartMillis = millis();
     curPatient = p;
     curPatient.show();
     
@@ -478,19 +418,94 @@ public void setActivePatient(Patient p)
 	otherView.entry = "\n" + curPatient.other;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+public void setLogRowKeys(TableRow row, Patient pt)
+{
+    row.setInt("UserID", USER_ID);
+    row.setInt("CDS", OPTION_CDS_TYPE);
+    row.setInt("Shift", currentShift);
+    row.setInt("PatientID", pt.id);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+public void logPatientPOC(Patient pt)
+{
+    TableRow row;
+    row = poclog.addRow();
+    setLogRowKeys(row, pt);
+    row.setString("Name", "TIME");
+    row.setInt("Value", pt.time);
+    
+    // Add data for this patient to the POC log.
+    ArrayList poc = pt.pocManager.scrollingView.subs;
+    for (int i = 0; i < poc.size();i++ ) 
+    {
+        ColouredRowView tempRow = (ColouredRowView)poc.get(i);
+        if(!tempRow.deleted)
+        {
+            row = poclog.addRow();
+            setLogRowKeys(row, pt);
+            row.setString("Name", tempRow.title);
+            row.setString("Parent", "Root");
+            
+            for (int j = 0; j < tempRow.subs.size(); j++ ) 
+            {
+                SecondLevelRowView tempRow2 = (SecondLevelRowView) tempRow.subs.get(j);
+                row = poclog.addRow();
+                setLogRowKeys(row, pt);
+                row.setString("Name", tempRow2.title);
+                row.setString("Parent", tempRow.title);
+                row.setString("Value", str(tempRow2.firstColumn) + "_" + str(tempRow2.secondColumn));
+                
+                for (int k = 0; k < tempRow2.subs.size(); k++ ) 
+                {
+                    ThirdLevelRowView tempRow3 = (ThirdLevelRowView) tempRow2.subs.get(k);
+                    row = poclog.addRow();
+                    setLogRowKeys(row, pt);
+                    row.setString("Name", tempRow3.title);
+                    row.setString("Parent", tempRow2.title);
+                }
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+public void savePOC()
+{
+    logPatientPOC(patient1);
+    logPatientPOC(patient2);
+    saveTable(poclog, "UID" + str(USER_ID) + ".csv");
+}
+
+////////////////////////////////////////////////////////////////////////////////
 public void draw()
 {
     // Do we need to show the intermission screen betwen shifts?
     if(shiftIntermission)
     {
-        background(0); 
-		fill(255);
-		textFont(font);
-		textSize(24);
-		text("Press 6 To Confirm Shift END and Continue To Next Shift",10,10);
-		text("Press 5 To GO BACK To this Shift",10,40);
-        return;
+        if(endShiftScreenshot == 0)
+        {
+            savePOC();
+            // Take screenshot of first patient
+            setActivePatient(patient1);
+        }
+        else if(endShiftScreenshot == 1)
+        {
+            // Take screenshot of second patient
+            setActivePatient(patient2);
+        }
+        else
+        {
+            // Done with screenshots
+            background(0); 
+            fill(255);
+            textFont(font);
+            textSize(24);
+            text("Press 6 To Confirm Shift END and Continue To Next Shift",10,10);
+            text("Press 5 To GO BACK To this Shift",10,40);
+            return;
+        }
     }
     
 	background(backgroundColor); 
@@ -499,6 +514,21 @@ public void draw()
 
 	mainView.draw();
 	
+    // Do we need to show the intermission screen betwen shifts?
+    if(shiftIntermission)
+    {
+        if(endShiftScreenshot == 0)
+        {
+			saveFrame("UID"+str(USER_ID)+"-CDS" + str(OPTION_CDS_TYPE) + "-SHFT" + str(currentShift) + "-PT" + str(curPatient.id) + ".png");
+            endShiftScreenshot = 1;
+        }
+        else if(endShiftScreenshot == 1)
+        {
+			saveFrame("UID"+str(USER_ID)+"-CDS" + str(OPTION_CDS_TYPE) + "-SHFT" + str(currentShift) + "-PT" + str(curPatient.id) + ".png");
+            endShiftScreenshot = 2;
+        }
+    }
+    
 	if(tooltipView != null)
 	{
 		tooltipView.draw();
@@ -531,17 +561,12 @@ public void draw()
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void drawStaticViewElements()
 {
 	int footerY = 500;
 	int footerX = 1020;
 	if(!OPTION_NATIVE) image(IMG_LEGEND, footerX, footerY + 10);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-void hideHelpText(String text)
-{
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -568,6 +593,10 @@ void mouseReleased()
     {
         endShiftButton.selected = false;
         shiftIntermission = true;
+        endShiftScreenshot = 0;
+        
+        // Save time for current patient.
+        curPatient.time = (millis() - curPatientStartMillis) / 1000;
     }
     if(nextPatientButton.selected)
     {
