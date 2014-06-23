@@ -10,7 +10,7 @@ class NANDAPickList extends NativeActionsPopUpView
         actions.addNANDA("Caregiver Support", "caregiverSupport.png");
         actions.addNANDA("Complicated Grieving", "complicatedGrieving.png");
         actions.addNANDA("Compromised Family Coping", "compromisedFamilyCoping.png");
-        actions.addNANDA("Constipation", "tooltipPlaceholder.PNG");
+        actions.addNANDA("Constipation", "NANDAConstipation.png");
         actions.addNANDA("Death Anxiety", "deathAnxiety.png");
         actions.addNANDA("Dysfunctional Family Processes", "dysfunctionalFamilyProcesses.png");
         actions.addNANDA("Impaired Gas Exchange", "impairedgasExchange.png");

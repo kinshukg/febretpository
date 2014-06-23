@@ -30,7 +30,7 @@ class PainPopUpView extends PopUpViewBase
 	void setupPainTitleSection()
 	{
         PopUpSection title = new PopUpSection("");
-        if(trendView != null) title.addTrendView(trendView);
+        if(OPTION_CDS_TYPE != 1 && trendView != null) title.addTrendView(trendView);
         //title.setInfoButton(MSG_PAIN_GRAPH_DESCRIPTION);
         subviews.add(title);
 	}

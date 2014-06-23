@@ -42,7 +42,7 @@ class SecondLevelRowView extends View
 		parent.subs.add(this);
 		indent = 40;
         
-        int cx = 328;
+        int cx = 360;
         
         addButton = new Button(cx += 20, 4, 24, 24, plusIcon); addButton.helpText = "Add NIC";
         removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
@@ -265,6 +265,7 @@ class SecondLevelRowView extends View
 	{
 		if(popUpView == null)
 		{
+            popUpView = pocManager.NICPopup;
             pocManager.NICPopup.NOCParent = this;
             pocManager.NICPopup.show();
 		}

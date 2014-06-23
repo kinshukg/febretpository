@@ -32,7 +32,7 @@ class MobilityPopupView extends PopUpViewBase
 	void reset()
 	{
         PopUpSection title = new PopUpSection("");
-        if(trendView != null) title.addTrendView(trendView);
+        if(OPTION_CDS_TYPE != 1 && trendView != null) title.addTrendView(trendView);
         //title.setImage(anxietySelfControlTrend);
         //title.setInfoButton(MSG_DEATH_GRAPH_DESCRIPTION);
         subviews.add(title);

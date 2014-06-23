@@ -19,7 +19,7 @@ public void setupPatients()
     TrendView tw;
     
     // Setup patient 1 pain trends
-    if(OPTION_CDS_TYPE != 1)
+    //if(OPTION_CDS_TYPE != 1)
     {
         if(OPTION_CDS_TYPE == 2) tw = new TrendGraph(0, 0);
         else tw = new TrendTable(0,0);
@@ -79,7 +79,7 @@ public void setupPatients()
     patient2.physician = "Allen Goldberg";
     patient2.other = "";
     
-    if(OPTION_CDS_TYPE != 1)
+    //if(OPTION_CDS_TYPE != 1)
     {
         if(OPTION_CDS_TYPE == 2) tw = new TrendGraph(0, 0);
         else tw = new TrendTable(0,0);
