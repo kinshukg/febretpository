@@ -26,7 +26,7 @@ class ColouredRowView extends View
 		
 		indent = 10;
         
-        int cx = 328;
+        int cx = 360;
         
         addButton = new Button(cx += 20, 4, 24, 24, plusIcon); addButton.helpText = "Add NOC";
         removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NANDA";
@@ -66,8 +66,11 @@ class ColouredRowView extends View
         }
         else if(addButton != null && addButton.selected)
         {
-            poc.NOCPopup.NANDAParent = this;
-            poc.NOCPopup.show();
+            if(popUpView == null)
+            {
+                poc.NOCPopup.NANDAParent = this;
+                poc.NOCPopup.show();
+            }
 			addButton.selected = false;
         }
 		return true;

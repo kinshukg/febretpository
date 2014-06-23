@@ -44,7 +44,7 @@ class POCManager
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
-        print(text);
+        //print(text);
         // check achievements
         if(text.equals("Positioning")) achPositioningAdded = true;
         else if(text.equals("Consultation: Palliative Care")) achPalliativeConsultAdded = true;
@@ -136,6 +136,8 @@ class POCManager
             SecondLevelRowView tempo = (SecondLevelRowView)parentNANDA.subs.get(k);
                        tempo.y = temp.y+((k+1)*temp.h);
         }
+        
+        NOCPopup.onNOCAdded(temp);
 		
 		return temp;
 	}
@@ -215,6 +217,7 @@ class POCManager
 	{
 		scrollingView.subs.add(nanda);
         if(nanda.title.equals("Dysfunctional Family Processes")) achFamilyCopingAdded = true;
+        NANDAPopup.onNANDAAdded(nanda);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -225,7 +228,7 @@ class POCManager
 			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
             if(tempRow.title.equals(title)) return tempRow;
         }
-        print("POCManager::getNANDA - could not find NANDA row titled " + title);
+        print("POCManager::getNANDA - could not find NANDA row titled " + title + "\n");
         return null;
 	}
     
@@ -243,7 +246,11 @@ class POCManager
                 if(tempRow.title.equals(NOCTitle)) return tempRow;
             }
         }
-        print("POCManager::getNOC - could not find NOC row titled " + NOCTitle);
+        if(stashedNOCS.containsKey(NOCTitle))
+        {
+            return stashedNOCS.get(NOCTitle);
+        }
+        print("POCManager::getNOC - could not find NOC row titled " + NOCTitle + "\n");
         return null;
 	}
     

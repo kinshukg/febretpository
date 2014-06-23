@@ -39,7 +39,7 @@ class DeathPopUpView extends PopUpViewBase
 	void reset()
 	{
         PopUpSection title = new PopUpSection("");
-        if(trendView != null) title.addTrendView(trendView);
+        if(OPTION_CDS_TYPE != 1 && trendView != null) title.addTrendView(trendView);
         subviews.add(title);
         
         // Setup death axiety popup differently for patient 1 and 2.
@@ -207,7 +207,7 @@ class DeathPopUpView extends PopUpViewBase
     {
         super.onNICRemoved(nic);
         // Hide/show the consult refuse section when family coping is added or removed from the POC
-        if(nic.title.equals(consultCheck.tag))
+        if(consultCheck != null && nic.title.equals(consultCheck.tag))
         {
             onCheckBoxChanged(consultCheck);
         }

@@ -29,11 +29,11 @@ class Patient
         if(id == 1)
         {
             // NANDA Constipation
-            ColouredRowView NANDAConstipation = pocManager.addNANDA("Constipation", IMG_PLACEHOLDER);
-            SecondLevelRowView NOCBowelElimination = pocManager.addNOC("Bowel Elimination", "", NANDAConstipation, IMG_PLACEHOLDER);
+            ColouredRowView NANDAConstipation = pocManager.addNANDA("Constipation", loadImage("NANDAConstipation.png"));
+            SecondLevelRowView NOCBowelElimination = pocManager.addNOC("Bowel Elimination", "", NANDAConstipation, loadImage("NOCBowelElimination.png"));
             NOCBowelElimination.setScores(3, 4);
-            pocManager.addNIC("Bowel Management", "", NOCBowelElimination, IMG_PLACEHOLDER);
-            pocManager.addNIC("Self-Care Assistance: Toileting", "", NOCBowelElimination, IMG_PLACEHOLDER);
+            pocManager.addNIC("Bowel Management", "", NOCBowelElimination, loadImage("NICBowelManagement.PNG"));
+            pocManager.addNIC("Self-Care Assistance: Toileting", "", NOCBowelElimination, loadImage("NICSelfCareAssistanceToileting.PNG"));
             
             // NANDA Acute Pain section
             ColouredRowView NANDAAcutePain = pocManager.addNANDA("Acute Pain", loadImage("acutePain.png"));
@@ -75,7 +75,7 @@ class Patient
             SecondLevelRowView NOCMobility = pocManager.addNOC("Mobility", "", NANDAPhysMob, loadImage("NOCMobility.png"));
             NOCMobility.setScores(1, 3);
             pocManager.addNIC("Fall Prevention", "", NOCMobility, loadImage("fallPrevention.png"));
-            pocManager.addNIC("Energy Conservation", "", NOCMobility, loadImage("energyConservation.PNG"));
+            pocManager.addNIC("Energy Management", "", NOCMobility, loadImage("NICEnergyManagement.png"));
             
             // NANDA Acute Pain
             ColouredRowView NANDAPain = pocManager.addNANDA("Acute Pain", loadImage("acutePain.png"));

@@ -22,7 +22,7 @@ class ThirdLevelRowView extends View
 		parent.subs.add(this);  
 		indent = 70;
         
-        int cx = 348;
+        int cx = 360;
         removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(removeButton);

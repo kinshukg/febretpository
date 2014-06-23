@@ -249,6 +249,64 @@ class PopUpViewBase extends View
     }
     
 	////////////////////////////////////////////////////////////////////////////
+    void onNOCAdded(SecondLevelRowView nic)
+    {
+        // If a NIC has been added, check the nic list in this popup and disable the relative
+        // checkbox if you find it.
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio)
+                    {
+                        if(c.enabled && c.tag.equals(nic.title))
+                        {
+                            c.enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+        checkCDSEnabled(true);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    void onNANDAAdded(ColouredRowView nic)
+    {
+        // If a NIC has been added, check the nic list in this popup and disable the relative
+        // checkbox if you find it.
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio)
+                    {
+                        if(c.enabled && c.tag.equals(nic.title))
+                        {
+                            c.enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+        checkCDSEnabled(true);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
     void checkCDSEnabled(boolean adding)
     {
         if(!cds) return;

@@ -5,7 +5,7 @@ class NOCPickList extends NativeActionsPopUpView
 	{
 		super(510, poc);
         PopUpSection actions = addSection("Add NOC(s)");
-        actions.addNOC("Bowel Elimination", "test.png");
+        actions.addNOC("Bowel Elimination", "NOCBowelElimination.png");
         actions.addNOC("Pain Level", "painLevel.PNG");
         actions.addNOC("Comfortable Death", "comfortableDeath.PNG");
         actions.addNOC("Respiratory Status: Gas Exchange", "NOCRespiratoryStatusGasExchange.png");
