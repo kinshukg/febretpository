@@ -68,6 +68,8 @@ class ColouredRowView extends View
         {
             if(popUpView == null)
             {
+                log("OpenNativeNOCPopup " + title);
+                
                 poc.NOCPopup.NANDAParent = this;
                 poc.NOCPopup.show();
             }

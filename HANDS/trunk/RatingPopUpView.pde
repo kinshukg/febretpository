@@ -126,6 +126,7 @@ class RatingPopUpView extends PopUpViewBase
                 {
                     parent.firstColumn = i;
                 }
+                log("NOCCurrentRating " + str(i) + " " + parent.title);
 				break;
 			}
 		}
@@ -137,6 +138,7 @@ class RatingPopUpView extends PopUpViewBase
 				parent.secondColumn = i;
 				parent.disableExpectedRatingButton();
 				subviews.remove(expectedRatingSection);
+                log("NOCExpectedRating " + str(i) + " " + parent.title);
 				break;
 			}
 		}
