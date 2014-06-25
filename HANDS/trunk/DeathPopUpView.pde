@@ -196,7 +196,7 @@ class DeathPopUpView extends PopUpViewBase
     {
         super.onNICAdded(nic);
         // Hide/show the consult refuse section when family coping is added or removed from the POC
-        if(nic.title.equals(consultCheck.tag))
+        if(consultCheck != null && nic.title.equals(consultCheck.tag))
         {
             onCheckBoxChanged(consultCheck);
         }
