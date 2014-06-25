@@ -18,6 +18,7 @@ class Patient
     ///////////////////////////////////////////////////////////////////////////////////////////////
     void reset()
     {
+        curPatient = this;
         time = 0;
         pocManager = new POCManager();
         pocManager.reset();

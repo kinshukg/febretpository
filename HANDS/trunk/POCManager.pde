@@ -38,6 +38,9 @@ class POCManager
         row.poc = this;
         row.iconButton.tooltipImage = tooltip;
         addNANDA(row);
+        
+        log("AddNANDA " + title);
+        
         return row;
     }
     
@@ -64,6 +67,7 @@ class POCManager
         parentNOC.onNICAdded(temp);
         NICPopup.onNICAdded(temp);
         
+        log("AddNIC " + text);
 		return temp;
 		//mainView.subviews.add(medicationManagementView);
 		//parentNOC.subs.add(temp);
@@ -82,6 +86,8 @@ class POCManager
         
         nic.parent.onNICRemoved(nic);
         NICPopup.onNICRemoved(nic);
+        
+        log("RemoveNIC " + nic.title);
     }
     
 	////////////////////////////////////////////////////////////////////////////
@@ -107,6 +113,8 @@ class POCManager
         
         //nic.parent.onNICRemoved(nic);
         NOCPopup.onNOCRemoved(noc);
+        
+        log("RemoveNOC " + noc.title);
     }
     
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -139,6 +147,8 @@ class POCManager
         
         NOCPopup.onNOCAdded(temp);
 		
+        log("AddNOC " + text);
+        
 		return temp;
 	}
 	
@@ -148,6 +158,8 @@ class POCManager
 		nanda.markDeleted();
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(nanda);
+        
+        log("RemoveNANDA " + nanda.title);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -210,6 +222,8 @@ class POCManager
         
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(0, nanda);
+        
+        log("PrioritizeNANDA " + nanda.title);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////

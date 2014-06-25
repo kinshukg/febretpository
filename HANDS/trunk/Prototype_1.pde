@@ -157,6 +157,7 @@ int endShiftScreenshot = -1;
 // This table will store the plan of care for all patients and all shifts of this
 // user.
 Table poclog;
+Table actlog;
 
 ////////////////////////////////////////////////////////////////////////////////
 public void setup()
@@ -171,6 +172,13 @@ public void setup()
     poclog.addColumn("ExpectedRating");
     poclog.addColumn("Value");
     
+    actlog = new Table();
+    actlog.addColumn("UserID");
+    actlog.addColumn("CDS");
+    actlog.addColumn("Shift");
+    actlog.addColumn("PatientID");
+    actlog.addColumn("Time");
+    actlog.addColumn("Log");
     
     // Load config
     JSONObject json;
@@ -385,6 +393,7 @@ public void nextShift()
     
     patient1.time = 0;
     patient2.time = 0;
+    curPatientStartMillis = millis();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -393,7 +402,7 @@ public void setActivePatient(Patient p)
     // Log time spent on previous patient.
     if(curPatient != null)
     {
-        curPatient.time = (millis() - curPatientStartMillis) / 1000;
+        curPatient.time += (millis() - curPatientStartMillis) / 1000;
     }
     // Hide all patients
     patient1.hide();
@@ -416,6 +425,17 @@ public void setActivePatient(Patient p)
 	mrView.entry = curPatient.mr;
 	physicianView.entry = curPatient.physician;
 	otherView.entry = "\n" + curPatient.other;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+public void log(String msg)
+{
+    TableRow log = actlog.addRow();
+    setLogRowKeys(log, curPatient);
+    int time = curPatient.time + (millis() - curPatientStartMillis) / 1000;
+
+    log.setInt("Time", time);
+    log.setString("Log", msg);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -475,7 +495,8 @@ public void savePOC()
 {
     logPatientPOC(patient1);
     logPatientPOC(patient2);
-    saveTable(poclog, "UID" + str(USER_ID) + ".csv");
+    saveTable(poclog, "UID" + str(USER_ID) + "-POC.csv");
+    saveTable(actlog, "UID" + str(USER_ID) + "-LOG.csv");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -585,6 +606,7 @@ void mouseReleased()
         addNANDAButton.selected = false;
         if(curPatient.pocManager.NANDAPopup != null && popUpView == null)
         {
+            log("OpenNativeNANDAPopup");
             curPatient.pocManager.NANDAPopup.show();
         }
     }

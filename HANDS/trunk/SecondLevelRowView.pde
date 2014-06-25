@@ -249,6 +249,8 @@ class SecondLevelRowView extends View
 	{
 		if(popUpView == null)
 		{
+            log("OpenCDSPopup " + title);
+            
 			mainView.subviews.add(actionPopUp);
             actionPopUp.NOCParent = this;
 			popUpView = actionPopUp;
@@ -265,6 +267,8 @@ class SecondLevelRowView extends View
 	{
 		if(popUpView == null)
 		{
+            log("OpenNativeNICPopup " + title);
+            
             popUpView = pocManager.NICPopup;
             pocManager.NICPopup.NOCParent = this;
             pocManager.NICPopup.show();
@@ -276,6 +280,8 @@ class SecondLevelRowView extends View
 	{
 		if(popUpView == null)
 		{
+            log("OpenRatingPopup " + title);
+            
 			// If rating popup has not been created, do it now.
 			if(ratingPopUp == null)
 			{
