@@ -98,7 +98,7 @@ class RatingPopUpView extends PopUpViewBase
 			"<b> Rules for Setting a Current NOC Rating: </b> <l> \n " +
 			"1. Review the NOC <h> <b> Definition </b> </h> \n " +
 			"2. Review the NOC <h> <b> Indicators </b> </h> \n " +
-			"3. Select NOC rating (1-5) expected of patient at discharge from your unit <s1> \n " +
+			"3. Select NOC rating (1-5) that reflects the patient current status <s1> \n " +
 			"<s1> Consider <b> 5 </b> to be the rating that one would assign to a comparable healthy person (e.g. same age, mental capacity, gender) and <b> 1 </b> to be the lowest. \n ";
 			
 		if(!OPTION_NATIVE)

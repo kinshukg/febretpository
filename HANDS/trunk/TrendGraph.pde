@@ -60,6 +60,7 @@ class TrendGraph extends TrendView
         }
         
         // Good projection line
+        strokeWeight(10);
         int projX = curX;
         curY = ty - (pastTrend[now - 1] - 1)  * ph;
         for(int i = now; i < 7; i++)
@@ -77,6 +78,7 @@ class TrendGraph extends TrendView
 		text("With improved\ntreatment", curX + 10, curY - 20);
 
         // Bad projection line
+        strokeWeight(4);
         curY = ty - (pastTrend[now - 1] - 1)  * ph;
         curX = projX;
         for(int i = now; i < 7; i++)
@@ -87,7 +89,7 @@ class TrendGraph extends TrendView
             curY = ty - (projectionBad[i] - 1) * ph;
             curX = lastX + pw;
             line(lastX, lastY, curX, curY); 
-            image(IMG_RED_DOT, curX, curY);
+            image(IMG_RED_DOT, curX, curY, 20, 20);
             // Redraw current point to overlay red/green line
             if(i == now)
             {

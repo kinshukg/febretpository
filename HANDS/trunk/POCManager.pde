@@ -163,6 +163,18 @@ class POCManager
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
+	void restoreNANDA(ColouredRowView nanda)
+	{
+        nanda.deleted = false;
+        if(nanda.popup != null)
+        {
+            nanda.popup.onNANDAAdded(nanda);
+        }
+        
+        log("RestoreNANDA " + nanda.title);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////
 	void prioritizeNANDA(ColouredRowView nanda)
 	{
         // check achievements
