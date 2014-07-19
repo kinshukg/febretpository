@@ -7,6 +7,7 @@ class SecondLevelRowView extends View
 	Button iconButton;
 	StaticText commentBox;
 	int firstColumn,secondColumn;
+    int previousRating = 0;
 	public ArrayList subs;
 	int indent;
 
@@ -165,6 +166,8 @@ class SecondLevelRowView extends View
 		// }
 		
 		// Draw expected and current rating text only if we are not using current / expected rating buttons for this NOC row.
+        if(previousRating != 0) text(previousRating, 750, 12); else text(firstColumn, 750, 12);
+        
 		if(currentRatingButton == null)
 		{
 			if(firstColumn != 0) text(firstColumn, 850, 12); else text("NR", 850, 12);

@@ -14,6 +14,8 @@ class ColouredRowView extends View
 	Button removeButton;
 	Button prioritizeButton;
     
+    PopUpViewBase popup;
+    
 	////////////////////////////////////////////////////////////////////////////
 	ColouredRowView(String title,PImage logo)
 	{
@@ -126,7 +128,7 @@ class ColouredRowView extends View
         if (ptInRect(px, py, x + focusx, y + focusy, w + focusw, h + focush))
         {        
             // If line was deleted, clickin on it restores it.
-            deleted = false;
+            poc.restoreNANDA(this);
             return true;
         }
         return false;

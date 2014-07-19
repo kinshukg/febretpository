@@ -13,6 +13,7 @@ class ScrollingView extends View
 	void drawContent()
 	{
 		fill(0);
+		text("Previous \nRating", 740, - 30);
 		text("Current \nRating", 840, - 30);
 		text("Expected \nRating", 940, - 30);
         

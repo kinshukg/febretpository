@@ -32,14 +32,14 @@ class Patient
             // NANDA Constipation
             ColouredRowView NANDAConstipation = pocManager.addNANDA("Constipation", loadImage("NANDAConstipation.png"));
             SecondLevelRowView NOCBowelElimination = pocManager.addNOC("Bowel Elimination", "", NANDAConstipation, loadImage("NOCBowelElimination.png"));
-            NOCBowelElimination.setScores(3, 4);
+            NOCBowelElimination.setScores(1, 4);
             pocManager.addNIC("Bowel Management", "", NOCBowelElimination, loadImage("NICBowelManagement.PNG"));
             pocManager.addNIC("Self-Care Assistance: Toileting", "", NOCBowelElimination, loadImage("NICSelfCareAssistanceToileting.PNG"));
             
             // NANDA Acute Pain section
             ColouredRowView NANDAAcutePain = pocManager.addNANDA("Acute Pain", loadImage("acutePain.png"));
             SecondLevelRowView NOCPainLevel = pocManager.addNOC("Pain Level", "", NANDAAcutePain, loadImage("painLevel.PNG"));
-            NOCPainLevel.setScores(2, 4);
+            NOCPainLevel.setScores(2, 5);
             pocManager.addNIC("Medication Management", "", NOCPainLevel, loadImage("medicationManagement.PNG"));
             pocManager.addNIC("Pain Management", "", NOCPainLevel, loadImage("painManagement.PNG"));
 
@@ -52,6 +52,9 @@ class Patient
                 NOCComfortableDeath.setScores(3, 5);
                 pocManager.addNIC("Calming Technique", "", NOCComfortableDeath, loadImage("calmingTechnique.PNG"));
                 pocManager.addNIC("Spiritual Support", "", NOCComfortableDeath, loadImage("spiritualSupport.PNG"));
+                
+                // CHange current bowel elimination score to 3
+                NOCBowelElimination.setScores(3, 4);
             }
         }
         else if(id == 2)

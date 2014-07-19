@@ -19,7 +19,8 @@ class NANDAPickList extends NativeActionsPopUpView
         actions.addNANDA("Readiness for Family Coping", "readinessForFamilyCoping.png");
         actions.addNANDA("Risk For Impaired Skin Integrity", "NANDARiskForImpairedSkinIntegrity.png");
         CheckBox oth = actions.addNANDA("Other", "tooltipPlaceholder.PNG");
+        oth.text.text = "Add Other: ";
         oth.showTextBox();
-        oth.tb.suggestion = "Enter NANDA Name";
+        oth.tb.suggestion = "Enter Diagnosis";
 	}
 }

@@ -20,7 +20,8 @@ class NOCPickList extends NativeActionsPopUpView
         //actions.addNOC("Nutrition Management", "test.png");
         actions.addNOC("Tissue Integrity Skin and Mucous Membranes", "tissueIntegrity.png");
         CheckBox oth = actions.addNOC("Other", "tooltipPlaceholder.PNG");
+        oth.text.text = "Add Other: ";
         oth.showTextBox();
-        oth.tb.suggestion = "Enter NOC Name";
+        oth.tb.suggestion = "Enter Outcome";
     }
 }

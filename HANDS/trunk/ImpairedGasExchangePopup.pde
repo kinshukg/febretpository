@@ -22,8 +22,21 @@ class ImpairedGasExchangePopup extends PopUpViewBase
         
         NANDAParent = parent.parent;
         NOCParent = parent;
+        
+        NANDAParent.popup = this;
 	}
 	
+	////////////////////////////////////////////////////////////////////////////
+    void onNANDAAdded(ColouredRowView nanda)
+    {
+        // If Impaired gas exchange has been added again, turn on this alert
+        if(nanda == NANDAParent)
+        {
+            gasExchangeCheck.enabled = true;
+            checkCDSEnabled(false);
+        }
+    }
+    
 	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
