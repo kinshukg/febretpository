@@ -20,6 +20,64 @@ class RatingPopUpView extends PopUpViewBase
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
+    void initRatingList(PopUpSection section, ArrayList<CheckBox> ratings)
+    {
+		for(int i = 1; i <= 5; i++)
+		{
+            String name = str(i) + ": ";
+            
+            if(parent.title == "Bowel Elimination" ||
+                parent.title == "Comfortable Death" ||
+                parent.title == "Mobility" ||
+                parent.title == "Medication Response" ||
+                parent.title == "Tissue Integrity Skin and Mucous Membranes" ||
+                parent.title == "Hydration")
+            {
+                if(i == 1) name = name + "Severely compromised";
+                else if(i == 2) name = name + "Substantially compromised";
+                else if(i == 3) name = name + "Moderately compromised";
+                else if(i == 4) name = name + "Mildly compromised";
+                else if(i == 5) name = name + "Not compromised";
+            }
+            else if(parent.title == "Respiratory Status: Gas Exchange")
+            {
+                if(i == 1) name = name + "Severe deviation from normal range";
+                else if(i == 2) name = name + "Substantial deviation from normal range";
+                else if(i == 3) name = name + "Moderate deviation from normal range";
+                else if(i == 4) name = name + "Mild deviation from normal range";
+                else if(i == 5) name = name + "No deviation from normal range";
+            }
+            else if(parent.title == "Coping" ||
+                    parent.title == "Family Coping" ||
+                    parent.title == "Nausea and Vomiting Control" ||
+                    parent.title == "Grief Resolution")
+            {
+                if(i == 1) name = name + "Never demonstrated";
+                else if(i == 2) name = name + "Rarely demonstrated";
+                else if(i == 3) name = name + "Sometimes demonstrated";
+                else if(i == 4) name = name + "Often demonstrated";
+                else if(i == 5) name = name + "Consistently demonstrated";
+            }
+            else
+            {
+                if(i == 1) name = name + "Severe";
+                else if(i == 2) name = name + "Substantial";
+                else if(i == 3) name = name + "Moderate";
+                else if(i == 4) name = name + "Mild";
+                else if(i == 5) name = name + "None";
+            }
+            
+			CheckBox ratingCheckbox = new CheckBox(name, null, 0);
+			section.addAction(ratingCheckbox);
+			ratingCheckbox.radio = true;
+			ratingCheckbox.textBoxEnabled = false;
+			ratingCheckbox.w = 80;
+			ratings.add(ratingCheckbox);
+		}
+		subviews.add(section);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
 		if(!OPTION_NATIVE)
@@ -32,47 +90,13 @@ class RatingPopUpView extends PopUpViewBase
 		
 		// Expected rating checkboxes
 		expectedRatingSection = new PopUpSection("Expected Rating:");
-		expectedRatingSection.layoutHorizontal = true;
-        //expectedRatingSection.w = 600;
-        
-		for(int i = 1; i <= 5; i++)
-		{
-            String name = str(i) + ": ";
-            if(i == 1) name = name + "severe";
-            else if(i == 2) name = name + "substantial";
-            else if(i == 3) name = name + "moderate";
-            else if(i == 4) name = name + "mild";
-            else if(i == 5) name = name + "none";
-            
-			CheckBox ratingCheckbox = new CheckBox(name, null, 0);
-			expectedRatingSection.addAction(ratingCheckbox);
-			ratingCheckbox.radio = true;
-			ratingCheckbox.textBoxEnabled = false;
-			ratingCheckbox.w = 80;
-			expectedRatings.add(ratingCheckbox);
-		}
-		subviews.add(expectedRatingSection);
-		
-		// Current rating checkboxes
+		expectedRatingSection.layoutHorizontal = false;
 		currentRatingSection = new PopUpSection("Current Rating:");
-		currentRatingSection.layoutHorizontal = true;
-		for(int i = 1; i <= 5; i++)
-		{
-            String name = str(i) + ": ";
-            if(i == 1) name = name + "severe";
-            else if(i == 2) name = name + "substantial";
-            else if(i == 3) name = name + "moderate";
-            else if(i == 4) name = name + "mild";
-            else if(i == 5) name = name + "none";
-            
-			CheckBox ratingCheckbox = new CheckBox(name, null, 0);
-			currentRatingSection.addAction(ratingCheckbox);
-			ratingCheckbox.radio = true;
-			ratingCheckbox.textBoxEnabled = false;
-			ratingCheckbox.w = 20;
-			currentRatings.add(ratingCheckbox);
-		}
-		subviews.add(currentRatingSection);
+		currentRatingSection.layoutHorizontal = false;
+        //expectedRatingSection.w = 600;
+
+        initRatingList(expectedRatingSection, expectedRatings);
+        initRatingList(currentRatingSection, currentRatings);
 		
 		// String expectedRatingTutorial =
 			// "Setting an Expected NOC Rating: <l> \n " +
