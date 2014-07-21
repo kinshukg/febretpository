@@ -33,7 +33,8 @@ class ImpairedGasExchangePopup extends PopUpViewBase
         if(nanda == NANDAParent)
         {
             gasExchangeCheck.enabled = true;
-            checkCDSEnabled(false);
+            // Re-enable CDS next shift
+            delayedEnable = true;
         }
     }
     

@@ -166,7 +166,7 @@ class SecondLevelRowView extends View
 		// }
 		
 		// Draw expected and current rating text only if we are not using current / expected rating buttons for this NOC row.
-        if(previousRating != 0) text(previousRating, 750, 12); else text(firstColumn, 750, 12);
+        if(previousRating != 0) text(previousRating, 750, 12); //else text(firstColumn, 750, 12);
         
 		if(currentRatingButton == null)
 		{

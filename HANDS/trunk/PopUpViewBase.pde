@@ -12,6 +12,10 @@ class PopUpViewBase extends View
     // If this popup is a CDS popup, it will be removed (together with its action button)
     // from a NOC line.
     boolean cds = false;
+    
+    // If delayedEnabled is set to true, this popup will be re-enabled
+    // on next shift (only works for CDS popups)
+    boolean delayedEnable = false;
 	
 	////////////////////////////////////////////////////////////////////////////
 	PopUpViewBase(float w_, SecondLevelRowView parent)

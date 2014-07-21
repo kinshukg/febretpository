@@ -55,6 +55,10 @@ class Patient
                 
                 // CHange current bowel elimination score to 3
                 NOCBowelElimination.setScores(3, 4);
+
+                // Set previous scores.
+                NOCBowelElimination.previousRating = 1;
+                NOCPainLevel.previousRating = 2;
             }
         }
         else if(id == 2)
@@ -88,6 +92,15 @@ class Patient
             pocManager.addNIC("Pain Management", "", NOCPainLevel, loadImage("painManagement.PNG"));
             pocManager.addNIC("Medication Management", "", NOCPainLevel, loadImage("medicationManagement.PNG"));
             pocManager.addNIC("Positioning", "", NOCPainLevel, loadImage("positioning.png"));
+            
+            if(currentShift == 1)
+            {
+                // Set previous scores.
+                NOCRespiratoryStatus.previousRating = 2;
+                NOCDeath.previousRating = 2;
+                NOCMobility.previousRating = 1;
+                NOCPainLevel.previousRating = 4;
+            }
         }
         
         if(!OPTION_NATIVE) setupPopup();

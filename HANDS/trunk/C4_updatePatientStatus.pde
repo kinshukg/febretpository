@@ -11,6 +11,8 @@ public void updatePatientStatus(Patient patient)
         patient2.reset();
         return;
     }
+
+    patient.pocManager.nextShift();
     
     TrendView tw = null;
     
@@ -65,7 +67,6 @@ public void updatePatientStatus(Patient patient)
         // Update the current pain level score to mach value from the trend view
         SecondLevelRowView noc = poc.getNOC("Acute Pain", "Pain Level");
         noc.startBlinking();
-        noc.previousRating = noc.firstColumn;
         if(noc != null) noc.firstColumn = tw.pastTrend[i];
         
         // Update comfortable death status
@@ -93,7 +94,6 @@ public void updatePatientStatus(Patient patient)
         // Update the current pain level score to mach value from the trend view
         noc = poc.getNOC("Death Anxiety", "Comfortable Death");
         noc.startBlinking();
-        noc.previousRating = noc.firstColumn;
         if(noc != null) noc.firstColumn = tw.pastTrend[i];
     }
     else if(patient == patient2)
@@ -122,7 +122,6 @@ public void updatePatientStatus(Patient patient)
         // DEATH ANXIETY
         noc = poc.getNOC("Death Anxiety", "Comfortable Death");
         noc.startBlinking();
-        noc.previousRating = noc.firstColumn;
         // Death anxiety, if we do nothing goes to 1.
         if(poc.achFamilyCopingAdded || poc.achDeathAnxietyPrioritized)
         {
@@ -150,7 +149,6 @@ public void updatePatientStatus(Patient patient)
         // MOBILITY
         noc = poc.getNOC("Impaired Physical Mobility", "Mobility");
         noc.startBlinking();
-        noc.previousRating = noc.firstColumn;
         // Update mobility status
         tw = patient.getTrend("Mobility");
         tw.pastTrend[tw.now] = noc.firstColumn;
