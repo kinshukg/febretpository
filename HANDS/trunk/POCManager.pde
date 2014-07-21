@@ -20,7 +20,29 @@ class POCManager
     boolean achPalliativeConsultAdded = false;
     boolean achRespiratoryMonitoringAdded = false;
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	void nextShift()
+	{
+        // Update previous rating for all NOC rows.
+		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
+			for (int j = 0; j < tempRow.subs.size(); j++ ) 
+			{
+				SecondLevelRowView tempRow2 = (SecondLevelRowView) tempRow.subs.get(j);
+                tempRow2.previousRating = tempRow2.firstColumn;
+                
+                // If NOC row has a delayed enable CDS popup, enable it now.
+                if(tempRow2.actionPopUp != null && tempRow2.actionPopUp.delayedEnable)
+                {
+                    tempRow2.actionPopUp.delayedEnable = false;
+                    tempRow2.actionPopUp.checkCDSEnabled(false);
+                }
+            }
+        }
+	}
+	
+	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
         stashedNOCS = new HashMap<String, SecondLevelRowView>();
@@ -31,7 +53,7 @@ class POCManager
         NICPopup = new NICPickList(this);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	ColouredRowView addNANDA(String title, PImage tooltip)
 	{
         ColouredRowView row = new ColouredRowView(title,firstLevelIcon);
@@ -44,7 +66,7 @@ class POCManager
         return row;
     }
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	ThirdLevelRowView addNIC(String text, String comment,SecondLevelRowView parentNOC, PImage tooltip)
 	{
         //print(text);
@@ -64,7 +86,17 @@ class POCManager
                    	tempo.y = temp.y+((k+1)*temp.h);
 		}
         
-        parentNOC.onNICAdded(temp);
+        // Notify all NOC rows of NIC added
+		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
+			for (int j = 0; j < tempRow.subs.size(); j++ ) 
+			{
+				SecondLevelRowView tempRow2 = (SecondLevelRowView) tempRow.subs.get(j);
+                tempRow2.onNICAdded(temp);
+            }
+        }
+        
         NICPopup.onNICAdded(temp);
         
         log("AddNIC " + text);
@@ -84,7 +116,16 @@ class POCManager
         
         nic.parent.subs.remove(nic);
         
-        nic.parent.onNICRemoved(nic);
+        // Notify all NOC rows of NIC added
+		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
+			for (int j = 0; j < tempRow.subs.size(); j++ ) 
+			{
+				SecondLevelRowView tempRow2 = (SecondLevelRowView) tempRow.subs.get(j);
+                tempRow2.onNICRemoved(nic);
+            }
+        }
         NICPopup.onNICRemoved(nic);
         
         log("RemoveNIC " + nic.title);
@@ -117,7 +158,7 @@ class POCManager
         log("RemoveNOC " + noc.title);
     }
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	SecondLevelRowView addNOC(String text,String comment, ColouredRowView parentNANDA, PImage tooltip)
 	{
         SecondLevelRowView temp = null;
@@ -152,7 +193,7 @@ class POCManager
 		return temp;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void deleteNANDA(ColouredRowView nanda)
 	{
 		nanda.markDeleted();
@@ -162,7 +203,7 @@ class POCManager
         log("RemoveNANDA " + nanda.title);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void restoreNANDA(ColouredRowView nanda)
 	{
         nanda.deleted = false;
@@ -174,7 +215,7 @@ class POCManager
         log("RestoreNANDA " + nanda.title);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void prioritizeNANDA(ColouredRowView nanda)
 	{
         // check achievements
@@ -238,7 +279,7 @@ class POCManager
         log("PrioritizeNANDA " + nanda.title);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	void addNANDA(ColouredRowView nanda)
 	{
 		scrollingView.subs.add(nanda);
@@ -246,7 +287,7 @@ class POCManager
         NANDAPopup.onNANDAAdded(nanda);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	ColouredRowView getNANDA(String title)
 	{
 		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
@@ -258,7 +299,7 @@ class POCManager
         return null;
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
     SecondLevelRowView getNOC(String NANDATitle, String NOCTitle)
 	{
         ColouredRowView nanda = getNANDA(NANDATitle);
@@ -280,7 +321,7 @@ class POCManager
         return null;
 	}
     
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	int getBottom()
 	{
 		return (int)scrollingView.y + (int)scrollingView.h;

@@ -26,6 +26,7 @@ class NICPickList extends NativeActionsPopUpView
         actions.addNIC("Medication Management", "medicationManagement.PNG");
         actions.addNIC("Nausea Management", "nauseaManagement.png");
         actions.addNIC("Nutrition Management", "nutritionManagement.png");
+        actions.addNIC("Pain Management", "painManagement.PNG");
         actions.addNIC("Patient Controlled Analgesia", "patientControlledAnalgesia.PNG");
         actions.addNIC("Positioning", "positioning.png");
         actions.addNIC("Pressure Ulcer Prevention", "pressureUlcerPrevention.png");
@@ -33,6 +34,7 @@ class NICPickList extends NativeActionsPopUpView
         actions.addNIC("Respiratory Monitoring", "respiratoryMonitoring.png");
         actions.addNIC("Self-Care Assistance: Toileting", "NICSelfCareAssistanceToileting.PNG");
         actions.addNIC("Surveillance", "surveillance.png");
+        actions.addNIC("Spritual Support", "spiritualSupport.PNG");
         actions.addNIC("Urinary Elimination Management", "urinaryEliminationManagement.png");
         CheckBox oth = actions.addNIC("Other", "tooltipPlaceholder.PNG");
         oth.text.text = "Add Other: ";

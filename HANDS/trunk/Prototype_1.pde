@@ -587,7 +587,8 @@ void drawStaticViewElements()
 {
 	int footerY = 500;
 	int footerX = 1020;
-	if(!OPTION_NATIVE) image(IMG_LEGEND, footerX, footerY + 10);
+	//if(!OPTION_NATIVE) image(IMG_LEGEND, footerX, footerY + 10);
+    image(IMG_LEGEND, footerX, footerY + 10);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
