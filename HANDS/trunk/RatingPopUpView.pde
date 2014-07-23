@@ -82,9 +82,12 @@ class RatingPopUpView extends PopUpViewBase
 	{
 		if(!OPTION_NATIVE)
 		{
-            PopUpSection title = new PopUpSection("");
-            title.setImage(indicatorsImage);
-            title.centerImage = false;
+            PopUpSection title = new PopUpSection("    " + parent.title);
+            title.titleButtonMode = 1;
+            title.titleButton = new Button(5, 0, 24, 24, secondLevelIcon);
+            title.titleButton.tooltipOffsetX = - (indicatorsImage.width + 40);
+            title.titleButton.tooltipImage = indicatorsImage;
+            title.subviews.add(title.titleButton);
             subviews.add(title);
         }
 		
