@@ -38,6 +38,13 @@ class POCManager
                     tempRow2.actionPopUp.delayedEnable = false;
                     tempRow2.actionPopUp.checkCDSEnabled(false);
                 }
+                
+                // If NOC row has an active CDS popup and NANDA has been deleted,
+                // restore the NANDA.
+                // if(tempRow2.actionPopUp != null && tempRow.deleted)
+                // {
+                    // tempRow.deleted = false;
+                // }
             }
         }
 	}

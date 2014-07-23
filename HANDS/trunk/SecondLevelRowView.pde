@@ -294,7 +294,7 @@ class SecondLevelRowView extends View
 			
 			mainView.subviews.add(ratingPopUp);
 			popUpView = ratingPopUp;
-			ratingPopUp.x = mouseX - 650;
+			ratingPopUp.x = mouseX - 450;
 			ratingPopUp.y = mouseY - 350;
 			ratingPopUp.arrowX = mouseX;
 			ratingPopUp.arrowY = mouseY;

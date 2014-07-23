@@ -13,6 +13,9 @@ class Button extends View
 	PImage tooltipImage;
 	
 	boolean transparent;
+    
+    int tooltipOffsetX = 20;
+    int tooltipOffsetY = -20;
   
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	Button(float x_, float y_,float w_,float h_, PImage icon_)
@@ -141,7 +144,7 @@ class Button extends View
 	{
 		if(tooltipImage != null)
 		{
-			tooltipView = new Tooltip(mouseX + 20, mouseY - 20, 300, 60, tooltipImage);
+			tooltipView = new Tooltip(mouseX + tooltipOffsetX, mouseY + tooltipOffsetY, 300, 60, tooltipImage);
 		}
 		else
 		{

@@ -194,10 +194,10 @@ class PopUpSection extends View
 		// v2.1: place the info icon under the description (will fall next to the graph)
 		if(titleButton != null)
 		{
-			titleButton.w = 16;
-			titleButton.h = 16;
-			titleButton.y = -4;
-			titleButton.x = 120;
+			// titleButton.w = 16;
+			// titleButton.h = 16;
+			// titleButton.y = -4;
+			// titleButton.x = 120;
 			//titleButton.x = 0;
 			// titleButton.w = 16;
 			// titleButton.h = 16;
