@@ -80,7 +80,8 @@ class RatingPopUpView extends PopUpViewBase
 	////////////////////////////////////////////////////////////////////////////
 	void reset()
 	{
-		if(!OPTION_NATIVE)
+        // Add title + NNN icon to both native and CDS-based prototypes.
+		//if(!OPTION_NATIVE)
 		{
             PopUpSection title = new PopUpSection("    " + parent.title);
             title.titleButtonMode = 1;
