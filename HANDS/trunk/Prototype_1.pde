@@ -5,7 +5,7 @@ static int SCREEN_HEIGHT = 1000;
 
 static int POPUP_WIDTH = 400;
 
-static String VERSION = "c4r1";	
+static String VERSION = "c4r2";	
 
 static color STYLE_DELETED_ROW_BACK_COLOR = #888888;	
 
@@ -171,6 +171,7 @@ public void setup()
     poclog.addColumn("Parent");
     poclog.addColumn("ExpectedRating");
     poclog.addColumn("Value");
+    poclog.addColumn("Version");
     
     actlog = new Table();
     actlog.addColumn("UserID");
@@ -179,6 +180,7 @@ public void setup()
     actlog.addColumn("PatientID");
     actlog.addColumn("Time");
     actlog.addColumn("Log");
+    poclog.addColumn("Version");
     
     // Load config
     JSONObject json;
@@ -445,6 +447,7 @@ public void setLogRowKeys(TableRow row, Patient pt)
     row.setInt("CDS", OPTION_CDS_TYPE);
     row.setInt("Shift", currentShift);
     row.setInt("PatientID", pt.id);
+    row.setString("Version", VERSION);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
