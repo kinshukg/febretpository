@@ -52,7 +52,7 @@ class DeathPopUpView extends PopUpViewBase
             //consultCheck.setIconTooltip("Adds consultation to the current NOC");
             consultCheck.setIconTooltipImage(loadImage("consultation.PNG"));
             recommendedActionSection = new PopUpSection(
-                "<info> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
+                "<info> <n> Palliative care consultations help manage pain, symptoms, comorbidities, and patient/family communication.");
             recommendedActionSection.addAction(consultCheck);
             
             consultCheck.selected = false;
@@ -64,7 +64,7 @@ class DeathPopUpView extends PopUpViewBase
         else
         {
             recommendedActionSection = new PopUpSection(
-                "<info> The physical and emotional demands of caregiving can overwelm the family.");
+                "<info> <n> The physical and emotional demands of caregiving can overwelm the family.");
             prioritizeAnxietyCheck = recommendedActionSection.prioritizeNANDA("Death Anxiety", "");
             
             copingCheck = new CheckBox("Add mini care plan: Family Coping", "Family Coping", firstLevelIcon, 0);
@@ -97,7 +97,7 @@ class DeathPopUpView extends PopUpViewBase
 		
 		reason1.selected = true;
 		
-		reasonSection = new PopUpSection("Adding palliative care consultation is highly recommended. If you choose not to add it, please specify a reason.");
+		reasonSection = new PopUpSection(" <n> Adding palliative care consultation is highly recommended. If you choose not to add it, please specify a reason.");
 		reasonSection.addAction(reason1);
 		reasonSection.addAction(reason2);
 		reasonSection.addAction(reason3);

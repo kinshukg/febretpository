@@ -49,12 +49,12 @@ class PainPopUpView extends PopUpViewBase
 		
 		// Big information: we present EBI side-by-side with actions
         PopUpSection section1 = new PopUpSection(
-            "<info> </b> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>");
+            "<info> </b> <n> A combination of <b> Medication Management </b> , <b> Positioning </b> and <b> Pain Management </b> has the most positive impact on <b> Pain Level. </b>");
         //section1.setDescription(MSG_PAIN_POSITIONING);
         section1.addAction(c);
         
         PopUpSection section3 = new PopUpSection(
-            "<info> </b> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.");            
+            "<info> </b> <n> It is more difficult to control pain when EOL patient has both <b> Pain </b> and </b> Impaired Gas Exchange </b> problems.");            
         section3.addAction(c1);
         section3.addAction(c2);
         
