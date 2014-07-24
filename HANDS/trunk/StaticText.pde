@@ -80,6 +80,7 @@ class StaticText extends View
 		int lineWidth = (int)w;
 		
 		maxTextWidth = 0;
+        int ts = 12;
 		
 		for(int i = 0; i < textWords.length; i++)
 		{
@@ -88,8 +89,8 @@ class StaticText extends View
 			if(textWords[i].equals("</b>")) { bold = false; continue; }
 			if(textWords[i].equals("<h>")) { highlight = true; continue; }
 			if(textWords[i].equals("</h>")) { highlight = false; continue; }
-			if(textWords[i].equals("<h1>")) { textSize(16); continue; }
-			if(textWords[i].equals("<n>")) { textSize(12); continue; }
+			if(textWords[i].equals("<h1>")) { ts = 16; continue; }
+			if(textWords[i].equals("<n>")) { ts = 12; continue; }
 			if(textWords[i].equals("<*>")) { curLineWidth = 32000; continue; }
 			if(textWords[i].equals("<s1>")) 
 			{ 
@@ -136,7 +137,8 @@ class StaticText extends View
 			
 			if(bold) textFont(fbold);
 			else textFont(font);
-			
+            textSize(ts);
+            
 			int wordWidth = (int)textWidth(textWords[i]);
 			
 			if(curLineWidth + wordWidth >= lineWidth || textWords[i].endsWith("\n"))

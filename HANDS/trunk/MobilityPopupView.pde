@@ -43,14 +43,14 @@ class MobilityPopupView extends PopUpViewBase
 		immobilityConsequencesCheck.setIconTooltipImage(loadImage("immobilityConsequences.png"));
 		
 		String icmsg = "";
-		icmsg = MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
+		icmsg = "<n> " + MSG_IMMOBILITY_CONSEQUENCES_GENERIC;
 
 		recommendedActionSection = new PopUpSection(icmsg);
 		recommendedActionSection.addAction(immobilityConsequencesCheck);
 		//immobilityConsequencesCheck.selected = true;
         
         // Create section with additional actions that can be added under NOC Immobility Consequences
-		immobilityNICS = new PopUpSection("Recommended NICs for Immobility Consequences NOC");
+		immobilityNICS = new PopUpSection("<n> Recommended NICs for Immobility Consequences NOC");
         fallPreventionCheck = immobilityNICS.addNIC("Pressure Ulcer Prevention", "");
 		energyConservationCheck = immobilityNICS.addNIC("Skin Surveillance", "");
 		

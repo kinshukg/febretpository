@@ -46,7 +46,7 @@ class ImpairedGasExchangePopup extends PopUpViewBase
         subviews.add(title);
         
         recommendedActionSection = new PopUpSection(
-            "<info> This patient's profile suggests that monitoring <b> Impaired Gas Exchange </b> is no longer indicated.");
+            "<info> <n> </b> This patient's profile suggests that monitoring <b> Impaired Gas Exchange </b> is no longer indicated.");
             
 		gasExchangeCheck = new CheckBox("Remove NANDA: Impaired Gas Exchange", firstLevelIcon, 0);
 		gasExchangeCheck.textBoxEnabled = false;
