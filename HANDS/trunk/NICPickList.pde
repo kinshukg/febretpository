@@ -34,7 +34,7 @@ class NICPickList extends NativeActionsPopUpView
         actions.addNIC("Relaxation Therapy", "NICRelaxationTherapy.PNG");
         actions.addNIC("Respiratory Monitoring", "respiratoryMonitoring.png");
         actions.addNIC("Self-Care Assistance: Toileting", "NICSelfCareAssistanceToileting.PNG");
-        actions.addNIC("Surveillance", "surveillance.png");
+        actions.addNIC("Skin Surveillance", "surveillance.png");
         actions.addNIC("Spiritual Support", "spiritualSupport.PNG");
         actions.addNIC("Urinary Elimination Management", "urinaryEliminationManagement.png");
         CheckBox oth = actions.addNIC("Other", "tooltipPlaceholder.PNG");

@@ -26,6 +26,8 @@ class MobilityPopupView extends PopUpViewBase
         
         NANDAParent = parent.parent;
         NOCParent = parent;
+        
+        NANDAParent.popup = this;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +59,29 @@ class MobilityPopupView extends PopUpViewBase
 		subviews.add(recommendedActionSection);
 	}
 	
+	////////////////////////////////////////////////////////////////////////////
+    void onNOCAdded(SecondLevelRowView noc)
+    {
+        if(noc.title.equals("Immobility Consequences"))
+        {
+            if(immobilityConsequencesCheck.enabled)
+            {
+                immobilityConsequencesCheck.enabled = false;
+				subviews.add(5, immobilityNICS);
+            }
+        }
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    void onNOCRemoved(SecondLevelRowView noc)
+    {
+        if(noc.title.equals("Immobility Consequences"))
+        {
+            immobilityConsequencesCheck.enabled = true;
+            subviews.remove(immobilityNICS);
+        }
+    }
+    
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onCheckBoxChanged(CheckBox cb) 
 	{
@@ -82,7 +107,7 @@ class MobilityPopupView extends PopUpViewBase
             immobilityConsequencesCheck.selected = false;
             immobilityConsequencesCheck.enabled = false;
 			pocManager.addNOC("Immobility Consequences","", nanda, loadImage("immobilityConsequences.png"));
-			recommendedActionSection.removeAction(immobilityConsequencesCheck);
+			//recommendedActionSection.removeAction(immobilityConsequencesCheck);
 			parent.addComment("");
 		}
 		if(fallPreventionCheck.selected)

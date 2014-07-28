@@ -46,7 +46,7 @@ class SecondLevelRowView extends View
         int cx = 360;
         
         addButton = new Button(cx += 20, 4, 24, 24, plusIcon); addButton.helpText = "Add NIC";
-        removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NIC";
+        removeButton = new Button(cx += 20, 4, 24, 24, crossIcon); removeButton.helpText = "Remove NOC";
         
         subviews.add(addButton);
         subviews.add(removeButton);

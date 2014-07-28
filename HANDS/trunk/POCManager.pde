@@ -161,6 +161,7 @@ class POCManager
         
         //nic.parent.onNICRemoved(nic);
         NOCPopup.onNOCRemoved(noc);
+        if(noc.parent.popup != null) noc.parent.popup.onNOCRemoved(noc);
         
         log("RemoveNOC " + noc.title);
     }
@@ -194,6 +195,7 @@ class POCManager
         }
         
         NOCPopup.onNOCAdded(temp);
+        if(parentNANDA.popup != null) parentNANDA.popup.onNOCAdded(temp);
 		
         log("AddNOC " + text);
         
