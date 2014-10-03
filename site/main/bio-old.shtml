@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PPWIZARD version 08.298 on UNKNOWN, FREE tool for Windows, OS/2, DOS and UNIX by Dennis Bareis (http://dennisbareis.com/ppwizard.htm)">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>febretPository</title>
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- BEGIN Header -->
+<div id="header">
+<h1>febretPository<h1>
+<!-- <h2>Successfully Climbing the Ballmer Peak Since 2006</h2> -->
+</div>
+<!-- END Header -->
+<!-- BEGIN Menu -->
+<div id="menu">
+<ul>
+<li><a href="../main/index.shtml">Home</a></li>
+<li><a href="http://febretpository.blogspot.com/">Blog</a></li>
+<li><a href="../main/bio.shtml">About Me</a></li>
+<li><a href="../main/pastProjects.shtml">Past Projects</a></li>
+<li><a href="../publications/publications.shtml">Publications</a></li>
+<li><a href="../main/press.shtml">Press</a></li>
+<li><a href="http://www.evl.uic.edu/core.php?mod=4&type=5&indi=316">EVL</a></li>
+<li><a href="http://www.linkedin.com/profile/view?id=305546107&authType=name&authToken=YcCF&locale=en_US&pvs=pp&trk=ppro_viewmore">LinkedIn</a></li>
+<li><a href="https://github.com/febret">GitHub</a></li>
+</ul>
+</div>
+<!-- END Menu -->
+<div id="content">
+<div class="addthis_toolbox addthis_default_style">
+<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bc5321941e02079" class="addthis_button_compact"><img src="../images/fbico.png" style="float: left; border: none; padding: 0; "/>Share this Page</a>
+</div><br/>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bc5321941e02079"></script>
+<!-- AddThis Button END -->
+<div class="item">
+<h1>About Me</h1><br/>
+<h4 align="center"><img src="./pf3278_2656_h.jpg" width="1000"/><br/><font align="center"></font></h4>
+<p>
+Today, most research involves the analysis of scientific phenomena of
+ever-increasing scale and complexity, and requires the concentrated effort
+of interdisciplinary teams: scientists from different backgrounds whose work
+involves large, heterogeneous data sources. As the scale and complexity of
+data continue to grow, large scale visualization instruments like display
+walls and immersive environments become increasingly essential to researchers.
+In particular, immersive systems are an attractive option for exploring 3D
+spatial data such as molecules, astrophysical phenomena, and geoscience datasets.
+On the other hand, display walls with their high resolution help interpret
+large datasets, offering both overview and resolution, or can be used to lay
+out a variety of correlated visual data and documents for collaborative analysis.
+</p>
+<p>
+The main goal of my research is to create novel tools that scientists can
+leverage in their quest to turn raw data into discovery. To reach this goal,
+I believe it is fundamental to interpret current technological trends, and
+understand how they could facilitate the work and interaction dynamics of a
+research team. For instance, advancements in display technology led to the
+production of larger, affordable thin-bezel LCD monitors with built-in support
+for stereoscopic 3D. These advancements made it conceivable to merge the
+best-in-class capabilities of immersive Virtual Reality systems with the
+best-in-class capabilities of Ultra-high-resolution Display Environments
+thus creating conceptually new immersive environments which we refer to as
+Hybrid Reality Environments (HREs), such as the CAVE2 system. These fully
+digital ‘war rooms’ can support the simultaneous work of multiple users and
+can work both as immersive environments and classic large displays.
+Furthermore, we observed an explosion in the availability of powerful,
+portable devices that represent a platform to both interact with a larger
+system and enrich the capabilities of such system as an additional display device.
+</p>
+<p>
+These hybrid multi-display and multi-user environments have been envisioned
+in the past, but they are now reaching their full technological feasibility.
+If we want to make full use of the capabilities of these systems, we need to
+understand how users want to work and interact with them; we also need to
+provide developers with a consistent software infrastructure that can be used
+as a platform for applications on such systems.
+</p>
+<p>
+I am addressing these challenges in my current research: I collaborated with
+multidisciplinary teams interacting with large displays, and worked towards
+a conceptual foundation and software infrastructure for co-located team work
+in hybrid immersive environments. In particular, I observed how large display
+users need access to a system that lets them easily and seamlessly manage
+display space and content: co-located collaboration often entails multiple
+phases that alternate full group work with individuals or sub-groups working
+in parallel: moreover the work may focus on a single issue, on different
+views into that single issue, or on independent issues:  the ability to
+easily re-configure the display space is fundamental to support such heterogeneous tasks.
+</p>
+<p>
+I envisioned the need for a convergence in software design for display walls
+and immersive environments, proposing the integration of display wall software,
+an immersive environment framework and additional components into an
+"operating system" for Hybrid Reality Environments. This operating system
+aims to solve two major challenges with alternative approaches:
+<ul>
+<li>
+<i>Static allocation of 3D and 2D views:</i> although an HRE is capable
+of displaying 2D and 3D content at the same time, software relies on
+static configurations describing how the physical display space should
+be split into 2D and 3D views. Multiple predefined configurations give
+the end users some flexibility, but require restarting and resetting all
+running applications.
+</li>
+<li>
+<i>Lack of unified interaction:</i> the 2D and 3D portions on an HRE often
+rely on inconsistent interaction schemes: for instance Pointing semantics
+may use absolute movement on the 3D half and relative movement on the 2D
+half. Physically separate interaction devices may be required. Or, when
+a single device is used, interaction may lead to conflicting results
+(i.e. navigating a 3D view moves 2D views).
+</li>
+</ul>
+</p>
+<p>
+The remainder of my Ph.D. will be dedicated to completing the implementation
+of the HRE operating system, working in particular on managing the interaction
+between multiple users and multiple applications running on the system. I
+plan to carry on a user study to demonstrate the effectiveness of hybrid
+visualization and dynamic display configuration on a scientific visual
+analysis task, and to further characterize the interaction patterns of a
+small group of users with an HRE.
+</p>
+<p>
+As a future research direction, I would like to further explore the use of
+hybrid environments for collaborative visualization, both local and remote.
+I see two main paths of advancement: HRE-to-HRE collaboration and cross-device,
+or asymmetric, collaboration. The HRE-to-HRE scenario would involve two
+remote teams working inside separate Hybrid Reality Environments, sharing
+workspaces, views and applications between them. This work could make use
+of the existing results in shared virtual environments, telepresence and
+remote collaboration with display walls, but would need to merge concepts
+from all three into a novel unified model. Cross-device collaboration is
+exemplified by a team of users within an HRE, collaborating with one or more
+remote users on mobile devices (i.e. tablets). In this scenario, collaboration
+is asymmetric since the interaction and visualization capabilities are
+radically different between the two user groups. A possible outcome of this
+research would be a conceptual model for dynamically mapping views, workspaces
+and interactions between the HRE and the mobile devices, in order to maximize
+the collaboration bandwidth between the user groups. I believe large high
+resolution displays are destined to become ubiquitous. Portable displays
+already are. Making them part of a single ecosystem for scientific visualization
+and collaboration can be a force multiplier for scientific discovery,
+enabling researchers to better engage with their data and, more importantly,
+with each other.
+</p>
+</div>
+<div class="item"><h3>Research and Professional Experiences</h3>
+<p>
+<b>Research Assistant, Electronic Visualization Laboratory, University of Illinois at Chicago, since 2009</b>
+<ul><li>
+Concentrated on Visualization Instrument research (hardware and software) and on
+human-computer interaction in single and multiuser scenarios. In particular,
+I investigated the use of hybrid immersive systems as scientific visualization
+platforms for co-located research teams.
+</li></ul>
+</p>
+</div>
+<div class="item"><h3>Education</h3>
+<ul>
+<li><b>2009 - Present, University of Illinois at Chicago:</b><ul>
+<li>Ph.D. Graduate Student, Computer Science</li>
+</ul></li>
+<li><b>2006 - 2008, Politecnico di Milano, Italy:</b><ul>
+<li>M.S., Computer Science (110/110, Cum Laude)</li>
+</ul></li>
+<li><b>2006 - 2008, University of illinois at Chicago (UIC):</b><ul>
+<li>M.S., Computer Science</li>
+</ul></li>
+<li><b>2002 - 2005, Politecnico di Milano, Italy:</b><ul>
+<li>B.S., Computer Science (104/110, Cum Laude)</li>
+</ul></li>
+</ul>
+</div>
+<a name="Publications"></a>
+<div class="item"><h3>Publications</h3>
+<p><b>Journals</b>
+<ol>
+<li><i>(In review, April 2014)</i>Dunn-Lopez, K., <b>Febretti, A.</b>, Stifter, J., Johnson, A., Wilkie, D.J., & Keenan, G.
+"Towards more Robust and Highly Efficient Methods  to  Develop Useable and Useful Clinical Decision Support from Electronic Health Record Data."
+<i>Journal of the American Medical Informatics Association.,</i></li>
+<li>Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.
+"Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments".
+<i>IEEE Computer Graphics and Applications, Vol. 33.4 (July-August 2013), pp. 38-48</i></li>
+</ol>
+</p>
+<p><b>Conference Proceedings</b>
+<ol>
+<li><b>Febretti, A.</b>, Lopez, K. D., Stifter, J., Johnson, A., Keenan, G. M., Wilkie, D. J,
+"Evaluating a Clinical Decision Support Interface for End-of-Life Nurse Care"
+<i>CHI 2014 Work In Progress, Toronto, Canada, April 28 - May 01, 2014</i>
+[<a href="../publications/HANDS-CHI14.pdf">Pdf</a>]
+</li>
+<li><b>Febretti, A.</b>, Nishimoto, A., Mateevitsi, V., Renambot, L., Johnson, A., Leigh, J.,
+"Omegalib: a Multi- View Application Framework for Hybrid Reality Environments".
+<i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></li>
+<li><b>Febretti, A.</b>
+"Supporting Multi-View Immersion on Hybrid Reality Environments".
+<i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014) Doctoral Consortium, Minneapolis, MN, March 29 - April 2, 2014.</i></li>
+<li>Reda, K., Aurisano, J., <b>Febretti, A.</b>, Leigh, J. Johnson, A.,
+"Visualization Design Patterns for Ultra-Resolution Display Environments".
+<i>VISTech Workshop: Visualization Infrastructure and Systems Technology (VISTech 2013), 2013.</i></li>
+<li><b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D.
+"A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces".
+<i>HCI International, 2013.</i></li>
+<li>Lopez, K., Stifter, J., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.
+"Improving Learnability and Efficiency  of Evidence Based Information in Clinical Decision Support".
+<i>37th Midwest Nursing Research Society Conference, 2013.</i></li>
+<li><b>Febretti, A.</b>, Nishimoto, A., Thigpen, T., Talandis, J., Long, L., Pirtle, J., Peterka, T., Verlo, A., Brown, M., Plepys, D., Sandin, D., Renambot, L., Johnson, A., Leigh, J. "CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis"
+<i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013.</i>
+[<a href="../publication/SPIE13Paper-final.pdf">Pdf</a>]
+</li>
+<li><b>Febretti, A.</b>, Richmond, K., Gulati, S., Flesher, C., Hogan, B.P., Johnson, A., Stone, W.C., Priscu, J., Doran, P.
+"Poisson reconstruction of extreme submersed environments: The ENDURANCE exploration of an under-ice Antarctic Lake"
+<i>8th International Symposium on Visual Computing (ISVC12), Crete, Greece, Springer-Verlag, Lecture Notes in Computer Science, 07/16/2012 - 07/18/2012</i>
+[<a href="../publications/ENDURANCE-ISVC12.pdf">Pdf</a>]
+</li>
+<li><b>Febretti, A.</b>, Mateevitsi, V.A., Chau, D., Nishimoto, A., McGinnis, B., Misterka, J., Johnson, A., Leigh, J.
+"The OmegaDesk: Towards A Hybrid 2D & 3D Work Desk"
+<i>7th International Symposium on Visual Computing (ISVC11), Las Vegas, Nevada, 09/26/2011 - 09/28/2011</i>
+[<a href="../publications/OmegaDesk-final.pdf">Pdf</a>]
+</li>
+<li>Richmon, K., <b>Febretti, A.</b>, Gulati, S., Flesher, C., Hogan, B.P., Murarka, A., Kuhlman, G., Sridharan, M, Johnson, A., Stone, W.C., Priscu, J., Doran, P.
+"Sub-Ice Exploration of an Antarctic Lake: Results from the ENDURANCE Project"
+<i>17th International Symposium on Unmanned Untethered Submersible Technology (UUST11), Portsmouth, NH, US, 08/21/2011 - 08/24/2011</i>
+[<a href="../publications/SubIceExploration_UUST11.pdf">Pdf</a>]
+</li>
+<li><b>Febretti, A.</b>, Garzotto, F.
+"Usability, Playability, and Long-Term Engagement in Computer Games"
+<i>CHI 2009 Work In Progress, Boston, MA, ACM SIGCHI, 04/04/2009 - 04/09/2009</i>
+[<a href="../publications/EngageComputerGames_febrettiCHI09.pdf">Pdf</a>]
+</li>
+</ol>
+</p>
+<p><b>Abstracts, Posters and Videos</b>
+<ol>
+<li>
+Keenan GM., Stifter J.,  <b>Febretti A.</b>, Lodhi M., Dunn-Lopez K., Yao Y., Khokhar A., Johnson A.,  Ansari R., Wilkie DJ.,
+"Well tested electronic care planning system produces powerful evidence for nursing care decision."
+<i>Advocate Health System Research Day. Chicago,  Illinois Masonic, April 9th, 2014</i>
+</li>
+<li>
+Leigh, J., Johnson, A., Renambot, L., Long, L., Sandin, D., Tolandis, J., <b>Febretti, A.</b>, Nishimoto, A.,
+"CAVE2 Documentary"
+<i>Video in IEEE VR 2014 and IEEE VR 2014 YouTube channel, Minneapolis, Minnesota, March 29, 2014</i>
+</li>
+<li>Dunn Lopez, K., <b>Febretti, A.</b>, Yao, Y., Stifter, J, Johnson, A., Wilkie, D., Keenan, G.
+"Clinical decision support alerts forms: Nurse preferences and relationships with nurse characteristics."
+American Medical Informatics Association, Annual Symposium, Washington, DC., 2013
+</li>
+<li>
+Dunn-Lopez, K., Stifter, J., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.,
+"Improving Usability of Evidence Based Information in Clinical Decision Support",
+Midwest Nursing Research Society 37th Annual Research Conference, Chicago, IL, March 7-13, 2013.
+</li>
+<li>Stifter, J., Lopez, K., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.
+"Identifying Nurse Preferences for Presentation of Evidence Based End of Life Pain Management Information in Clinical Decision Support Systems"
+<i>37th Midwest Nursing Research Society Conference, 2013</i>
+</li>
+</ol>
+<p>
+<p><b>Scolarly Work</b>
+<ol>
+<li><b>Febretti, A.</b>
+"A Multi-View Software Infrastructure for Hybrid Immersive Environments"
+<i>Ph.D. Proposal, Electronic Visualization Lab, University of Illinois at Chicago, 2014</i>
+[<a href="../publications/Preliminary-full-febretti.pdf">Pdf</a>]</li>
+<li><b>Febretti, A.</b>
+"Evaluating the Flash Platform for Web-based Collaborative Data Visualization"
+<i>M.S. Thesis, Politecnico di Milano and University of Illinois at Chicago, 2006</i>
+</li>
+</ol>
+</p>
+<p><b>Non-Refereed Whitepapers and Articles</b>
+<ol>
+<li><b>Febretti, A.</b>, Frossi, A.
+"Template Choice and Template Hierarchy Graph construction during the Partition Phase in reconfigurable environments"
+<i>Laboratory of Microarchitectures, Politecnico di Milano, 2006</i>
+[<a href="../publications/HPPS_FebrettiFrossi.pdf">Pdf</a>]</li>
+<li><b>Febretti, A.</b>
+"Fast late-bound invocation through Dynamic Method delegates"
+<i>Codeproject, 2005</i>
+[<a href="../publications/flb.pdf">Pdf</a>][<a href="http://www.codeproject.com/Articles/10951/Fast-late-bound-invocation-through-DynamicMethod-d">Web</a>]</li>
+<li><b>Febretti, A.</b>
+"Distributed Sum on a 2D mesh using MPI"
+<i>ECE566 Parallel Processing, University of Illinois at Chicago, 2013</i>
+[<a href="../publications/Febretti_A_hw2_rep.pdf">Pdf</a>]</li>
+<li><b>Febretti, A.</b>
+"Parallel Gaussian Elimination Using MPI"
+<i>ECE566 Parallel Processing, University of Illinois at Chicago, 2013</i>
+[<a href="../publications/HW4_Report_Febretti.pdf">Pdf</a>]</li>
+</ol>
+<p>
+<p><b>Other</b>
+<ol>
+<li>Doran, P.T., Stone, W., Priscu, J.C., Obryk, M., <b>Febretti, A.</b>
+"The ENDURANCE Autonomous Underwater Vehicle"
+<i>Keynote, 31st Science Week, Scientific Committee on Antarctic Research</i>
+</li>
+<li><b>Febretti, A.</b>
+"...For Science! Building Visualizations, Managing Dynamic Workflows and Coding Without Swearing too Much"
+<i>Talk, UIC Computer Science Graduate Student Association, 2012</i>
+[<a href="../publications/ScienceLecture.pdf">Pdf</a>]</li>
+<li><b>Febretti, A.</b>
+"Building The Lens - Visualization Instrument Research at the Electronic Visualization Lab"
+<i>Talk, Blue Brain Group, EPFL, Lausanne, 2014</i>
+[<a href="../publications/BuildingTheLens.pdf">Pdf</a>]</li>
+</ol>
+<p>
+</div>
+<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=3151844;
+var sc_invisible=0;
+var sc_partition=33;
+var sc_security="622697c6";
+</script>
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c34.statcounter.com/3151844/0/622697c6/0/" alt="web metrics" /></a></div></noscript>
+<!-- End of StatCounter Code --><br><a href="http://my.statcounter.com/project/standard/stats.php?project_id=3151844&amp;guest=1">myMigthyStats</a>
+</body>
+</html>

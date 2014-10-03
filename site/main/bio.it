@@ -1,191 +1,228 @@
 #include "../etc/febretpository.ih"
 #include "../etc/header.html"
 
-<div class="item">
-	<h1>Why I Do What I Do</h1><br/>
-	<$img "./pf3278_2656_h.jpg" width="1000">
-	<p>
-	Visualization is playing an increasingly important role in the analysis of complex phenomena and simulations. As a research assistant at the UIC Electronic Visualization Lab (EVL), 
-	my main goals involve building tools that let researchers access and manipulate data in their own domains, using new and more efficient methodologies. This work does not simply involve 
-	the technical knowledge needed to create graphical applications. It also includes the ability to understand users and their own domain. Requirements vary across different people, and these 
-	requirements become more or less important depending on the target of our work: while the computational power of software tools is the main concern of domain experts, offering an engaging 
-	usage experience is the most important issue when building software for a more general audience, i.e. museum visitors. My passion for videogame design and development, along with my 
-	previous experience as a professional game developer, helps me in capturing those different concerns, and creating applications that try to offer not just functionality, but also an enjoyable
-	interaction experience.
-	</p>
-	<p>
-	In this sense, the Electronic Visualization Lab offers the perfect environment to cultivate my interests. The new, cutting edge technology and software developed here is potentially 
-	targeting a very broad audience: from scientists working in national laboratories to museum visitors, from instructors interested in new learning technologies to casual videogame players.
-	</p>
-</div>
-<div class="item"><h3>Academic and Professional Experiences</h3>
-	<ul>
-		<li><b>September 2013 - December 2013, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Volunteers as a mentor for the SPARK program</li>
-		</ul></li>
-		<li><b>June 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Research & Developement on the CAVE2 system. Works on several applications for the system. Gives application development tutorials and support to students and EVL members. </li>
-		</ul></li>
-		<li><b>January 2012 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Works on the HANDS project, in collaboration with the UIC Nursing department.</li>
-		</ul></li>
-		<li><b>July 2010 - Present, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Works as the lead developer of omegalib, a multiplatform VR framework used to create application for large-scale 2D/3D environments like CAVE2.</li>
-		</ul></li>
+<$item "Education" img="./mike.png" imgwidth="240">
+<ul>
+    <li><b>Ph.D. in Computer Science (expected graduation: beginning of 2015)</b>
+    <ul>
+    <li>University of Illinois at Chicago (GPA: 4.0)</li>
+    <li>Advisor: Dr. Andrew Johnson</li>
+    <li>Dissertation: <i>A Multi-View Software Infrastructure for Hybrid Immersive Environments</i></li>
+    <li>[<a href="../publications/Preliminary-full-febretti.pdf">Proposal</a>]</li>
+    </ul>
+    </li>
+    
+    <li><b>M.S. in Computer Science and Computer Engineering, 2008</b>
+    <ul>
+    <li>University of Illinois at Chicago (Computer Science, GPA: 4.0)</li>
+    <li>Politecnico di Milano (Computer Engineering, Cum Laude)</li>
+    <li>Advisors: Dr. Andrew Johnson and Dr. Franca Garzotto</li>
+    <li>Thesis: <i>Evaluating the Flash Platform for Web-Based Collaborative Data Visualization</i></li>
+    </ul>
+    </li>
 
-		<li><b>January 2012 - May 2012, Electronic Visualization Laboratory, UIC and Politecnico di Milano, Italy</b><ul>
-			<li>Supervises Thesis work for M.S. student Daniele Donghi. Tesis title: <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual Environments"</i></li>
-		</ul></li>
-		<li><b>August 2011 - December 2011, Electronic Visualization Laboratory, UIC</b><ul>
-			<li>Teaching Assistant for <a href="http://www.evl.uic.edu/aej/424/index.html">Visualization and Visual Analytics</a></li>
-		</ul></li>
-		<li><b>July 2010 - July 2012, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Research & Developement on the OmegaDesk.</li>
-		</ul></li>
-		<li><b>January 2009 - June 2011, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Develops the visualization toolset used by researchers to analyze data coming from the ENDURANCE project, a NASA funded exploration of Lake Bonney, Antarctica.</li>
-		</ul></li>
-		<li><b>October 2007 - December 2008, Milestone Games, Italy:</b><ul>
-			<li>Works as a Gameplay Programmer on two titles published worldwide for PC, XBOX360, Playstation 3 and Nintendo Wii: Superbike World Championship 08 (Black Bean) and MotoGP08 (Capcom).</li>
-		</ul></li>
-		<li><b>2007 -  2008, Politecnico di Milano, Italy:</b><ul>
-			<li>Holds a series of lectures on videogame design and development for Industrial Design and Computer Science students.</li>
-		</ul></li>
-		<li><b>August - December 2006, Electronic Visualization Laboratory, UIC:</b><ul>
-			<li>Team leader of the team winning the final competition in the Fall '06 Videogame Design class.</li>
-		</ul></li>
-		<li><b>Fall 2005, Politecnico di Milano, Italy:</b><ul>
-			<li>Teaching Assistant for a Programming Languages class (Computer Science students).</li>
-		</ul></li>
-	</ul>    
-</div>
-<div class="item"><h3>Education</h3>
-	<ul>
-		<li><b>2009 - Present, University of Illinois at Chicago:</b><ul>
-			<li>Ph.D. Graduate Student, Computer Science</li>
-		</ul></li>
-		<li><b>2006 - 2008, Politecnico di Milano, Italy:</b><ul>
-			<li>M.S., Computer Science (110/110, Cum Laude)</li>
-		</ul></li>
-		<li><b>2006 - 2008, University of illinois at Chicago (UIC):</b><ul>
-			<li>M.S., Computer Science</li>
-		</ul></li>
-		<li><b>2002 - 2005, Politecnico di Milano, Italy:</b><ul>
-			<li>B.S., Computer Science (104/110, Cum Laude)</li>
-		</ul></li>
-	</ul>    
-</div>
+    <li><b>B.S. in Computer Engineering, 2005</b>
+    <ul>
+    <li>Politecnico di Milano</li>
+    <li>Advisor: Dr. Marco Domenico Santambrogio</li>
+    <li>Thesis: <i>IRDA IP-CORE: Software and Hardware Implementation on Field-Programmable Gate Arrays</i></li>
+    </ul>
+    </li>
+</ul>
+<$end-item>
+
+<$section "Research and Professional Experiences">
+	<$img "./pf3278_2656_h.jpg" width="1000">
+	<$item title="Research Assistant, Electronic Visualization Laboratory, University of Illinois at Chicago, since 2009">
+    <p>Concentrated on Visualization Instrument research (hardware and software) and on 
+    human-computer interaction in single and multiuser scenarios. In particular, 
+    I investigated the use of hybrid immersive systems as scientific visualization 
+    platforms for co-located research teams. 
+    </p>
+    <p>
+    I contributed to the creation of a small scale hybrid workspace (the OmegaDesk) 
+    and a large scale Hybrid Reality Environment (the CAVE2). I led the 
+    development of a software framework to drive these systems, called Omegalib. 
+    Compared to existing toolkits, Omegalib is designed to support dynamic 
+    reconfigurability of the display environment: areas of the display can be 
+    interactively allocated to 2D or 3D workspaces as needed. Omegalib has been 
+    used to develop several scientific visualization applications for the CAVE2 
+    system, and has been used as the project platform in UIC's Visual Analytics 
+    course.    
+    </p>
+    <p>
+    As a spin-off of Omegalib, I created the Omicron input management library 
+    and protocol. Omicron simplifies the creation of mixed-input applications, 
+    providing an event model that supports 2D devices (touch overlays or remote 
+    pointers), 3D devices (marker-based or markerless motion trackers) or 
+    non-spatial devices such as voice input and brain interfaces. Omicron has 
+    been used as the input platform for a variety of projects, both internal and 
+    external to EVL.    
+    </p>
+    <p>
+    Contributions to Omegalib and Omicron by other students have generated two M.S. 
+    projects and two M.S. theses. I initiated and supervised one of these theses, 
+    titled <i>"Porthole: A decoupled HTML5 Interface Generator for Virtual 
+    Environments"</i> by M.S. graduate Daniele Donghi.    
+    </p>
+    <p>
+    In addition to the research on hybrid systems, I worked on standard, 
+    desktop-based visualization tools and user interfaces. I created the data 
+    processing and visualization toolset used to analyze the geophysical data 
+    collected by the NASA ENDURANCE autonomous underwater robot in Antarctica. 
+    My research contribution to this work involved the use of parallel sonar 
+    beam tracing and implicit surface methods for 3D bathymetry reconstruction    
+    </p>
+    <p>
+    Moreover, I contributed to a multi-year research project in collaboration 
+    with the UIC College of Nursing, aimed at improving nurse care for end-of-life 
+    patients. Main duties involved designing and developing a clinical decision 
+    support system prototype that was used in simulated patient care scenarios. 
+    I also helped planning the data collection and evaluation protocol used by 
+    this ongoing study, which by its end will have involved more than a hundred 
+    professional nurse practitioners.    
+    </p>
+    <$end-item>
+    
+	<$item title="Software Engineer, Milestone Games, 2007-2009">
+    Worked on gameplay, database and multiplayer logic for two worldwide-published 
+    games on Xbox360, Playstation 3, Nintendo Wii and PC. Acted as point of contact 
+    with an external team for user interface quality assurance. I was responsible 
+    for user interface and game state guideline adherence for Microsoft and Sony 
+    product certification.    
+    <$end-item>
+<$end-section>
+
+<$section "Teaching Experience">
+	<$img "./teaching.jpg" width="1000">
+	<$item title="Teaching Assistant, Dept. of Computer Science, University of Illinois at Chicago, Fall 2011">
+    <p>Class: <i>Visualization and Visual Analytics</i> </p>
+    Introduced students to the Processing language. Provided assistance during 
+    project development and was responsible for project grading.
+    <$end-item>
+	<$item title="Lecturer, Dept. of Industrial Design, Politecnico di Milano, 2007-2008">
+    <p>Class: <i>Human-Computer Interaction</i> </p>
+    Held a series of lectures on videogame design and development, introducing 
+    students to the game industry development process, gameplay design practices
+    and outlining the technical aspects of game creation.
+    <$end-item>
+	<$item title="Teaching Assistant, Dept. of Computer Science, 2005">
+    <p>Class: <i>Introduction to Computer Programming</i> </p>
+    Responsible for the laboratory session of the course. Provided assistance 
+    with C programming exercises, held pre-laboratory lectures on basic 
+    programming concepts (IO, conditional programming, pointers and pointer 
+    arithmetic, basic data structures and iteration).
+    <$end-item>
+<$end-section>
+
 <a name="Publications"></a>
-<div class="item"><h3>Publications</h3>
-	<p><b>Journals</b>
+<$section "Publications">
+    <$item title="Journals">
 		<ol>
-            <li><i>(In review, April 2014)</i>Dunn-Lopez, K., <b>Febretti, A.</b>, Stifter, J., Johnson, A., Wilkie, D.J., & Keenan, G. 
-            "Towards more Robust and Highly Efficient Methods  to  Develop Useable and Useful Clinical Decision Support from Electronic Health Record Data."
-            <i>Journal of the American Medical Informatics Association.,</i></li>
-            
 			<li>Reda, K., <b>Febretti, A.</b>, Knoll, A., Aurisano, J., Leigh J., Johnson, A., Papka, M., Hereld, M.
 			"Visualizing Large, Heterogeneous Data in Hybrid Reality Display Environments".
 			<i>IEEE Computer Graphics and Applications, Vol. 33.4 (July-August 2013), pp. 38-48</i></li>
 		</ol>
-	</p>
-	<p><b>Conference Proceedings</b>
+	<$end-item>
+    
+    <$item title="Conference Proceedings">
 		<ol>
+            <li>
+            <b>Febretti, A.</b>, Sousa V., Lopez K. D., Yao, Y. Johnson, A., Keenan, G. M., Wilkie, D. J., 
+            "One Size Doesn't Fit All: The Efficiency of Graphical, Numerical and Textual Clinical Decision Support for Nurses", 
+            <i>IEEE VIS 2014 Workshop on Electronic Health Record Data Visualization (EHRVis), November 9-10 2014, Paris, France;</i>
+            </li>
 			<li><b>Febretti, A.</b>, Lopez, K. D., Stifter, J., Johnson, A., Keenan, G. M., Wilkie, D. J,
 			"Evaluating a Clinical Decision Support Interface for End-of-Life Nurse Care"
-			<i>CHI 2014 Work In Progress, Toronto, Canada, April 28 - May 01, 2014</i>
+			<i>CHI 2014 Work In Progress, Toronto, Canada, April 28 - May 01, 2014;</i>
 			[<a href="../publications/HANDS-CHI14.pdf">Pdf</a>]
 			</li>
             
             <li><b>Febretti, A.</b>, Nishimoto, A., Mateevitsi, V., Renambot, L., Johnson, A., Leigh, J.,
             "Omegalib: a Multi- View Application Framework for Hybrid Reality Environments".
-            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></li>        
+            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014;</i></li>        
             
             <li><b>Febretti, A.</b>
             "Supporting Multi-View Immersion on Hybrid Reality Environments".
-            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014) Doctoral Consortium, Minneapolis, MN, March 29 - April 2, 2014.</i></li>        
+            <i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014) Doctoral Consortium, Minneapolis, MN, March 29 - April 2, 2014;</i></li>        
             
             <li>Reda, K., Aurisano, J., <b>Febretti, A.</b>, Leigh, J. Johnson, A., 
             "Visualization Design Patterns for Ultra-Resolution Display Environments".
-            <i>VISTech Workshop: Visualization Infrastructure and Systems Technology (VISTech 2013), 2013.</i></li>        
+            <i>VISTech Workshop: Visualization Infrastructure and Systems Technology (VISTech 2013), 2013;</i></li>        
         
 			<li><b>Febretti, A.</b>, Lopez, K., Stifter, J., Johnson, A., Keenan, G., Wilkie, D. 
 			"A Component-Based Evaluation Protocol for Clinical Decision Support Interfaces".
-			<i>HCI International, 2013.</i></li>
+			<i>HCI International, 2013;</i></li>
 			
 			<li>Lopez, K., Stifter, J., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G. 
 			"Improving Learnability and Efficiency  of Evidence Based Information in Clinical Decision Support".
-			<i>37th Midwest Nursing Research Society Conference, 2013.</i></li>
+			<i>37th Midwest Nursing Research Society Conference, 2013;</i></li>
 			
 			<li><b>Febretti, A.</b>, Nishimoto, A., Thigpen, T., Talandis, J., Long, L., Pirtle, J., Peterka, T., Verlo, A., Brown, M., Plepys, D., Sandin, D., Renambot, L., Johnson, A., Leigh, J. "CAVE2: A Hybrid Reality Environment for Immersive Simulation and Information Analysis"
-			<i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013.</i>
-			[<a href="../publication/SPIE13Paper-final.pdf">Pdf</a>]
+			<i>IS&amp;T/SPIE Electronic Imaging. International Society for Optics and Photonics, 2013</i>
+			[<a href="../publication/SPIE13Paper-final.pdf">Pdf</a>];
 			</li>
 			
 			<li><b>Febretti, A.</b>, Richmond, K., Gulati, S., Flesher, C., Hogan, B.P., Johnson, A., Stone, W.C., Priscu, J., Doran, P. 
 			"Poisson reconstruction of extreme submersed environments: The ENDURANCE exploration of an under-ice Antarctic Lake"
 			<i>8th International Symposium on Visual Computing (ISVC12), Crete, Greece, Springer-Verlag, Lecture Notes in Computer Science, 07/16/2012 - 07/18/2012</i>
-			[<a href="../publications/ENDURANCE-ISVC12.pdf">Pdf</a>]
+			[<a href="../publications/ENDURANCE-ISVC12.pdf">Pdf</a>];
 			</li>
 			
 			<li><b>Febretti, A.</b>, Mateevitsi, V.A., Chau, D., Nishimoto, A., McGinnis, B., Misterka, J., Johnson, A., Leigh, J. 
 			"The OmegaDesk: Towards A Hybrid 2D & 3D Work Desk"
 			<i>7th International Symposium on Visual Computing (ISVC11), Las Vegas, Nevada, 09/26/2011 - 09/28/2011</i>
-			[<a href="../publications/OmegaDesk-final.pdf">Pdf</a>]
+			[<a href="../publications/OmegaDesk-final.pdf">Pdf</a>];
 			</li>
 			
 			<li>Richmon, K., <b>Febretti, A.</b>, Gulati, S., Flesher, C., Hogan, B.P., Murarka, A., Kuhlman, G., Sridharan, M, Johnson, A., Stone, W.C., Priscu, J., Doran, P.
 			"Sub-Ice Exploration of an Antarctic Lake: Results from the ENDURANCE Project"
 			<i>17th International Symposium on Unmanned Untethered Submersible Technology (UUST11), Portsmouth, NH, US, 08/21/2011 - 08/24/2011</i>
-			[<a href="../publications/SubIceExploration_UUST11.pdf">Pdf</a>]
+			[<a href="../publications/SubIceExploration_UUST11.pdf">Pdf</a>];
 			</li>
 			
 			<li><b>Febretti, A.</b>, Garzotto, F.
 			"Usability, Playability, and Long-Term Engagement in Computer Games"
 			<i>CHI 2009 Work In Progress, Boston, MA, ACM SIGCHI, 04/04/2009 - 04/09/2009</i>
-			[<a href="../publications/EngageComputerGames_febrettiCHI09.pdf">Pdf</a>]
+			[<a href="../publications/EngageComputerGames_febrettiCHI09.pdf">Pdf</a>];
 			</li>
 		</ol>
-	</p>
-	<p><b>Abstracts, Posters and Videos</b>
+	<$end-item>
+    
+    <$item title="Abstracts, Posters and Videos">
 		<ol>
+            <li>
+            <b>Febretti, A.</b>, Richmond K., Doran, P., Johnson, A., 
+            "Parallel Processing and Immersive Visualization of Sonar Data" 
+            <i>IEEE Symposium on Large Data Visualization (LDAV), 2014;</i>
+            </li>
             <li>
             Keenan GM., Stifter J.,  <b>Febretti A.</b>, Lodhi M., Dunn-Lopez K., Yao Y., Khokhar A., Johnson A.,  Ansari R., Wilkie DJ.,
             "Well tested electronic care planning system produces powerful evidence for nursing care decision."
-            <i>Advocate Health System Research Day. Chicago,  Illinois Masonic, April 9th, 2014</i>
+            <i>Advocate Health System Research Day. Chicago,  Illinois Masonic, April 9th, 2014;</i>
             </li>
             <li>
             Leigh, J., Johnson, A., Renambot, L., Long, L., Sandin, D., Tolandis, J., <b>Febretti, A.</b>, Nishimoto, A., 
             "CAVE2 Documentary"
-            <i>Video in IEEE VR 2014 and IEEE VR 2014 YouTube channel, Minneapolis, Minnesota, March 29, 2014</i>
+            <i>Video in IEEE VR 2014 and IEEE VR 2014 YouTube channel, Minneapolis, Minnesota, March 29, 2014;</i>
             </li>
 			<li>Dunn Lopez, K., <b>Febretti, A.</b>, Yao, Y., Stifter, J, Johnson, A., Wilkie, D., Keenan, G. 
 			"Clinical decision support alerts forms: Nurse preferences and relationships with nurse characteristics."
-			American Medical Informatics Association, Annual Symposium, Washington, DC., 2013 		
+			American Medical Informatics Association, Annual Symposium, Washington, DC., 2013;		
 			</li>
             <li>
             Dunn-Lopez, K., Stifter, J., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G., 
             "Improving Usability of Evidence Based Information in Clinical Decision Support", 
-            Midwest Nursing Research Society 37th Annual Research Conference, Chicago, IL, March 7-13, 2013.
+            Midwest Nursing Research Society 37th Annual Research Conference, Chicago, IL, March 7-13, 2013;
             </li>
 			<li>Stifter, J., Lopez, K., <b>Febretti, A.</b>, Johnson, A., Wilkie, D., Keenan, G.
 			"Identifying Nurse Preferences for Presentation of Evidence Based End of Life Pain Management Information in Clinical Decision Support Systems"
 			<i>37th Midwest Nursing Research Society Conference, 2013</i>
 			</li>
 		</ol>
-	<p>
-	<p><b>Scolarly Work</b>
-		<ol>
-			<li><b>Febretti, A.</b>
-			"A Multi-View Software Infrastructure for Hybrid Immersive Environments"
-			<i>Ph.D. Proposal, Electronic Visualization Lab, University of Illinois at Chicago, 2014</i>
-			[<a href="../publications/Preliminary-full-febretti.pdf">Pdf</a>]</li>
-            
-			<li><b>Febretti, A.</b>
-			"Evaluating the Flash Platform for Web-based Collaborative Data Visualization"
-			<i>M.S. Thesis, Politecnico di Milano and University of Illinois at Chicago, 2006</i>
-			</li>
-		</ol>
-	</p>
+	<$end-item>
+    
+    <$item title="Non-Refereed Whitepapers and Articles">
 	<p><b>Non-Refereed Whitepapers and Articles</b>
 		<ol>
 			<li><b>Febretti, A.</b>, Frossi, A.
@@ -208,25 +245,43 @@
 			<i>ECE566 Parallel Processing, University of Illinois at Chicago, 2013</i>
 			[<a href="../publications/HW4_Report_Febretti.pdf">Pdf</a>]</li>
 		</ol>
-	<p>
-	<p><b>Other</b>
-		<ol>
-			<li>Doran, P.T., Stone, W., Priscu, J.C., Obryk, M., <b>Febretti, A.</b>
-			"The ENDURANCE Autonomous Underwater Vehicle"
-			<i>Keynote, 31st Science Week, Scientific Committee on Antarctic Research</i>
-			</li>
-		
-			<li><b>Febretti, A.</b>
-			"...For Science! Building Visualizations, Managing Dynamic Workflows and Coding Without Swearing too Much"
-			<i>Talk, UIC Computer Science Graduate Student Association, 2012</i>
-			[<a href="../publications/ScienceLecture.pdf">Pdf</a>]</li>
-            
-			<li><b>Febretti, A.</b>
-			"Building The Lens - Visualization Instrument Research at the Electronic Visualization Lab"
-			<i>Talk, Blue Brain Group, EPFL, Lausanne, 2014</i>
-			[<a href="../publications/BuildingTheLens.pdf">Pdf</a>]</li>
-		</ol>
-	<p>
-</div>
+	<$end-item>
+<$end-section>
+    
+<$section "Talks">
+    <ol>
+        <li><b>Febretti, A.</b>
+        "Building The Lens - Visualization Instrument Research at the Electronic Visualization Lab"
+        <i>Talk, Blue Brain Group, EPFL, Lausanne, 2014</i>
+        [<a href="../publications/BuildingTheLens.pdf">Pdf</a>]</li>
+        
+        <li><b>Febretti, A.</b>
+        "...For Science! Building Visualizations, Managing Dynamic Workflows and Coding Without Swearing too Much"
+        <i>Talk, UIC Computer Science Graduate Student Association, 2012</i>
+        [<a href="../publications/ScienceLecture.pdf">Pdf</a>]</li>
+        
+        <li>Doran, P.T., Stone, W., Priscu, J.C., Obryk, M., <b>Febretti, A.</b>
+        "The ENDURANCE Autonomous Underwater Vehicle"
+        <i>Keynote, 31st Science Week, Scientific Committee on Antarctic Research</i>
+        </li>
+    </ol>
+<$end-section>
+
+<$section "Other Activities">
+    <$item title="Mentor, SPARK Program, 2013, 2014">
+    I collaborated with other colleagues in mentoring middle school kids from 
+    underserved Chicago communities. I helped plan and carry out learning 
+    activities with our students, and followed them for a semester while they 
+    worked on an engaging project that taught them about computer science, and 
+    gave them a hint of the exciting work and career opportunities that will be 
+    available to them if they continue their education    
+    <$end-item>
+    
+    <$item title="Reviewer, since 2008">
+    I volunteered or was invited as a reviewer (secondary or tertiary) for several 
+    CS and non-CS conferences including IEEE VR, CHI, EGPGV, AMIA, EuroITV    
+    <$end-item>
+<$end-section>
+
 
 #include "../etc/footer.html"
