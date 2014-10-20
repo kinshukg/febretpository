@@ -5,7 +5,7 @@
 	This page contains a selection of papers or articles I authored, with full abstracts. For a compact full list of publications check the <a href="../main/bio.shtml#Publications">About Me Page</a>.
 	<$item title="Omegalib: a Multi- View Application Framework for Hybrid Reality Environments" img="./omegalib-layers.png" imgwidth="250">
 		<p><b>Authors:</b> <b>Febretti, A.</b> Nishimoto, A., Mateevitsi, V., Renambot, L., Johnson, A., Leigh, J.</b></p>
-		<p><i>to appear in the proceedings of IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></p>
+		<p><i>IEEE Virtual Reality (IEEE VR 2014), Minneapolis, MN, March 29 - April 2, 2014.</i></p>
 		<p>
         In the domain of large-scale visualization instruments, hybrid reality environments (HREs) are a recent innovation that combines the best-in-class capabilities of immersive environments, with the best-in-class capabilities of ultra-high-resolution display walls. HREs create a seamless 2D/3D environment that supports both information-rich analysis as well as virtual reality simulation exploration at a resolution matching human visual acuity. Co-located research groups in HREs tend to work on a variety of tasks during a research session (sometimes in parallel), and these tasks require 2D data views, 3D views, linking between them and the ability to bring in (or hide) data quickly as needed.
 		</p>
