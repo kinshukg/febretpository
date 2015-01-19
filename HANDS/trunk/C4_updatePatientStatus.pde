@@ -66,7 +66,7 @@ public void updatePatientStatus(Patient patient)
         
         // Update the current pain level score to mach value from the trend view
         SecondLevelRowView noc = poc.getNOC("Acute Pain", "Pain Level");
-        noc.startBlinking();
+        //noc.startBlinking();
         if(noc != null) noc.firstColumn = tw.pastTrend[i];
         
         // Update comfortable death status
@@ -93,7 +93,7 @@ public void updatePatientStatus(Patient patient)
         
         // Update the current pain level score to mach value from the trend view
         noc = poc.getNOC("Death Anxiety", "Comfortable Death");
-        noc.startBlinking();
+        //noc.startBlinking();
         if(noc != null) noc.firstColumn = tw.pastTrend[i];
     }
     else if(patient == patient2)
@@ -111,7 +111,7 @@ public void updatePatientStatus(Patient patient)
         }
         // Update impaired gas exchange status
         noc = poc.getNOC("Impaired Gas Exchange", "Respiratory Status: Gas Exchange");
-        noc.startBlinking();
+        //noc.startBlinking();
         noc.previousRating = noc.firstColumn;
         tw = patient.getTrend("Respiratory Status: Gas Exchange");
         tw.pastTrend[tw.now] = noc.firstColumn;
@@ -121,7 +121,7 @@ public void updatePatientStatus(Patient patient)
         
         // DEATH ANXIETY
         noc = poc.getNOC("Death Anxiety", "Comfortable Death");
-        noc.startBlinking();
+        //noc.startBlinking();
         // Death anxiety, if we do nothing goes to 1.
         if(poc.achFamilyCopingAdded || poc.achDeathAnxietyPrioritized)
         {
@@ -148,7 +148,7 @@ public void updatePatientStatus(Patient patient)
         
         // MOBILITY
         noc = poc.getNOC("Impaired Physical Mobility", "Mobility");
-        noc.startBlinking();
+        //noc.startBlinking();
         // Update mobility status
         tw = patient.getTrend("Mobility");
         tw.pastTrend[tw.now] = noc.firstColumn;

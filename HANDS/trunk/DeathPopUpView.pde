@@ -133,6 +133,7 @@ class DeathPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
+		parent.stopBlinking();		
         if(consultCheck != null)
         {
             if(consultCheck.selected)
@@ -188,8 +189,6 @@ class DeathPopUpView extends PopUpViewBase
         {
             parent.removeAlertButton();
         }
-		
-		parent.stopBlinking();
 		hide();
 	}
     

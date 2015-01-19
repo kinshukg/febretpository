@@ -152,6 +152,10 @@ Patient curPatient;
 int currentShift = 0;
 // When set to true, display a black screen between shifts.
 boolean shiftIntermission = false;
+// This variable is set to true or false at logoff. If false, something is wrong in
+// one of the POCs and the user is not allowed to proceed during intermission, only
+// going back to current shift is allowed.
+boolean pocsValid = true;
 int endShiftScreenshot = -1;
 
 // This table will store the plan of care for all patients and all shifts of this
@@ -438,6 +442,8 @@ public void log(String msg)
 
     log.setInt("Time", time);
     log.setString("Log", msg);
+    
+    print(msg + "\n");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -510,7 +516,6 @@ public void draw()
     {
         if(endShiftScreenshot == 0)
         {
-            savePOC();
             // Take screenshot of first patient
             setActivePatient(patient1);
         }
@@ -526,8 +531,19 @@ public void draw()
             fill(255);
             textFont(font);
             textSize(24);
-            text("Press 6 To Confirm Shift END and Continue To Next Shift",10,10);
-            text("Press 5 To GO BACK To this Shift",10,40);
+            
+            if(pocsValid)
+            {
+                text("Press 6 To Confirm Shift END and Continue To Next Shift",10,10);
+                text("Press 5 To GO BACK To this Shift",10,40);
+            }
+            else
+            {
+                text("Your plan is incomplete, please be sure:",10,10);
+                text("1) You rated all new NOCs",40,40);
+                text("2) That for every NANDA-I there is at least 1 NOC and 1 NIC or delete it",40,70);
+                text("Press 5 To GO BACK To this Shift",10,150);
+            }
             return;
         }
     }
@@ -621,8 +637,11 @@ void mouseReleased()
         shiftIntermission = true;
         endShiftScreenshot = 0;
         
+        // Validate POCs
+        pocsValid = patient1.pocManager.validate() & patient2.pocManager.validate();
+        
         // Save time for current patient.
-        curPatient.time += (millis() - curPatientStartMillis) / 1000;
+        //curPatient.time += (millis() - curPatientStartMillis) / 1000;
     }
     if(nextPatientButton.selected)
     {
@@ -684,14 +703,18 @@ void mouseClicked()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void keyPressed() 
 {
-    if(shiftIntermission && key == '6')
+    if(shiftIntermission && key == '6' && pocsValid)
     {
+        savePOC();
         shiftIntermission = false;
         nextShift();
+        setActivePatient(patient1);
+        patientIndexView.entry = "1 of 2";
     }
     else if(shiftIntermission && key == '5')
     {
         shiftIntermission = false;
+        curPatientStartMillis = millis();
     }
     
 	if(!filterKeyInput)
