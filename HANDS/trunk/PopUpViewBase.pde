@@ -113,7 +113,7 @@ class PopUpViewBase extends View
 	////////////////////////////////////////////////////////////////////////////
 	void onAbortClicked() 
 	{
-		//parent.stopBlinking();		
+        if(parent != null) parent.stopBlinking();		
 		hide();
 	}
 	
@@ -133,11 +133,13 @@ class PopUpViewBase extends View
 		if(notApplicable.selected)
 		{
 			onAbortClicked();
+            log("ClosePopupCancel");
 			notApplicable.selected = false;
 		}
 		if(commit.selected)
 		{
 			onOkClicked();
+            log("ClosePopupOK");
 			commit.selected = false;
 		}
 		return true;
@@ -295,8 +297,6 @@ class PopUpViewBase extends View
 	////////////////////////////////////////////////////////////////////////////
     void onNANDAAdded(ColouredRowView nic)
     {
-        // If a NIC has been added, check the nic list in this popup and disable the relative
-        // checkbox if you find it.
 		for(int i = 0; i < subviews.size(); i++)
 		{
             if(!(subviews.get(i) instanceof PopUpSection)) continue;
@@ -319,6 +319,36 @@ class PopUpViewBase extends View
             }
         }
         checkCDSEnabled(true);
+    }
+    
+	////////////////////////////////////////////////////////////////////////////
+    void onNANDARemoved(ColouredRowView nic)
+    {
+        // If a NOC has been removed, check the noc list in this popup and enable the relative
+        // checkbox if you find it.
+		for(int i = 0; i < subviews.size(); i++)
+		{
+            if(!(subviews.get(i) instanceof PopUpSection)) continue;
+            
+            PopUpSection pps = (PopUpSection)subviews.get(i);
+            if(pps.actionBoxes != null) 
+            {
+                for(int j = 0; j < pps.actionBoxes.size(); j++)
+                {
+                    CheckBox c = pps.actionBoxes.get(j);
+                    // Ignore radio buttons. Only action checkboxes.
+                    if(!c.radio)
+                    {
+                        if(!c.enabled && c.tag.equals(nic.title))
+                        {
+                            c.enabled = true;
+                            c.selected = false;
+                        }
+                    }
+                }
+            }
+        }
+        checkCDSEnabled(false);
     }
     
 	////////////////////////////////////////////////////////////////////////////

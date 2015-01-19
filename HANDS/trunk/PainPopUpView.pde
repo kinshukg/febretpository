@@ -130,6 +130,7 @@ class PainPopUpView extends PopUpViewBase
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
 	{
+		parent.stopBlinking();		
         if(consultCheck != null)
         {
             if(!consultCheck.selected)
@@ -169,8 +170,6 @@ class PainPopUpView extends PopUpViewBase
             prioritizePainCheck.enabled = false;
             pocManager.prioritizeNANDA(NANDAParent);
         }
-        
-		parent.stopBlinking();		
 		mainView.subviews.remove(this);
 		popUpView = null;
 	}

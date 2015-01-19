@@ -63,6 +63,17 @@ class POCManager
 	////////////////////////////////////////////////////////////////////////////
 	ColouredRowView addNANDA(String title, PImage tooltip)
 	{
+        // IF the nanda already exists, just restore it.
+ 		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView tempRow = (ColouredRowView) scrollingView.subs.get(i);
+            if(tempRow.title.equals(title) && tempRow.deleted)
+            {
+                restoreNANDA(tempRow);
+                return tempRow;
+            }
+        }
+        
         ColouredRowView row = new ColouredRowView(title,firstLevelIcon);
         row.poc = this;
         row.iconButton.tooltipImage = tooltip;
@@ -209,6 +220,12 @@ class POCManager
 		scrollingView.subs.remove(nanda);
 		scrollingView.subs.add(nanda);
         
+        NANDAPopup.onNANDARemoved(nanda);
+        if(nanda.popup != null)
+        {
+            nanda.popup.onNANDARemoved(nanda);
+        }
+        
         log("RemoveNANDA " + nanda.title);
 	}
 	
@@ -335,4 +352,31 @@ class POCManager
 	{
 		return (int)scrollingView.y + (int)scrollingView.h;
 	}
+    
+	////////////////////////////////////////////////////////////////////////////
+    boolean validate()
+    {
+		for (int i = 0; i < scrollingView.subs.size(); i++ ) 
+		{
+			ColouredRowView nanda = (ColouredRowView) scrollingView.subs.get(i);
+            if(!nanda.deleted)
+            {
+                // Do we have 1 NOC?
+                if(nanda.subs.size() == 0) return false;
+                
+                for (int j = 0; j < nanda.subs.size(); j++ ) 
+                {
+                    SecondLevelRowView noc = (SecondLevelRowView) nanda.subs.get(j);
+                    
+                    // Is this NOC rated?
+                    if(noc.firstColumn == 0 || noc.secondColumn == 0) return false;
+                    
+                    // Does NOC have at least 1 NIC?
+                    if(noc.subs.size() == 0) return false;
+                }
+            }
+        }
+        
+        return true;
+    }
 }
