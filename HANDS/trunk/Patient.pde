@@ -76,7 +76,7 @@ class Patient
             SecondLevelRowView NOCDeath = pocManager.addNOC("Comfortable Death", "", NANDADeath, loadImage("comfortableDeath.PNG"));
             NOCDeath.setScores(2, 5);
             pocManager.addNIC("Calming Technique", "", NOCDeath, loadImage("calmingTechnique.PNG"));
-            pocManager.addNIC("Spritual Support", "", NOCDeath, loadImage("spiritualSupport.PNG"));
+            pocManager.addNIC("Spiritual Support", "", NOCDeath, loadImage("spiritualSupport.PNG"));
             
             // NANDA Impaired Physical Mobility
             ColouredRowView NANDAPhysMob = pocManager.addNANDA("Impaired Physical Mobility", loadImage("impairedPhysicalMobility.PNG"));

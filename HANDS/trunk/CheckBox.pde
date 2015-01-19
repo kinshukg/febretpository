@@ -131,7 +131,7 @@ class CheckBox extends View
 		if(textBoxAlwaysVisible)
 		{
 			tb.x = text.maxTextWidth + text.x + 10;
-			tb.w = popUpView.w - tb.x - 70;
+			tb.w = popUpView.w - tb.x - x - 20;
 			tb.y = 0;
 		}
 		else

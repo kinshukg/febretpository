@@ -253,13 +253,23 @@ class PopUpSection extends View
 			}
 			else
 			{
+                int maxHeight = 800;
+                int col = 0;
+                float curH = h;
 				for(int i = 0; i < actionBoxes.size(); i++)
 				{
 					CheckBox cb = actionBoxes.get(i);
-					cb.x = 15;
-					cb.y = h;
-					h += cb.h + 10;
+					cb.x = 15 + col * 400;
+					cb.y = curH;
+					curH += cb.h + 10;
+                    if(curH >= maxHeight)
+                    {
+                        curH = h;
+                        h = maxHeight;
+                        col++;
+                    }
 				}
+                if(h < curH) h = curH;
 			}
 		}
 		if(separatorStyle != 0)
