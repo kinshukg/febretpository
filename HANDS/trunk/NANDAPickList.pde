@@ -7,7 +7,6 @@ class NANDAPickList extends NativeActionsPopUpView
 
         PopUpSection actions = addSection("Add NANDA");
         actions.addNANDA("Acute Pain", "acutePain.png");
-        actions.addNANDA("Caregiver Support", "caregiverSupport.png");
         actions.addNANDA("Complicated Grieving", "complicatedGrieving.png");
         actions.addNANDA("Compromised Family Coping", "compromisedFamilyCoping.png");
         actions.addNANDA("Constipation", "NANDAConstipation.png");
@@ -17,7 +16,7 @@ class NANDAPickList extends NativeActionsPopUpView
         actions.addNANDA("Impaired Physical Mobility", "impairedPhysicalMobility.PNG");
         actions.addNANDA("Nausea", "Nausea.png");
         actions.addNANDA("Readiness for Family Coping", "readinessForFamilyCoping.png");
-        actions.addNANDA("Risk For Impaired Skin Integrity", "NANDARiskForImpairedSkinIntegrity.png");
+        actions.addNANDA("Risk For Impaired Skin Integrity", "impairedSkinIntegrity.png");
         CheckBox oth = actions.addNANDA("Other", "tooltipPlaceholder.PNG");
         oth.text.text = "Add Other: ";
         oth.showTextBox();

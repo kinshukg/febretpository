@@ -184,6 +184,12 @@ class PopUpViewBase extends View
                         if(c.enabled && c.tag.equals(nic.title))
                         {
                             c.enabled = false;
+                            c.selected = true;
+                            if(c.dismissSection != null && NOCParent != null)
+                            {
+                                onCheckBoxChanged(c);
+                                NOCParent.addComment("");
+                            }
                         }
                     }
                 }
@@ -214,6 +220,11 @@ class PopUpViewBase extends View
                         {
                             c.enabled = true;
                             c.selected = false;
+                            if(c.dismissSection != null && NOCParent != null)
+                            {
+                                onCheckBoxChanged(c);
+                                NOCParent.addComment("");
+                            }
                         }
                     }
                 }
