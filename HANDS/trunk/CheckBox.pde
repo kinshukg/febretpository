@@ -20,6 +20,10 @@ class CheckBox extends View
 	boolean textBoxEnabled = true;
 	boolean textBoxAlwaysVisible = false;
 	boolean radio = false;
+    
+    // Reference to a dismiss section that is visible only when this checkbox is
+    // not selected.
+    PopUpSection dismissSection = null;
 	
 	PopUpViewBase owner = null;
 	PopUpSection ownerSection = null;

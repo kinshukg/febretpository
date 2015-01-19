@@ -101,6 +101,8 @@ class DeathPopUpView extends PopUpViewBase
 		reasonSection.addAction(reason1);
 		reasonSection.addAction(reason2);
 		reasonSection.addAction(reason3);
+        
+        consultCheck.dismissSection = reasonSection;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
