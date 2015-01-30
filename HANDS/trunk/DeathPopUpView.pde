@@ -18,6 +18,13 @@ class DeathPopUpView extends PopUpViewBase
 	boolean consultCheckAdded = false;
 	
     TrendView trendView;
+
+    PopUpSection copingMiniPOC;
+    PopUpSection copingMiniPOCNICS;
+    CheckBox NOCFamilyCoping;
+    CheckBox NICFamilySupport;
+    CheckBox NICFamilyIntegrity;
+    CheckBox NICHealthEducation;
     
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	DeathPopUpView(int w_, SecondLevelRowView parent, POCManager poc)
@@ -70,6 +77,26 @@ class DeathPopUpView extends PopUpViewBase
             copingCheck = new CheckBox("Add mini care plan: Family Coping", "Family Coping", firstLevelIcon, 0);
             copingCheck.textBoxEnabled = false;
             copingCheck.owner = this;
+            
+            copingMiniPOC = new PopUpSection("<n> Customize mini-POC");
+            NOCFamilyCoping = copingMiniPOC.addNOC("Family Coping", "familyCoping.PNG");
+            NOCFamilyCoping.owner = this;
+            NOCFamilyCoping.selected = true;
+            
+            copingMiniPOCNICS = new PopUpSection("");
+            
+            // Remove title
+            copingMiniPOCNICS.subviews.remove(copingMiniPOCNICS.titleBox);
+            copingMiniPOCNICS.titleBox.h = 0;
+            
+            NICFamilySupport = copingMiniPOCNICS.addNIC("Family Support", "familySupport.PNG");
+            NICFamilySupport.selected = true;
+            
+            NICFamilyIntegrity = copingMiniPOCNICS.addNIC("Family Integrity Promotion", "familyIntegrityPromotion.PNG");
+            NICFamilyIntegrity.selected = true;
+            
+            NICHealthEducation = copingMiniPOCNICS.addNIC("Health Education: End of Life Process", "healthEducation.PNG");
+            NICHealthEducation.selected = true;
             
             recommendedActionSection.addAction(copingCheck);
             
@@ -128,7 +155,34 @@ class DeathPopUpView extends PopUpViewBase
 				subviews.add(5, reasonSection);
 			}
 		}
-	}
+		if(cb == copingCheck)
+		{
+			if(copingCheck.selected)
+			{
+				subviews.add(5, copingMiniPOC);
+                if(NOCFamilyCoping.selected)
+                {
+                    subviews.add(6, copingMiniPOCNICS);
+                }
+			}
+			else
+			{
+				subviews.remove(copingMiniPOC);
+				subviews.remove(copingMiniPOCNICS);
+			}
+		}
+		if(cb == NOCFamilyCoping)
+		{
+			if(NOCFamilyCoping.selected)
+			{
+				subviews.add(6, copingMiniPOCNICS);
+			}
+			else
+			{
+				subviews.remove(copingMiniPOCNICS);
+			}
+		}
+    }
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void onOkClicked()
@@ -178,10 +232,41 @@ class DeathPopUpView extends PopUpViewBase
             copingCheck.selected = false;
             copingCheck.enabled = false;
             ColouredRowView nanda = pocManager.addNANDA("Dysfunctional Family Processes", loadImage("dysfunctionalFamilyProcesses.png"));
-            SecondLevelRowView noc = pocManager.addNOC("Family Coping", "", nanda, loadImage("familyCoping.PNG"));
-            pocManager.addNIC("Family Support", "", noc, loadImage("familySupport.PNG"));
-            pocManager.addNIC("Family Integrity Promotion", "", noc, loadImage("familyIntegrityPromotion.PNG"));
-            pocManager.addNIC("Health Education: End of Life Process", "", noc, loadImage("healthEducation.PNG"));
+            nanda.popup = this;
+        }
+        
+        // Entries for the coping mini POC
+        ColouredRowView nanda = pocManager.getNANDA("Dysfunctional Family Processes");
+        if(nanda != null)
+        {
+            if(NOCFamilyCoping != null && NOCFamilyCoping.selected)
+            {
+                SecondLevelRowView noc = pocManager.addNOC("Family Coping", "", nanda, loadImage("familyCoping.PNG"));
+                NOCFamilyCoping.selected = false;
+                NOCFamilyCoping.enabled = false;
+            }
+            SecondLevelRowView noc = pocManager.getNOC("Dysfunctional Family Processes", "Family Coping");
+            if(noc != null)
+            {
+                if(NICFamilySupport != null && NICFamilySupport.selected)
+                {
+                    pocManager.addNIC("Family Support", "", noc, loadImage("familySupport.PNG"));
+                    NICFamilySupport.selected = false;
+                    NICFamilySupport.enabled = false;
+                }
+                if(NICFamilyIntegrity != null && NICFamilyIntegrity.selected)
+                {
+                    pocManager.addNIC("Family Integrity Promotion", "", noc, loadImage("familyIntegrityPromotion.PNG"));
+                    NICFamilyIntegrity.selected = false;
+                    NICFamilyIntegrity.enabled = false;
+                }
+                if(NICHealthEducation != null && NICHealthEducation.selected)
+                {
+                    pocManager.addNIC("Health Education: End of Life Process", "", noc, loadImage("healthEducation.PNG"));
+                    NICHealthEducation.selected = false;
+                    NICHealthEducation.enabled = false;
+                }
+            }
         }
         
         if(copingCheck != null && !copingCheck.enabled && 
@@ -211,6 +296,18 @@ class DeathPopUpView extends PopUpViewBase
         if(consultCheck != null && nic.title.equals(consultCheck.tag))
         {
             onCheckBoxChanged(consultCheck);
+        }
+    }
+    
+	///////////////////////////////////////////////////////////////////////////////////////////////
+    void onNOCRemoved(SecondLevelRowView noc)
+    {
+        // Hide/show the consult refuse section when family coping is added or removed from the POC
+        if(NOCFamilyCoping != null && noc.title.equals(NOCFamilyCoping.tag))
+        {
+            NOCFamilyCoping.selected = false;
+            NOCFamilyCoping.enabled = true;
+            subviews.remove(copingMiniPOCNICS);
         }
     }
 }

@@ -25,7 +25,6 @@ class NICPickList extends NativeActionsPopUpView
         actions.addNIC("Family Integrity Promotion", "familyIntegrityPromotion.PNG");
         actions.addNIC("Family Support", "familySupport.PNG");
         actions.addNIC("Fluid and Electrolyte Management", "fluidElectrolyteManagement.png");
-        actions.addNIC("Grief Resolution", "griefResolution.png");
         actions.addNIC("Guided Imagery", "guidedImagery.PNG");
         actions.addNIC("Health Education: End of Life Process", "healthEducation.PNG");
         actions.addNIC("Massage", "massage.PNG");
