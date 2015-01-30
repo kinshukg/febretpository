@@ -11,7 +11,7 @@ class RatingPopUpView extends PopUpViewBase
 	////////////////////////////////////////////////////////////////////////////
 	RatingPopUpView(SecondLevelRowView parent, PImage image)
 	{
-		super(image.width > 650 ? image.width +50 : 700, parent);
+		super(image.width > 650 ? image.width +50 : 500, parent);
 		
 		indicatorsImage = image;
 		
@@ -83,52 +83,45 @@ class RatingPopUpView extends PopUpViewBase
         // Add title + NNN icon to both native and CDS-based prototypes.
 		//if(!OPTION_NATIVE)
 		{
-            PopUpSection title = new PopUpSection("");
+            PopUpSection title = new PopUpSection("Rating the NOC");
+            
+            /*
             title.titleBox.setText("\n </b>   <h>  <- Click NOC icon for definition </h> \n" + " <h1> <b> " + parent.title + "\n");
             title.titleButtonMode = 1;
-            title.titleButton = new Button(5, 16, 28, 28, secondLevelIcon);
+            */
+            title.titleButton = new Button(15, 40, 28, 28, secondLevelIcon);
             title.titleButton.tooltipOffsetX = - (indicatorsImage.width + 40);
             title.titleButton.tooltipImage = indicatorsImage;
+            
             title.subviews.add(title.titleButton);
             subviews.add(title);
+
+            String tutorial =
+                "<h1> 1. Review the NOC info screen (select the green circle): \n " +
+                "      <b> " + parent.title + " </b> \n \n " +
+                "<h1> 2. Rate on a scale of 1 (worst) - 5 (best) \n " +
+                "     5 = a state assigned to a healthy patient \n" +
+                "        (comparable age, mental capacity, gender) \n" +
+                " \n";
+            
+            title.setDescription(tutorial);
         }
 		
 		// Expected rating checkboxes
-		expectedRatingSection = new PopUpSection("Expected Rating:");
+		expectedRatingSection = new PopUpSection("<n> Expected Rating:");
 		expectedRatingSection.layoutHorizontal = false;
-		currentRatingSection = new PopUpSection("Current Rating:");
+		currentRatingSection = new PopUpSection("<n> Current Rating:");
 		currentRatingSection.layoutHorizontal = false;
         //expectedRatingSection.w = 600;
 
         initRatingList(expectedRatingSection, expectedRatings);
         initRatingList(currentRatingSection, currentRatings);
 		
-		// String expectedRatingTutorial =
-			// "Setting an Expected NOC Rating: <l> \n " +
-			// "1. <h> Review definition of <b> NOC </h> : " + parent.title + " </b> and current patient status. \n " +
-			// "2. Identify the patient's expected rating where a rating of 5 is comparable to a healthy patient of similar age, gender, and cognition. \n " +
-			// "3. Select a rating (1-5) that best represents patient's expected status at discharge from the unit. \n ";
-			
-		// String currentRatingTutorial =
-			// "Setting a Current NOC Rating: <l> \n " +
-			// "1. Review definition of <b> NOC: " + parent.title + " </b> and current patient status. \n " +
-			// "2. Identify the patient's expected rating where a rating of 5 is comparable to a healthy patient of similar age, gender, and cognition. \n " +
-			// "3. Select a rating (1-5) that best represents patient's expected status at the end of every shift. \n ";
-		
 		String expectedRatingTutorial =
-			"<b> Rules for Setting an Expected NOC Rating: </b> <l> \n " +
-			"1. Review the NOC <h> <b> Definition </b> </h> \n " +
-			"2. Review the NOC <h> <b> Indicators </b> </h> \n " +
-			"3. Select NOC rating (1-5) expected of patient at discharge from your unit <s1> \n " +
-			"<s1> Consider <b> 5 </b> to be the rating that one would assign to a comparable healthy person (e.g. same age, mental capacity, gender) and <b> 1 </b> to be the lowest. \n " +
-			"<s1> Please note that a 5 is <b> NOT </b> always a realistic discharge rating \n ";
+			"The rating achievable by patient at discharge <b> from your unit </b> ";
 			
 		String currentRatingTutorial =
-			"<b> Rules for Setting a Current NOC Rating: </b> <l> \n " +
-			"1. Review the NOC <h> <b> Definition </b> </h> \n " +
-			"2. Review the NOC <h> <b> Indicators </b> </h> \n " +
-			"3. Select NOC rating (1-5) that reflects the patient current status <s1> \n " +
-			"<s1> Consider <b> 5 </b> to be the rating that one would assign to a comparable healthy person (e.g. same age, mental capacity, gender) and <b> 1 </b> to be the lowest. \n ";
+			"The rating of patient <b> now </b> (at handoff)";
 			
 		if(!OPTION_NATIVE)
 		{
